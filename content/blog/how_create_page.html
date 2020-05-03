@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JoaoCostaIFG - a simple blog</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <meta charset="utf-8" />
+    <!--PageInfo
+    title: "How I created this web page"
+    date: 2020-01-30
+    description: "The blog is quickly approaching what I want it to be, so I can finally write actual blog posts. So why not start by talking about how this page came to be and how you can create a similar one."
+    -->
+  </head>
+
+  <body>
+    <h1>
+      <a href="/">JoaoCostaIFG (https://joaocosta.dev)</a>
+    </h1>
+
+    <div class="links">
+      <div class="cat">
+        <a href="/cat/about.html">About me</a>
+      </div>
+      <div class="cat">
+        <a href="/cat/contacts.html">Contacts</a>
+      </div>
+      <div class="cat">
+        <a href="/cat/projects.html">Projects</a>
+      </div>
+      <div class="cat">
+        <a href="https://github.com/JoaoCostaIFG">Github</a>
+      </div>
+    </div>
+
+    <h2>How I created this web page</h2>
+
+    <h3>Initial idea</h3>
+    <p>
+      The blog is quickly approaching what I want it to be, so I can finally
+      write actual blog posts. So why not start by talking about how this page
+      came to be and how you can create a similar one.
+    </p>
+    <p>
+      I have had this domain for around a year by the time of writing but all
+      the plans I've had for it over the last few months never came to be
+      (personal file server, email server, etc.). Right now, I'm glad those
+      plans/project ideas never resulted in anything that used this domain
+      because I'm enjoying writing quite a lot.
+    </p>
+    <p>
+      The idea of creating a blog came from a
+      <a href="https://github.com/Educorreia932">friend of mine</a> that was
+      starting to play around with some <b>html+css</b> and
+      <b>java script</b> on his personal web page. It was a small page with a
+      cute spinning backdrop (the backdrop is controllable now).<br />
+      Anyway, I started by going through a few tutorials at
+      <a href="https://www.w3schools.com/howto/howto_website.asp">w3schools</a>
+      and was making some progress when I started thinking about how I was going
+      to host this thing.
+    </p>
+
+    <h3>GitHub pages and hosting</h3>
+    <p>
+      This is where <a href="https://pages.github.com/">github pages</a> comes
+      in. Since I was looking to deploy a simple <b>personal static</b> page,
+      <a href="https://pages.github.com/">github pages</a> sounded like a great
+      solution (I remembered it from hosting the presentation slides for a
+      <a href="https://github.com/JoaoCostaIFG/Workshop-Introduction-Python-3"
+        >Python 3 workshop</a
+      >
+      I lectured).<br />
+      Hosting it sounded much scarier than it actually is/was. I followed the
+      following steps:
+    </p>
+    <ul>
+      <li>
+        First, you create a repository for your website. Since I wanted it to be
+        my personal website, I named it like instructed on the
+        <a href="github pages">https://pages.github.com</a> page, so
+        <i>joaocostaifg.github.io</i> in my case. It can be either private or
+        public, you choose.
+        <center>
+          <img
+            src="/static/img/how_create_page/github_pages_reponame.png"
+            alt="Github pages repository name"
+            style="max-width: 80%; height: auto;"
+          />
+        </center>
+      </li>
+      <li>
+        After that, you go to your newly created github repository settings
+        (probably at <i>github.com/user/user.github.io/settings</i>, where
+        <i>user</i> is your github username) and activate
+        <b>github pages function</b>. On the next steps, I'm gonna talk about
+        using a custom domain, so the next steps and optional (if you don't
+        have/don't want to use a custom domain, you're done with the hosting
+        matter);
+      </li>
+      <li>
+        Now that we've activated the <b>github pages function</b>, we can give
+        it our domain in the <b>custom domain section</b>. In my case, this is
+        <i>joaocosta.dev</i>. As you can see from the image below, the
+        repository can be private;
+        <center>
+          <img
+            src="/static/img/how_create_page/github_pages_options.png"
+            alt="Github repository pages options"
+            style="max-width: 80%; height: auto;"
+          />
+        </center>
+      </li>
+      <li>
+        This is the part that confused me a bit (I had no idea it worked like
+        this). You need to go to your domain registrar's website and access your
+        domain's DNS setting. When you're there, you need to create
+        <b>4 A records</b> with the following <b>IP addresses</b> and
+        optionally, a <b>CNAME Record</b> (185.199.108.153, 185.199.109.153,
+        185.199.110.153 185.199.111.153). The <b>CNAME Record</b> seems to
+        improve
+        <a
+          href="https://help.github.com/en/github/working-with-github-pages/about-custom-domains-and-github-pages#www-subdomains"
+          >page loading times</a
+        >
+        among other things (also, <b>www</b> seems to be the common and
+        recommended choice). I bought my domain at
+        <a href="https://www.namecheap.com">namecheap</a> so my DNS settings'
+        page look like this:
+        <center>
+          <img
+            src="/static/img/how_create_page/namecheap_dns.png"
+            alt="Namecheap dns page"
+            style="max-width: 80%; height: auto;"
+          />
+        </center>
+      </li>
+      <li>
+        It should be all good now :D. Remember that if you're using a custom
+        domain, it might take a few hours for your certificate to be issued.
+      </li>
+    </ul>
+    <p>
+      Now the fun part begins :3
+    </p>
+
+    <h3>Static page generators</h3>
+    <p>
+      I'm not sure if you noticed, but there is a <b>Theme Chooser</b> field on
+      the github pages repository settings. While hosting the page I was working
+      on at the time (it was a simples html+css page that looked similar to
+      <a href="https://suckless.org">this page</a>), I noticed those theme
+      options and got curious, so I went to check it out.<br />
+      Turn out that there are a few <b>static page generators</b> nowadays, and
+      they are extremely popular. I started looking at some of the options and
+      the most popular seemed to be <a href="https://gohugo.io">HUGO</a> and
+      <a href="https://jekyllrb.com">Jekyll</a>. I picked up
+      <a href="https://gohugo.io">HUGO</a> because the logo looked cute.
+    </p>
+    <p>
+      To be honest, when I started thinking about creating my own blog, I never
+      expected I'd end up using a static page generator (especially considering
+      I didn't know they existed) but here I am. It still feels a bit like
+      cheating because they make the process of creating a web page extremely
+      easy (especially considering the all the
+      <a href="https://themes.gohugo.io">themes</a> freely available online) but
+      I'll probably get over it when I start editing the
+      <a href="https://themes.gohugo.io/hugo-theme-terminal">
+        heme that I'm using
+      </a>
+      (gotta feel like I did something :/).
+    </p>
+    <p>
+      Anyway, using HUGO has been super simple and fun. It's easy to write in
+      markdown and HUGO has tons of features. I thought about talking about how
+      I started using it but I don't think I can do a better job at explaining
+      stuff than what this 2 guides:
+      <a href="https://gohugo.io/getting-started/quick-start"
+        >HUGO Quick start</a
+      >
+      and
+      <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github"
+        >HUGO Host on Github</a
+      >.<br />
+      BTW HUGO is cool but Jekyll looked amazing too. Just pick the one you like
+      the most or try both (I'm too lazy to try both and I'm fairly happy with
+      HUGO <i>for now</i>).<br />
+      Oh ye, there's also automatically set up RSS feeds with HUGO (it's under
+      <b>Show more</b>
+      on the bar at the top).
+    </p>
+
+    <h4>My 'deploy' script</h4>
+    <p>
+      On the
+      <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github"
+        >HUGO Host on Github</a
+      >
+      there's a script called <i>deploy.sh</i> that is used to commit the
+      website builds to the website's repository (using <b>git submodules</b>).
+      I had a problem with this script when deleting pages because they weren't
+      removed from the final build automatically, so I adapted it to my needs.
+      This is the script I'm using right now:
+    </p>
+
+    <pre><code class="language-bash">
+  #!/bin/sh
+
+  # If a command fails then the deploy stops
+  set -e
+
+  printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
+
+  # Delete old files
+  cd public
+  for i in $(find . -maxdepth 1 ! -name . ! -name .. ! -name '.git' ! -name 'CNAME'); do
+    rm -r "$i"
+  done
+  cd ..
+
+  # Build the project.
+  hugo
+
+  # Go To Public folder
+  cd public
+
+  # Add changes to git.
+  git add .
+
+  # Commit changes.
+  msg="rebuilding site $(date)"
+  if [ -n "$*" ]; then
+    msg="$*"
+  fi
+  git commit -m "$msg"
+
+  # Push source and build repos.
+  git push origin master
+</code></pre>
+
+    <p>
+      This script deletes the old build files (only keeps the
+      <b>CNAME file</b> needed by github pages and the
+      <b>.git</b> file/directory (it's a file in case we're using submodule)),
+      builds the website and commits the final build. Feel free to use it and
+      change it your needs.
+    </p>
+
+    <h3>Closing remarks</h3>
+
+    <p>
+      Everything seems to be set up to work smoothly from now on, so I'll most
+      likely start writing post frequently. The most important thing I need to
+      find now is a tool to check my grammar i.e. if the sentences are
+      constructed correctly (I'm open to suggestions).
+    </p>
+    <p>
+      And with this, I end my first real blog post. Feels like this project is
+      going to be fun.<br />
+      Stay safe :P
+    </p>
+
+    <h3>EDIT (23/02/2020)</h3>
+    <p>
+      I started using a <i>Makefile</i> to work and deploy the website, instead
+      of my <b>deploy script</b>. After I finished writting my
+      <a href="/content/blog/plantuml.html"><b>PlantUML</b> post</a>, I decided
+      to edit this post to include it.
+    </p>
+
+    <pre><code class="language-bash">
+  # your output directory (e.g.: public)
+  OUTPUT_DIR = public
+  # your website url (e.g.: www.joaocosta.dev)
+  CNAME = www.joaocosta.dev
+
+  default: server
+
+  .PHONY: clean
+  clean:
+    @echo "cleaning"
+    @# clean all files (except hidden files like '.git')
+    rm -rf ${OUTPUT_DIR}/*
+    mkdir -p ${OUTPUT_DIR}
+    @# write the CNAME file
+    printf "%s" ${CNAME} > ${OUTPUT_DIR}/CNAME
+
+  .PHONY: build
+  build:
+    @echo "building"
+    hugo -d ${OUTPUT_DIR}
+
+  .PHONY: commit
+  commit:
+    git -C ${OUTPUT_DIR} add -A
+    git -C ${OUTPUT_DIR} commit -m "Deploy: $(shell date)"
+    git -C ${OUTPUT_DIR} push origin master
+
+  .PHONY: deploy
+  deploy: clean build commit
+
+  .PHONY: server
+  server:
+    hugo -D server
+</code></pre>
+  </body>
+</html>

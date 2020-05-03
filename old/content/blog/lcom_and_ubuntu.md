@@ -1,0 +1,196 @@
+---
+title: "My adventure with Ubuntu and LCOM's exam day"
+date: 2020-02-12
+categories: [blog]
+tags: [blog, daily-life, getchip, uni]
+description: "The 2 days before the recovery exam had some 'funny' moments, as described by some of my friend, so I've decided to write about them (mostly because they said it was a good idea)"
+author: "JoaoCostaIFG"
+---
+
+## Intro
+
+Some months ago, I had an exam for one of my university classes (LCOM) where I got
+a 0. Since the minimum grade was 8, this meant that I had to repeat that exam at
+the end of the semester. The exam was actually really easy, but I wrote **0x12**
+instead of **12** as the value of a constant (yes, that was enough to get 0 because
+it didn't pass the automatic tests).  
+The 2 days before the recovery exam had some "funny moments", as described by some
+of my friends, so I've decided to write about them (mostly because they said it was
+a good idea).
+
+## CHIP and the deal with Ubuntu
+
+I've had a small single-board computer, very similar to a
+[raspberry pi](https://www.raspberrypi.org), for a few years now called
+[CHIP](<https://en.wikipedia.org/wiki/CHIP_(computer)>). Unfortunately, the company
+that manufactured it has declared bankruptcy in 2018, so I can't link a product
+page. The best I can do is link the
+[community's subreddit](https://www.reddit.com/r/ChipCommunity/) where they have
+some fantastic and impressive preservation efforts.
+
+### Why this is relevant
+
+My friend got her first raspberry pi for Christmas and started playing around with
+[mycroft](https://mycroft.ai/) (she was unsure about where to start, so I suggested
+it). BTW, if you're looking for an A.I. assistant that respects your privacy and/or
+is fun and easy to develop for, I can recommend [mycroft](https://mycroft.ai/).  
+At some point she wanted to find a skill to stream music but there were some problems.
+We don't have Spotify premium and the official Pandora skill was not working properly.
+The Pandora sound was coming out distorted and slowed down, and we have no idea why.
+We started searching online for skills that played sound from youtube videos, but
+none of the 2 or 3 that we found worked.
+
+After all those attempts, we decided to create our own
+[mycroft skill](https://github.com/JoaoCostaIFG/mycroft-youtubedl-skill)
+to play the sound from youtube videos. I might write a blog post about it next. This
+is why I wanted to get the CHIP working again. I needed something to install mycroft
+on, so I could test the skill.
+
+### Flashing an OS on CHIP
+
+I checked out the [CHIP subreddit](https://www.reddit.com/r/ChipCommunity/)
+and found this [flashing tool](https://github.com/Thore-Krug/Flash-CHIP). Everything
+sounded great, except for the part about all the script's dependencies. I didn't
+feel like searching for them on Arch since the script only supported **apt**. After
+briefly thinking about it, I decided to set up a virtual machine with a **Debian-based
+distro** to run the script on.  
+For some idiotic reason, the first **Debian-based distro** that came to my mind was
+Ubuntu. This was very unfortunate. I should also note that I wasn't sure if my CHIP
+was dead or not because I had some problems with it the last time I picked it up.
+
+### The Ubuntu virtual machine
+
+I started by downloading the [Ubuntu](https://ubuntu.com) 19.10 desktop image file.
+It was a **2.3 GB** .iso file and it still requires Internet access to finish the
+installation. That's way too big. For comparison, the [Debian](https://www.Debian.org)
+image is **335 MB** and the [Arch Linux](https://www.archlinux.org) one is
+**646 MB** (as of release 2020.02.01).
+
+After the download, I used [VirtualBox](https://www.virtualbox.org/) to create an
+Ubuntu  virtual machine. I left pretty much all the options at the default values
+for Ubuntu systems, except for an increase in ram and storage space.
+
+#### The problems
+
+The installation process froze for me, several times, for no apparent reason. I got
+curious and started trying to press all keyboard keys (it only froze for me on
+inputs). It seems pressing the Escape key was the culprit (I press it on instinct
+because of **vim**).
+
+At some point, the _clicky-clicky_ GUI asked me if I wanted the full
+or the minimal installation. I just wanted to set up the virtual machine ASAP,
+so I selected the minimal option. It was a mistake. It is at this point that
+I should tell you the installation took over one hour to complete. I'm not sure
+why it took that long given the fact that I was using a beefy virtual machine. I've
+created some windows virtual machine and none have taken more than 30 minutes to
+finish the installation process, but Ubuntu has always taken a long time to install
+in every machine I've tried (even as the sole main OS).  
+The minimal installation is hilarious because it does the full install and then
+uninstalls the packages that are considered _extra_. Needless to say that this
+"minimal" installation takes a lot longer than the full one (great design).
+
+After going through all that, I ran the script and it failed (managed to install
+all the dependencies tho). I read that it needs USB 2.0 to work, but at this point,
+I wasn't even able to access USB devices on the guest. After quick trip to the
+[Arch wiki](https://wiki.archlinux.org/index.php/VirtualBox#Accessing_host_USB_devices_in_guest),
+I got everything I needed. I had to add my user to the _vboxusers_ group and install
+the **VirtualBox extension pack**. After that, I tried booting Ubuntu. The important
+part is that I tried, because it got stuck on the purple Ubuntu screen. I tried
+uninstalling the **extension pack** and disabling USB 2.0 but it still wouldn't
+work :/. It was time to reinstall Ubuntu.  
+Something weird happened now. The **Ubuntu .iso** file was deleted when I deleted
+the virtual machine, but I didn't notice it. I was still able to mount it on the
+new virtual machine and proceed with the installation for a while before it froze,
+so it took a lot of time for me to notice this. This means I was stuck trying
+everything I could think of to find the problem with the Ubuntu installation when
+it was just missing the image file.
+
+After all this, I just gave up on Ubuntu. To be fair, the second installation failed
+because I deleted the image file by mistake, but all the time needed to install the
+distro and it only booting once was too much for me.
+
+### The Debian virtual machine
+
+I feel somewhat dumb because I didn't initially think about Debian. I literally
+thought about Ubuntu before Debian when looking for a **Debian-based** distro. I
+feel ashamed when I say this out loud.
+
+Sometimes I hear (or read) some people say, both on the Internet and in real life,
+that Debian is hard to install. I didn't have any problems with its installation
+GUI and it was done in about 20 minutes. I can say that it was a fairly user-friendly,
+straight forward process, and fast process.
+
+Besides learning about guest USB device access on VirtualBox, all this work was
+pretty pointless because the OS flashing script didn't work. The script execution
+kept failing and, from what I could see on the GitHub issues, reddit comments and
+the repository's README file, the error I was having is fairly common, but none
+of the solutions worked. I believe my CHIP is dead.
+
+With this, I installed mycroft on the Debian virtual machine I had just set up and
+used it that way (should've done that to begin with).
+
+## Beginning of the exam day
+
+I woke up really early, so I could get to school with a lot of time to spare (I
+got there at 9am and exam was at 2pm). Shortly after I got there, a friend of mine
+that also needed to repeat the exam met up with me at the library. I could lie and
+say we were responsible and took the time to study together, but we just watched
+some [Noita](https://noitagame.com/) speedruns and played
+[I Have No Mouth, and I Must Scream](https://en.wikipedia.org/wiki/I_Have_No_Mouth,_and_I_Must_Scream).
+We had fun doing that for a couple of hours and then got up to go get a friend's
+of my friend new school card.
+
+The owner of the card attends a different university, so it was the first time I
+visited what most consider our "rival university". We got lost for a while there
+because it is not possible to access all rooms of the building we visited without
+going outside (a bit like having to leave the house to go to the bathroom).  
+When we finally managed to find the room we needed to find (not even the cleaning
+ladies there were sure about where it was), the guy that takes care of the cards
+told us that he "wasn't allowed to give us the card because he wasn't notified of
+it" (even though we had her citizens card, old school card and an email forwarded
+from her school email with the information needed to get the card). I immediately
+started thinking that we just wasted time, when the guy just handed over her card
+while saying "I can't do this". We left that university with the card so it seems
+the guy _can do things that he cannot do_.
+
+After that errand, we were joined by two other friends (that were also repeating
+the exam) for lunch. It was here that I first told the story of my _Ubuntu adventure_.
+
+## Exam time
+
+Even though I started slowly, I was able to finish the exam in about 1 hour (it was
+a 3-hour exam). I found it harder than the one I failed but easy nonetheless. I believe
+the teacher made that exam in a way that made it very easy if you didn't just memorize
+stuff but actually learned something (if you didn't, you would have a ton of trouble
+with that exam).  
+During the exam, the teacher noticed I was using **VIM** to code and had written
+a small script to make the testing of the code fast and automatic, so he came up
+to me and we had a short exchange it. Obviously, this gave me an enormous confidence
+boost. I started heading home afterwards.
+
+## End of the exam day
+
+The only thing that's somewhat interesting to share about the rest of that day is
+the small bus accident on my way home.
+
+The only free spots on the bus I took home were the two seats right on top of one
+of the back wheels. I was sitting down quietly listening to music (the **Fear Incoculum**
+album by **Tool**) when I heard one of the loudest sounds I've ever heard. I felt
+my seat jump up violently and all I could see outside was smoke and some black things
+passing by at high speed. Everyone went silent and started looking around with a
+confused look on their faces.  
+After the scare (and me moving to seat next to me because of it), the driver told
+us one the tires blew up (like everyone expected already), but he also said it was
+good enough for him to take us to next stop (my stop) if we distributed the weight
+away from that wheel. What followed was an extremely long and slow ride home with
+the constant sound of a piece tire banging against the bus. It was neither fun nor
+good for my hearing. I wonder if this is why most buses I see now have 3 wheels on
+each side.
+
+## Conclusions
+
+I dislike Ubuntu, taking a school card that doesn't belong to me was easier than
+it should be, I didn't fail LCOM, and bus tires can explode with, what seemed like,
+enough force to kill someone.  
+Hope you found these as funny as some of my friends did.  
+Stay safe :P

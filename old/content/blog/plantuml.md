@@ -1,0 +1,312 @@
+---
+title: "Draw UML diagrams with PlantUML"
+date: 2020-02-22
+categories: [blog]
+tags: [blog, prog, uml]
+description: "The second semester is starting and I now have a Data-Bases class (will refer to it as BDAD from here on). In this class we're making heavy use of UML, more specifically UML class diagrams. I am using PlantUML for that, so I'll talk about it and why I chose it."
+author: "JoaoCostaIFG"
+---
+
+## Context
+
+The second semester is starting and I now have a Data-Bases class (will refer to
+it as BDAD from here on). In this class we're making heavy use of [UML](https://www.uml-diagrams.org/),
+more specifically [UML class diagrams](https://www.uml-diagrams.org/class-diagrams-overview.html).
+I am using PlantUML for that, so I'll talk about it and why I chose it.
+
+## How I've used UML before
+
+Up until this semester, I haven't used UML that much. As a matter of fact, I only
+used UML for a project on the last semester and it was a really limited UML application.
+Even with this new university class, I've been drawing my UML with pencil and paper
+(like most people I see). Needless to say that this isn't exactly efficient, specially
+when I need to correct mistakes.  
+Before talking about [**PlantUML**](https://plantuml.com/), I believe I should talk
+about the other alternatives I've tried that (I liked) and why I didn't stick to
+them.
+
+## [draw.io](https://www.draw.io)
+
+**Draw.io** is great for those moments when you're not in your usual working environment
+and need a quick diagram drawing tool, or when you only need to draw diagrams very
+sporadically.  
+It is most often used as a web-application, but it also has a desktop version
+that I never tried. From what a friend told me, it is the same as the web app,
+but it can be used offline.
+
+The things I loved the most about **draw.io** are:
+
+- It is open [source](https://github.com/jgraph/drawio);
+- It is an instance of what I like calling _"a good web app"_. It works on the
+  [Tor browser](https://www.torproject.org), even with all cookies blocked and non-free
+  **javascript** disabled;
+- It is extremely user-friendly and _straight to the point_.
+
+My problem with it was that it didn't support _association classes_: it neither
+has the type of arrows needed, nor allows to connect an arrow to another.
+
+## [Modelio](https://www.modelio.org/)
+
+I'm going to be honest, I didn't have high expectations for this one since it was
+recommended by my teachers. Still, it is open-source, extensible, and seems to
+have a decent community that keeps the project alive.
+
+It had a lot of dependencies that I didn't have installed and was extremely slow
+when creating a project on my machine, so I gave up on it. I thought about not
+listing it here since I almost didn't try it. Still, I believe you should give
+it a try if you're looking for a GUI application, because you might have more
+luck with it than I did.
+
+## [Dia](https://wiki.gnome.org/Apps/Dia)
+
+I thought I was going to hate **dia** (because Gnome), but it surprised me. I
+didn't need to install any dependencies and the GUI was simple and fast. Even
+without having ever looked/read about at it before, all options I wanted were
+in the places I expected them to be.
+
+It is an [open-source](https://gitlab.gnome.org/GNOME/dia) project, but looks a
+bit abandoned. The few recent commits are mostly fixes/additions to translation
+efforts. Either way, it looks fairly complete.
+
+Remember the _association clases_ problem I had with **draw.io**? I had the same
+problem with **dia**. I found [this](https://stackoverflow.com/questions/6139951/how-to-draw-an-association-class-in-dia/14344657#14344657)
+answer on a _stackoverflow_ post dating back to the beginning of 2013. It says
+that the _development branch_ of **dia** added the ability to connect UML arrows
+to one another.  
+I cloned and built the _development branch_ and I can confirm that it does indeed
+add that ability. The question now is why isn't this function in the _release/master_
+branch after (at least) 7 years.  
+Anyway, **dia** doesn't have the UML arrow I need for this either way, so it didn't
+solve the problem completely. The auto-routing is also somewhat bad, which meant
+the search would go continue.
+
+## [Umbrello](https://umbrello.kde.org/)
+
+This program is amazing and I recommend it to anyone that feels comfortable using
+GUI's and doesn't care about program sizes. It is open-source, supports code translation
+from and to UML for many programming languages, and can easily and seamlessly handle
+UML _association classes_ and their arrows.
+
+Although **umbrello** has all this great things, it is huge. Definitely too huge
+for me and for what I think it should be. In my machines, I need to install **32**
+dependencies to use **umbrello**, so I stuck with **dia** for a while.
+
+## Goodbye GUI's
+
+So after all that search, I kept using **dia** on the _development branch_ with some
+weird arrows (that weren't even on the UML set) to connect the _association classes_.
+It was still better than drawing everything by hand.  
+When I'm drawing a UML _class diagram_ from a textual description (BDAD exercises),
+I start by writing a _relational model_ as I'm reading the text. This got me
+thinking. I had read about drawing UML diagrams in LaTeX before. Maybe I would be
+able to combine the steps of writing the _relational model_ and drawing the
+_class diagram_ into one (and show off to my friends). Turns out I can with
+**PlantUML**.
+
+### [PlantUML](https://plantuml.com/)
+
+**PlantUML** is open-source and strives to be as compact as possible. This means
+that you only have the base set of features by default (which means you're just missing
+some output formats). If you want/need some other features, you can install the
+dependencies. I love this design choice.
+
+The greatest thing about **PlantUML** is that you describe the UML diagrams using
+a special textual syntax (similar to a scripting language). I know this may sound
+really weird (it sounded weird to me), but it's great. You can draw UML diagrams
+faster than with GUI applications and still watch live previews of your work:
+
+- a [VSCode extension](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml);
+- many vim plugins like: [plantuml previewer vim](https://github.com/weirongxu/plantuml-previewer.vim),
+  [plantuml-syntax](https://github.com/aklt/plantuml-syntax) and
+  [vim-slumlord](https://github.com/scrooloose/vim-slumlord);
+- output the UML to PDF and use a PDF viewer that can update the shown contents
+  automatically, like [Zathura](<https://en.wikipedia.org/wiki/Zathura_(document_viewer)>):
+  `plantuml -tpdf <file_name>`;
+- use the included **PlantUML** GUI: `plantuml -gui`;
+- just output to default png format and use an image viewer;
+- integrates with [LaTeX](https://plantuml.com/latex);
+- or try one of the [tools](https://plantuml.com/running) listed on their website.
+
+There are also [tools](https://plantuml.com/running) for generation code from and
+to **PlantUML** like [hpp2plantuml](https://github.com/thibaultmarin/hpp2plantuml).
+
+### PlantUML's examples
+
+```js
+@startuml
+title Basic syntax example
+
+'this is a comment'
+class Name {
+  name
+}
+
+class ID {
+  id
+}
+
+/'
+this is a class with some parameters
+and 1 method
+'/
+class Person {
+  name
+  id
+  getID()
+}
+
+'these are generalization arrows'
+Person <|-- Name
+'this arrow has the same meaning as the one above'
+Person ^-- ID
+
+'this is an association arrow'
+Person - Car
+'this is an association class arrow'
+(Person, Car) .. IsOwner
+
+@enduml
+```
+
+The 'code' above is a really simple example of PlantUML's syntax that produces
+the following image when the command `plantuml <file_name>` is run:
+
+{{< image src="/img/plantuml/basic_uml_eg.png" alt="Basic UML example" position="center" style="border-radius: 0px;" >}}
+
+The [colors/themes](https://bschwarz.github.io/puml-themes/) are all customizable,
+you can define the directions of the arrows, and you can tell **PlantUML** to
+group certain 'objects' together, so you can end up with something that looks like
+this (I'm sorry for your eyes):
+
+{{< image src="/img/plantuml/ugly_colors_eg.png" alt="Ugly colors example" position="center" style="border-radius: 0px;" >}}
+
+This is the 'new code' to get the result above:
+
+```js
+@startuml
+
+skinparam backgroundcolor Black/Orange
+
+skinparam class {
+	BackgroundColor PaleGreen
+	ArrowColor SeaGreen
+	BorderColor SpringGreen
+}
+
+title Ugly colors example\nwith arrow directions
+
+'this is a comment'
+class Name {
+  name
+}
+
+class ID {
+  id
+}
+
+/'
+this is a class with some parameters
+and 1 method
+'/
+class Person {
+  name
+  id
+  getID()
+}
+
+'you can change the direction of arrows'
+Name -down-|> Person
+'you can abreviate (d)own, (u)p, (l)eft and (r)ight'
+Person <|-u- ID
+
+'this is an association arrow'
+Person -l- Car
+'this is an association class arrow'
+(Person, Car) .. IsOwner
+
+@enduml
+}
+```
+
+I'm not going to talk about all the syntax in depth because I don't need to. **PlantUML's**
+[language specification](https://plantuml.com/sitemap-language-specification) is
+very well written, explicit and filled with examples. The syntax is so simple
+and easy that you should be able to start drawing mundane UML _class diagrams_ just
+by looking at the examples above and checking the syntax for the different
+[UML arrows](https://plantuml.com/class-diagram). It really is that easy.
+
+### The bad
+
+If you're collaborating with other people, you'll probably not be able to get
+them to use **PlantUML**, considering that most people prefer GUI's for
+everything. This means that you'll likely only benefit from the time invested
+learning the syntax when working in personal projects.
+
+Although the auto-routing is quite good (most of the time), and you have options
+to group 'objects' and choose the direction of the arrows, I still find that the
+diagrams don't always look perfect. I believe this probably happens because I'm
+a new user, so I'm just missing experience with the program to get everything looking
+the way I want. Either way, this is the biggest barrier to entry on **PlantUML**.
+You have to rely quite a lot on the auto-routing because you can't simply drag the
+connections around.
+
+Sadly, it looks like **PlantUML** doesn't support (at the time of writing)
+[_association qualifiers_](https://www.uml-diagrams.org/property.html#qualifier).
+The good thing is that I haven't needed them (yet).
+
+## Closing remarks
+
+After a lot of reading, searching, and trying out different programs, I found
+**PlantUML** and I'm in love with it. It reminds me a lot of when I first used **markdown**.
+I was skeptical, but ended up liking it. If you need to draw UML diagrams for a
+project and you can decide the tool used, I recommend **PlantUML**. It is fun,
+simple to use, free, it feels familiar to programming, and it has many tools,
+plugins and programs that integrate with it. It is just great.
+
+This post wasn't very 'technical', because I didn't find the need for it. I just
+wanted to share my opinions on **PlantUML** and maybe convince people to use it.
+I wouldn't be able to do a better job at explaining how to use **PlantUML** than
+its [documentation/language specification](https://plantuml.com/sitemap-language-specification).
+
+On another note, I started using a _Makefile_ to deploy my website changes, instead
+of my [old deploy script](https://www.joaocosta.dev/blog/how_create_page/#my-deploy-script).
+I'm still pondering if I should edit that post, so it would also include the _Makefile_,
+but for now I'll leave it here.
+
+```bash
+# your output directory (e.g.: public)
+OUTPUT_DIR = public
+# your website url (e.g.: www.joaocosta.dev)
+CNAME = www.joaocosta.dev
+
+default: server
+
+.PHONY: clean
+clean:
+	@echo "cleaning"
+	@# clean all files (except hidden files like '.git')
+	rm -rf ${OUTPUT_DIR}/*
+	mkdir -p ${OUTPUT_DIR}
+	@# write the CNAME file
+	printf "%s" ${CNAME} > ${OUTPUT_DIR}/CNAME
+
+.PHONY: build
+build:
+	@echo "building"
+	hugo -d ${OUTPUT_DIR}
+
+.PHONY: commit
+commit:
+	git -C ${OUTPUT_DIR} add -A
+	git -C ${OUTPUT_DIR} commit -m "Deploy: $(shell date)"
+	git -C ${OUTPUT_DIR} push origin master
+
+.PHONY: deploy
+deploy: clean build commit
+
+.PHONY: server
+server:
+	hugo -D server
+```
+
+Stay safe :P
