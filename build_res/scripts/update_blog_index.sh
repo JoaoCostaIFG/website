@@ -4,7 +4,10 @@ CONTENT_DIR="content"
 RES_DIR="build_res"
 RESULT_FILE="${CONTENT_DIR}/blog.html"
 
-cp "${RES_DIR}/head.html" "${RESULT_FILE}"
+cp "${RES_DIR}/head.html" "${RESULT_FILE}" || {
+  echo "Couldn't find head.html build resource file"
+  exit 1
+}
 
 printf "<h2>All of my blog posts</h2>\n\n" >>"${RESULT_FILE}"
 
@@ -28,10 +31,9 @@ for file in ${CONTENT_DIR}/blog/*.html; do
 done
 
 # sort page info by date
-sort -t2 -r -k2 -k3 -k4 "$blogEntries" >> "${RESULT_FILE}"
+sort -t2 -r -k2 -k3 -k4 "$blogEntries" >>"${RESULT_FILE}"
 rm "$blogEntries"
 
 printf "</ul>\n" >>"${RESULT_FILE}"
 
 cat "${RES_DIR}/foot.html" >>"${RESULT_FILE}"
-
