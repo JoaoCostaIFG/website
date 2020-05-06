@@ -11,13 +11,13 @@ cp "${RES_DIR}/head.html" "${RESULT_FILE}" || {
 
 printf "<h2>All of my blog posts</h2>\n\n" >>"${RESULT_FILE}"
 
-printf "<ul>\\n" >>"${RESULT_FILE}"
+printf "<ul>\n" >>"${RESULT_FILE}"
 
 # get the info from all pages
 blogEntries="$(mktemp)"
 for file in ${CONTENT_DIR}/blog/*.html; do
   # get page info field
-  pageInfo="$(grep -A4 "^.*<!--PageInfo$" "$file")"
+  pageInfo="$(grep -m 1 -A4 "^.*<!--PageInfo$" "$file")"
 
   postTitle="$(printf "%s" "$pageInfo" |
     grep "title" |
