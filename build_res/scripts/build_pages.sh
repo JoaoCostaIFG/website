@@ -1,14 +1,12 @@
 #!/usr/bin/env sh
 
-FILENAMES="files"
-OUT_DIR="build"
-
-rm -rf "$OUT_DIR"
-mkdir -p "$OUT_DIR"
-
 RES_DIR="build_res"
+FILENAMES="${RES_DIR}/files"
 head="$(cat "${RES_DIR}/head.html")"
 foot="$(cat "${RES_DIR}/foot.html")"
+
+OUT_DIR="build"
+mkdir -p "$OUT_DIR"
 
 print_usage() {
   printf "%s [html file to build] || [file with list of files to build]\n" "$0"
