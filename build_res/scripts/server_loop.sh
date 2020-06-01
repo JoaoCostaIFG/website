@@ -4,11 +4,12 @@
 
 cd "build/" || {
   echo "There's no build directory. Exiting.."
-  exit 1
+  exit 0
 }
 python -m http.server 8080 &
 server_pid="$!"
 trap 'kill -9 ${server_pid}; exit 1' 2
+sleep 1
 cd ..
 
 while true; do
