@@ -16,4 +16,8 @@ clean:
 new:
 	@build_res/scripts/new_blog.sh
 
-.PHONY: blog_index build clean
+server: build
+	@echo "Running server."
+	@build_res/scripts/server_loop.sh
+
+.PHONY: blog_index build clean new server

@@ -2,10 +2,20 @@
 
 # ok this script is incredibly stupid but I don't know better solutions yet
 
-cd "build/"
+cd "build/" || {
+  echo "There's no build directory. Exiting.."
+  exit 1
+}
+python -m http.server 8080 &
+server_pid="$!"
+trap 'kill -9 ${server_pid}; exit 1' 2
+cd ..
 
 while true; do
-  cd ..
-  make build
+  if [ "$(git status --porcelain)" ]; then
+    echo "Server rebuilding.."
+    make build
+  fi
+
   sleep 1
 done
