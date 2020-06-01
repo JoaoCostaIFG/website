@@ -1,5 +1,10 @@
 #!/bin/sh
 
+rebuild_file() {
+  echo "'${1}' changed. Rebuilding.."
+  "$BUILD_SCRIPT" "${1}"
+}
+
 BUILD_SCRIPT="build_res/scripts/build_pages.sh"
 # not a typo. IFS is '\n'
 IFS="
@@ -21,8 +26,13 @@ for entry in $(git status --porcelain | cut -c 4-); do
   md5sum "${entry}" >>"$f"
 done
 
+prev_entries=""
 while true; do
+  new_entries=""
   for entry in $(git status --porcelain | cut -c 4-); do
+    new_entries="${new_entries}
+${entry}"
+
     hash="$(md5sum "${entry}")"
 
     # check if something should be rebuilt
@@ -36,11 +46,17 @@ while true; do
     fi
 
     # rebuild file in question
-    if [ "$changed" -eq 1 ]; then
-      echo "${entry} changed. Rebuilding.."
-      "$BUILD_SCRIPT" "$entry"
+    [ "$changed" -eq 1 ] && rebuild_file "$entry"
+  done
+
+  # rebuild if entry was listed last time and isn't right now
+  for entry in $prev_entries; do
+    if ! echo "$new_entries" | grep "^${entry}$" >/dev/null 2>&1; then
+      rebuild_file "$entry"
     fi
   done
+
+  prev_entries="$new_entries"
 
   sleep 1
 done
