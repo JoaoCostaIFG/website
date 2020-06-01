@@ -8,6 +8,7 @@ build: clean blog_index
 	@build_res/scripts/build_pages.sh
 	@echo "Copying stylesheet."
 	@cp build_res/style.css build/
+	@cp build_res/favicon.png build/
 
 clean:
 	@echo "Cleaning."
@@ -20,4 +21,11 @@ server: build
 	@echo "Running server."
 	@build_res/scripts/server_loop.sh
 
-.PHONY: blog_index build clean new server
+deploy: build
+	@echo "Deploying."
+	@echo "Removing old build."
+	@ssh ifgsv 'rm -rf /var/www/joaocosta.dev/main/*'
+	@echo "Sending new build."
+	@scp -r build/* ifgsv:/var/www/joaocosta.dev/main/
+
+.PHONY: blog_index build clean deploy new server
