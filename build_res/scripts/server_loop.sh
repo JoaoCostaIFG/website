@@ -37,10 +37,10 @@ ${entry}"
 
     # check if something should be rebuilt
     changed=0
-    if ! grep "  ${entry}$" "$f" >/dev/null 2>&1; then # wasn't in the list
+    if ! grep -q "  ${entry}$" "$f"; then # wasn't in the list
       changed=1
       echo "$hash" >>"$f"
-    elif ! grep "$hash" "$f" >/dev/null 2>&1; then # was in list
+    elif ! grep -q "$hash" "$f"; then # was in list
       changed=1
       sed -i "s|.*${entry}$|${hash}|" "$f"
     fi
@@ -51,7 +51,7 @@ ${entry}"
 
   # rebuild if entry was listed last time and isn't right now
   for entry in $prev_entries; do
-    if ! echo "$new_entries" | grep "^${entry}$" >/dev/null 2>&1; then
+    if ! echo "$new_entries" | grep -q "^${entry}$"; then
       rebuild_file "$entry"
     fi
   done
