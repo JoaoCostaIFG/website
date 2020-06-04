@@ -56,7 +56,7 @@ list_all_html() {
 
   printf "" >"$1" # clear list output file
 
-  for file in $(find . -type f -not -path "./.git/*" | sed "s|^\./||"); do
+  for file in $(find . -type f -not -path "./.git/*" -not -path "./${RES_DIR}/*" | sed "s|^\./||"); do
     if has_page_info "$file"; then
       printf "%s\n" "$file" >>"$1"
     fi
