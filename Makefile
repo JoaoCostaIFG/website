@@ -9,6 +9,7 @@ build: clean blog_index
 	@echo "Copying stylesheet."
 	@cp build_res/style.css build/
 	@cp build_res/favicon.png build/
+	@cp -r static/ build/
 
 clean:
 	@echo "Cleaning."
