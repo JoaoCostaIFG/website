@@ -1,3 +1,5 @@
+BUILD_DIR="build"
+
 blog_index:
 	@rm -f "content/blog.html"
 	@echo "Updating blog index."
@@ -9,11 +11,11 @@ build: clean blog_index
 	@echo "Copying stylesheet."
 	@cp build_res/style.css build/
 	@cp build_res/favicon.png build/
-	@cp -r static/ build/
+	@cp -r static/ ${BUILD_DIR}
 
 clean:
 	@echo "Cleaning."
-	@rm -rf build/
+	@rm -rf ${BUILD_DIR}
 
 new:
 	@build_res/scripts/new_blog.sh
@@ -26,6 +28,9 @@ deploy: build
 	@echo "Deploying."
 	@echo "Removing old build."
 	@ssh ifgsv 'rm -rf /var/www/joaocosta.dev/main/*'
+	@echo "Setting perms."
+	@find ${BUILD_DIR}/* -type f -exec chmod 644 '{}' \;
+	@find ${BUILD_DIR}/* -type d -exec chmod 755 '{}' \;
 	@echo "Sending new build."
 	@scp -r build/* ifgsv:/var/www/joaocosta.dev/main/
 
