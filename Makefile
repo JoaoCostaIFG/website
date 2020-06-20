@@ -1,10 +1,5 @@
 BUILD_DIR="build"
 
-blog_index:
-	@rm -f "content/blog.html"
-	@echo "Updating blog index."
-	@build_res/scripts/update_blog_index.sh
-
 build: clean blog_index
 	@echo "Building page."
 	@build_res/scripts/build_pages.sh
@@ -12,6 +7,11 @@ build: clean blog_index
 	@cp build_res/style.css build/
 	@cp build_res/favicon.png build/
 	@cp -r static/ ${BUILD_DIR}
+
+blog_index:
+	@rm -f "content/blog.html"
+	@echo "Updating blog index."
+	@build_res/scripts/update_blog_index.sh
 
 clean:
 	@echo "Cleaning."
