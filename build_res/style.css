@@ -85,6 +85,10 @@ li {
   margin-bottom: 3em;
 }
 
+.links img {
+  height: 1.25em;
+}
+
 .cat {
   display: inline;
   margin-right: 1.5em;
