@@ -9,7 +9,7 @@ OUT_DIR="build"
 mkdir -p "$OUT_DIR"
 
 print_usage() {
-  printf "%s [html file to build] || [file with list of files to build]\n" "$0"
+  printf "%s [html file to build] || [-a file with list of files to build]\n" "$0"
   printf "Otherwise, fallback to all html files with PageInfo on dir.\n"
   exit 1
 }
@@ -67,11 +67,9 @@ if [ $# -eq 0 ]; then
   list_all_html "$FILENAMES"
   build_all "$FILENAMES"
 elif [ -f "$1" ]; then
-  if has_page_info "$1"; then
-    build_file "$1"
-  else
-    build_all "$1"
-  fi
+  has_page_info "$1" && build_file "$1"
+elif [ "$1" = "-a" ] && [ "$2" ]; then
+  build_all "$2"
 else
   print_usage
 fi
