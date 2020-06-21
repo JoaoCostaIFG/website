@@ -1,17 +1,22 @@
 BUILD_DIR="build"
 
-build: clean blog_index
+build: clean blog_index rss
 	@echo "Building page."
 	@build_res/scripts/build_pages.sh
 	@echo "Copying stylesheet."
 	@cp build_res/style.css build/
 	@cp build_res/favicon.png build/
+	@cp atom.xml build/
 	@cp -r static/ ${BUILD_DIR}
 
 blog_index:
 	@rm -f "content/blog.html"
 	@echo "Updating blog index."
 	@build_res/scripts/update_blog_index.sh
+
+rss:
+	@echo "Updating atom feed."
+	@build_res/scripts/rss_gen.sh
 
 clean:
 	@echo "Cleaning."
@@ -34,4 +39,4 @@ deploy: build
 	@echo "Sending new build."
 	@scp -r build/* ifgsv:/var/www/joaocosta.dev/main/
 
-.PHONY: blog_index build clean deploy new server
+.PHONY: blog_index build clean deploy new rss server
