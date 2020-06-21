@@ -7,6 +7,7 @@ build: clean blog_index rss
 	@cp build_res/style.css build/
 	@cp build_res/favicon.png build/
 	@cp atom.xml build/
+	@cp robots.txt build/
 	@cp -r static/ ${BUILD_DIR}
 
 blog_index:

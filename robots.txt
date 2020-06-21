@@ -1,0 +1,3 @@
+user-agent: *
+disallow: /static
+crawl-delay: 10
