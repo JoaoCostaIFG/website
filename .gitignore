@@ -1,3 +1,4 @@
 **/.cs_files
 build/
-files
+build_res/files
+atom.xml
