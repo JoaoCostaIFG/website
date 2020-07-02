@@ -33,11 +33,11 @@ server: build
 deploy: build
 	@echo "Deploying."
 	@echo "Removing old build."
-	@ssh ifgsv 'rm -rf /var/www/joaocosta.dev/main/*'
+	@ssh ifgsv 'rm -rf /usr/share/nginx/joaocosta.dev/main/*'
 	@echo "Setting perms."
 	@find ${BUILD_DIR}/* -type f -exec chmod 644 '{}' \;
 	@find ${BUILD_DIR}/* -type d -exec chmod 755 '{}' \;
 	@echo "Sending new build."
-	@scp -r build/* ifgsv:/var/www/joaocosta.dev/main/
+	@scp -r build/* ifgsv:/usr/share/nginx/joaocosta.dev/main/
 
 .PHONY: blog_index build clean deploy new rss server
