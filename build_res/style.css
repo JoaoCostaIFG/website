@@ -10,6 +10,13 @@
   --gray: #99998b;
 }
 
+body {
+  background-color: var(--background);
+  font-family: helvetica, sans-serif;
+  color: var(--white);
+  padding-left: 1em;
+}
+
 h1 {
   color: var(--main);
   font-weight: Bold;
@@ -49,13 +56,6 @@ h4 a {
   color: var(--orange);
 }
 
-body {
-  background-color: var(--background);
-  font-family: helvetica, sans-serif;
-  color: var(--white);
-  padding-left: 1em;
-}
-
 a {
   color: var(--green1);
   text-decoration: none;
@@ -77,7 +77,7 @@ li {
   margin-bottom: 1.25em;
 }
 
-.links {
+#menu {
   font-size: large;
   max-width: 37em;
   background-color: var(--background);
@@ -85,11 +85,11 @@ li {
   margin-bottom: 3em;
 }
 
-.links img {
+#menu img {
   width: 1.25em;
 }
 
-.cat {
+#menu .cat {
   display: inline;
   margin-right: 1.5em;
 }
