@@ -29,7 +29,7 @@ for file in ${CONTENT_DIR}/blog/*.html; do
 done
 
 # sort page info by date
-sort -t2 -r -k2 -k3 -k4 "$blogEntries" >>"${RESULT_FILE}"
+sort -t'-' -n -r -k2 -k3 -k4 "$blogEntries" >>"${RESULT_FILE}"
 rm "$blogEntries"
 
 printf "</ul>\n" >>"${RESULT_FILE}"
