@@ -17,6 +17,7 @@ body {
   padding-left: 1em;
 }
 
+/* HEADERS */
 h1 {
   color: var(--main);
   font-weight: Bold;
@@ -24,36 +25,26 @@ h1 {
   text-shadow: -0.0625em 0.1875em 0.1875em rgba(0, 0, 0, 0.7);
 }
 
-h1 a {
-  color: var(--main);
-}
-
 h2 {
   color: var(--blue);
   font-weight: normal;
-}
-
-h2 a {
-  color: var(--blue);
+  margin-top: 2em;
 }
 
 h3 {
   color: var(--red);
   font-weight: normal;
-  margin-top: 3em;
-}
-
-h3 a {
-  color: var(--red);
+  margin-top: 2em;
 }
 
 h4 {
   color: var(--orange);
   font-weight: normal;
+  margin-top: 1em;
 }
 
-h4 a {
-  color: var(--orange);
+h1 a, h2 a, h3 a, h4 a {
+  color: inherit;
 }
 
 a {
@@ -77,12 +68,10 @@ li {
   margin-bottom: 1.25em;
 }
 
+/* MENU */
 #menu {
   font-size: large;
-  max-width: 37em;
-  background-color: var(--background);
-  border-radius: 0.625em;
-  margin-bottom: 3em;
+  max-width: 40em;
 }
 
 #menu img {
@@ -91,5 +80,14 @@ li {
 
 #menu .cat {
   display: inline;
-  margin-right: 1.5em;
+}
+
+#menu .cat~.cat {
+  margin-left: 1.5em;
+}
+
+/* FOOTER */
+footer hr {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
