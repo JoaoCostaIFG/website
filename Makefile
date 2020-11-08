@@ -33,8 +33,6 @@ server: build
 
 deploy: build
 	@echo "Deploying."
-	@echo "Removing old build."
-	@ssh ifgsv 'rm -rf /usr/share/nginx/joaocosta.dev/main/*'
 	@echo "Setting perms."
 	@find ${BUILD_DIR}/* -type f -exec chmod 644 '{}' \;
 	@find ${BUILD_DIR}/* -type d -exec chmod 755 '{}' \;
