@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+
+:root {
+  --bg-dark: #212121;
+  --accent-primary: #0d75be;
+  --main-background-color: white;
+  --snippet-background-color: rgb(180, 180, 180);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Oswald", sans-serif;
+  font-weight: normal;
+  margin: 1rem 0;
+}
+
+.remark-slide-content {
+  font-size: inherit;
+}
+
+.remark-slide-content h1 {
+  font-size: 3em;
+}
+.remark-slide-content h2 {
+  font-size: 2.8em;
+}
+.remark-slide-content h3 {
+  font-size: 1.8em;
+}
+
+.slide_title {
+  position: relative;
+  background-color: var(--accent-primary);
+  color: white;
+}
+
+.slide_logos > img {
+  flex: 1;
+  margin: 0.5rem 1.5rem;
+}
+
+.slide_contents {
+  background-color: lightgray;
+  text-indent: 10px;
+}
+
+.slide_section {
+  background-color: var(--bg-dark);
+  color: white;
+}
+
+.slide_normal {
+  background-color: var(--main-background-color);
+  color: black;
+}
+
+.remark-code,
+.remark-inline-code {
+  font-family: "Roboto+Mono", monospace;
+}
+
+.remark-inline-code {
+  color: #92bb75;
+  font-style: italic;
+  font-weight: bold;
+}

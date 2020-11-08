@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+:root {
+	--bg-dark: #212121;
+    /*--accent-primary: #ff0036;*/
+    --accent-primary: #0D75BE;
+    /*--main-background-color: rgb(232, 232, 232);*/
+    --main-background-color: white;
+    --snippet-background-color: rgb(180, 180, 180);
+}
+
+body { 
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.6rem;
+	line-height:1.2;
+}
+
+h1, h2, h3 {
+	font-family: 'Oswald', sans-serif;
+	font-weight: normal;
+	margin: 1rem 0;
+}
+
+.remark-slide-content {
+	font-size: inherit;
+}
+
+.remark-slide-content h1 { font-size: 300%; line-height: 1.6;}
+.remark-slide-content h2 { font-size: 200%; line-height: 1.4;}
+.remark-slide-content h3 { font-size: 150%; line-height: 1.2;}
+
+/**
+ * Used on the first slide
+ * */
+.slide_title {
+	position: relative;
+	background-color: var(--accent-primary);
+	color: white;
+}
+
+/**
+ * Used by title slides (first slide) to show the workshop title and authors, in addition to student branch logo and chapter logo. The logos must be contained in a div with class slide_logos
+ */
+.slide_logos {
+	display: flex;
+	padding: 1rem;
+	position: absolute;
+	bottom: 1em;
+	left: 3em;
+	right: 3em;
+}
+
+.slide_logos > img {
+	flex: 1;
+	margin: 0.5rem 1.5rem;
+}
+
+/**
+ * Used to introduce new section topics
+ */
+ .slide_contents {
+	background-color: lightgray;
+	text-indent: 10px;
+}
+
+/**
+ * Used to introduce new section topics
+ */
+.slide_section {
+	background-color: var(--bg-dark);
+	color: white;
+}
+
+/**
+ * Used for most normal slides
+ */
+ .slide_normal {
+     background-color: var(--main-background-color);
+     color: black;
+ }
+
+/** 
+ * Code snippets
+ */
+.remark-code, .remark-inline-code {
+	font-size: 1.6rem;
+	font-family: 'Roboto+Mono', monospace;
+}
+
+.remark-code {
+	border-radius: 15px;
+}
+
+.remark-inline-code {
+    font-weight: bold;
+    background-color: var(--main-background-color);
+	color: var(--accent-primary);
+}
+
+.remark-code-span-highlighted {
+	color: white;
+	background-color:rgba(255, 99, 0, 0.88);
+}
+
+.flex {
+	display:flex;
+}

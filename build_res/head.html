@@ -21,31 +21,30 @@
     <header>
       <h1><a href="/">JoaoCostaIFG (https://joaocosta.dev)</a></h1>
 
-      <nav id="menu">
-        <div class="cat">
-          <a href="/cat/about.html">About me</a>
-        </div>
-        <div class="cat">
-          <a href="/content/blog.html">Blog Index</a>
-        </div>
-        <div class="cat">
-          <a href="/cat/contacts.html">Contacts</a>
-        </div>
-        <div class="cat">
+      <ul id="menu">
+        <li><a href="/cat/about.html">About me</a></li>
+        <li><a href="/content/blog.html">Blog Index</a></li>
+        <li><a href="/cat/contacts.html">Contacts</a></li>
+        <li>
           <a href="/cat/projects.html">Projects</a>
-        </div>
-        <div class="cat">
+          <ul class="menuDropdown">
+            <li><a href="/cat/projects.html">Projects</a></li>
+            <li><a href="/content/workshops.html">Workshops</a></li>
+            <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
+          </ul>
+        </li>
+        <li>
           <a href="https://gitlab.com/JoaoCostaIFG"
             ><img src="/static/gitlab-icon.png" alt="Gitlab"
           /></a>
-        </div>
-        <div class="cat">
+        </li>
+        <li>
           <a href="https://github.com/JoaoCostaIFG"
             ><img src="/static/github-icon.png" alt="Github"
           /></a>
-        </div>
-        <div class="cat">
+        </li>
+        <li>
           <a href="/atom.xml"><img src="/static/rss-icon.png" alt="RSS" /></a>
-        </div>
-      </nav>
+        </li>
+      </ul>
     </header>
