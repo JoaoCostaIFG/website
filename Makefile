@@ -37,6 +37,6 @@ deploy: build
 	@find ${BUILD_DIR}/* -type f -exec chmod 644 '{}' \;
 	@find ${BUILD_DIR}/* -type d -exec chmod 755 '{}' \;
 	@echo "Sending new build."
-	@rsync -r build/* ifgsv:/usr/share/nginx/joaocosta.dev/main/
+	@rsync --delete -r build/ ifgsv:/usr/share/nginx/joaocosta.dev/main/
 
 .PHONY: blog_index build clean deploy new rss server
