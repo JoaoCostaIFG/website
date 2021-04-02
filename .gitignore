@@ -3,3 +3,4 @@ build/
 build_res/files
 atom.xml
 static/audio
+static/emulsion
