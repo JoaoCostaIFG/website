@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "About me"
-date: 2020-01-24
-description: "About me page."
--->
+<?php
+$title="Contacts";
+require_once '../templates/tpl_header.php';
+?>
 
 <h2>Hello c:</h2>
 <p>
@@ -53,3 +52,7 @@ description: "About me page."
     />
   </center>
 </p>
+
+<?php
+require_once '../templates/tpl_footer.php';
+?>

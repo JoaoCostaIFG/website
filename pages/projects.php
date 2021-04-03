@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "Projects"
-date: 2020-01-30
-description: "List of some nice projects I've created/worked on."
--->
+<?php
+$title="Projects";
+require_once '../templates/tpl_header.php';
+?>
 
 <h2>Projects</h2>
 <p>
@@ -13,7 +12,7 @@ description: "List of some nice projects I've created/worked on."
   <a href="https://joaocosta.dev/static/emulsion/game">Emulsion</a>
 </h3>
 <p>
-  This the
+  This is the
   <a href="https://boardgamegeek.com/boardgame/311851/emulsion"
     >Emulsion board game</a
   >
@@ -187,3 +186,7 @@ description: "List of some nice projects I've created/worked on."
   <li>Comprehensions and Generators.</li>
   <li>Creation/Usage of modules.</li>
 </ul>
+
+<?php
+require_once '../templates/tpl_footer.php';
+?>

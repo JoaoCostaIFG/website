@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>JoaoCostaIFG - a simple blog</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title><?php if ($title) echo $title . ' | '; ?>JoaoCostaIFG</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     <link
       rel="alternate"
@@ -22,14 +22,14 @@
       <h1><a href="/">JoaoCostaIFG (https://joaocosta.dev)</a></h1>
 
       <ul id="menu">
-        <li><a href="/cat/about.html">About me</a></li>
-        <li><a href="/content/blog.html">Blog Index</a></li>
-        <li><a href="/cat/contacts.html">Contacts</a></li>
+        <li><a href="/pages/about.php">About me</a></li>
+        <li><a href="/pages/blog/">Blog Index</a></li>
+        <li><a href="/pages/contacts.php">Contacts</a></li>
         <li>
-          <a href="/cat/projects.html">Projects</a>
+          <a href="/pages/projects.php">Projects</a>
           <ul class="menuDropdown">
-            <li><a href="/cat/projects.html">Projects</a></li>
-            <li><a href="/content/workshops.html">Workshops</a></li>
+            <li><a href="/pages/projects.php">Projects</a></li>
+            <li><a href="/pages/workshops/">Workshops</a></li>
             <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
           </ul>
         </li>
