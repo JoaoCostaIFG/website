@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "Draw UML diagrams with PlantUML"
-date: 2020-02-22
-description: "The second semester is starting and I now have a Data-Bases class (will refer to it as BDAD from here on). In this class we're making heavy use of UML, more specifically UML class diagrams. I am using PlantUML for that, so I'll talk about it and why I chose it."
--->
+<?php
+$title="PlantUML";
+require_once '../../templates/tpl_header.php';
+?>
 
 <h2>Draw UML diagrams with PlantUML</h2>
 
@@ -391,3 +390,7 @@ server:
 </code></pre>
 
 Stay safe :P
+
+<?php
+require_once '../../templates/tpl_footer.php';
+?>

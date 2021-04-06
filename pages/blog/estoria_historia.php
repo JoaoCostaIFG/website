@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "Estória vs. história"
-date: 2020-02-03
-description: "A story about the two Portuguese words: *estória* and *história*."
--->
+<?php
+$title="Estória vs. história"
+require_once '../../templates/tpl_header.php';
+?>
 
 <h2>Estória vs. história</h2>
 
@@ -141,3 +140,7 @@ description: "A story about the two Portuguese words: *estória* and *história*
   all times.<br />
   Stay safe :P
 </p>
+
+<?php
+require_once '../../templates/tpl_footer.php';
+?>

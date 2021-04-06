@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "My adventure with Ubuntu and LCOM's exam day"
-date: 2020-02-12
-description: "The 2 days before the recovery exam had some 'funny' moments, as described by some of my friend, so I've decided to write about them (mostly because they said it was a good idea)"
--->
+<?php
+$title="My adventure with Ubuntu";
+require_once '../../templates/tpl_header.php';
+?>
 
 <h2>My adventure with Ubuntu and LCOM's exam day</h2>
 
@@ -255,3 +254,7 @@ description: "The 2 days before the recovery exam had some 'funny' moments, as d
   Hope you found these as funny as some of my friends did.<br />
   Stay safe :P
 </p>
+
+<?php
+require_once '../../templates/tpl_footer.php';
+?>
