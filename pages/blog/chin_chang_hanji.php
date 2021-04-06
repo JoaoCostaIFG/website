@@ -1,3 +1,8 @@
+<!--PageInfo
+title: "Ching Chang Hanji"
+date: 2020-10-20
+description: "Tom spinning."
+-->
 <?php
 $title="Ching Chang Hanji";
 require_once '../../templates/tpl_header.php';

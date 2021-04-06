@@ -1,3 +1,8 @@
+<!--PageInfo
+title: "Developing a skill for Mycroft"
+date: 2020-02-16
+description: "On my previous post (the one about Ubuntu and my school exam day), I briefly mentioned that I created a small skill for the Mycroft A.I. assistant (https://mycroft.ai/). Let's talk about that."
+-->
 <?php
 $title="Developing a skill for Mycroft";
 require_once '../../templates/tpl_header.php';

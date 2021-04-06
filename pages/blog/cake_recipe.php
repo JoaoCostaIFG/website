@@ -1,3 +1,8 @@
+<!--PageInfo
+title: "The recipe for my favorite cake"
+date: 2021-03-01
+description: "A super simple cake recipe that grandmother taught me and I love."
+-->
 <?php
 $title="My favorite cake";
 require_once '../../templates/tpl_header.php';

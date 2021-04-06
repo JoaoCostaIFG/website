@@ -1,3 +1,8 @@
+<!--PageInfo
+title: "First Post"
+date: 2020-01-21
+description: "Just a few tests to check site component's functionality."
+-->
 <?php
 $title="First post";
 require_once '../../templates/tpl_header.php';
