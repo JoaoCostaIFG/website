@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "How I created this web page"
-date: 2020-01-30
-description: "The blog is quickly approaching what I want it to be, so I can finally write actual blog posts. So why not start by talking about how this page came to be and how you can create a similar one."
--->
+<?php
+$title="How I created this web page";
+require_once '../../templates/tpl_header.php';
+?>
 
 <h2>How I created this web page</h2>
 
@@ -268,3 +267,7 @@ description: "The blog is quickly approaching what I want it to be, so I can fin
   server:
     hugo -D server
 </code></pre>
+
+<?php
+require_once '../../templates/tpl_footer.php';
+?>

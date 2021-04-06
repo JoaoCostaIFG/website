@@ -1,8 +1,7 @@
-<!--PageInfo
-title: "First Post"
-date: 2020-01-21
-description: "Just a few tests to check site component's functionality."
--->
+<?php
+$title="First post";
+require_once '../../templates/tpl_header.php';
+?>
 
 <h2>First Post</h2>
 <p>
@@ -19,3 +18,7 @@ description: "Just a few tests to check site component's functionality."
     return 0;
   }
  </code></pre>
+
+<?php
+require_once '../../templates/tpl_footer.php';
+?>
