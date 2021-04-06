@@ -1,3 +1,8 @@
+<!--PageInfo
+title: "Github, ssh keys and 2FA"
+date: 2020-03-09
+description: "I recently found myself setting up 2FA on my GitHub account and for that I started using the <b>ssh protocol</b> instead of the default <b>https protocol</b>. This is a quick guide explaining how and why you'd want to do that too."
+-->
 <?php
 $title="Github, ssh keys and 2FA";
 require_once '../../templates/tpl_header.php';
