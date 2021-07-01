@@ -1,6 +1,6 @@
 <?php
 $title="Home";
-require_once '../templates/tpl_header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/templates/layouts/tpl_header.php';
 ?>
 
 <h2>Welcome to my personal webs page/blog</h2>
@@ -26,6 +26,4 @@ restricted to us but you reading is public. We host a
 <a href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a>
 instance for it.
 
-<?php
-require_once '../templates/tpl_footer.php';
-?>
+<?php footer(); ?>
