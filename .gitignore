@@ -1,3 +1,5 @@
 atom.xml
 static/audio
 static/emulsion
+build/
+*.db

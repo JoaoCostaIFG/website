@@ -1,0 +1,64 @@
+@startuml
+
+/' || USER '/
+class User {
+  password: TEXT
+  --
+  (password != NULL)
+}
+
+/' || BLOG '/
+class Blogs {
+  date: INTEGER
+  title: TEXT
+  intro: TEXT
+  content: TEXT
+  visible INTEGER
+  --
+  (date != NULL)
+  (date DEFAULT now)
+  (title UNIQUE)
+  (title != NULL)
+  (content != NULL)
+  (visible != NULL)
+  (visible DEFAULT 0)
+}
+
+class Edits {
+  date: INTEGER
+  content: TEXT
+  --
+  (date != NULL)
+  (date DEFAULT now)
+  (content != NULL)
+}
+
+Blogs -- "*" Edits : "content edit"
+
+class Tags {
+  name: TEXT
+  --
+  (name UNIQUE)
+  (name != NULL)
+}
+
+class BlogTags {
+}
+
+Blogs -- BlogTags : "tagged"
+Tags -- BlogTags : "tags"
+
+/' || PROJ '/
+class Projs {
+  title: TEXT
+  description: TEXT
+  url: TEXT
+  --
+  (title UNIQUE)
+  (title != NULL)
+  (url UNIQUE)
+  (url != NULL)
+}
+
+@enduml
+
