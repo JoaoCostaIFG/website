@@ -1,6 +1,6 @@
 <?php
 $title="404";
-require_once '../templates/tpl_header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/templates/layouts/tpl_header.php';
 ?>
 
 <h2>404 not found D:</h2>
@@ -12,5 +12,5 @@ In the mean time, you can click the button bellow to go home.<br />
 </h3>
 
 <?php
-require_once '../templates/tpl_footer.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/templates/layouts/tpl_footer.php';
 ?>

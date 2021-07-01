@@ -1,2 +1,6 @@
 user-agent: *
-disallow: /static
+
+disallow: /controllers/
+disallow: /database/
+disallow: /models/
+disallow: /resources/

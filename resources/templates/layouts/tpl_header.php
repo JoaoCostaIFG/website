@@ -1,50 +1,71 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/php/resource_utils.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title><?php if ($title) echo $title . ' | '; ?>JoaoCostaIFG</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="JoaoCostaIFG"
-      href="https://joaocosta.dev/atom.xml"
-    />
-    <meta
-      name="description"
-      content="The personal website/blog of JoaoCostaIFG. He tries to be active there."
-    />
-    <meta charset="utf-8" />
-  </head>
 
-  <body>
-    <header>
-      <h1><a href="/">JoaoCostaIFG (https://joaocosta.dev)</a></h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <ul id="menu">
-        <li><a href="/pages/about.php">About me</a></li>
-        <li><a href="/pages/blog/">Blog Index</a></li>
-        <li><a href="/pages/contacts.php">Contacts</a></li>
-        <li>
-          <a href="/pages/projects.php">Projects</a>
-          <ul class="menuDropdown">
-            <li><a href="/pages/projects.php">Projects</a></li>
-            <li><a href="/pages/workshops/">Workshops</a></li>
-            <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="https://gitlab.com/JoaoCostaIFG"
-            ><img src="/static/gitlab-icon.png" alt="Gitlab"
-          /></a>
-        </li>
-        <li>
-          <a href="https://github.com/JoaoCostaIFG"
-            ><img src="/static/github-icon.png" alt="Github"
-          /></a>
-        </li>
-        <li>
-          <a href="/atom.xml"><img src="/static/rss-icon.png" alt="RSS" /></a>
-        </li>
-      </ul>
-    </header>
+  <?php
+  $unique_title = 'Joao Costa';
+  $description = 'Hey! I&#39;m a computer engineering student and this is my personal website. I try to be active here.';
+  if ($title) {
+    $unique_title = $title . ' | ' . $unique_title;
+  }
+  ?>
+  <title><?php echo $unique_title; ?></title>
+
+  <link rel="stylesheet" type="text/css" href="<?php echo res('css/style.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo res('css/print.css'); ?>" media="print">
+
+  <meta name="description" content="<?php echo $description; ?>">
+  <meta property="og:title" content="<?php echo $unique_title; ?>">
+  <meta property="og:description" content="<?php echo $description; ?>">
+  <meta property="og:image" content="image.jpg">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="website">
+
+  <meta property="og:url" content="<?php echo 'https://joaocosta.dev' . $_SERVER['SCRIPT_NAME']; ?>">
+  <meta property="og:site_name" content="Joao Costa">
+  <meta name="author" content="João Costa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Posts - João Costa" href="https://joaocosta.dev/atom.xml">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">JoaoCostaIFG (https://joaocosta.dev)</a></h1>
+
+    <ul id="menu">
+      <li><a href="/pages/about.php">About me</a></li>
+      <li><a href="/pages/blog/">Blog Index</a></li>
+      <li><a href="/pages/contacts.php">Contacts</a></li>
+      <li>
+        <a href="/pages/projects.php">Projects</a>
+        <ul class="menuDropdown">
+          <li><a href="/pages/projects.php">Projects</a></li>
+          <li><a href="/pages/workshops/">Workshops</a></li>
+          <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="https://gitlab.com/JoaoCostaIFG">
+          <img src="<?php echo res_img('gitlab-icon.png'); ?>" alt="Gitlab" />
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/JoaoCostaIFG">
+          <img src="<?php echo res_img('github-icon.png'); ?>" alt="Github" />
+        </a>
+      </li>
+      <li>
+        <a href="/atom.xml">
+          <img src="<?php echo res_img('rss-icon.png'); ?>" alt="RSS" />
+        </a>
+      </li>
+    </ul>
+  </header>
