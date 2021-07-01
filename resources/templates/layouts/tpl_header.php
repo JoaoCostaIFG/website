@@ -1,6 +1,4 @@
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/php/resource_utils.php';
-?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/php/resource_utils.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +15,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/php/resource_utils.php';
   ?>
   <title><?php echo $unique_title; ?></title>
 
-  <link rel="stylesheet" type="text/css" href="<?php echo res('css/style.css'); ?>">
-  <link rel="stylesheet" type="text/css" href="<?php echo res('css/print.css'); ?>" media="print">
+  <link rel="stylesheet" type="text/css" href="<?php echo res_css('style.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo res_css('print.css'); ?>" media="print">
 
   <meta name="description" content="<?php echo $description; ?>">
   <meta property="og:title" content="<?php echo $unique_title; ?>">

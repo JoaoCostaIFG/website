@@ -11,6 +11,4 @@ In the mean time, you can click the button bellow to go home.<br />
   <a href="https://joaocosta.dev/">Go Home</a>
 </h3>
 
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/templates/layouts/tpl_footer.php';
-?>
+<?php footer(); ?>
