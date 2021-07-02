@@ -1,9 +1,13 @@
-foo_route:
-    path:     /foo
-    controller: controllers\HomeController::show
+root_route:
+    path:     /
+    controller: Controllers\HomeController::show
+
+home_route:
+    path:     /home
+    controller: Controllers\HomeController::show
  
 foo_placeholder_route:
     path:     /foo/{id}
-    controller: controllers\HomeController::show
+    controller: Controllers\HomeController::show
     requirements:
         id: '[0-9]+'

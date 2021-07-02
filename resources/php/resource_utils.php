@@ -15,11 +15,6 @@ function res_js($name)
   return res("js/" . $name);
 }
 
-function res_php($name)
-{
-  return res("php/" . $name);
-}
-
 function res_img($name)
 {
   return res("static/img/" . $name);
