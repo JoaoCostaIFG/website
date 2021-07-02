@@ -1,10 +1,13 @@
-atom.xml
-*.db
-/resources/static
 **/CS_SESSION
 
+atom.xml
+*.db
+
+/storage/*
+!/storage/img/
+
 # composer
-/cache
+/cache/
 composer.phar
 /vendor/
 composer.lock

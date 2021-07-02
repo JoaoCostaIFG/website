@@ -15,9 +15,9 @@ function res_js($name)
   return res("js/" . $name);
 }
 
-function res_img($name)
+function img($name)
 {
-  return res("static/img/" . $name);
+  return "/storage/img/" . $name;
 }
 
 function layout_header($title)

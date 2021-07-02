@@ -51,17 +51,17 @@
       </li>
       <li>
         <a href="https://gitlab.com/JoaoCostaIFG">
-          <img src="<?php echo res_img('gitlab-icon.png'); ?>" alt="Gitlab" />
+          <img src="<?php echo img('gitlab-icon.png'); ?>" alt="Gitlab" />
         </a>
       </li>
       <li>
         <a href="https://github.com/JoaoCostaIFG">
-          <img src="<?php echo res_img('github-icon.png'); ?>" alt="Github" />
+          <img src="<?php echo img('github-icon.png'); ?>" alt="Github" />
         </a>
       </li>
       <li>
         <a href="/atom.xml">
-          <img src="<?php echo res_img('rss-icon.png'); ?>" alt="RSS" />
+          <img src="<?php echo img('rss-icon.png'); ?>" alt="RSS" />
         </a>
       </li>
     </ul>
