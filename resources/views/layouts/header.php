@@ -1,4 +1,3 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/php/resource_utils.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 

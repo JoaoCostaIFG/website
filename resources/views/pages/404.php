@@ -1,7 +1,4 @@
-<?php
-$title="404";
-require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/templates/layouts/tpl_header.php';
-?>
+<?php layout_header('404'); ?>
 
 <h2>404 not found D:</h2>
 You probably shouldn't be here, so if you reached this place using one of the
@@ -11,4 +8,4 @@ In the mean time, you can click the button bellow to go home.<br />
   <a href="https://joaocosta.dev/">Go Home</a>
 </h3>
 
-<?php footer(); ?>
+<?php layout_footer(); ?>

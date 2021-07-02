@@ -17,7 +17,6 @@ spl_autoload_register(
 
     if (file_exists($fullFileName)) {
       require $fullFileName;
-      echo $fullFileName;
     } else {
       echo 'Class "' . $className . '" does not exist.';
     }
