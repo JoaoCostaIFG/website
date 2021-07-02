@@ -1,7 +1,4 @@
-<?php
-$title="Projects";
-require_once '../templates/tpl_header.php';
-?>
+<?php layout_header('Projects'); ?>
 
 <h2>Projects</h2>
 <p>
@@ -187,6 +184,4 @@ require_once '../templates/tpl_header.php';
   <li>Creation/Usage of modules.</li>
 </ul>
 
-<?php
-require_once '../templates/tpl_footer.php';
-?>
+<?php layout_footer(); ?>

@@ -38,13 +38,13 @@
     <h1><a href="/">JoaoCostaIFG (https://joaocosta.dev)</a></h1>
 
     <ul id="menu">
-      <li><a href="/pages/about.php">About me</a></li>
+      <li><a href="<?php echo route('about_route'); ?>">About me</a></li>
       <li><a href="/pages/blog/">Blog Index</a></li>
-      <li><a href="/pages/contacts.php">Contacts</a></li>
+      <li><a href="<?php echo route('contacts_route'); ?>">Contacts</a></li>
       <li>
-        <a href="/pages/projects.php">Projects</a>
+        <a href="<?php echo route('projects_route'); ?>">Projects</a>
         <ul class="menuDropdown">
-          <li><a href="/pages/projects.php">Projects</a></li>
+          <li><a href="<?php echo route('projects_route'); ?>">Projects</a></li>
           <li><a href="/pages/workshops/">Workshops</a></li>
           <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
         </ul>
