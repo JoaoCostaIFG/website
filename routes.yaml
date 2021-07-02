@@ -1,15 +1,25 @@
 root_route:
-    path:     /
+    path:       /
     controller: Controllers\HomeController::redirect
 home_route:
-    path:     /home
+    path:       /home
     controller: Controllers\HomeController::show
-fallback_route:
-    path:     /404
-    controller: Controllers\FallbackController::show
+about_route:
+    path:       /about
+    controller: Controllers\AboutController::show
+contacts_route:
+    path:       /contacts
+    controller: Controllers\ContactsController::show
+projects_route:
+    path:       /projects
+    controller: Controllers\ProjectsController::show
 
 foo_placeholder_route:
     path:     /foo/{id}
     controller: Controllers\HomeController::show
     requirements:
         id: '[0-9]+'
+
+fallback_route:
+    path:     /404
+    controller: Controllers\FallbackController::show

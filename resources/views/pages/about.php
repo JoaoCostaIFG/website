@@ -1,7 +1,4 @@
-<?php
-$title="Contacts";
-require_once '../templates/tpl_header.php';
-?>
+<?php layout_header('About'); ?>
 
 <h2>Hello c:</h2>
 <p>
@@ -53,6 +50,4 @@ require_once '../templates/tpl_header.php';
   </center>
 </p>
 
-<?php
-require_once '../templates/tpl_footer.php';
-?>
+<?php layout_footer(); ?>
