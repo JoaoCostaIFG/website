@@ -1,6 +1,7 @@
 atom.xml
 *.db
 /resources/static
+**/CS_SESSION
 
 # composer
 /cache
