@@ -1,11 +1,13 @@
 root_route:
     path:     /
-    controller: Controllers\HomeController::show
-
+    controller: Controllers\HomeController::redirect
 home_route:
     path:     /home
     controller: Controllers\HomeController::show
- 
+fallback_route:
+    path:     /404
+    controller: Controllers\FallbackController::show
+
 foo_placeholder_route:
     path:     /foo/{id}
     controller: Controllers\HomeController::show

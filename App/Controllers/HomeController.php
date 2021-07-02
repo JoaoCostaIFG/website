@@ -6,6 +6,11 @@ class HomeController
 {
   public static function show()
   {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/pages/home.php';
+    view('home.php');
+  }
+
+  public static function redirect()
+  {
+    redirect('home');
   }
 }
