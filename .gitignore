@@ -1,5 +1,9 @@
 atom.xml
-static/audio
-static/emulsion
-build/
 *.db
+/resources/static
+
+# composer
+/cache
+composer.phar
+/vendor/
+composer.lock
