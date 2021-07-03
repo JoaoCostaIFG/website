@@ -13,6 +13,7 @@ contacts_route:
 projects_route:
     path:       /projects
     controller: Controllers\ProjectsController::show
+
 blog_index_route:
     path:       /blog
     controller: Controllers\BlogController::showIndex
@@ -21,6 +22,9 @@ blog_post_route:
     controller: Controllers\BlogController::showPost
     requirements:
         id: '[0-9]+'
+blog_insert_route:
+    path:       /new_blog
+    controller: Controllers\BlogController::showNewPostForm
 
 fallback_route:
     path:     /404
