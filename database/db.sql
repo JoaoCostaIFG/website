@@ -1,5 +1,3 @@
-PRAGMA foreign_keys = ON;
-
 -- || USER --
 DROP TABLE IF EXISTS User;
 CREATE TABLE User (
