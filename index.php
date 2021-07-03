@@ -42,8 +42,13 @@ try {
   $parameters = $router->match($requestContext->getPathInfo());
 
   // call route class method
-  $target = explode('::', $parameters['_controller']);
-  call_user_func_array($target, array());
+  $parameters_args = $parameters;
+  unset($parameters_args['_route']);
+  unset($parameters_args['_controller']);
+  call_user_func_array(
+    explode('::', $parameters['_controller']),
+    $parameters_args
+  );
 
   exit;
 } catch (ResourceNotFoundException $e) {
