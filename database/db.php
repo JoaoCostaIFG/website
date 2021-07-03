@@ -19,7 +19,7 @@ class Database
     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $this->db->query('PRAGMA foreign_keys=ON');
-    $this->db->query('PRAGMA journal_mode=WAL');
+    // $this->db->query('PRAGMA journal_mode=WAL');
 
     if (NULL == $this->db)
       throw new Exception("Failed to open database.");
