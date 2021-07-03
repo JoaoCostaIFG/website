@@ -20,6 +20,12 @@ function img($name)
   return "/storage/img/" . $name;
 }
 
+/**
+ * Will include the layout header.
+ * Note: title is used.
+ *
+ * @return void
+ */
 function layout_header($title)
 {
   require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/views/layouts/header.php';
@@ -35,9 +41,14 @@ function layout_footer()
  *
  * @return void
  */
-function view($target)
+function view_args($target, $args)
 {
   require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/views/pages/' . $target;
+}
+
+function view($target)
+{
+  view_args($target, array());
 }
 
 /**

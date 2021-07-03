@@ -4,14 +4,14 @@
 
 My name is João Costa and this is my personal corner of the internet.
 
-<h3><a href="/content/blog.html">Recent blog posts</a></h3>
+<h3>Recent blog posts</h3>
 <ul>
 <li><a href="/content/blog/github_ssh_2fa.html">Github, ssh keys and 2FA</a> - 2020-03-09</li>
 <li><a href="/content/blog/plantuml.html">Draw UML diagrams with PlantUML</a> - 2020-02-22</li>
 <li><a href="/content/blog/developing_for_mycroft.html">Developing a skill for Mycroft</a> - 2020-02-16</li>
 <li><a href="/content/blog/lcom_and_ubuntu.html">My adventure with Ubuntu and LCOM's exam day</a> - 2020-02-12</li>
 </ul>
-<a href="/content/blog.html">see more</a>
+<a href="<?php echo route('blog_index_route') ?>">see more</a>
 
 <h3><a href="https://wiki.joaocosta.dev">Wiki</a></h3>
 

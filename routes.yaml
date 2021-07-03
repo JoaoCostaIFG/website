@@ -13,10 +13,12 @@ contacts_route:
 projects_route:
     path:       /projects
     controller: Controllers\ProjectsController::show
-
-foo_placeholder_route:
-    path:     /foo/{id}
-    controller: Controllers\HomeController::show
+blog_index_route:
+    path:       /blog
+    controller: Controllers\BlogController::showIndex
+blog_post_route:
+    path:       /blog/{id}
+    controller: Controllers\BlogController::showPost
     requirements:
         id: '[0-9]+'
 
