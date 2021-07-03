@@ -8,5 +8,3 @@ echo Parsedown::instance()->text($args['b']->getIntro());
 echo Parsedown::instance()->text($args['b']->getContent());
 
 layout_footer();
-?>
-

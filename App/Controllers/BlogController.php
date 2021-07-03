@@ -15,5 +15,10 @@ class BlogController
   {
     view_args('blog/blog_post.php', array('b' => new BlogModel($id)));
   }
+
+  public static function showNewPostForm()
+  {
+    view('blog/index.php');
+  }
 }
 
