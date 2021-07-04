@@ -26,6 +26,17 @@ blog_insert_route:
     path:       /new_blog
     controller: Controllers\BlogController::showNewPostForm
 
+user_login_route:
+    path:       /login
+    controller: Controllers\UserController::showLoginForm
+user_login_action:
+    path:       /login_action
+    controller: Controllers\UserController::login
+    methods:    POST
+user_logout_route:
+    path:       /logout
+    controller: Controllers\UserController::logout
+
 fallback_route:
     path:     /404
     controller: Controllers\FallbackController::show

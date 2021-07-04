@@ -39,10 +39,10 @@
 
     <ul id="menu">
       <li><a href="<?php echo route('about_route'); ?>">About me</a></li>
-      <li><a href="/pages/blog/">Blog Index</a></li>
+      <li><a href="<?php echo route('blog_index_route'); ?>">Blog Index</a></li>
       <li><a href="<?php echo route('contacts_route'); ?>">Contacts</a></li>
       <li>
-        <a href="<?php echo route('projects_route'); ?>">Projects</a>
+        <a href="<?php echo route('projects_route'); ?>">Projects ></a>
         <ul class="menuDropdown">
           <li><a href="<?php echo route('projects_route'); ?>">Projects</a></li>
           <li><a href="/pages/workshops/">Workshops</a></li>
@@ -51,18 +51,23 @@
       </li>
       <li>
         <a href="https://gitlab.com/JoaoCostaIFG">
-          <img src="<?php echo img('gitlab-icon.png'); ?>" alt="Gitlab" />
+          <img src="<?php echo img('gitlab-icon.png'); ?>" alt="Gitlab">
         </a>
       </li>
       <li>
         <a href="https://github.com/JoaoCostaIFG">
-          <img src="<?php echo img('github-icon.png'); ?>" alt="Github" />
+          <img src="<?php echo img('github-icon.png'); ?>" alt="Github">
         </a>
       </li>
       <li>
         <a href="/atom.xml">
-          <img src="<?php echo img('rss-icon.png'); ?>" alt="RSS" />
+          <img src="<?php echo img('rss-icon.png'); ?>" alt="RSS">
         </a>
       </li>
+      <?php if (is_auth()) { ?>
+        <li><a href="<?php echo route('user_logout_route'); ?>">Logout</a></li>
+      <?php } else { ?>
+        <li><a href="<?php echo route('user_login_route'); ?>">Login</a></li>
+      <?php } ?>
     </ul>
   </header>

@@ -2,6 +2,7 @@
 require_once './vendor/autoload.php';
 require_once './resources/php/autoloader.php';
 require_once './resources/php/resource_utils.php';
+include './resources/php/session.php';
 
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Router;
