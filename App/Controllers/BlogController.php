@@ -72,4 +72,68 @@ class BlogController
 
     redirect(route_args('blog_post_route', array('id' => $id)));
   }
+
+  public static function showEditPostForm($id)
+  {
+    try {
+      $b = new BlogModel($id);
+    } catch (Exception $e) {
+      // blog post doesn't exist
+      redirect(route('blog_index_route'));
+    }
+
+    // check if user has permission edit posts
+    if (!is_auth()) {
+      redirect(route('blog_index_route'));
+    }
+
+    view_args('blog/edit_blog_post.php', array('b' => $b));
+  }
+
+  public static function editPost()
+  {
+    // check for the required arguments
+    if (!isset($_POST['id']) || !isset($_POST['title']) || !isset($_POST['content'])) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+    }
+
+    $args = array('id' => $_POST['id'], 'title' => $_POST['title'], 'content' => $_POST['content']);
+
+    if (isset($_POST['intro']) && !empty($_POST['intro'])) {
+      $args['intro'] = $_POST['intro'];
+    } else {
+      $args['intro'] = NULL;
+    }
+
+    if (isset($_POST['date']) && !empty($_POST['date'])) {
+      $args['date'] = strtotime($_POST['date']);
+      if ($args['date'] === false) {
+        // TODO set error
+        // TODO recover info on error
+        redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+      }
+    } else { // no fallback date? (maybe use today)
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+    }
+
+    if (isset($_POST['visibility'])) {
+      $args['visible'] = ($_POST['visibility'] === 'on') ? 1 : 0;
+    } else {
+      $args['visible'] = 0;
+    }
+
+    try {
+      BlogModel::update($args);
+    } catch (Exception $e) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+    }
+
+    redirect(route_args('blog_post_route', array('id' => $_POST['id'])));
+  }
 }

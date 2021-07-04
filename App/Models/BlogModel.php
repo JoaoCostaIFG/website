@@ -49,11 +49,11 @@ class BlogModel
   /**
    * @return Blog post date (as string, yyyy-mm-dd)
    */
-  public function getDateStr($param)
+  public function getDateStr()
   {
     return gmdate("Y-m-d", $this->date);
   }
-  
+
 
   /**
    * @return Blog post title
@@ -135,5 +135,13 @@ class BlogModel
     $stmt->execute($args);
 
     return $db->lastInsertId();
+  }
+
+  public static function update($b)
+  {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE Blog SET blog_date=?, blog_title=?, blog_intro=?, blog_content=?, blog_visible=?
+                          WHERE blog_id=?');
+    $stmt->execute(array($b['date'], $b['title'], $b['intro'], $b['content'], $b['visible'], $b['id']));
   }
 }
