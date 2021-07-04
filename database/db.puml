@@ -2,8 +2,11 @@
 
 /' || USER '/
 class User {
+  username: TEXT
   password: TEXT
   --
+  (username UNIQUE)
+  (username != NULL)
   (password != NULL)
 }
 

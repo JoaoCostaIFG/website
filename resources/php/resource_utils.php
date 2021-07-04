@@ -71,6 +71,5 @@ function partial($target)
  */
 function redirect($target)
 {
-  header('Location: ' . $target);
-  die();
+  die(header('Location: ' . $target));
 }
