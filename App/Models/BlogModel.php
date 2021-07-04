@@ -27,7 +27,7 @@ class BlogModel
     $this->title = $blog['blog_title'];
     $this->intro = $blog['blog_intro'];
     $this->content = $blog['blog_content'];
-    $this->visible = $blog['blog_visible'] === 1;
+    $this->visible = $blog['blog_visible'] === '1';
   }
 
   /**
@@ -45,6 +45,15 @@ class BlogModel
   {
     return $this->date;
   }
+
+  /**
+   * @return Blog post date (as string, yyyy-mm-dd)
+   */
+  public function getDateStr($param)
+  {
+    return gmdate("Y-m-d", $this->date);
+  }
+  
 
   /**
    * @return Blog post title
@@ -78,13 +87,52 @@ class BlogModel
     return $this->visible;
   }
 
-  public static function create($title, $intro, $content)
+  /**
+   * Arguments can be date, title, intro, content, and visible.
+   * Only title and content are mandatory.
+   * @return The id of the newly created blog instance
+   */
+  public static function create($b)
   {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('INSERT INTO Blog (blog_title, blog_intro, blog_content)
-                        VALUES(?, ?, ?)');
-    $stmt->execute(array($title, $intro, $content));
+    $querry = 'INSERT INTO Blog (';
+    $querry_args = ') VALUES(';
+    $args = array();
+    if (isset($b['date'])) {
+      $querry .= 'blog_date,';
+      $querry_args .= '?,';
+      array_push($args, $b['date']);
+    }
+
+    if (isset($b['title'])) {
+      $querry .= 'blog_title,';
+      $querry_args .= '?,';
+      array_push($args, $b['title']);
+    }
+
+    if (isset($b['intro'])) {
+      $querry .= 'blog_intro,';
+      $querry_args .= '?,';
+      array_push($args, $b['intro']);
+    }
+
+    if (isset($b['content'])) {
+      $querry .= 'blog_content,';
+      $querry_args .= '?,';
+      array_push($args, $b['content']);
+    }
+
+    if (isset($b['visible'])) {
+      $querry .= 'blog_visible,';
+      $querry_args .= '?,';
+      array_push($args, $b['visible']);
+    }
+
+    $querry = rtrim($querry, ',') . rtrim($querry_args, ',') . ')';
+
+    $stmt = $db->prepare($querry);
+    $stmt->execute($args);
 
     return $db->lastInsertId();
   }
