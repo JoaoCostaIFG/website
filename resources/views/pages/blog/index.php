@@ -2,6 +2,10 @@
 
 <h2>All of my blog posts</h2>
 
+<?php if (is_auth()) { ?>
+  <a href="<?php echo route('blog_insert_route'); ?>">+</a>
+<?php } ?>
+
 <ul>
   <li><a href="./cake_recipe.php">The recipe for my favorite cake</a> - 2021-03-01</li>
   <li><a href="./chin_chang_hanji.php">Ching Chang Hanji</a> - 2020-10-20</li>

@@ -35,7 +35,7 @@
 
 <body>
   <header>
-    <h1><a href="/">JoaoCostaIFG (https://joaocosta.dev)</a></h1>
+    <h1><a href="/">JoaoCostaIFG</a></h1>
 
     <ul id="menu">
       <li><a href="<?php echo route('about_route'); ?>">About me</a></li>

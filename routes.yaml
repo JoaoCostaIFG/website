@@ -25,6 +25,10 @@ blog_post_route:
 blog_insert_route:
     path:       /new_blog
     controller: Controllers\BlogController::showNewPostForm
+blog_insert_action:
+    path:       /new_blog_action
+    controller: Controllers\BlogController::newPost
+    methods:    POST
 
 user_login_route:
     path:       /login
