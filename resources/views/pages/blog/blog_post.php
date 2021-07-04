@@ -1,6 +1,11 @@
 <?php
 layout_header($args['b']->getTitle());
 
+if (is_auth()) { ?>
+  <a href="<?php echo route_args('blog_edit_route', array('id' => $args['b']->getId())); ?>">Edit</a>
+<?php }
+
+
 echo Parsedown::instance()->text('##' . $args['b']->getTitle());
 
 if (!is_null($args['b']->getIntro()))

@@ -29,6 +29,15 @@ blog_insert_action:
     path:       /new_blog_action
     controller: Controllers\BlogController::newPost
     methods:    POST
+blog_edit_route:
+    path:       /edit_blog/{id}
+    controller: Controllers\BlogController::showEditPostForm
+    requirements:
+        id: '[0-9]+'
+blog_edit_action:
+    path:       /edit_blog_action
+    controller: Controllers\BlogController::editPost
+    methods:    POST
 
 user_login_route:
     path:       /login
