@@ -58,9 +58,14 @@ function view($target)
  *
  * @return void
  */
-function partial($target)
+function partial_args($target, $args)
 {
   require $_SERVER['DOCUMENT_ROOT'] . '/resources/views/partials/' . $target;
+}
+
+function partial($target)
+{
+  partial_args($target, array());
 }
 
 /**
