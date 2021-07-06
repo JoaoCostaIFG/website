@@ -9,13 +9,13 @@ class BlogController
 {
   public static function showIndex()
   {
-    view('blog/index.php');
+    view_args('blog/index.php', array('bs' => BlogModel::all()));
   }
 
   public static function showPost($id)
   {
     try {
-      $b = new BlogModel($id);
+      $b = BlogModel::withID($id);
     } catch (Exception $e) {
       // blog post doesn't exist
       redirect(route('blog_index_route'));
@@ -76,7 +76,7 @@ class BlogController
   public static function showEditPostForm($id)
   {
     try {
-      $b = new BlogModel($id);
+      $b = BlogModel::withID($id);
     } catch (Exception $e) {
       // blog post doesn't exist
       redirect(route('blog_index_route'));

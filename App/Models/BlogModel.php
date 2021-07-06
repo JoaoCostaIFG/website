@@ -11,23 +11,46 @@ class BlogModel
 {
   private $id, $date, $title, $intro, $content, $visible;
 
-  public function __construct($id)
+  public function __construct()
+  {
+  }
+
+  public static function withID($id)
+  {
+    $instance = new self();
+    $instance->loadByID($id);
+    return $instance;
+  }
+
+  public static function withRow(array $row)
+  {
+    $instance = new self();
+    $instance->fill($row);
+    return $instance;
+  }
+
+  protected function loadByID($id)
   {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('SELECT * FROM Blog WHERE blog_id = ?');
     $stmt->execute(array($id));
 
-    $blog = $stmt->fetch();
-    if ($blog === false)
-      throw new Exception("Failed to create Blog post model.");
+    $row = $stmt->fetch();
+    if ($row === false)
+      throw new Exception("Failed to find Blog post with id: " . $id . ".");
 
-    $this->id = $blog['blog_id'];
-    $this->date = $blog['blog_date'];
-    $this->title = $blog['blog_title'];
-    $this->intro = $blog['blog_intro'];
-    $this->content = $blog['blog_content'];
-    $this->visible = $blog['blog_visible'] === '1';
+    $this->fill($row);
+  }
+
+  protected function fill(array $row)
+  {
+    $this->id = $row['blog_id'];
+    $this->date = $row['blog_date'];
+    $this->title = $row['blog_title'];
+    $this->intro = $row['blog_intro'];
+    $this->content = $row['blog_content'];
+    $this->visible = $row['blog_visible'];
   }
 
   /**
@@ -143,5 +166,19 @@ class BlogModel
     $stmt = $db->prepare('UPDATE Blog SET blog_date=?, blog_title=?, blog_intro=?, blog_content=?, blog_visible=?
                           WHERE blog_id=?');
     $stmt->execute(array($b['date'], $b['title'], $b['intro'], $b['content'], $b['visible'], $b['id']));
+  }
+
+  /**
+   * Fetch all blog posts in database sorted by date (descensing -> newest to oldest).
+   */
+  public static function all()
+  {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Blog ORDER BY blog_date DESC');
+    $stmt->execute(array());
+
+    $rows = $stmt->fetchAll();
+    return array_map('Models\BlogModel::withRow', $rows);
   }
 }
