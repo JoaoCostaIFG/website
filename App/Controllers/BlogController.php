@@ -9,7 +9,7 @@ class BlogController
 {
   public static function showIndex()
   {
-    view_args('blog/index.php', array('bs' => BlogModel::all()));
+    view_args('blog/index.php', array('bs' => (is_auth()) ? BlogModel::all() : BlogModel::allVisible()));
   }
 
   public static function showPost($id)

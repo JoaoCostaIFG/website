@@ -182,11 +182,38 @@ class BlogModel
     return array_map('Models\BlogModel::withRow', $rows);
   }
 
+  public static function allVisible()
+  {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Blog
+                          WHERE blog_visible = 1
+                          ORDER BY blog_date DESC');
+    $stmt->execute(array());
+
+    $rows = $stmt->fetchAll();
+    return array_map('Models\BlogModel::withRow', $rows);
+  }
+
   public static function some($cnt)
   {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('SELECT * FROM Blog ORDER BY blog_date DESC LIMIT ?');
+    $stmt->execute(array($cnt));
+
+    $rows = $stmt->fetchAll();
+    return array_map('Models\BlogModel::withRow', $rows);
+  }
+
+  public static function someVisible($cnt)
+  {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Blog
+                          WHERE blog_visible = 1
+                          ORDER BY blog_date DESC
+                          LIMIT ?');
     $stmt->execute(array($cnt));
 
     $rows = $stmt->fetchAll();
