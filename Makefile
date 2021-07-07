@@ -23,4 +23,4 @@ docker_build:
 	docker build -t site .
 
 docker_run:
-	docker run -it -p 8080:80 -p 8081:443 -v $(pwd):/usr/share/nginx/joaocosta.dev/main:ro site
+	docker run -it -p 8080:80 -p 8081:443 -v $(CURDIR)/resources:/usr/share/nginx/joaocosta.dev/main/resources:ro site

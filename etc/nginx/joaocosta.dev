@@ -7,6 +7,12 @@ server {
   root /usr/share/nginx/joaocosta.dev/main;
   index index.php;
 
+  gzip on;
+  gzip_min_length  100;
+  gzip_buffers  8 32k;
+  gzip_types  text/plain text/css application/x-javascript text/xml application/xml text/javascript;
+  gzip_vary on;
+
   # ssl_certificate /etc/letsencrypt/live/joaocosta.dev/fullchain.pem;
   # ssl_certificate_key /etc/letsencrypt/live/joaocosta.dev/privkey.pem;
   ssl_certificate certs/server.pem;
@@ -17,13 +23,19 @@ server {
   add_header X-Content-Type-Options nosniff;
   add_header Onion-Location http://pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion$request_uri;
 
+  error_page 403 =301 /404;
+  error_page 404 =301 /404;
+
   # secure stuff
-  location ~ /(App/|database/|resources/|inc/|composer.*|vendor/) { return 404; }
+  location ~ /(App/|cache/|database/|vendor/|composer.*) { return 404; }
 
   # adapted from: https://www.nginx.com/resources/wiki/start/topics/recipes/symfony/
   location / {
     try_files $uri /index.php$is_args$args;
   }
+
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location = /robots.txt  { access_log off; log_not_found off; }
 
   location ~ ^/index\.php(/|$) { 
     fastcgi_pass unix:/run/php-fpm7/php-fpm.sock;
@@ -50,10 +62,7 @@ server {
 
   # return 404 for all other php files not matching the front controller
   # this prevents access to other php files you don't want to be accessible.
-  location ~ \.php$ {
-    # return 404;
-    deny all;
-  }
+  location ~ \.php$ { return 404; }
 }
 
 server {
