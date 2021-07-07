@@ -131,7 +131,7 @@ class BlogController
     } catch (Exception $e) {
       // TODO set error
       // TODO recover info on error
-      redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+      redirect(route_args('blog_edit_route', array('id' => $_POST['id'])));
     }
 
     redirect(route_args('blog_post_route', array('id' => $_POST['id'])));
