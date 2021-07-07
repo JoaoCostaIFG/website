@@ -17,6 +17,9 @@ server {
   add_header X-Content-Type-Options nosniff;
   add_header Onion-Location http://pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion$request_uri;
 
+  # secure stuff
+  location ~ /(App/|database/|resources/|inc/|composer.*|vendor/) { return 404; }
+
   # adapted from: https://www.nginx.com/resources/wiki/start/topics/recipes/symfony/
   location / {
     try_files $uri /index.php$is_args$args;
@@ -48,7 +51,8 @@ server {
   # return 404 for all other php files not matching the front controller
   # this prevents access to other php files you don't want to be accessible.
   location ~ \.php$ {
-    return 404;
+    # return 404;
+    deny all;
   }
 }
 

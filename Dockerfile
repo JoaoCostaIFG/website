@@ -4,7 +4,17 @@ FROM archlinux
 RUN pacman -Syu --noconfirm neovim make nginx php7 php7-gd php7-sqlite php7-fpm composer sqlite
 
 # Copy project code and install project dependencies
-COPY . /usr/share/nginx/joaocosta.dev/main
+COPY ./App /usr/share/nginx/joaocosta.dev/main/App
+COPY ./database /usr/share/nginx/joaocosta.dev/main/database
+COPY ./resources /usr/share/nginx/joaocosta.dev/main/resources
+COPY ./storage /usr/share/nginx/joaocosta.dev/main/storage
+# COPY ./atom.xml /usr/share/nginx/joaocosta.dev/main/atom.xml
+COPY ./composer.json /usr/share/nginx/joaocosta.dev/main/composer.json
+COPY ./composer.lock /usr/share/nginx/joaocosta.dev/main/composer.lock
+COPY ./favicon.ico /usr/share/nginx/joaocosta.dev/main/favicon.ico
+COPY ./index.php /usr/share/nginx/joaocosta.dev/main/index.php
+COPY ./robots.txt /usr/share/nginx/joaocosta.dev/main/robots.txt
+
 RUN chown -R http:http /usr/share/nginx/joaocosta.dev/main
 
 # Copy project configurations
