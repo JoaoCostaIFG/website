@@ -8,7 +8,7 @@ My name is João Costa and this is my personal corner of the internet.
 <ul>
   <?php
   foreach ($args['bs'] as $b) {
-    partial_args('blog/index_entry.php', array('b' => $b));
+    partial_args('blog/entry.php', array('b' => $b));
   }
   ?>
 </ul>
