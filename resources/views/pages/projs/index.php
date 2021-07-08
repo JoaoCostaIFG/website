@@ -10,7 +10,6 @@
   The following are some projects I've created/worked on that I feel proud of.
 </p>
 
-
 <?php
 foreach ($args['ps'] as $p) {
   partial_args('projs/entry.php', array('p' => $p));

@@ -36,11 +36,13 @@ class BlogController
 
   public static function newPost()
   {
+    if (!is_auth()) redirect(route('blog_insert_route'));
+    
     // csrf
     if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
       // TODO set error
       // TODO recover info on error
-      redirect(route('proj_insert_route'));
+      redirect(route('blog_insert_route'));
     }
 
     // check for the required arguments
@@ -82,15 +84,13 @@ class BlogController
 
   public static function showEditPostForm($id)
   {
+    // check if user has permission edit posts
+    if (!is_auth()) redirect(route('blog_index_route'));
+
     try {
       $b = BlogModel::withID($id);
     } catch (Exception $e) {
       // blog post doesn't exist
-      redirect(route('blog_index_route'));
-    }
-
-    // check if user has permission edit posts
-    if (!is_auth()) {
       redirect(route('blog_index_route'));
     }
 
@@ -99,18 +99,26 @@ class BlogController
 
   public static function editPost()
   {
+    if (!is_auth()) redirect(route('blog_insert_route'));
+
     // csrf
     if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
       // TODO set error
       // TODO recover info on error
-      redirect(route('proj_insert_route'));
+      redirect(route('blog_index_route'));
     }
 
     // check for the required arguments
-    if (!isset($_POST['id']) || !isset($_POST['title']) || !isset($_POST['content'])) {
+    if (!isset($_POST['id'])) {
       // TODO set error
       // TODO recover info on error
-      redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+      redirect(route('blog_index_route'));
+    }
+
+    if (!isset($_POST['title']) || !isset($_POST['content'])) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route_args('blog_edit_route', array('id' => $_POST['id'])));
     }
 
     $args = array('id' => $_POST['id'], 'title' => $_POST['title'], 'content' => $_POST['content']);
@@ -126,12 +134,12 @@ class BlogController
       if ($args['date'] === false) {
         // TODO set error
         // TODO recover info on error
-        redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+      redirect(route_args('blog_edit_route', array('id' => $_POST['id'])));
       }
     } else { // no fallback date? (maybe use today)
       // TODO set error
       // TODO recover info on error
-      redirect(route('blog_edit_route'), array('id' => $_POST['id']));
+      redirect(route_args('blog_edit_route', array('id' => $_POST['id'])));
     }
 
     if (isset($_POST['visibility'])) {
