@@ -36,6 +36,13 @@ class BlogController
 
   public static function newPost()
   {
+    // csrf
+    if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('proj_insert_route'));
+    }
+
     // check for the required arguments
     if (!isset($_POST['title']) || !isset($_POST['content'])) {
       // TODO set error
@@ -92,6 +99,13 @@ class BlogController
 
   public static function editPost()
   {
+    // csrf
+    if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('proj_insert_route'));
+    }
+
     // check for the required arguments
     if (!isset($_POST['id']) || !isset($_POST['title']) || !isset($_POST['content'])) {
       // TODO set error

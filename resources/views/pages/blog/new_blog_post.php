@@ -2,7 +2,9 @@
 
 <h2>New blog post</h2>
 
-<form method="POST" action="<?php echo route('blog_insert_action'); ?>">
+<form method="POST" action="<?=route('blog_insert_action');?>">
+  <?=partial('csrf.php');?>
+
   <label for="title"><b>Title *</b></label>
   <input type="text" id="title" name="title" placeholder="Post title..." required autofocus><br>
   <label for="intro"><b>Intro</b></label>
