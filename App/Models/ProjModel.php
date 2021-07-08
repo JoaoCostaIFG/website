@@ -29,7 +29,8 @@ class ProjModel
     return $instance;
   }
 
-  protected function loadByID($id) {
+  protected function loadByID($id)
+  {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('SELECT * FROM Proj WHERE proj_id = ?');
@@ -134,6 +135,17 @@ class ProjModel
     $stmt->execute($args);
 
     return $db->lastInsertId();
+  }
+
+  /*
+   * Update a project entry.
+   */
+  public static function update($p)
+  {
+    $db = Database::instance()->db();
+    $stmt = $db->prepare('UPDATE Proj SET proj_title=?, proj_description=?, proj_url=?, proj_img=?
+                          WHERE proj_id=?');
+    $stmt->execute(array($p['title'], $p['description'], $p['url'], $p['img'], $p['id']));
   }
 
   /**

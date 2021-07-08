@@ -7,11 +7,12 @@ server {
   root /usr/share/nginx/joaocosta.dev/main;
   index index.php;
 
-  gzip on;
-  gzip_min_length  100;
-  gzip_buffers  8 32k;
-  gzip_types  text/plain text/css application/x-javascript text/xml application/xml text/javascript;
-  gzip_vary on;
+  gzip            on;
+  gzip_disable    "msie6";
+  gzip_vary       on;
+  gzip_proxied    any;
+  gzip_min_length 256;
+  gzip_types      text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/vnd.ms-fontobject application/x-font-ttf font/opentype image/svg+xml image/x-icon;
 
   # ssl_certificate /etc/letsencrypt/live/joaocosta.dev/fullchain.pem;
   # ssl_certificate_key /etc/letsencrypt/live/joaocosta.dev/privkey.pem;

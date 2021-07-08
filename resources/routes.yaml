@@ -21,6 +21,15 @@ proj_insert_action:
     path:       /new_proj_action
     controller: Controllers\ProjectsController::newProj
     methods:    POST
+proj_edit_route:
+    path:       /edit_proj/{id}
+    controller: Controllers\ProjectsController::showEditProjForm
+    requirements:
+        id: '[0-9]+'
+proj_edit_action:
+    path:       /edit_proj_action
+    controller: Controllers\ProjectsController::editProj
+    methods:    POST
 
 blog_index_route:
     path:       /blog
