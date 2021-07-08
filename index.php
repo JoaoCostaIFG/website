@@ -31,7 +31,7 @@ try {
 
   $router = new Router(
     new YamlFileLoader($fileLocator),
-    './resources/routes.yaml',
+    './App/routes.yaml',
     array('cache_dir' => __DIR__ . '/cache'),
     $requestContext
   );
