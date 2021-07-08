@@ -6,7 +6,6 @@
   <a href="<?php echo route('blog_insert_route'); ?>">+</a>
 <?php } ?>
 
-
 <ul>
   <?php
   foreach ($args['bs'] as $b) {
