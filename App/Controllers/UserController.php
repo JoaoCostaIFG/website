@@ -14,6 +14,13 @@ class UserController
 
   public static function login()
   {
+    // csrf
+    if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('proj_insert_route'));
+    }
+
     if (!isset($_POST['username']) || !isset($_POST['password'])) {
       // TODO set error
       redirect('login');

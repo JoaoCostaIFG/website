@@ -9,7 +9,7 @@ class ProjectsController
 {
   public static function show()
   {
-    view('projs/index.php');
+    view_args('projs/index.php', array('ps' => ProjModel::all()));
   }
 
   public static function showNewProjForm()
@@ -19,6 +19,13 @@ class ProjectsController
 
   public static function newProj()
   {
+    // csrf
+    if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
+      // TODO set error
+      // TODO recover info on error
+      redirect(route('proj_insert_route'));
+    }
+
     // check for the required arguments
     if (!isset($_POST['title']) || !isset($_POST['url']) || !isset($_FILES['img'])) {
       // TODO set error
@@ -28,13 +35,14 @@ class ProjectsController
 
     // check if image is ok
     $img_type = exif_imagetype($_FILES['img']['tmp_name']);
-    if ($img_type === false || ($img_type !== IMAGETYPE_PNG && $img_type !== IMAGETYPE_JPEG && $img_type !== IMAGETYPE_GIF)) {
+    if ($img_type === false ||
+      ($img_type !== IMAGETYPE_PNG && $img_type !== IMAGETYPE_JPEG && $img_type !== IMAGETYPE_GIF && $img_type !== IMAGETYPE_WEBP)) {
       // TODO set error
       // TODO recover info on error
       redirect(route('proj_insert_route'));
     }
     // img file name
-    $img_name = preg_replace("/[^A-Za-z0-9\-]/", '', $_POST['title']);
+    $img_name = strtolower(preg_replace("/[^A-Za-z0-9\-]/", '', $_POST['title']));
     if (empty($img_name)) {
       // TODO set error
       // TODO recover info on error
@@ -50,6 +58,9 @@ class ProjectsController
         break;
       case IMAGETYPE_GIF:
         $img_ext = '.gif';
+        break;
+      case IMAGETYPE_WEBP:
+        $img_ext = '.webp';
         break;
       default:
         // unreachable

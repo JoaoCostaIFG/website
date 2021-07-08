@@ -2,7 +2,9 @@
 
 <h2>New project</h2>
 
-<form method="POST" action="<?php echo route('proj_insert_action'); ?>" enctype="multipart/form-data">
+<form method="POST" action="<?=route('proj_insert_action');?>" enctype="multipart/form-data">
+  <?=partial('csrf.php');?>
+
   <label for="title"><b>Title *</b></label>
   <input type="text" id="title" name="title" placeholder="Proj title..." required autofocus><br>
   <label for="description"><b>Description</b></label>

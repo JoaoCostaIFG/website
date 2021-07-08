@@ -11,22 +11,44 @@ class ProjModel
 {
   private $id, $title, $description, $url, $img;
 
-  public function __construct($id)
+  public function __construct()
   {
+  }
+
+  public static function withID($id)
+  {
+    $instance = new self();
+    $instance->loadByID($id);
+    return $instance;
+  }
+
+  public static function withRow(array $row)
+  {
+    $instance = new self();
+    $instance->fill($row);
+    return $instance;
+  }
+
+  protected function loadByID($id) {
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('SELECT * FROM Proj WHERE proj_id = ?');
     $stmt->execute(array($id));
 
-    $blog = $stmt->fetch();
-    if ($blog === false)
+    $row = $stmt->fetch();
+    if ($row === false)
       throw new Exception("Failed to Proj with id: " . $id . ".");
 
-    $this->id = $blog['proj_id'];
-    $this->title = $blog['proj_title'];
-    $this->description = $blog['proj_description'];
-    $this->url = $blog['proj_url'];
-    $this->img = $blog['proj_img'];
+    $this->fill($row);
+  }
+
+  protected function fill(array $row)
+  {
+    $this->id = $row['proj_id'];
+    $this->title = $row['proj_title'];
+    $this->description = $row['proj_description'];
+    $this->url = $row['proj_url'];
+    $this->img = $row['proj_img'];
   }
 
   /**
@@ -113,5 +135,18 @@ class ProjModel
 
     return $db->lastInsertId();
   }
-}
 
+  /**
+   * Fetch all projects in database
+   */
+  public static function all()
+  {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Proj');
+    $stmt->execute(array());
+
+    $rows = $stmt->fetchAll();
+    return array_map('Models\ProjModel::withRow', $rows);
+  }
+}
