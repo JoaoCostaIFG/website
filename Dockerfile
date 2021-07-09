@@ -11,16 +11,26 @@ COPY ./composer.lock /usr/share/nginx/joaocosta.dev/main/composer.lock
 COPY ./favicon.ico /usr/share/nginx/joaocosta.dev/main/favicon.ico
 COPY ./index.php /usr/share/nginx/joaocosta.dev/main/index.php
 COPY ./robots.txt /usr/share/nginx/joaocosta.dev/main/robots.txt
+RUN chown -R http:http /usr/share/nginx/joaocosta.dev
 
-RUN chown -R http:http /usr/share/nginx/joaocosta.dev/main
+RUN mkdir -p /var/lib/site/cache
+RUN mkdir -p /var/lib/site/database
+RUN mkdir -p /var/lib/site/storage
+RUN chown -R http:http /var/lib/site
+
+RUN ln -s /var/lib/site/cache/ /usr/share/nginx/joaocosta.dev/main/cache
+RUN ln -s /var/lib/site/database/ /usr/share/nginx/joaocosta.dev/main/database
+RUN ln -s /var/lib/site/storage/ /usr/share/nginx/joaocosta.dev/main/storage
 
 # Copy project configurations
 ADD ./etc/php/* /etc/php7/
 
 COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./etc/nginx/joaocosta.dev /etc/nginx/sites-available/joaocosta.dev
+COPY ./etc/nginx/wiki.joaocosta.dev /etc/nginx/sites-available/wiki.joaocosta.dev
 RUN mkdir -p /etc/nginx/sites-enabled
 RUN ln -s /etc/nginx/sites-available/joaocosta.dev /etc/nginx/sites-enabled/joaocosta.dev
+RUN ln -s /etc/nginx/sites-available/wiki.joaocosta.dev /etc/nginx/sites-enabled/wiki.joaocosta.dev
 
 RUN mkdir -p /etc/nginx/certs
 COPY ./keys/server.crt /etc/nginx/certs/server.pem

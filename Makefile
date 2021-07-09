@@ -20,7 +20,11 @@ class %s\n\
 }" "$$name" "$$name" >"$${path}"
 
 docker_build:
-	docker build -t site .
+	docker build -t joaocostaifg/site .
 
 docker_run:
-	docker run -it -p 8080:80 -p 8081:443 -v $(CURDIR)/database:/usr/share/nginx/joaocosta.dev/main/database -v $(CURDIR)/storage:/usr/share/nginx/joaocosta.dev/main/storage site
+	docker run -it -p 8080:80 -p 8081:443 \
+		-v $(CURDIR)/database:/usr/share/nginx/joaocosta.dev/main/database \
+		-v $(CURDIR)/storage:/usr/share/nginx/joaocosta.dev/main/storage \
+		joaocostaifg/site
+
