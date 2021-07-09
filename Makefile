@@ -23,7 +23,4 @@ docker_build:
 	docker build -t site .
 
 docker_run:
-	docker run -it -p 8080:80 -p 8081:443 -v $(CURDIR)/App:/usr/share/nginx/joaocosta.dev/main/App:ro -v $(CURDIR)/database:/usr/share/nginx/joaocosta.dev/main/database -v $(CURDIR)/resources:/usr/share/nginx/joaocosta.dev/main/resources:ro -v $(CURDIR)/storage:/usr/share/nginx/joaocosta.dev/main/storage site
-
-docker_run_bare:
-	docker run -it -p 8080:80 -p 8081:443 site
+	docker run -it -p 8080:80 -p 8081:443 -v $(CURDIR)/database:/usr/share/nginx/joaocosta.dev/main/database -v $(CURDIR)/storage:/usr/share/nginx/joaocosta.dev/main/storage site

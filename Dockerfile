@@ -5,9 +5,7 @@ RUN pacman -Syu --noconfirm neovim make nginx php7 php7-gd php7-sqlite php7-fpm 
 
 # Copy project code and install project dependencies
 COPY ./App /usr/share/nginx/joaocosta.dev/main/App
-COPY ./database /usr/share/nginx/joaocosta.dev/main/database
 COPY ./resources /usr/share/nginx/joaocosta.dev/main/resources
-COPY ./storage /usr/share/nginx/joaocosta.dev/main/storage
 COPY ./composer.json /usr/share/nginx/joaocosta.dev/main/composer.json
 COPY ./composer.lock /usr/share/nginx/joaocosta.dev/main/composer.lock
 COPY ./favicon.ico /usr/share/nginx/joaocosta.dev/main/favicon.ico
