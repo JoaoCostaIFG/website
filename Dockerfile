@@ -6,16 +6,10 @@ RUN pacman -Syu --noconfirm neovim make nginx php7 php7-gd php7-sqlite php7-fpm 
 # Copy project code and install project dependencies
 COPY ./App /usr/share/nginx/joaocosta.dev/main/App
 COPY ./resources /usr/share/nginx/joaocosta.dev/main/resources
-COPY ./composer.json /usr/share/nginx/joaocosta.dev/main/composer.json
-COPY ./composer.lock /usr/share/nginx/joaocosta.dev/main/composer.lock
-COPY ./favicon.ico /usr/share/nginx/joaocosta.dev/main/favicon.ico
-COPY ./index.php /usr/share/nginx/joaocosta.dev/main/index.php
-COPY ./robots.txt /usr/share/nginx/joaocosta.dev/main/robots.txt
+COPY ./composer.json ./composer.lock ./favicon.ico ./index.php ./robots.txt /usr/share/nginx/joaocosta.dev/main/
 RUN chown -R http:http /usr/share/nginx/joaocosta.dev
 
-RUN mkdir -p /var/lib/site/cache
-RUN mkdir -p /var/lib/site/database
-RUN mkdir -p /var/lib/site/storage
+RUN mkdir -p /var/lib/site/cache /var/lib/site/database /var/lib/site/storage
 RUN chown -R http:http /var/lib/site
 
 RUN ln -s /var/lib/site/cache/ /usr/share/nginx/joaocosta.dev/main/cache
@@ -26,8 +20,7 @@ RUN ln -s /var/lib/site/storage/ /usr/share/nginx/joaocosta.dev/main/storage
 ADD ./etc/php/* /etc/php7/
 
 COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./etc/nginx/joaocosta.dev /etc/nginx/sites-available/joaocosta.dev
-COPY ./etc/nginx/wiki.joaocosta.dev /etc/nginx/sites-available/wiki.joaocosta.dev
+COPY ./etc/nginx/joaocosta.dev ./etc/nginx/wiki.joaocosta.dev /etc/nginx/sites-available/
 RUN mkdir -p /etc/nginx/sites-enabled
 RUN ln -s /etc/nginx/sites-available/joaocosta.dev /etc/nginx/sites-enabled/joaocosta.dev
 RUN ln -s /etc/nginx/sites-available/wiki.joaocosta.dev /etc/nginx/sites-enabled/wiki.joaocosta.dev
