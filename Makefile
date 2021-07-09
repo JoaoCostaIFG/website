@@ -40,6 +40,14 @@ docker_push: docker_build
 	@docker push "${IMAGE_NAME}:${IMAGE_TAG}"
 	@docker push "${IMAGE_NAME}:latest"
 
+SERVER_DIR=/usr/share/nginx/joaocosta.dev/main/
+
+deploy:
+	@# this rsync command won't remove the links created in the dir
+	@rsync --delete -r ./App ./resources ./composer.json ./composer.lock \
+		./favicon.ico ./index.php ./robots.txt ifgsv:${SERVER_DIR}
+	@ssh ifgsv "cd ${SERVER_DIR} && composer install"
+
 #echo "Deploying via remote SSH"
 #ssh -i ssh_key "root@${SERVER_IP}" \
 #  "docker pull ${IMAGE_NAME}:${IMAGE_TAG} \
@@ -47,3 +55,4 @@ docker_push: docker_build
 #  && docker rm live-container \
 #  && docker run --init -d --name live-container -p 80:3000 ${IMAGE_NAME}:${IMAGE_TAG} \
 #  && docker system prune -af" # remove unused images to free up space
+
