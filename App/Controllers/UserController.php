@@ -45,7 +45,7 @@ class UserController
 
   public static function logout()
   {
-    unset($_SESSION['u']);
+    $_SESSION = array(); // to destroy session data, no session_destroy() is needed
     redirect('home');
   }
 }

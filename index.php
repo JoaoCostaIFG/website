@@ -46,6 +46,11 @@ try {
   $parameters_args = $parameters;
   unset($parameters_args['_route']);
   unset($parameters_args['_controller']);
+  // set content type (if necessary)
+  if (isset($parameters_args['_format'])) {
+    header('Content-Type: ' . $parameters_args['_format']);
+    unset($parameters_args['_format']);
+  }
   call_user_func_array(
     explode('::', $parameters['_controller']),
     $parameters_args

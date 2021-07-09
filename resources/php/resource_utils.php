@@ -21,19 +21,40 @@ function img($name)
 }
 
 /**
- * Will include the layout header.
- * Note: title is used.
+ * Will include the layout header with the given arguments.
+ * Note: args is used.
+ *
+ * @return void
+ */
+function layout_header_args($args)
+{
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/views/layouts/header.php';
+}
+
+/**
+ * Will include the layout header with the given page title.
  *
  * @return void
  */
 function layout_header($title)
 {
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/views/layouts/header.php';
+  layout_header_args(array('title' => $title));
+}
+
+/**
+ * Will include the layout footer with the given arguments.
+ * Note: args is used.
+ *
+ * @return void
+ */
+function layout_footer_args($args)
+{
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/views/layouts/footer.php';
 }
 
 function layout_footer()
 {
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/views/layouts/footer.php';
+  layout_footer_args(array());
 }
 
 /**
