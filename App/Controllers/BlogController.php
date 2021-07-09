@@ -37,7 +37,7 @@ class BlogController
   public static function newPost()
   {
     if (!is_auth()) redirect(route('blog_insert_route'));
-    
+
     // csrf
     if (!isset($_POST['csrf']) || ($_SESSION['csrf'] !== $_POST['csrf'])) {
       // TODO set error
@@ -134,7 +134,7 @@ class BlogController
       if ($args['date'] === false) {
         // TODO set error
         // TODO recover info on error
-      redirect(route_args('blog_edit_route', array('id' => $_POST['id'])));
+        redirect(route_args('blog_edit_route', array('id' => $_POST['id'])));
       }
     } else { // no fallback date? (maybe use today)
       // TODO set error
@@ -157,5 +157,10 @@ class BlogController
     }
 
     redirect(route_args('blog_post_route', array('id' => $_POST['id'])));
+  }
+
+  public static function rss()
+  {
+    view_args('rss.php', array('bs' => BlogModel::allVisible()));
   }
 }

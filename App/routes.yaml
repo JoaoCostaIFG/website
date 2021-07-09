@@ -10,6 +10,10 @@ about_route:
 contacts_route:
     path:       /contacts
     controller: Controllers\ContactsController::show
+rss_route:
+    path:       /rss
+    controller: Controllers\BlogController::rss
+    format:     xml
 
 projects_route:
     path:       /projects

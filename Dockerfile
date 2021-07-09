@@ -8,7 +8,6 @@ COPY ./App /usr/share/nginx/joaocosta.dev/main/App
 COPY ./database /usr/share/nginx/joaocosta.dev/main/database
 COPY ./resources /usr/share/nginx/joaocosta.dev/main/resources
 COPY ./storage /usr/share/nginx/joaocosta.dev/main/storage
-# COPY ./atom.xml /usr/share/nginx/joaocosta.dev/main/atom.xml
 COPY ./composer.json /usr/share/nginx/joaocosta.dev/main/composer.json
 COPY ./composer.lock /usr/share/nginx/joaocosta.dev/main/composer.lock
 COPY ./favicon.ico /usr/share/nginx/joaocosta.dev/main/favicon.ico

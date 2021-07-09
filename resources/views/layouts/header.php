@@ -8,15 +8,23 @@
   <?php
   $unique_title = 'Joao Costa';
   $description = 'Hey! I&#39;m a computer engineering student and this is my personal website. I try to be active here.';
-  if ($title) {
-    $unique_title = $title . ' | ' . $unique_title;
+  if ($args['title']) {
+    $unique_title = $args['title'] . ' | ' . $unique_title;
   }
   ?>
   <title><?= $unique_title; ?></title>
 
+  <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="<?= res_css('style.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?= res_css('print.css'); ?>" media="print">
+  <?php
+  if (isset($args['css'])) {
+    foreach ($args['css'] as $css) { ?>
+      <link rel="stylesheet" type="text/css" href="<?= res_css($css); ?>">
+  <?php }
+  } ?>
 
+  <!-- OpenGraph -->
   <meta name="description" content="<?= $description; ?>">
   <meta property="og:title" content="<?= $unique_title; ?>">
   <meta property="og:description" content="<?= $description; ?>">
@@ -30,7 +38,7 @@
   <meta name="twitter:card" content="summary">
 
   <link rel="icon" href="/favicon.ico">
-  <link rel="alternate" type="application/rss+xml" title="Posts - João Costa" href="https://joaocosta.dev/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="Posts - João Costa" href="<?= route('projects_route'); ?>">
 
   <meta name="csrf-token" content="<?= $_SESSION['csrf']; ?>">
 </head>
@@ -62,7 +70,7 @@
         </a>
       </li>
       <li>
-        <a href="/atom.xml">
+        <a href="<?= route('rss_route'); ?>">
           <img src="<?= img('rss-icon.png'); ?>" alt="RSS">
         </a>
       </li>
