@@ -40,7 +40,7 @@ docker_push: docker_build
 	@docker push "${IMAGE_NAME}:${IMAGE_TAG}"
 	@docker push "${IMAGE_NAME}:latest"
 
-SERVER_DIR=/usr/share/nginx/joaocosta.dev/main/
+SERVER_DIR=/usr/share/joaocosta.dev/main/
 
 deploy:
 	@# this rsync command won't remove the links created in the dir
