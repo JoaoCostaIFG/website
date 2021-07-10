@@ -31,8 +31,8 @@ docker_build:
 
 docker_run:
 	@docker run -it --net=host \
-		-v $(CURDIR)/database:/usr/share/nginx/joaocosta.dev/main/database \
-		-v $(CURDIR)/storage:/usr/share/nginx/joaocosta.dev/main/storage \
+		-v $(CURDIR)/database/db.db:/var/lib/joaocosta.dev/main/database/db.db \
+		-v $(CURDIR)/storage:/var/lib/joaocosta.dev/main/storage \
 		"${IMAGE_NAME}:latest"
 
 docker_push: docker_build

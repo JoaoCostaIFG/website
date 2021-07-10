@@ -1,0 +1,39 @@
+FROM archlinux
+
+# Install dependencies
+RUN pacman -Syu --noconfirm nginx php7 php7-gd php7-sqlite php7-fpm composer sqlite
+
+# php config
+ADD ./etc/php/* /etc/php7/
+
+# nginx config
+COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./etc/nginx/joaocosta.dev ./etc/nginx/wiki.joaocosta.dev /etc/nginx/sites-available/
+RUN mkdir -p /etc/nginx/sites-enabled
+RUN ln -s /etc/nginx/sites-available/joaocosta.dev /etc/nginx/sites-enabled/joaocosta.dev
+RUN ln -s /etc/nginx/sites-available/wiki.joaocosta.dev /etc/nginx/sites-enabled/wiki.joaocosta.dev
+# ssl certificates
+RUN mkdir -p /etc/nginx/certs
+COPY ./keys/server.crt /etc/nginx/certs/server.pem
+COPY ./keys/server.key /etc/nginx/certs/server_key.pem
+
+# Copy project code
+COPY ./App /usr/share/nginx/joaocosta.dev/main/App
+COPY ./resources /usr/share/nginx/joaocosta.dev/main/resources
+COPY ./composer.json ./composer.lock ./favicon.ico ./index.php ./robots.txt /usr/share/nginx/joaocosta.dev/main/
+RUN chown -R http:http /usr/share/nginx/joaocosta.dev
+
+RUN mkdir -p /var/lib/site/cache /var/lib/site/database /var/lib/site/storage
+RUN chown -R http:http /var/lib/site
+
+RUN ln -s /var/lib/site/cache/ /usr/share/nginx/joaocosta.dev/main/cache
+RUN ln -s /var/lib/site/database/ /usr/share/nginx/joaocosta.dev/main/database
+RUN ln -s /var/lib/site/storage/ /usr/share/nginx/joaocosta.dev/main/storage
+
+# Start command
+COPY docker_run.sh /docker_run.sh
+CMD sh /docker_run.sh
+
+# Expose ports.
+EXPOSE 80
+EXPOSE 443
