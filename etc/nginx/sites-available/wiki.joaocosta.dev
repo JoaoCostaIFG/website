@@ -4,7 +4,7 @@ server {
   server_name wiki.joaocosta.dev;
   error_log  /var/log/nginx/error.log error;
 
-  root /usr/share/nginx/joaocosta.dev/wiki;
+  root /usr/share/joaocosta.dev/wiki;
   index doku.php;
 
   ssl_certificate certs/server.pem;
