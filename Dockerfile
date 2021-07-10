@@ -16,7 +16,8 @@ RUN apk --no-cache add \
   php7-sqlite3 \
   php7-zip \
   composer \
-  sqlite
+  sqlite \
+  supervisor
 
 # php conf
 RUN mkdir /run/php-fpm7
@@ -34,6 +35,9 @@ RUN \
 RUN mkdir -p /etc/nginx/certs
 COPY ./keys/server.crt /etc/nginx/certs/server.pem
 COPY ./keys/server.key /etc/nginx/certs/server_key.pem
+
+# Configure supervisord
+COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # nginx/php user
 RUN adduser -D -g 'http' http
@@ -59,11 +63,13 @@ RUN sqlite3 /var/lib/joaocosta.dev/main/database/db.db < /var/lib/joaocosta.dev/
 RUN chown -R http:http /var/lib/joaocosta.dev
 
 # switch to use a non-root user from here on
-# USER nobody
+RUN chown -R nobody:nobody /run /var/lib/nginx /var/log/nginx /var/log/php7
+USER nobody
 
 EXPOSE 80
 EXPOSE 443
 
 # script to be run
-COPY docker_run.sh /docker_run.sh
-CMD sh /docker_run.sh
+# COPY docker_run.sh /docker_run.sh
+# CMD sh /docker_run.sh
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
