@@ -1,7 +1,7 @@
 FROM archlinux
 
 # Install dependencies
-RUN pacman -Syu --noconfirm neovim make nginx php7 php7-gd php7-sqlite php7-fpm composer sqlite
+RUN pacman -Syu --noconfirm nginx php7 php7-gd php7-sqlite php7-fpm composer sqlite
 
 # Copy project code and install project dependencies
 COPY ./App /usr/share/nginx/joaocosta.dev/main/App
