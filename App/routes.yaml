@@ -15,6 +15,15 @@ rss_route:
     controller: Controllers\BlogController::rss
     format:     xml
 
+workshops_route:
+    path:       /workshops
+    controller: Controllers\WorkshopController::show
+workshop_route:
+    path:       /workshops/{name}
+    controller: Controllers\WorkshopController::showWorkshop
+    requirements:
+        name: '[0-9a-zA-Z]+'
+
 projects_route:
     path:       /projects
     controller: Controllers\ProjectsController::show

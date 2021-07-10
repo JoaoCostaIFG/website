@@ -55,7 +55,7 @@
         <a href="<?= route('projects_route'); ?>">Projects ></a>
         <ul class="menuDropdown">
           <li><a href="<?= route('projects_route'); ?>">Projects</a></li>
-          <li><a href="/pages/workshops/">Workshops</a></li>
+          <li><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
           <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
         </ul>
       </li>
