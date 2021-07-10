@@ -30,7 +30,7 @@ docker_build:
 	@docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${IMAGE_NAME}:latest"
 
 docker_run:
-	@docker run -it -p 8080:80 -p 8081:443 \
+	@docker run -it --net=host \
 		-v $(CURDIR)/database:/usr/share/nginx/joaocosta.dev/main/database \
 		-v $(CURDIR)/storage:/usr/share/nginx/joaocosta.dev/main/storage \
 		"${IMAGE_NAME}:latest"
