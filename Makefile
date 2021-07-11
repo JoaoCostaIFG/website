@@ -1,42 +1,61 @@
-BUILD_DIR="build"
+clean_cache:
+	rm -rf cache
 
-build: clean blog_index rss
-	@echo "Building page."
-	@build_res/scripts/build_pages.sh
-	@echo "Copying stylesheet."
-	@cp -r content/workshops ${BUILD_DIR}/content
-	@cp build_res/style.css ${BUILD_DIR}
-	@cp build_res/favicon.png ${BUILD_DIR}
-	@cp atom.xml ${BUILD_DIR}
-	@cp robots.txt ${BUILD_DIR}
-	@cp -r static/ ${BUILD_DIR}
+controller:
+	@ read name \
+	&& path="src/App/Controllers/$${name}.php" \
+	; [ -f "$$path" ] \
+	&& echo "File already exists" \
+	|| printf \
+	"<?php\n\
+\n\
+namespace Controllers;\n\
+\n\
+class %s\n\
+{\n\
+  public static function show()\n\
+  {\n\
+    view('%s');\n\
+  }\n\
+}" "$$name" "$$name" >"$${path}"
 
-blog_index:
-	@rm -f "content/blog.html"
-	@echo "Updating blog index."
-	@build_res/scripts/update_blog_index.sh
 
-rss:
-	@echo "Updating atom feed."
-	@build_res/scripts/rss_gen.sh
+IMAGE_NAME=joaocostaifg/site
+# first characters of the current commit hash
+IMAGE_TAG=$(shell git rev-parse --short HEAD)
 
-clean:
-	@echo "Cleaning."
-	@rm -rf ${BUILD_DIR}
+build:
+	@echo "Building Docker image ${IMAGE_NAME}:${IMAGE_TAG}, and tagging as latest"
+	@docker build -t "${IMAGE_NAME}:${IMAGE_TAG}" .
+	@docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${IMAGE_NAME}:latest"
 
-new:
-	@build_res/scripts/new_blog.sh
+run:
+	@docker run -it -p 80:80 -p 443:443 \
+		-v $(CURDIR)/src/database:/var/lib/joaocosta.dev/main/database \
+		-v $(CURDIR)/src/storage:/var/lib/joaocosta.dev/main/storage \
+		-v $(CURDIR)/keys/server.crt:/var/lib/joaocosta.dev/certs/server.pem \
+		-v $(CURDIR)/keys/server.key:/var/lib/joaocosta.dev/certs/server_key.pem \
+		"${IMAGE_NAME}:latest"
 
-server: build
-	@echo "Running server."
-	@build_res/scripts/server_loop.sh
+push: build
+	@echo "Pushing docker image"
+	@docker push "${IMAGE_NAME}:${IMAGE_TAG}"
+	@docker push "${IMAGE_NAME}:latest"
 
-deploy: build
-	@echo "Deploying."
-	@echo "Setting perms."
-	@find ${BUILD_DIR}/* -type f -exec chmod 644 '{}' \;
-	@find ${BUILD_DIR}/* -type d -exec chmod 755 '{}' \;
-	@echo "Sending new build."
-	@rsync --delete -r build/ ifgsv:/usr/share/nginx/joaocosta.dev/main/
+SERVER_SSH=ifgsv
 
-.PHONY: blog_index build clean deploy new rss server
+deploy: push
+	@echo "Deploying via remote SSH"
+	ssh ${SERVER_SSH} \
+	  "docker pull ${IMAGE_NAME}:latest && \
+			docker stop live-container; \
+	  	docker rm live-container; \
+			docker run -d --name live-container -p 80:80 -p 443:443 \
+        -v /var/lib/joaocosta.dev/main/database:/var/lib/joaocosta.dev/main/database \
+        -v /var/lib/joaocosta.dev/main/storage:/var/lib/joaocosta.dev/main/storage \
+        -v /etc/letsencrypt/live/joaocosta.dev/fullchain.pem:/var/lib/joaocosta.dev/certs/server.pem:ro \
+        -v /etc/letsencrypt/live/joaocosta.dev/privkey.pem:/var/lib/joaocosta.dev/certs/server_key.pem:ro \
+        -v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
+        ${IMAGE_NAME}; \
+	  	docker system prune -af"
+

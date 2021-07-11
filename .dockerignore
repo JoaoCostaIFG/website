@@ -1,0 +1,9 @@
+src/cache
+src/database
+src/storage
+src/vendor
+
+wiki/conf
+wiki/data
+wiki/lib/plugins
+wiki/lib/tpl
