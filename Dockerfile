@@ -57,16 +57,14 @@ RUN \
   ln -s /var/lib/joaocosta.dev/wiki/conf /usr/share/joaocosta.dev/wiki/conf && \
   mkdir -p /var/lib/joaocosta.dev/wiki/data && \
   ln -s /var/lib/joaocosta.dev/wiki/data /usr/share/joaocosta.dev/wiki/data && \
-  mkdir -p /var/lib/joaocosta.dev/wiki/plugins && \
-  ln -s /var/lib/joaocosta.dev/wiki/plugins /usr/share/joaocosta.dev/wiki/lib/plugins && \
-  mkdir -p /var/lib/joaocosta.dev/wiki/tpl && \
-  ln -s /var/lib/joaocosta.dev/wiki/tpl /usr/share/joaocosta.dev/wiki/lib/tpl
+  mkdir -p /var/lib/joaocosta.dev/wiki/lib/plugins && \
+  ln -s /var/lib/joaocosta.dev/wiki/lib/plugins /usr/share/joaocosta.dev/wiki/lib/plugins && \
+  mkdir -p /var/lib/joaocosta.dev/wiki/lib/tpl && \
+  ln -s /var/lib/joaocosta.dev/wiki/lib/tpl /usr/share/joaocosta.dev/wiki/lib/tpl
 
-# set ownerships and switch to use a non-root user from here on
-# RUN chown -R http:http /var/lib/joaocosta.dev /run /var/lib/nginx /var/log/nginx /var/log/php7
+# set ownerships. Priveleges are escalated in the /etc/nginx/nginx.conf and /etc/php7/php-fpm7.d/www.conf files
 #USER http
-# priveleges are escalated in the /etc/nginx/nginx.conf and /etc/php7/php-fpm7.d/www.conf files
-RUN chown -R http:http /var/lib/joaocosta.dev
+RUN chown -R http:http /var/lib/joaocosta.dev /run /var/lib/nginx /var/log/nginx /var/log/php7
 
 EXPOSE 80 443
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
