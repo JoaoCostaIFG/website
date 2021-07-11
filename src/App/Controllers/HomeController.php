@@ -13,6 +13,6 @@ class HomeController
 
   public static function redirect()
   {
-    redirect('home');
+    redirect('/');
   }
 }

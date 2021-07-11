@@ -45,7 +45,7 @@
 
 <body>
   <header>
-    <h1><a href="/">JoaoCostaIFG</a></h1>
+    <h1><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
 
     <ul id="menu">
       <li><a href="<?= route('about_route'); ?>">About me</a></li>
