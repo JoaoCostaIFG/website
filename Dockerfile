@@ -22,11 +22,12 @@ RUN apk --no-cache add \
 RUN adduser -D -g 'http' http
 
 # php conf
-RUN mkdir /run/php-fpm7 && touch /run/php-fpm7/php-fpm.sock
 COPY ./etc/php /etc/php7
+RUN mkdir -m 0770 /run/php-fpm7 && chown -R http:http /run/php-fpm7
 
 # nginx conf
 COPY ./etc/nginx /etc/nginx
+RUN chown -R http:http /var/lib/nginx
 # enable sites
 RUN \
   mkdir -p /etc/nginx/sites-enabled && \
@@ -35,7 +36,6 @@ RUN \
 
 # tor conf
 COPY ./etc/torrc /etc/tor/torrc
-RUN chown -R tor /var/log/tor
 
 # s6-overlay service
 COPY ./etc/s6-overlay/services.d /etc/services.d
@@ -67,10 +67,6 @@ RUN \
   ln -s /var/lib/joaocosta.dev/wiki/lib/plugins /usr/share/joaocosta.dev/wiki/lib/plugins && \
   mkdir -p /var/lib/joaocosta.dev/wiki/lib/tpl && \
   ln -s /var/lib/joaocosta.dev/wiki/lib/tpl /usr/share/joaocosta.dev/wiki/lib/tpl
-
-# set ownerships. Priveleges are escalated in the /etc/nginx/nginx.conf and /etc/php7/php-fpm7.d/www.conf files
-#USER http
-RUN chown -R http:http /var/lib/joaocosta.dev /run /var/lib/nginx /var/log/nginx /var/log/php7
 
 EXPOSE 80 443
 
