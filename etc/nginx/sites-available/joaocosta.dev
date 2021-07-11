@@ -1,7 +1,10 @@
 server {
   listen 443 ssl http2 default_server;
   listen [::]:443 ssl http2 default_server;
-  server_name localhost joaocosta.dev www.joaocosta.dev;
+  # serve onion service
+  listen unix:/var/run/tor-joaocosta-dev.sock;
+
+  server_name localhost joaocosta.dev www.joaocosta.dev pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion;
   error_log  /var/log/nginx/error.log error;
 
   root /usr/share/joaocosta.dev/main;
@@ -60,12 +63,4 @@ server {
   server_name localhost joaocosta.dev www.joaocosta.dev;
 
   return 301 https://$host$request_uri;
-}
-
-server {
-  # serve onion service
-  listen unix:/var/run/tor-joaocosta-dev.sock;
-  server_name pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion;
-  index index.html;
-  root /usr/share/nginx/joaocosta.dev/main;
 }

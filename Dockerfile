@@ -15,7 +15,8 @@ RUN apk --no-cache add \
   php7-sqlite3 \
   php7-zip \
   composer \
-  s6-overlay
+  s6-overlay \
+  tor
 
 # nginx/php user
 RUN adduser -D -g 'http' http
@@ -23,8 +24,6 @@ RUN adduser -D -g 'http' http
 # php conf
 RUN mkdir /run/php-fpm7 && touch /run/php-fpm7/php-fpm.sock
 COPY ./etc/php /etc/php7
-# s6-overlay service
-COPY ./etc/s6-overlay/php-fpm7 /etc/services.d/php-fpm7
 
 # nginx conf
 COPY ./etc/nginx /etc/nginx
@@ -33,8 +32,14 @@ RUN \
   mkdir -p /etc/nginx/sites-enabled && \
   ln -s /etc/nginx/sites-available/joaocosta.dev /etc/nginx/sites-enabled/joaocosta.dev && \
   ln -s /etc/nginx/sites-available/wiki.joaocosta.dev /etc/nginx/sites-enabled/wiki.joaocosta.dev
+
+# tor conf
+COPY ./etc/torrc /etc/tor/torrc
+RUN chown -R tor /var/log/tor
+
 # s6-overlay service
-COPY ./etc/s6-overlay/nginx /etc/services.d/nginx
+COPY ./etc/s6-overlay/services.d /etc/services.d
+COPY ./etc/s6-overlay/fix-attrs.d /etc/fix-attrs.d
 
 # site code
 COPY ./src /usr/share/joaocosta.dev/main

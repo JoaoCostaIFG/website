@@ -53,9 +53,11 @@ deploy: push
 			docker run -d --name live-container -p 80:80 -p 443:443 \
         -v /var/lib/joaocosta.dev/main/database:/var/lib/joaocosta.dev/main/database \
         -v /var/lib/joaocosta.dev/main/storage:/var/lib/joaocosta.dev/main/storage \
+        -v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
+				\
         -v /etc/letsencrypt/live/joaocosta.dev/fullchain.pem:/var/lib/joaocosta.dev/certs/server.pem:ro \
         -v /etc/letsencrypt/live/joaocosta.dev/privkey.pem:/var/lib/joaocosta.dev/certs/server_key.pem:ro \
-        -v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
+				-v /var/lib/tor/joaocosta.dev:/var/lib/tor/joaocosta.dev \
         ${IMAGE_NAME}; \
 	  	docker system prune -af"
 
