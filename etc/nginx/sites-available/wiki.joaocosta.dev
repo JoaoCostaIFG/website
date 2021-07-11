@@ -15,7 +15,7 @@ server {
   client_body_buffer_size 128k;
 
   #Remember to comment the below out when you're installing DokuWiki, and uncomment it when you're done.
-  location ~ /(data/|conf/|bin/|inc/|install.php) { deny all; } # secure Dokuwiki
+  #location ~ /(data/|conf/|bin/|inc/|install.php) { deny all; } # secure Dokuwiki
 
   location ~^/\.ht { deny all; } # also secure the Apache .htaccess files
   location @dokuwiki {
