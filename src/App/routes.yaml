@@ -1,0 +1,85 @@
+root_route:
+    path:       /
+    controller: App\Controllers\HomeController::redirect
+home_route:
+    path:       /home
+    controller: App\Controllers\HomeController::show
+about_route:
+    path:       /about
+    controller: App\Controllers\AboutController::show
+contacts_route:
+    path:       /contacts
+    controller: App\Controllers\ContactsController::show
+rss_route:
+    path:       /rss
+    controller: App\Controllers\BlogController::rss
+    format:     xml
+
+workshops_route:
+    path:       /workshops
+    controller: App\Controllers\WorkshopController::show
+workshop_route:
+    path:       /workshops/{name}
+    controller: App\Controllers\WorkshopController::showWorkshop
+    requirements:
+        name: '[0-9a-zA-Z]+'
+
+projects_route:
+    path:       /projects
+    controller: App\Controllers\ProjectsController::show
+proj_insert_route:
+    path:       /new_proj
+    controller: App\Controllers\ProjectsController::showNewProjForm
+proj_insert_action:
+    path:       /new_proj_action
+    controller: App\Controllers\ProjectsController::newProj
+    methods:    POST
+proj_edit_route:
+    path:       /edit_proj/{id}
+    controller: App\Controllers\ProjectsController::showEditProjForm
+    requirements:
+        id: '[0-9]+'
+proj_edit_action:
+    path:       /edit_proj_action
+    controller: App\Controllers\ProjectsController::editProj
+    methods:    POST
+
+blog_index_route:
+    path:       /blog
+    controller: App\Controllers\BlogController::showIndex
+blog_post_route:
+    path:       /blog/{id}
+    controller: App\Controllers\BlogController::showPost
+    requirements:
+        id: '[0-9]+'
+blog_insert_route:
+    path:       /new_blog
+    controller: App\Controllers\BlogController::showNewPostForm
+blog_insert_action:
+    path:       /new_blog_action
+    controller: App\Controllers\BlogController::newPost
+    methods:    POST
+blog_edit_route:
+    path:       /edit_blog/{id}
+    controller: App\Controllers\BlogController::showEditPostForm
+    requirements:
+        id: '[0-9]+'
+blog_edit_action:
+    path:       /edit_blog_action
+    controller: App\Controllers\BlogController::editPost
+    methods:    POST
+
+user_login_route:
+    path:       /login
+    controller: App\Controllers\UserController::showLoginForm
+user_login_action:
+    path:       /login_action
+    controller: App\Controllers\UserController::login
+    methods:    POST
+user_logout_route:
+    path:       /logout
+    controller: App\Controllers\UserController::logout
+
+fallback_route:
+    path:     /404
+    controller: App\Controllers\FallbackController::show

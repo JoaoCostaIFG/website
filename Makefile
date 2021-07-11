@@ -3,7 +3,7 @@ clean_cache:
 
 controller:
 	@ read name \
-	&& path="App/Controllers/$${name}.php" \
+	&& path="src/App/Controllers/$${name}.php" \
 	; [ -f "$$path" ] \
 	&& echo "File already exists" \
 	|| printf \
@@ -21,7 +21,7 @@ class %s\n\
 
 
 IMAGE_NAME=joaocostaifg/site
-# first 7 characters of the current commit hash
+# first characters of the current commit hash
 IMAGE_TAG=$(shell git rev-parse --short HEAD)
 
 docker_build:
@@ -31,8 +31,8 @@ docker_build:
 
 docker_run:
 	@docker run -it -p 80:80 -p 443:443 \
-		-v $(CURDIR)/database/db.db:/var/lib/joaocosta.dev/main/database/db.db \
-		-v $(CURDIR)/storage:/var/lib/joaocosta.dev/main/storage \
+		-v $(CURDIR)/src/database:/var/lib/joaocosta.dev/main/database \
+		-v $(CURDIR)/src/storage:/var/lib/joaocosta.dev/main/storage \
 		-v $(CURDIR)/keys/server.crt:/var/lib/joaocosta.dev/certs/server.pem \
 		-v $(CURDIR)/keys/server.key:/var/lib/joaocosta.dev/certs/server_key.pem \
 		"${IMAGE_NAME}:latest"

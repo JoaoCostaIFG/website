@@ -1,12 +1,12 @@
 **/CS_SESSION
 keys
 
-*.db
+**/*.db
 
-/storage/*
-!/storage/img/
+src/storage/*
+!src/storage/img/
 
 # composer
-/cache/
-composer.phar
-/vendor/
+src/cache/
+src/composer.phar
+src/vendor/

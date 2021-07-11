@@ -1,9 +1,9 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
 use Exception;
-use Models\BlogModel;
+use App\Models\BlogModel;
 
 class BlogController
 {

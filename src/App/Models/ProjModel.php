@@ -1,10 +1,8 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/database/db.php';
-
-use Database;
+use App\Database;
 use Exception;
 
 class ProjModel
@@ -159,6 +157,6 @@ class ProjModel
     $stmt->execute(array());
 
     $rows = $stmt->fetchAll();
-    return array_map('Models\ProjModel::withRow', $rows);
+    return array_map('App\Models\ProjModel::withRow', $rows);
   }
 }

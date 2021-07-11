@@ -1,6 +1,0 @@
-user-agent: *
-
-disallow: /controllers/
-disallow: /database/
-disallow: /models/
-disallow: /resources/

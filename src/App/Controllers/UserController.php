@@ -1,9 +1,9 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
 use Exception;
-use Models\UserModel;
+use App\Models\UserModel;
 
 class UserController
 {
