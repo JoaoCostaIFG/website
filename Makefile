@@ -30,9 +30,11 @@ docker_build:
 	@docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${IMAGE_NAME}:latest"
 
 docker_run:
-	@docker run -it --net=host \
+	@docker run -it -p 80:80 -p 443:443 \
 		-v $(CURDIR)/database/db.db:/var/lib/joaocosta.dev/main/database/db.db \
 		-v $(CURDIR)/storage:/var/lib/joaocosta.dev/main/storage \
+		-v $(CURDIR)/keys/server.crt:/var/lib/joaocosta.dev/certs/server.pem \
+		-v $(CURDIR)/keys/server.key:/var/lib/joaocosta.dev/certs/server_key.pem \
 		"${IMAGE_NAME}:latest"
 
 docker_push: docker_build

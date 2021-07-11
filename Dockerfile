@@ -20,8 +20,7 @@ RUN apk --no-cache add \
   supervisor
 
 # php conf
-RUN mkdir /run/php-fpm7
-RUN touch /run/php-fpm7/php-fpm.sock
+RUN mkdir /run/php-fpm7 && touch /run/php-fpm7/php-fpm.sock
 COPY ./etc/php /etc/php7
 
 # nginx conf
@@ -31,10 +30,6 @@ RUN mkdir -p /etc/nginx/sites-enabled
 RUN \
   ln -s /etc/nginx/sites-available/joaocosta.dev /etc/nginx/sites-enabled/joaocosta.dev && \
   ln -s /etc/nginx/sites-available/wiki.joaocosta.dev /etc/nginx/sites-enabled/wiki.joaocosta.dev
-# ssl certificates
-RUN mkdir -p /etc/nginx/certs
-COPY ./keys/server.crt /etc/nginx/certs/server.pem
-COPY ./keys/server.key /etc/nginx/certs/server_key.pem
 
 # Configure supervisord
 COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -55,21 +50,15 @@ RUN \
   mkdir -p /var/lib/joaocosta.dev/main/database && \
   ln -s /var/lib/joaocosta.dev/main/database /usr/share/joaocosta.dev/main/database && \
   mkdir -p /var/lib/joaocosta.dev/main/storage && \
-  ln -s /var/lib/joaocosta.dev/main/storage /usr/share/joaocosta.dev/main/storage
+  ln -s /var/lib/joaocosta.dev/main/storage /usr/share/joaocosta.dev/main/storage && \
+  mkdir -p /var/lib/joaocosta.dev/certs
 COPY ./database /var/lib/joaocosta.dev/main/database
 # init database
 RUN sqlite3 /var/lib/joaocosta.dev/main/database/db.db < /var/lib/joaocosta.dev/main/database/db.sql
-# set ownership of directory
-RUN chown -R http:http /var/lib/joaocosta.dev
 
-# switch to use a non-root user from here on
-RUN chown -R nobody:nobody /run /var/lib/nginx /var/log/nginx /var/log/php7
-USER nobody
+# set ownerships and switch to use a non-root user from here on
+RUN chown -R http:http /var/lib/joaocosta.dev /run /var/lib/nginx /var/log/nginx /var/log/php7
+USER http
 
-EXPOSE 80
-EXPOSE 443
-
-# script to be run
-# COPY docker_run.sh /docker_run.sh
-# CMD sh /docker_run.sh
+EXPOSE 80 443
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
