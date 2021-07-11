@@ -42,19 +42,20 @@ docker_push: docker_build
 	@docker push "${IMAGE_NAME}:${IMAGE_TAG}"
 	@docker push "${IMAGE_NAME}:latest"
 
-SERVER_DIR=/usr/share/joaocosta.dev/main/
+SERVER_SSH=ifgsv
 
-deploy:
-	@# this rsync command won't remove the links created in the dir
-	@rsync --delete -r ./App ./resources ./composer.json ./composer.lock \
-		./favicon.ico ./index.php ./robots.txt ifgsv:${SERVER_DIR}
-	@ssh ifgsv "cd ${SERVER_DIR} && composer install"
-
-#echo "Deploying via remote SSH"
-#ssh -i ssh_key "root@${SERVER_IP}" \
-#  "docker pull ${IMAGE_NAME}:${IMAGE_TAG} \
-#  && docker stop live-container \
-#  && docker rm live-container \
-#  && docker run --init -d --name live-container -p 80:3000 ${IMAGE_NAME}:${IMAGE_TAG} \
-#  && docker system prune -af" # remove unused images to free up space
+deploy: docker_push
+	@echo "Deploying via remote SSH"
+	ssh ${SERVER_SSH} \
+	  "docker pull ${IMAGE_NAME}:latest && \
+			docker stop live-container; \
+	  	docker rm live-container; \
+			docker run -d --name live-container -p 80:80 -p 443:443 \
+        -v /var/lib/joaocosta.dev/main/database:/var/lib/joaocosta.dev/main/database \
+        -v /var/lib/joaocosta.dev/main/storage:/var/lib/joaocosta.dev/main/storage \
+        -v /etc/letsencrypt/live/joaocosta.dev/fullchain.pem:/var/lib/joaocosta.dev/certs/server.pem:ro \
+        -v /etc/letsencrypt/live/joaocosta.dev/privkey.pem:/var/lib/joaocosta.dev/certs/server_key.pem:ro \
+        -v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
+        ${IMAGE_NAME}; \
+	  	docker system prune -af"
 
