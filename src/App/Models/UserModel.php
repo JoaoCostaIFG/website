@@ -1,10 +1,8 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/database/db.php';
-
-use Database;
+use App\Database;
 use Exception;
 
 class UserModel

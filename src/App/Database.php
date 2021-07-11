@@ -1,5 +1,10 @@
 <?php
 
+namespace App;
+
+use PDO;
+use Exception;
+
 /**
  * Singleton class representating the database connection
  */

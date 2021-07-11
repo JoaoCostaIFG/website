@@ -1,10 +1,8 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/database/db.php';
-
-use Database;
+use App\Database;
 use Exception;
 
 class BlogModel
@@ -179,7 +177,7 @@ class BlogModel
     $stmt->execute(array());
 
     $rows = $stmt->fetchAll();
-    return array_map('Models\BlogModel::withRow', $rows);
+    return array_map('App\Models\BlogModel::withRow', $rows);
   }
 
   public static function allVisible()
@@ -192,7 +190,7 @@ class BlogModel
     $stmt->execute(array());
 
     $rows = $stmt->fetchAll();
-    return array_map('Models\BlogModel::withRow', $rows);
+    return array_map('App\Models\BlogModel::withRow', $rows);
   }
 
   public static function some($cnt)
@@ -203,7 +201,7 @@ class BlogModel
     $stmt->execute(array($cnt));
 
     $rows = $stmt->fetchAll();
-    return array_map('Models\BlogModel::withRow', $rows);
+    return array_map('App\Models\BlogModel::withRow', $rows);
   }
 
   public static function someVisible($cnt)
@@ -217,6 +215,6 @@ class BlogModel
     $stmt->execute(array($cnt));
 
     $rows = $stmt->fetchAll();
-    return array_map('Models\BlogModel::withRow', $rows);
+    return array_map('App\Models\BlogModel::withRow', $rows);
   }
 }

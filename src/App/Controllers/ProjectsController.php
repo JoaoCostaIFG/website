@@ -1,9 +1,9 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
 use Exception;
-use Models\ProjModel;
+use App\Models\ProjModel;
 
 class ProjectsController
 {
