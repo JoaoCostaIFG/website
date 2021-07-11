@@ -24,12 +24,12 @@ IMAGE_NAME=joaocostaifg/site
 # first characters of the current commit hash
 IMAGE_TAG=$(shell git rev-parse --short HEAD)
 
-docker_build:
+build:
 	@echo "Building Docker image ${IMAGE_NAME}:${IMAGE_TAG}, and tagging as latest"
 	@docker build -t "${IMAGE_NAME}:${IMAGE_TAG}" .
 	@docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${IMAGE_NAME}:latest"
 
-docker_run:
+run:
 	@docker run -it -p 80:80 -p 443:443 \
 		-v $(CURDIR)/src/database:/var/lib/joaocosta.dev/main/database \
 		-v $(CURDIR)/src/storage:/var/lib/joaocosta.dev/main/storage \
@@ -37,14 +37,14 @@ docker_run:
 		-v $(CURDIR)/keys/server.key:/var/lib/joaocosta.dev/certs/server_key.pem \
 		"${IMAGE_NAME}:latest"
 
-docker_push: docker_build
+push: build
 	@echo "Pushing docker image"
 	@docker push "${IMAGE_NAME}:${IMAGE_TAG}"
 	@docker push "${IMAGE_NAME}:latest"
 
 SERVER_SSH=ifgsv
 
-deploy: docker_push
+deploy: push
 	@echo "Deploying via remote SSH"
 	ssh ${SERVER_SSH} \
 	  "docker pull ${IMAGE_NAME}:latest && \
