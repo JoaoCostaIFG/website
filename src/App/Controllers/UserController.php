@@ -40,12 +40,12 @@ class UserController
 
     // congrats you logged in
     $_SESSION['u'] = $u;
-    redirect('home');
+    redirect('/');
   }
 
   public static function logout()
   {
     $_SESSION = array(); // to destroy session data, no session_destroy() is needed
-    redirect('home');
+    redirect('/');
   }
 }

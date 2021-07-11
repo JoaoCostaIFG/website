@@ -1,8 +1,5 @@
-root_route:
-    path:       /
-    controller: App\Controllers\HomeController::redirect
 home_route:
-    path:       /home
+    path:       /
     controller: App\Controllers\HomeController::show
 about_route:
     path:       /about
