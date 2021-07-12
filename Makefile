@@ -47,9 +47,8 @@ SERVER_SSH=ifgsv
 
 deploy: push
 	@echo "Deploying via remote SSH"
-	@stty -echo
+	@# sudo won't ask for password for this (server's sudoers file)
 	@ssh ${SERVER_SSH} \
 		"docker pull ${IMAGE_NAME}:latest && \
-			sudo -S systemctl restart live-container"
-	@stty +echo
+			sudo systemctl restart live-container"
 
