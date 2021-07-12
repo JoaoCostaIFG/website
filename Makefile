@@ -1,5 +1,5 @@
-clean_cache:
-	rm -rf cache
+clean:
+	@rm -rf ./src/cache
 
 controller:
 	@ read name \
@@ -19,6 +19,7 @@ class %s\n\
   }\n\
 }" "$$name" "$$name" >"$${path}"
 
+### DOCKER ###
 
 IMAGE_NAME=joaocostaifg/site
 # first characters of the current commit hash
@@ -46,17 +47,9 @@ SERVER_SSH=ifgsv
 
 deploy: push
 	@echo "Deploying via remote SSH"
+	@stty -echo
 	@ssh ${SERVER_SSH} \
 		"docker pull ${IMAGE_NAME}:latest && \
-			docker stop live-container; \
-			docker rm live-container; \
-			docker run -d --name live-container -p 80:80 -p 443:443 \
-				-v /var/lib/joaocosta.dev/main/database:/var/lib/joaocosta.dev/main/database \
-				-v /var/lib/joaocosta.dev/main/storage:/var/lib/joaocosta.dev/main/storage \
-				-v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
-				-v /etc/letsencrypt/live/joaocosta.dev/fullchain.pem:/var/lib/joaocosta.dev/certs/server.pem:ro \
-				-v /etc/letsencrypt/live/joaocosta.dev/privkey.pem:/var/lib/joaocosta.dev/certs/server_key.pem:ro \
-				-v /var/lib/tor/joaocosta.dev:/var/lib/tor/joaocosta.dev \
-				${IMAGE_NAME}; \
-			docker system prune -af"
+			sudo -S systemctl restart live-container"
+	@stty +echo
 

@@ -1,0 +1,19 @@
+[Unit]
+Description=JoaoCostaIFG website docker container service.
+
+[Service]
+Type=simple
+ExecStartPre=-docker stop live-container
+ExecStartPre=-docker rm live-container
+ExecStart=docker run --name live-container -p 80:80 -p 443:443 \
+                -v /var/lib/joaocosta.dev/main/database:/var/lib/joaocosta.dev/main/database \
+                -v /var/lib/joaocosta.dev/main/storage:/var/lib/joaocosta.dev/main/storage \
+                -v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
+                -v /etc/letsencrypt/live/joaocosta.dev/fullchain.pem:/var/lib/joaocosta.dev/certs/server.pem:ro \
+                -v /etc/letsencrypt/live/joaocosta.dev/privkey.pem:/var/lib/joaocosta.dev/certs/server_key.pem:ro \
+                -v /var/lib/tor/joaocosta.dev:/var/lib/tor/joaocosta.dev \
+                joaocostaifg/site
+ExecStartPost=-docker system prune -af
+
+[Install]
+WantedBy=multi-user.target
