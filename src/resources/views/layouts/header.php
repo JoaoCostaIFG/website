@@ -2,20 +2,28 @@
 <html lang="en">
 
 <head>
+  <!-- Basic page needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <?php
   $unique_title = 'Joao Costa';
   $description = 'Hey! I&#39;m a computer engineering student and this is my personal website. I try to be active here.';
   if ($args['title']) {
     $unique_title = $args['title'] . ' | ' . $unique_title;
   }
-  ?>
-  <title><?= $unique_title; ?></title>
+  ?><title><?= $unique_title; ?></title>
+  <meta name="description" content="<?= $description; ?>">
+  <meta name="author" content="João Costa">
 
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="<?= res_css('style.css'); ?>">
+  <!-- Mobile specific metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" type="text/css" href="<?= res_css('normalize.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= res_css('skeleton.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= res_css('custom.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?= res_css('print.css'); ?>" media="print">
   <?php
   if (isset($args['css'])) {
@@ -24,19 +32,19 @@
   <?php }
   } ?>
 
-  <!-- OpenGraph -->
-  <meta name="description" content="<?= $description; ?>">
+  <!-- OpenGraph
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta property="og:title" content="<?= $unique_title; ?>">
   <meta property="og:description" content="<?= $description; ?>">
   <meta property="og:image" content="image.jpg">
   <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="website">
-
   <meta property="og:url" content="<?= 'https://joaocosta.dev' . $_SERVER['SCRIPT_NAME']; ?>">
   <meta property="og:site_name" content="Joao Costa">
-  <meta name="author" content="João Costa">
   <meta name="twitter:card" content="summary">
 
+  <!-- Favicon and RSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" href="/favicon.ico">
   <link rel="alternate" type="application/rss+xml" title="Posts - João Costa" href="<?= route('projects_route'); ?>">
 
