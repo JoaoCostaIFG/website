@@ -52,40 +52,45 @@
 </head>
 
 <body>
-  <header>
-    <h1><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
+  <header class="container">
 
-    <ul id="menu">
-      <li><a href="<?= route('about_route'); ?>">About me</a></li>
-      <li><a href="<?= route('blog_index_route'); ?>">Blog Index</a></li>
-      <li><a href="<?= route('contacts_route'); ?>">Contacts</a></li>
-      <li>
-        <a href="<?= route('projects_route'); ?>">Projects ></a>
-        <ul class="menuDropdown">
-          <li><a href="<?= route('projects_route'); ?>">Projects</a></li>
-          <li><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
-          <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="https://gitlab.com/JoaoCostaIFG">
-          <img src="<?= img('gitlab-icon.png'); ?>" alt="Gitlab">
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/JoaoCostaIFG">
-          <img src="<?= img('github-icon.png'); ?>" alt="Github">
-        </a>
-      </li>
-      <li>
-        <a href="<?= route('rss_route'); ?>">
-          <img src="<?= img('rss-icon.png'); ?>" alt="RSS">
-        </a>
-      </li>
-      <?php if (is_auth()) { ?>
-        <li><a href="<?= route('user_logout_route'); ?>">Logout</a></li>
-      <?php } else { ?>
-        <li><a href="<?= route('user_login_route'); ?>">Login</a></li>
-      <?php } ?>
-    </ul>
+    <nav arial-label="primary navigation">
+      <ul class="menu">
+        <li class="menu-item">
+          <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
+        </li>
+        <li class="menu-item"><a href="<?= route('about_route'); ?>">About me</a></li>
+        <li class="menu-item"><a href="<?= route('blog_index_route'); ?>">Blog Index</a></li>
+        <li class="menu-item"><a href="<?= route('contacts_route'); ?>">Contacts</a></li>
+        <!--
+            <li class="menu-item">
+              <a href="<?= route('projects_route'); ?>">Projects ></a>
+              <ul class="menuDropdown">
+                <li><a href="<?= route('projects_route'); ?>">Projects</a></li>
+                <li><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
+                <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
+              </ul>
+            </li>
+        -->
+      </ul>
+      <ul class="menu menu-right">
+        <li class="menu-item">
+          <a href="https://gitlab.com/JoaoCostaIFG"><img src="<?= img('gitlab-icon.png'); ?>" alt="Gitlab"></a>
+        </li>
+        <li class="menu-item">
+          <a href="https://github.com/JoaoCostaIFG"><img src="<?= img('github-icon.png'); ?>" alt="Github"></a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= route('rss_route'); ?>"><img src="<?= img('rss-icon.png'); ?>" alt="RSS"></a>
+        </li>
+        <?php if (is_auth()) { ?>
+          <li class="menu-item"><a href="<?= route('user_logout_route'); ?>">Logout</a></li>
+        <?php } else { ?>
+          <li class="menu-item"><a href="<?= route('user_login_route'); ?>">Login</a></li>
+        <?php } ?>
+      </ul>
+    </nav>
+    <hr id="menu-line">
   </header>
+
+  <div id="main-container" class="container">
