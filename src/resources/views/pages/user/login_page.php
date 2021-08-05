@@ -9,7 +9,7 @@
   <input id="username" type="text" name="username" placeholder="Enter your username..." required autofocus><br>
   <label for="password"><b>Password *</b></label>
   <input id="password" type="password" name="password" placeholder="Enter password..." required><br>
-  <input type="submit" value="Submit">
+  <input class="button-primary" type="submit" value="Login">
 </form>
 
 <?php layout_footer(); ?>

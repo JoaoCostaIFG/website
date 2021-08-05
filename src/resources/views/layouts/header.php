@@ -59,21 +59,13 @@
         <li class="menu-item">
           <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
         </li>
-        <li class="menu-item"><a href="<?= route('about_route'); ?>">About me</a></li>
-        <li class="menu-item"><a href="<?= route('blog_index_route'); ?>">Blog Index</a></li>
-        <li class="menu-item"><a href="<?= route('contacts_route'); ?>">Contacts</a></li>
-        <!--
-            <li class="menu-item">
-              <a href="<?= route('projects_route'); ?>">Projects ></a>
-              <ul class="menuDropdown">
-                <li><a href="<?= route('projects_route'); ?>">Projects</a></li>
-                <li><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
-                <li><a href="https://wiki.joaocosta.dev">Wiki</a></li>
-              </ul>
-            </li>
-        -->
+        <li class="menu-item"><a href="<?= route('blog_index_route'); ?>">Blog</a></li>
+        <li class="menu-item"><a href="<?= route('projects_route'); ?>">Projects</a></li>
+        <li class="menu-item"><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
+        <li class="menu-item"><a href="<?= route('about_route'); ?>">About/Contacts</a></li>
       </ul>
       <ul class="menu menu-right">
+        <li class="menu-item"><a href="https://wiki.joaocosta.dev">Wiki</a></li>
         <li class="menu-item">
           <a href="https://gitlab.com/JoaoCostaIFG"><img src="<?= img('gitlab-icon.png'); ?>" alt="Gitlab"></a>
         </li>
