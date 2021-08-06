@@ -69,6 +69,10 @@ textarea {
   color: var(--background);
 }
 
+input[type="file"] {
+  color: var(--foreground);
+}
+
 /* || NAVBAR */
 .menu {
   list-style: none;
