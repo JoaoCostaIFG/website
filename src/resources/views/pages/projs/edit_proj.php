@@ -7,16 +7,23 @@
   <input type="hidden" id="id" name="id" value="<?= $args['p']->getId(); ?>">
   <input type="hidden" id="old_img" name="old_img" value="<?= $args['p']->getImg(); ?>">
 
-  <label for="title"><b>Title *</b></label>
-  <input type="text" id="title" name="title" value="<?= $args['p']->getTitle(); ?>" placeholder="Proj title..." required autofocus><br>
-  <label for="description"><b>Description</b></label>
-  <textarea id="description" name="description" rows="20" placeholder="Proj description..."><?= $args['p']->getDescription(); ?></textarea><br>
-  <label for="url"><b>Url *</b></label>
-  <input type="url" id="url" name="url" value="<?= $args['p']->getUrl(); ?>" placeholder="Proj url..." required><br>
-  <label for="img"><b>Img</b></label>
-  <input type="file" id="img" name="img"><br>
+  <div class="row">
+    <div class="six columns">
+      <label for="title">Title *</label>
+      <input class="u-full-width" type="text" id="title" name="title" value="<?= $args['p']->getTitle(); ?>" placeholder="Proj title..." required autofocus>
+    </div>
+    <div class="six columns">
+      <label for="url">Url *</label>
+      <input class="u-full-width" type="url" id="url" name="url" value="<?= $args['p']->getUrl(); ?>" placeholder="Proj url..." required>
+    </div>
+  </div>
 
-  <input type="submit" value="Submit">
+  <label for="description">Description</label>
+  <textarea class="u-full-width" id="description" name="description" rows="20" placeholder="Proj description..."><?= $args['p']->getDescription(); ?></textarea>
+  <label for="img">Img</label>
+  <input class="u-full-width" type="file" id="img" name="img"><br>
+
+  <input class="button-primary" type="submit" value="Submit">
 </form>
 
 <?php layout_footer(); ?>
