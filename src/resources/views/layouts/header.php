@@ -52,18 +52,15 @@
 </head>
 
 <body>
-  <header class="container">
-    <nav arial-label="primary navigation">
+  <header id="header-container" class="container">
+    <button id="navbar-dropdown-btn">☰</button>
+    <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
+    <nav id="navbar" arial-label="primary navigation">
       <ul class="menu">
-        <li class="menu-item">
-          <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
-        </li>
         <li class="menu-item"><a href="<?= route('blog_index_route'); ?>">Blog</a></li>
         <li class="menu-item"><a href="<?= route('projects_route'); ?>">Projects</a></li>
         <li class="menu-item"><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
         <li class="menu-item"><a href="<?= route('about_route'); ?>">About/Contacts</a></li>
-      </ul>
-      <ul class="menu menu-right">
         <li class="menu-item"><a href="https://wiki.joaocosta.dev">Wiki</a></li>
         <li class="menu-item">
           <a href="https://gitlab.com/JoaoCostaIFG"><img src="<?= img('gitlab-icon.png'); ?>" alt="Gitlab"></a>
@@ -81,7 +78,6 @@
         <?php } ?>
       </ul>
     </nav>
-    <hr id="menu-line">
   </header>
 
   <div id="main-container" class="container">
