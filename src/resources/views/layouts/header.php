@@ -53,7 +53,7 @@
 
 <body>
   <header id="header-container" class="container">
-    <button id="navbar-dropdown-btn"></button>
+    <button id="navbar-dropdown-btn">&equiv;</button>
     <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
     <nav id="navbar" arial-label="primary navigation">
       <ul class="menu">
@@ -61,21 +61,25 @@
         <li class="menu-item"><a href="<?= route('projects_route'); ?>">Projects</a></li>
         <li class="menu-item"><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
         <li class="menu-item"><a href="<?= route('about_route'); ?>">About/Contacts</a></li>
-        <li class="menu-item"><a href="https://wiki.joaocosta.dev">Wiki</a></li>
-        <li class="menu-item">
+        <li class="menu-item menu-item-icon">
+          <a href="https://wiki.joaocosta.dev"><img src="<?= img('wiki-icon.png'); ?>" alt="Wiki"></a>
+        </li>
+        <li class="menu-item menu-item-icon">
           <a href="https://gitlab.com/JoaoCostaIFG"><img src="<?= img('gitlab-icon.png'); ?>" alt="Gitlab"></a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item menu-item-icon">
           <a href="https://github.com/JoaoCostaIFG"><img src="<?= img('github-icon.png'); ?>" alt="Github"></a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item menu-item-icon">
           <a href="<?= route('rss_route'); ?>"><img src="<?= img('rss-icon.png'); ?>" alt="RSS"></a>
         </li>
+        <li class="menu-item">
         <?php if (is_auth()) { ?>
-          <li class="menu-item"><a href="<?= route('user_logout_route'); ?>">Logout</a></li>
+          <a href="<?= route('user_logout_route'); ?>">Logout</a>
         <?php } else { ?>
-          <li class="menu-item"><a href="<?= route('user_login_route'); ?>">Login</a></li>
+          <a href="<?= route('user_login_route'); ?>">Login</a>
         <?php } ?>
+        </li>
       </ul>
     </nav>
   </header>

@@ -25,6 +25,7 @@
   display: inline-block;
   margin: 0px;
   font-size: 160%;
+  line-height: initial;
 }
 
 #brand a:hover {
@@ -66,9 +67,30 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 999px) {
+  #navbar-dropdown-btn:focus ~ #navbar {
+    display: block;
+  }
+
   #navbar {
     display: none;
+    background-color: var(--background2);
+  }
+
+  .menu-item a {
+    border: 0.1em solid var(--background2);
+  }
+
+  .menu-item a:hover {
+    border: 0.1em solid var(--primary2);
+  }
+
+  .menu-item img {
+    vertical-align: middle;
+  }
+
+  .menu-item-icon {
+    display: inline-block;
   }
 
   .menu-right {
@@ -76,16 +98,14 @@
   }
 }
 
-#navbar-dropdown-btn:focus ~ #navbar {
-  display: block;
-}
-
 #navbar-dropdown-btn {
   margin: 0;
-  padding: 1.5rem;
+  padding: 0px 1.5rem;
   position: relative;
-  top: -0.75rem;
+  top: -0.5rem;
   height: initial;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .menu-item {
