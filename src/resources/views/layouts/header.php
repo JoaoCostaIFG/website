@@ -53,7 +53,7 @@
 
 <body>
   <header id="header-container" class="container">
-    <button id="navbar-dropdown-btn">☰</button>
+    <button id="navbar-dropdown-btn"></button>
     <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
     <nav id="navbar" arial-label="primary navigation">
       <ul class="menu">
