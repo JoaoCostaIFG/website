@@ -61,6 +61,8 @@
         <li class="menu-item"><a href="<?= route('projects_route'); ?>">Projects</a></li>
         <li class="menu-item"><a href="<?= route('workshops_route'); ?>">Workshops</a></li>
         <li class="menu-item"><a href="<?= route('about_route'); ?>">About/Contacts</a></li>
+      </ul>
+      <ul class="menu menu-right">
         <li class="menu-item menu-item-icon">
           <a href="https://wiki.joaocosta.dev"><img src="<?= img('wiki-icon.png'); ?>" alt="Wiki"></a>
         </li>

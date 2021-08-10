@@ -53,6 +53,10 @@
     display: none;
   }
 
+  .menu {
+    display: inline-block;
+  }
+
   .menu-item {
     display: inline-block;
   }
@@ -79,6 +83,10 @@
   #navbar {
     display: none;
     background-color: var(--background2);
+  }
+
+  .menu {
+    display: block;
   }
 
   .menu-item a {
