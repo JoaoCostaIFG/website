@@ -72,6 +72,10 @@
     display: block;
   }
 
+  #navbar:hover {
+    display: block;
+  }
+
   #navbar {
     display: none;
     background-color: var(--background2);
