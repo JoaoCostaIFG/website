@@ -149,13 +149,15 @@
 #projs-container {
   text-align: center;
   display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  /* grid-template-columns: repeat(auto-fill, 20em); */
+  justify-content: center;
 }
 
 .proj-entry {
   display: inline-block;
-  max-width: 30em;
+  /* max-width: 20em; */
   padding: 2em;
   border-radius: 1em;
   background-color: var(--background);
