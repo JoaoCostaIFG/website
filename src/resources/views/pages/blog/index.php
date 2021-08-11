@@ -2,10 +2,6 @@
 
 <h2>All of my blog posts</h2>
 
-<?php if (is_auth()) { ?>
-  <a href="<?php echo route('blog_insert_route'); ?>">+</a>
-<?php } ?>
-
 <ul>
   <?php
   foreach ($args['bs'] as $b) {
@@ -13,5 +9,9 @@
   }
   ?>
 </ul>
+
+<?php if (is_auth()) { ?>
+  <a class="button button-primary" href="<?php echo route('blog_insert_route'); ?>">Add new post</a>
+<?php } ?>
 
 <?php layout_footer(); ?>
