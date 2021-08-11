@@ -151,13 +151,13 @@
   display: grid;
   grid-gap: 1em;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  /* grid-template-columns: repeat(auto-fill, 20em); */
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .proj-entry {
   display: inline-block;
-  /* max-width: 20em; */
+  position: relative;
   padding: 2em;
   border-radius: 1em;
   background-color: var(--background);
@@ -165,6 +165,13 @@
 
 .proj-entry:hover {
   background-color: var(--background2);
+}
+
+.proj-edit-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -4em; /* edit is 4 letters */
 }
 
 .proj-entry h3 {
