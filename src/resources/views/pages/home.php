@@ -5,7 +5,7 @@
 <div class="row">
   <section class="seven columns">
     <h3>Recent posts</h3>
-    <ul>
+    <ul class="list-unstyled">
       <?php
       foreach ($args['bs'] as $b) {
         partial_args('blog/entry.php', array('b' => $b));

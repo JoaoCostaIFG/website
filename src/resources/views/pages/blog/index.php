@@ -2,7 +2,7 @@
 
 <h2>All of my blog posts</h2>
 
-<ul>
+<ul class="list-unstyled">
   <?php
   foreach ($args['bs'] as $b) {
     partial_args('blog/entry.php', array('b' => $b));
