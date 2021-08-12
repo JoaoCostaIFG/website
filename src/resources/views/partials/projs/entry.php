@@ -1,4 +1,4 @@
-<article class="proj-entry">
+<article class="proj-entry hoverable-bg">
   <h3>
     <a href="<?= $args['p']->getUrl(); ?>"><?= $args['p']->getTitle(); ?></a>
   </h3>

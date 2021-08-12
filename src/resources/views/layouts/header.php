@@ -53,8 +53,10 @@
 
 <body>
   <header id="header-container" class="container">
-    <button id="navbar-dropdown-btn">&equiv;</button>
+    <input type="checkbox" id="navbar-dropdown-btn">
+    <label class="navbar-dropdown-label button" for="navbar-dropdown-btn"></label>
     <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
+    <!--<button id="navbar-dropdown-btn">&equiv;</button>-->
     <nav id="navbar" arial-label="primary navigation">
       <ul class="menu">
         <li class="menu-item"><a href="<?= route('blog_index_route'); ?>">Blog</a></li>
@@ -76,11 +78,11 @@
           <a href="<?= route('rss_route'); ?>"><img src="<?= img('rss-icon.png'); ?>" alt="RSS"></a>
         </li>
         <li class="menu-item">
-        <?php if (is_auth()) { ?>
-          <a href="<?= route('user_logout_route'); ?>">Logout</a>
-        <?php } else { ?>
-          <a href="<?= route('user_login_route'); ?>">Login</a>
-        <?php } ?>
+          <?php if (is_auth()) { ?>
+            <a href="<?= route('user_logout_route'); ?>">Logout</a>
+          <?php } else { ?>
+            <a href="<?= route('user_login_route'); ?>">Login</a>
+          <?php } ?>
         </li>
       </ul>
     </nav>
