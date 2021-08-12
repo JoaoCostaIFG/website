@@ -56,7 +56,6 @@
     <input type="checkbox" id="navbar-dropdown-btn">
     <label class="navbar-dropdown-label button" for="navbar-dropdown-btn"></label>
     <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
-    <!--<button id="navbar-dropdown-btn">&equiv;</button>-->
     <nav id="navbar" arial-label="primary navigation">
       <ul class="menu">
         <li class="menu-item"><a href="<?= route('blog_index_route'); ?>">Blog</a></li>
