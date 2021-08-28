@@ -1,0 +1,40 @@
+/* remove top bar */
+#header-container {
+  display: none;
+}
+
+/* fill whole page */
+#main-container {
+  background-color: white;
+  border: none;
+  width: 100%;
+  padding: 0;
+}
+
+footer.container {
+  width: 100% !important;
+}
+
+/* revert black theme */
+body {
+  background-color: white;
+  color: black;
+}
+
+a {
+  color: black;
+}
+
+.a-unstyled {
+  color: black;
+}
+
+.hoverable-bg {
+  background-color: white;
+  border: 3px solid black;
+}
+
+.blog-entry-title {
+  color: black;
+  text-decoration: underline;
+}
