@@ -9,7 +9,7 @@ ExecStart=docker run --name live-container -p 80:80 -p 443:443 \
                 -v /var/lib/joaocosta.dev/main/database:/var/lib/joaocosta.dev/main/database \
                 -v /var/lib/joaocosta.dev/main/storage:/var/lib/joaocosta.dev/main/storage \
                 -v /var/lib/joaocosta.dev/wiki:/var/lib/joaocosta.dev/wiki \
-                -v /var/lib/joaocosta.dev/certs/server.pem:/var/lib/joaocosta.dev/certs/server.pem:ro \
+                -v /var/lib/joaocosta.dev/certs/cert.pem:/var/lib/joaocosta.dev/certs/cert.pem:ro \
                 -v /var/lib/joaocosta.dev/certs/key.pem:/var/lib/joaocosta.dev/certs/key.pem:ro \
                 -v /var/lib/tor/joaocosta.dev:/var/lib/tor/joaocosta.dev \
                 joaocostaifg/site

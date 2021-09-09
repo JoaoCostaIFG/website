@@ -10,7 +10,7 @@ server {
   root /usr/share/joaocosta.dev/wiki;
   index doku.php;
 
-  ssl_certificate /var/lib/joaocosta.dev/certs/server.pem;
+  ssl_certificate /var/lib/joaocosta.dev/certs/cert.pem;
   ssl_certificate_key /var/lib/joaocosta.dev/certs/key.pem;
 
   # Maximum file upload size is 4MB - change accordingly if needed
