@@ -38,6 +38,15 @@ process supervisor).
 
 The website uses a [SQLite database](https://sqlite.org/index.html).
 
+## SSL certificates
+
+The SSL certificates are issued by [Let's Encrypt](https://letsencrypt.org).
+
+I used to use [certbot](https://certbot.eff.org/) to issue/renew certificates,
+but it had poor integration with my DNS provider, so I started using
+[acme.sh](https://github.com/acmesh-official/acme.sh). This way, I can renew my
+certificates automatically by using my DNS provider's API.
+
 ## Cool resources
 
 - [Example HTML boilerplate](https://www.matuzo.at/blog/html-boilerplate/).
