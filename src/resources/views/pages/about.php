@@ -39,7 +39,7 @@
       email address: <b>joaocosta.work@posteo.net</b>.
     </p>
     <p>
-    You can find my CV <a href="<?= res('files/joao_costa_resume.pdf')?>">here</a>.
+    You can find my CV <a href="<?= storage('files/joao_costa_resume.pdf')?>">here</a>.
     </p>
   </div>
 </div>
