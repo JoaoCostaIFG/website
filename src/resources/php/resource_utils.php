@@ -15,9 +15,14 @@ function res_js($name)
   return res("js/" . $name);
 }
 
+function storage($path)
+{
+  return "/storage/" . $path;
+}
+
 function img($name)
 {
-  return "/storage/img/" . $name;
+  return storage("img/" . $name);
 }
 
 function layout($layout, $args)
