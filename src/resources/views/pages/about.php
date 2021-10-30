@@ -38,6 +38,9 @@
       believe it is harmful to the human psyche. You can contact me using the following
       email address: <b>joaocosta.work@posteo.net</b>.
     </p>
+    <p>
+    You can find my CV <a href="<?= res('files/joao_costa_resume.pdf')?>">here</a>.
+    </p>
   </div>
 </div>
 
