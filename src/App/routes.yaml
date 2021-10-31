@@ -4,6 +4,9 @@ home_route:
 about_route:
     path:       /about
     controller: App\Controllers\AboutController::show
+cv_route:
+    path:       /cv
+    controller: App\Controllers\AboutController::cv
 rss_route:
     path:       /rss
     controller: App\Controllers\BlogController::rss
