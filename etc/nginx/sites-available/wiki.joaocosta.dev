@@ -10,8 +10,16 @@ server {
   root /usr/share/joaocosta.dev/wiki;
   index doku.php;
 
-  ssl_certificate /var/lib/joaocosta.dev/certs/cert.pem;
-  ssl_certificate_key /var/lib/joaocosta.dev/certs/key.pem;
+  # RSA
+  ssl_certificate     /etc/letsencrypt/joaocosta.dev/fullchain.cer;
+  ssl_certificate_key /etc/letsencrypt/joaocosta.dev/joaocosta.dev.key;
+  # ECDSA
+  ssl_certificate     /etc/letsencrypt/joaocosta.dev_ecc/fullchain.cer;
+  ssl_certificate_key /etc/letsencrypt/joaocosta.dev_ecc/joaocosta.dev.key;
+
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_prefer_server_ciphers on;
+  ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
 
   # Maximum file upload size is 4MB - change accordingly if needed
   client_max_body_size 4M;
