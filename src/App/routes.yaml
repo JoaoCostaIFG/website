@@ -21,6 +21,13 @@ workshop_route:
     requirements:
         name: '[0-9a-zA-Z]+'
 
+identicons_route:
+    path:       /identicons/{input}/{size}
+    controller: App\Controllers\IdenticonsController::show
+identicons_dfltsize_route:
+    path:       /identicons/{input}
+    controller: App\Controllers\IdenticonsController::showDflt
+
 projects_route:
     path:       /projects
     controller: App\Controllers\ProjectsController::show
