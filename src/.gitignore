@@ -1,0 +1,8 @@
+database/
+storage/
+!storage/img/
+
+# composer
+cache/
+composer.phar
+vendor/

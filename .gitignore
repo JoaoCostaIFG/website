@@ -3,17 +3,9 @@ keys
 
 # main site
 **/*.db
-src/database
-src/storage/*
-!src/storage/img/
 
 # wiki
 wiki/conf
 wiki/data
 wiki/lib/plugins
 wiki/lib/tpl
-
-# composer
-src/cache/
-src/composer.phar
-src/vendor/
