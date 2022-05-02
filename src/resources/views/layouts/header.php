@@ -36,7 +36,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta property="og:title" content="<?= $unique_title; ?>">
   <meta property="og:description" content="<?= $description; ?>">
-  <meta property="og:image" content="image.jpg">
+  <meta property="og:image" content="<?= 'https://joaocosta.dev/identicons/' . $unique_title ?>">
   <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="website">
   <meta property="og:url" content="<?= 'https://joaocosta.dev' . $_SERVER['SCRIPT_NAME']; ?>">
