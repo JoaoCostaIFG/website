@@ -2,7 +2,7 @@
     <footer class="container">
       <hr>
       <p>
-        Copyright (c) 2019, 2020, 2021 <b>João Costa</b><br>
+        Copyright (c) 2019, 2020, 2021, 2022 <b>João Costa</b><br>
         This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License.</a>
       </p>
     </footer>
