@@ -1,0 +1,47 @@
+﻿UPE | Compare Intel® Products
+05/11/2022 06:48:08 PM
+,Intel® Core™2 Duo Processor E4500 (2M Cache- 2.20 GHz- 800 MHz FSB)
+
+Essentials
+Product Collection,Legacy Intel® Core™ Processors
+Code Name,Products formerly Conroe
+Vertical Segment,Desktop
+Processor Number,E4500
+Status,Discontinued
+Launch Date,Q3'07
+Lithography,65 nm
+
+Performance Specifications
+Total Cores,2
+Processor Base Frequency,2.20 GHz
+Cache,2 MB L2 Cache
+Bus Speed,800 MHz
+FSB Parity,No
+TDP,65 W
+VID Voltage Range,0.8500V-1.5V
+
+Supplemental Information
+Embedded Options Available,No
+
+Package Specifications
+Sockets Supported,LGA775
+TCASE,73.3°C
+Package Size,37.5mm x 37.5mm
+Processing Die Size,111 mm2
+# of Processing Die Transistors,167 million
+
+Advanced Technologies
+Intel® Turbo Boost Technology ‡,No
+Intel® Hyper-Threading Technology ‡,No
+Intel® Virtualization Technology (VT-x) ‡,No
+Intel® 64 ‡,Yes
+Instruction Set,64-bit
+Idle States,Yes
+Enhanced Intel SpeedStep® Technology,Yes
+Intel® Demand Based Switching,No
+Thermal Monitoring Technologies,Yes
+
+Security & Reliability
+Intel® AES New Instructions,No
+Intel® Trusted Execution Technology ‡,No
+Execute Disable Bit ‡,Yes
