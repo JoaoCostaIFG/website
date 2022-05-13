@@ -7,6 +7,7 @@ A list of components of the server can be found in the
 ## Cool services
 
 - [CPU power](https://wiki.archlinux.org/title/CPU_frequency_scaling#cpupower);
+- [Cronie](https://wiki.archlinux.org/title/Cron);
 - [Docker](https://wiki.archlinux.org/title/Docker);
 - [lm_sensors](https://wiki.archlinux.org/title/Lm_sensors);
 - [Powertop](https://wiki.archlinux.org/title/Powertop);
@@ -16,7 +17,6 @@ A list of components of the server can be found in the
 
 ## Cool progs
 
-- [Cronie](https://wiki.archlinux.org/title/Cron);
 - [msmtp](https://wiki.archlinux.org/title/Msmtp) (including `msmtp-mta` for the
   sendmail alias);
 - [HWinfo](https://archlinux.org/packages/community/x86_64/hwinfo/).
