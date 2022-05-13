@@ -4,6 +4,12 @@ The server runs [Arch Linux](https://archlinux.org/) with the _default_ kernel.
 A list of components of the server can be found in the
 [parts directory](./parts).
 
+## TODO
+
+- Add backup hard drive (and setup backup);
+- SSD(?);
+- Replace CMOS bat;
+
 ## Dynamic DNS
 
 I tried using [ddclient](https://github.com/ddclient/ddclient), but it had
