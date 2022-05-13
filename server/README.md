@@ -32,6 +32,13 @@ followed the suggestion
 **Note:** In the future, I plan to either switch to **ddclient** (once it has
 been fixed), or implement my own solution.
 
+## Saving power
+
+- [CPU power](https://wiki.archlinux.org/title/CPU_frequency_scaling#cpupower)
+  service sets the governor to `schedutil` on boot;
+- [Powertop](https://wiki.archlinux.org/title/Powertop) service sets all _good_
+  _tunables_ on boot;
+
 ## Third-party things used
 
 ### Cool services
@@ -48,6 +55,7 @@ been fixed), or implement my own solution.
 
 ### Cool progs
 
+- [acme.sh](https://github.com/acmesh-official/acme.sh);
 - [msmtp](https://wiki.archlinux.org/title/Msmtp) (including `msmtp-mta` for the
   sendmail alias);
 - [HWinfo](https://archlinux.org/packages/community/x86_64/hwinfo/).
