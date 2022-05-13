@@ -39,6 +39,19 @@ been fixed), or implement my own solution.
 - [Powertop](https://wiki.archlinux.org/title/Powertop) service sets all _good_
   _tunables_ on boot;
 
+## Flashing the BIOS
+
+I downloaded the ROM from Asus' support page (I've included the
+[file](./parts/motherboard/BIOS-P5GC-MX-ASUS-1333-0413.zip) in this repo). I've
+copied the file to a floppy disk (like the manual says), but the EZ Flash
+utility can't recognize it. I'm not sure why this happened.
+
+So I moved on and found [flashrom](https://www.flashrom.org/Supported_hardware).
+My motherboard was tested and is supported :) . I used this tool to backup the
+[old bios](./parts/motherboard/old_bios.rom), and flash the new one. **Note:** I
+had to (temporarly) append `iomem=relaxed` to the kernel's command line for it
+to work.
+
 ## Third-party things used
 
 ### Cool services
@@ -56,6 +69,7 @@ been fixed), or implement my own solution.
 ### Cool progs
 
 - [acme.sh](https://github.com/acmesh-official/acme.sh);
+- [flashrom](https://wiki.archlinux.org/title/Flashing_BIOS_from_Linux#Flashrom);
 - [msmtp](https://wiki.archlinux.org/title/Msmtp) (including `msmtp-mta` for the
   sendmail alias);
 - [HWinfo](https://archlinux.org/packages/community/x86_64/hwinfo/).
