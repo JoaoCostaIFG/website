@@ -4,8 +4,39 @@ The server runs [Arch Linux](https://archlinux.org/) with the _default_ kernel.
 A list of components of the server can be found in the
 [parts directory](./parts).
 
-## Cool services
+## Dynamic DNS
 
+I tried using [ddclient](https://github.com/ddclient/ddclient), but it had
+problems with using Cloudflare's API tokens (instead of the older API keys).
+Apparently it was a
+[bug that was re-introduced](https://github.com/ddclient/ddclient/issues/361),
+and fixed again, but the developers aren't doing releases (almost a year waiting
+for the release, as of writing.)
+
+### Cloudflare DDNS
+
+[Cloudflare DDNS](https://github.com/timothymiller/cloudflare-ddns) is a simple
+and cool project that uses Cloudflare's API to update the DNS records. There are
+things I don't like about this program, but as now I'm using it:
+
+- Need to specify if records will be proxied, instead of using the options that
+  are already specified on the dashboard;
+- (**Not sure about this one**)Doesn't cache the previous set IP, so it keeps
+  calling the API every 5 minutes.
+
+I use this project's docker-compose file with a SystemD service. To do this, I
+followed the suggestion
+[here](https://lovethepenguin.com/docker-compose-as-systemd-service-c758c5f74930)
+(with some minor tweaks).
+
+**Note:** In the future, I plan to either switch to **ddclient** (once it has
+been fixed), or implement my own solution.
+
+## Third-party things used
+
+### Cool services
+
+- [Cloudflare-DDNS](https://github.com/timothymiller/cloudflare-ddns);
 - [CPU power](https://wiki.archlinux.org/title/CPU_frequency_scaling#cpupower);
 - [Cronie](https://wiki.archlinux.org/title/Cron);
 - [Docker](https://wiki.archlinux.org/title/Docker);
@@ -15,7 +46,7 @@ A list of components of the server can be found in the
 - [UFW](https://wiki.archlinux.org/title/Uncomplicated_Firewall);
 - [Reflector](https://wiki.archlinux.org/title/reflector).
 
-## Cool progs
+### Cool progs
 
 - [msmtp](https://wiki.archlinux.org/title/Msmtp) (including `msmtp-mta` for the
   sendmail alias);
