@@ -21,22 +21,12 @@ for the release, as of writing.)
 
 ### Cloudflare DDNS
 
-[Cloudflare DDNS](https://github.com/timothymiller/cloudflare-ddns) is a simple
-and cool project that uses Cloudflare's API to update the DNS records. There are
-things I don't like about this program, but as now I'm using it:
-
-- Need to specify if records will be proxied, instead of using the options that
-  are already specified on the dashboard;
-- (**Not sure about this one**)Doesn't cache the previous set IP, so it keeps
-  calling the API every 5 minutes.
-
-I use this project's docker-compose file with a SystemD service. To do this, I
-followed the suggestion
-[here](https://lovethepenguin.com/docker-compose-as-systemd-service-c758c5f74930)
-(with some minor tweaks).
-
-**Note:** In the future, I plan to either switch to **ddclient** (once it has
-been fixed), or implement my own solution.
+[Cloudflare DDNS](https://gitlab.com/JoaoCostaIFG/cloudflareddns) is a simple
+and cool project that uses
+[Cloudflare's API python lib](https://github.com/cloudflare/python-cloudflare)
+to update/create the DNS records. I started by using
+[timothymiller's cloudflare-ddns](https://github.com/timothymiller/cloudflare-ddns)
+package, but I didn't like it. As such, I created my own.
 
 ## Saving power
 
