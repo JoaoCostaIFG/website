@@ -13,7 +13,6 @@ old HDD's from laptops).
 
 ## TODO
 
-- Add backup hard drive (and setup backup);
 - SSD(?);
 - Replace CMOS bat;
 
@@ -36,6 +35,22 @@ to update/create the DNS records. I started by using
 package, but I didn't like it. As such, I created my own.
 
 ## Backups
+
+### Rsnapshot
+
+I use [rsnapshot](https://wiki.archlinux.org/title/Rsnapshot) to do incremental
+backups of the server:
+
+- Every 4 hours (`hourly`);
+- Every day (`daily`);
+- Every week (`weekly`);
+- Every month (`monthly`).
+
+In the case of the database, rsnapshot calls the
+[backup-db.sh](./bin/backup-db.sh) script. This script uses sqlite3's `.backup`
+command and gzip, to compress and backup the database.
+
+### Rsync
 
 The server has an SSH key with the following forced command:
 `command="/usr/bin/rsync -azv --server --sender --delete /backup/ .",no-port-forwarding,no-X11-forwarding`.
@@ -83,7 +98,9 @@ to work.
 - [flashrom](https://wiki.archlinux.org/title/Flashing_BIOS_from_Linux#Flashrom);
 - [msmtp](https://wiki.archlinux.org/title/Msmtp) (including `msmtp-mta` for the
   sendmail alias);
-- [HWinfo](https://archlinux.org/packages/community/x86_64/hwinfo/).
+- [HWinfo](https://archlinux.org/packages/community/x86_64/hwinfo/);
+- [rsnapshot](https://wiki.archlinux.org/title/Rsnapshot);
+- [rsync](https://wiki.archlinux.org/title/Rsync).
 
 ## Contributors
 
