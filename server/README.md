@@ -28,6 +28,14 @@ to update/create the DNS records. I started by using
 [timothymiller's cloudflare-ddns](https://github.com/timothymiller/cloudflare-ddns)
 package, but I didn't like it. As such, I created my own.
 
+## Backups
+
+The server has an SSH key with the following forced command:
+`command="/usr/bin/rsync -azv --server --sender --delete /backup/ .",no-port-forwarding,no-X11-forwarding`.
+This key allows automating the export of server backups, without compromising
+security. To export a backup, we do:
+`rsync -azv --delete -e "ssh" ifgsvbackuper:/backup/ .`.
+
 ## Saving power
 
 - [CPU power](https://wiki.archlinux.org/title/CPU_frequency_scaling#cpupower)
