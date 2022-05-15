@@ -1,8 +1,15 @@
 # Things installed on the server (not docker containers)
 
-The server runs [Arch Linux](https://archlinux.org/) with the _default_ kernel.
+My server runs [Arch Linux](https://archlinux.org/) with the _default_ kernel.
+
+![PC's motherboard and general side view](./parts/pics/mobo.jpg)
+
+_More pics available [here](./parts/pics)._
+
 A list of components of the server can be found in the
-[parts directory](./parts).
+[parts directory](./parts). My objective is to spend as little money as possible
+on this machine and make use of components that I have available for free (e.g.:
+old HDD's from laptops).
 
 ## TODO
 
@@ -77,3 +84,18 @@ to work.
 - [msmtp](https://wiki.archlinux.org/title/Msmtp) (including `msmtp-mta` for the
   sendmail alias);
 - [HWinfo](https://archlinux.org/packages/community/x86_64/hwinfo/).
+
+## Contributors
+
+This section is for thanking people that contributed with parts (or other stuff)
+to this project. Thank you:
+
+- [anaines14](https://github.com/anaines14):
+  - SATA cable;
+  - Molex to SATA power conector cable;
+  - 2GB of DDR2 RAM.
+- [rfontao](https://github.com/rfontao):
+  - SATA cable;
+  - 1GB of RAM.
+- [Ivo Saavedra](https://github.com/ivSaav):
+  - Floppy disks (for flashing a new BIOS).
