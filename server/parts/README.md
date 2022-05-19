@@ -32,6 +32,12 @@
   - Unbuffered;
   - 1.8V.
 
+## HDD
+
+- [Seagate ST750LM022](https://hddfaqs.com/seagate-st750lm022);
+- [Fujitsu MHZ2320BH G1](https://hddfaqs.com/fujitsu-mhz2320bh-g1);
+- [~~Toshiba MK3252GSX~~](https://hddfaqs.com/toshiba-mk3252gsx);
+
 ## Motherboard
 
 - Asus P5GC-MX
