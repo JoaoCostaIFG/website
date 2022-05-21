@@ -1,5 +1,0 @@
-#!/usr/bin/execlineb -P
-
-# privilege escalation is being performed by nginx in nginx.conf
-# s6-setuidgid http
-php-fpm7 -F

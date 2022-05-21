@@ -1,26 +1,6 @@
 clean:
 	@rm -rf ./src/cache
 
-controller:
-	@ read name \
-	&& path="src/App/Controllers/$${name}.php" \
-	; [ -f "$$path" ] \
-	&& echo "File already exists" \
-	|| printf \
-	"<?php\n\
-\n\
-namespace Controllers;\n\
-\n\
-class %s\n\
-{\n\
-  public static function show()\n\
-  {\n\
-    view('%s');\n\
-  }\n\
-}" "$$name" "$$name" >"$${path}"
-
-### DOCKER ###
-
 IMAGE_NAME=joaocostaifg/site
 # first characters of the current commit hash
 IMAGE_TAG=$(shell git rev-parse --short HEAD)
