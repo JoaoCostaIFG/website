@@ -11,11 +11,6 @@ A list of components of the server can be found in the
 on this machine and make use of components that I have available for free (e.g.:
 old HDD's from laptops).
 
-## TODO
-
-- SSD(?);
-- Replace CMOS bat;
-
 ## Dynamic DNS
 
 I tried using [ddclient](https://github.com/ddclient/ddclient), but it had
