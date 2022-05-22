@@ -15,9 +15,9 @@ RUN apk --no-cache add \
   php7-openssl \
   php7-opcache
  
-COPY php/opcache.ini /etc/php8/conf.d/opcache.ini
-COPY php/php-fpm.conf /etc/php8/php-fpm.conf
-COPY php/php.ini /etc/php8/php.ini
-COPY php/www.conf /etc/php8/php-fpm.d/www.conf
+COPY php/opcache.ini /etc/php7/conf.d/opcache.ini
+COPY php/php-fpm.conf /etc/php7/php-fpm.conf
+COPY php/php.ini /etc/php7/php.ini
+COPY php/www.conf /etc/php7/php-fpm.d/www.conf
 
 CMD ["php-fpm7", "-F", "-R"]
