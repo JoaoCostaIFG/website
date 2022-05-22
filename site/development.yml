@@ -1,12 +1,12 @@
 services:
   php:
     volumes:
-      - ./nginx/src:/main
-      - ./nginx/wiki:/wiki
+      - ./src:/main
+      - ./wiki:/wiki
   nginx:
     volumes:
-      - ./nginx/src:/main
-      - ./nginx/wiki:/wiki
+      - ./src:/main
+      - ./wiki:/wiki
       - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev/fullchain.cer:ro
       - ./nginx/keys/server.key:/etc/letsencrypt/joaocosta.dev/joaocosta.dev.key:ro
       - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev_ecc/fullchain.cer:ro
