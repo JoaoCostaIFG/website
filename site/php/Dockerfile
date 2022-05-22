@@ -1,7 +1,5 @@
 FROM alpine:3.14
 
-RUN mkdir -p /socket
-
 RUN apk --no-cache add \
   php7 \
   php7-curl \

@@ -11,8 +11,7 @@
 ##
 ## Tor will look for this file in various places based on your platform:
 ## https://www.torproject.org/docs/faq#torrc
-#User tor
-User root
+User tor
 
 ## Tor opens a SOCKS proxy on port 9050 by default -- even if you don't
 ## configure one below. Set "SOCKSPort 0" if you plan to run Tor only
@@ -74,8 +73,7 @@ DataDirectory /var/lib/tor
 
 HiddenServiceDir /var/lib/tor/joaocosta.dev/
 HiddenServiceVersion 3
-#HiddenServicePort 80 127.0.0.1:80
-HiddenServicePort 80 unix:/socket/tor-joaocosta-dev.sock
+HiddenServicePort 6667 0.0.0.0:6667
 
 #HiddenServiceDir /var/lib/tor/other_hidden_service/
 #HiddenServicePort 80 127.0.0.1:80

@@ -7,8 +7,10 @@ After=docker.service
 Type=oneshot
 RemainAfterExit=true
 WorkingDirectory=/usr/local/share/website/site
-ExecStart=/bin/docker compose -f docker-compose.yml -f production.yml up -d --remove-orphans --build 
-ExecStop=/bin/docker compose down
+ExecStartPre=-docker compose -f docker-compose.yml -f production.yml down
+ExecStartPre=-docker volume rm site_app_code
+ExecStart=docker compose -f docker-compose.yml -f production.yml up -d --remove-orphans --build 
+ExecStop=docker compose down
 
 [Install]
 WantedBy=multi-user.target

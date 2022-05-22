@@ -2,7 +2,7 @@ services:
   tor:
     volumes:
       - /var/log:/var/log
-      - tor_data:/var/lib/tor/joaocosta.dev
+      - tor_data:/var/lib/tor
   php:
     volumes:
       - /var/log:/var/log

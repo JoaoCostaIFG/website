@@ -4,8 +4,9 @@ services:
   tor:
     build: ./tor
     container_name: tor
-    volumes:
-      - tor_socket:/socket
+    networks:
+      - tor_internal
+    restart: unless-stopped
   php:
     build:
       context: .
@@ -22,15 +23,13 @@ services:
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - tor_socket:/tor-socket
     networks:
       - php_internal
+      - tor_internal
     restart: unless-stopped
 
 networks:
   php_internal:
     driver: bridge
-
-volumes:
-  tor_socket:
+  tor_internal:
+    driver: bridge
