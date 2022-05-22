@@ -6,11 +6,13 @@ services:
     container_name: tor
     volumes:
       - tor_socket:/socket
+    restart: unless-stopped
   php:
     build: ./php
     container_name: php
     volumes:
       - php_socket:/socket
+    restart: unless-stopped
   nginx:
     build: ./nginx
     container_name: nginx
@@ -20,6 +22,7 @@ services:
     volumes:
       - php_socket:/php-socket
       - tor_socket:/tor-socket
+    restart: unless-stopped
 
 volumes:
   php_socket:
