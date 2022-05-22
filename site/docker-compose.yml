@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-  tor:
-    build: ./tor
-    container_name: tor
-    volumes:
-      - tor_socket:/socket
+  #tor:
+  #  build: ./tor
+  #  container_name: tor
+  #  volumes:
+  #    - tor_socket:/socket
   php:
     build:
       context: .
