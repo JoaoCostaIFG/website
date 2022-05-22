@@ -3,6 +3,15 @@ services:
     volumes:
       #- /var/log:/var/log
       - /var/lib/tor/joaocosta.dev:/var/lib/tor/joaocosta.dev
+  php:
+    volumes:
+      #- /var/log:/var/log
+      - /var/lib/joaocosta.dev/main/database:/main/database
+      - /var/lib/joaocosta.dev/main/storage:/main/storage
+      - /var/lib/joaocosta.dev/wiki/conf:/wiki/conf
+      - /var/lib/joaocosta.dev/wiki/data:/wiki/data
+      - /var/lib/joaocosta.dev/wiki/lib/plugins:/wiki/lib/plugins
+      - /var/lib/joaocosta.dev/wiki/lib/tpl:/wiki/lib/tpl
   nginx:
     volumes:
       #- /var/log:/var/log
