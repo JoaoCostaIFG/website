@@ -1,10 +1,12 @@
 FROM alpine:3.14 as builder
 
 RUN apk --no-cache add composer
-# site code
-COPY src /app/main
 # wiki code
 COPY wiki /app/wiki
+# site code
+COPY src /app/main
+RUN ln -s /data/main/database /app/database && \
+    ln -s /data/main/storage /app/storage
 # composer
 RUN cd /app/main && composer install -n -o
 

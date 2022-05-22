@@ -7,21 +7,21 @@ services:
     volumes:
       - /var/log:/var/log
       - app_code:/app
-      - /var/lib/joaocosta.dev/main:/app/main/data
-      - /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
-      - /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
-      - /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
-      - /var/lib/joaocosta.dev/wiki/lib/tpl:/app/wiki/lib/tpl
+      - site_app_data:/data
+      #- /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
+      #- /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
+      #- /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
+      #- /var/lib/joaocosta.dev/wiki/lib/tpl:/app/wiki/lib/tpl
   nginx:
     volumes:
       - /var/log:/var/log
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - app_code:/app
-      - /var/lib/joaocosta.dev/main:/app/main/data
-      - /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
-      - /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
-      - /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
-      - /var/lib/joaocosta.dev/wiki/lib/tpl:/app/wiki/lib/tpl
+      - site_app_data:/data
+      #- /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
+      #- /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
+      #- /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
+      #- /var/lib/joaocosta.dev/wiki/lib/tpl:/app/wiki/lib/tpl
 
 volumes:
   app_code:
