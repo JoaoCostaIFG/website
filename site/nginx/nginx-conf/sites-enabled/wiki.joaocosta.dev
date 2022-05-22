@@ -4,7 +4,7 @@ server {
   # serve onion service
   listen unix:/tor-socket/tor-joaocosta-dev.sock;
 
-  server_name wiki.localhost wiki.joaocosta.dev wiki.pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion;
+  server_name wiki.localhost wiki.joaocosta.dev wiki.oz42dnhduj56kkuly25rpih43lszmkmh4yat7ztvdequ7qxf75mdmzyd.onion;
   error_log  /var/log/nginx/error.log error;
 
   root /app/wiki;
