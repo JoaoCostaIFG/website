@@ -8,17 +8,13 @@ services:
       - tor_socket:/socket
     restart: unless-stopped
   php:
-    build:
-      context: .
-      dockerfile: ./php/Dockerfile
+    build: ./php
     container_name: php
     volumes:
       - php_socket:/socket
     restart: unless-stopped
   nginx:
-    build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+    build: ./nginx
     container_name: nginx
     ports:
       - 80:80

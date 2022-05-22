@@ -5,7 +5,7 @@ LABEL Description="The container for my website"
 RUN apk --no-cache add nginx composer
 
 # nginx conf
-COPY nginx/nginx-conf /etc/nginx
+COPY nginx-conf /etc/nginx
 
 # site code
 COPY src /main

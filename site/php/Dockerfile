@@ -15,12 +15,9 @@ RUN apk --no-cache add \
   php8-openssl \
   php8-opcache
  
-COPY php/opcache.ini /etc/php8/conf.d/opcache.ini
-COPY php/php-fpm.conf /etc/php8/php-fpm.conf
-COPY php/php.ini /etc/php8/php.ini
-COPY php/www.conf /etc/php8/php-fpm.d/www.conf
+COPY opcache.ini /etc/php8/conf.d/opcache.ini
+COPY php-fpm.conf /etc/php8/php-fpm.conf
+COPY php.ini /etc/php8/php.ini
+COPY www.conf /etc/php8/php-fpm.d/www.conf
 
-COPY src /main
-COPY wiki /wiki
- 
 CMD ["php-fpm8", "-F", "-R"]
