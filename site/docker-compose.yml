@@ -5,7 +5,7 @@ services:
     build: ./php
     container_name: php
     volumes:
-      - php-fpm_socket:/socket
+      - php_socket:/socket
       - ./nginx/src:/main
       - ./nginx/wiki:/wiki
   nginx:
@@ -15,7 +15,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - php-fpm_socket:/socket
+      - php_socket:/php-socket
       - ./nginx/src:/main
       - ./nginx/wiki:/wiki
       - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev/fullchain.cer:ro
@@ -24,4 +24,4 @@ services:
       - ./nginx/keys/server.key:/etc/letsencrypt/joaocosta.dev_ecc/joaocosta.dev.key:ro
 
 volumes:
-  php-fpm_socket:
+  php_socket:

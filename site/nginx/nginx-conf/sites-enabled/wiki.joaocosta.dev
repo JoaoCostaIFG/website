@@ -40,7 +40,7 @@ server {
   location / { try_files $uri $uri/ @dokuwiki; }
   location ~ \.php$ {
     try_files $uri =404;
-    fastcgi_pass unix:/socket/php-fpm.sock;
+    fastcgi_pass unix:/php-socket/php-fpm.sock;
     fastcgi_index index.php;
     include fastcgi.conf;
   }
