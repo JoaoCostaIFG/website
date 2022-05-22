@@ -5,8 +5,8 @@ RUN apk --no-cache add composer
 COPY wiki /app/wiki
 # site code
 COPY src /app/main
-RUN ln -s /data/main/database /app/database && \
-    ln -s /data/main/storage /app/storage
+RUN ln -s /data/main/database /app/main/database && \
+    ln -s /data/main/storage /app/main/storage
 # composer
 RUN cd /app/main && composer install -n -o
 
