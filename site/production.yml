@@ -26,4 +26,5 @@ services:
 
 volumes:
   app_code:
-  app_data:
+  site_app_data:
+    external: true
