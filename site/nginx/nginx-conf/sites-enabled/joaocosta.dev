@@ -7,7 +7,7 @@ server {
   server_name localhost joaocosta.dev www.joaocosta.dev pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion;
   error_log  /var/log/nginx/error.log error;
 
-  root /main;
+  root /app/main;
   index index.php;
 
   gzip            on;

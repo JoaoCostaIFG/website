@@ -6,20 +6,20 @@ services:
   php:
     volumes:
       - /var/log:/var/log
-      - app_code:/main
-      - /var/lib/joaocosta.dev/main/database:/main/database
-      - /var/lib/joaocosta.dev/main/storage:/main/storage
+      - app_code:/app
+      - /var/lib/joaocosta.dev/main/database:/app/main/database
+      - /var/lib/joaocosta.dev/main/storage:/app/main/storage
   nginx:
     volumes:
       - /var/log:/var/log
       - /etc/letsencrypt:/etc/letsencrypt:ro
-      - app_code:/main
-      - /var/lib/joaocosta.dev/main/database:/main/database
-      - /var/lib/joaocosta.dev/main/storage:/main/storage
-      - /var/lib/joaocosta.dev/wiki/conf:/wiki/conf
-      - /var/lib/joaocosta.dev/wiki/data:/wiki/data
-      - /var/lib/joaocosta.dev/wiki/lib/plugins:/wiki/lib/plugins
-      - /var/lib/joaocosta.dev/wiki/lib/tpl:/wiki/lib/tpl
+      - app_code:/app
+      - /var/lib/joaocosta.dev/main/database:/app/main/database
+      - /var/lib/joaocosta.dev/main/storage:/app/main/storage
+      - /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
+      - /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
+      - /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
+      - /var/lib/joaocosta.dev/wiki/lib/tpl:/app/wiki/lib/tpl
 
 volumes:
   app_code:
