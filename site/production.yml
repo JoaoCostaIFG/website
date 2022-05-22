@@ -7,8 +7,7 @@ services:
     volumes:
       - /var/log:/var/log
       - app_code:/app
-      - /var/lib/joaocosta.dev/main/database:/app/main/database
-      - /var/lib/joaocosta.dev/main/storage:/app/main/storage
+      - /var/lib/joaocosta.dev/main:/app/main/data
       - /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
       - /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
       - /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
@@ -18,8 +17,7 @@ services:
       - /var/log:/var/log
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - app_code:/app
-      - /var/lib/joaocosta.dev/main/database:/app/main/database
-      - /var/lib/joaocosta.dev/main/storage:/app/main/storage
+      - /var/lib/joaocosta.dev/main:/app/main/data
       - /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
       - /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
       - /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins

@@ -2,9 +2,8 @@ user-agent: *
 
 disallow: /App/
 disallow: /cache/
-disallow: /database/
+disallow: /data/
 disallow: /resources/
-disallow: /storage/
 disallow: /vendor/
 disallow: /composer.json/
 disallow: /composer.lock/

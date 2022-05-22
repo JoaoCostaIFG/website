@@ -1,1 +1,15 @@
 log/
+
+# main
+src/data/
+!src/data/storage/img/
+## composer
+src/cache/
+src/composer.phar
+src/vendor/
+
+# wiki
+wiki/conf
+wiki/data
+wiki/lib/plugins
+wiki/lib/tpl

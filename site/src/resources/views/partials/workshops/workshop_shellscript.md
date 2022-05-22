@@ -848,4 +848,4 @@ class: middle, center
 ![Typing cat](gato.gif)
 
 Download the presentation:  
-[https://joaocosta.dev/storage/files/shellscript.zip](https://joaocosta.dev/storage/files/shellscript.zip)
+[https://joaocosta.dev/data/storage/files/shellscript.zip](https://joaocosta.dev/data/storage/files/shellscript.zip)

@@ -9,8 +9,6 @@ services:
       - ./src:/app/main
       - ./wiki:/app/wiki
       - ./log:/var/log
-      - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev/fullchain.cer:ro
-      - ./nginx/keys/server.key:/etc/letsencrypt/joaocosta.dev/joaocosta.dev.key:ro
-      - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev_ecc/fullchain.cer:ro
-      - ./nginx/keys/server.key:/etc/letsencrypt/joaocosta.dev_ecc/joaocosta.dev.key:ro
+      - ./nginx/keys:/etc/letsencrypt/joaocosta.dev:ro
+      - ./nginx/keys:/etc/letsencrypt/joaocosta.dev_ecc:ro
 

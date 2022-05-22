@@ -17,7 +17,7 @@ function res_js($name)
 
 function storage($path)
 {
-  return "/storage/" . $path;
+  return "/data/storage/" . $path;
 }
 
 function img($name)

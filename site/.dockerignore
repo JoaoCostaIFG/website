@@ -1,8 +1,5 @@
-nginx/
-
 src/cache
-src/database
-src/storage
+src/data
 src/vendor
 
 wiki/conf
