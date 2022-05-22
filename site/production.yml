@@ -1,0 +1,11 @@
+services:
+  tor:
+    volumes:
+      - /var/lib/tor/joaocosta.dev:/var/lib/tor/joaocosta.dev
+  nginx:
+    volumes:
+      - /var/log:/var/log
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/lib/joaocosta.dev/main/database:/main/database
+      - /var/lib/joaocosta.dev/main/storage:/main/storage
+      - /var/lib/joaocosta.dev/wiki:/wiki
