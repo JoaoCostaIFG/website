@@ -18,7 +18,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - app_code:/app
       - /var/lib/joaocosta.dev/main:/app/main/data
-      - app_data:/hold
       - /var/lib/joaocosta.dev/wiki/conf:/app/wiki/conf
       - /var/lib/joaocosta.dev/wiki/data:/app/wiki/data
       - /var/lib/joaocosta.dev/wiki/lib/plugins:/app/wiki/lib/plugins
