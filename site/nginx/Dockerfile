@@ -3,6 +3,10 @@ FROM alpine:3.14 as builder
 RUN apk --no-cache add composer
 # wiki code
 COPY wiki /app/wiki
+RUN ln -s /data/wiki/conf /app/wiki/conf && \
+    ln -s /data/wiki/data /app/wiki/data && \
+    ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
+    ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
 # site code
 COPY src /app/main
 RUN ln -s /data/main/database /app/main/database && \
