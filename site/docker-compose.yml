@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3"
 
 services:
   tor:
@@ -12,8 +12,8 @@ services:
       context: .
       dockerfile: ./php/Dockerfile
     container_name: php
-    volumes:
-      - php_socket:/socket
+    networks:
+      - php_internal
     restart: unless-stopped
   nginx:
     build:
@@ -24,9 +24,14 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - php_socket:/php-socket
       - tor_socket:/tor-socket
+    networks:
+      - php_internal
     restart: unless-stopped
+
+networks:
+  php_internal:
+    driver: bridge
 
 volumes:
   php_socket:
