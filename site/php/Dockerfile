@@ -19,5 +19,8 @@ COPY opcache.ini /etc/php8/conf.d/opcache.ini
 COPY php-fpm.conf /etc/php8/php-fpm.conf
 COPY php.ini /etc/php8/php.ini
 COPY www.conf /etc/php8/php-fpm.d/www.conf
+
+COPY ../nginx/src /main
+COPY ../nginx/wiki /wiki
  
 CMD ["php-fpm8", "-F", "-R"]
