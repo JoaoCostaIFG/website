@@ -7,6 +7,8 @@ services:
     volumes:
       - /var/log:/var/log
       - app_code:/main
+      - /var/lib/joaocosta.dev/main/database:/main/database
+      - /var/lib/joaocosta.dev/main/storage:/main/storage
   nginx:
     volumes:
       - /var/log:/var/log
