@@ -18,6 +18,7 @@ User tor
 ## as a relay, and not make any local application connections yourself.
 #SOCKSPort 9050 # Default: Bind to localhost:9050 for local connections.
 #SOCKSPort 192.168.0.1:9100 # Bind to this address:port too.
+SOCKSPort 0
 
 ## Entry policies to allow/deny SOCKS requests based on IP address.
 ## First entry that matches wins. If no SOCKSPolicy is set, we accept
@@ -73,7 +74,7 @@ DataDirectory /var/lib/tor
 HiddenServiceDir /var/lib/tor/joaocosta.dev/
 HiddenServiceVersion 3
 #HiddenServicePort 80 127.0.0.1:80
-HiddenServicePort 80 unix:/var/run/tor-joaocosta-dev.sock
+HiddenServicePort 80 unix:/socket/tor-joaocosta-dev.sock
 
 #HiddenServiceDir /var/lib/tor/other_hidden_service/
 #HiddenServicePort 80 127.0.0.1:80

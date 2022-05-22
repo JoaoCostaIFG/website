@@ -1,6 +1,11 @@
 version: "3.8"
 
 services:
+  tor:
+    build: ./tor
+    container_name: tor
+    volumes:
+      - tor_socket:/socket
   php:
     build: ./php
     container_name: php
@@ -16,6 +21,7 @@ services:
       - 443:443
     volumes:
       - php_socket:/php-socket
+      - tor_socket:/tor-socket
       - ./nginx/src:/main
       - ./nginx/wiki:/wiki
       - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev/fullchain.cer:ro
@@ -25,3 +31,4 @@ services:
 
 volumes:
   php_socket:
+  tor_socket:

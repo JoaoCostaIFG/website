@@ -2,7 +2,7 @@ server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;
   # serve onion service
-  #listen unix:/var/run/tor-joaocosta-dev.sock;
+  listen unix:/tor-socket/tor-joaocosta-dev.sock;
 
   server_name wiki.localhost wiki.joaocosta.dev wiki.pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion;
   error_log  /var/log/nginx/error.log error;
