@@ -6,7 +6,7 @@ services:
     container_name: tor
     volumes:
       - tor_socket:/socket
-    restart: unless-stopped
+    restart: no
   php:
     build:
       context: .
