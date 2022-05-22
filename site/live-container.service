@@ -1,0 +1,14 @@
+[Unit]
+Description=joaocosta.dev container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/usr/local/share/website/site
+ExecStart=/bin/docker compose -f docker-compose.yml -f production.yml up -d --remove-orphans --build 
+ExecStop=/bin/docker compose down
+
+[Install]
+WantedBy=multi-user.target
