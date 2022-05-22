@@ -13,7 +13,8 @@ RUN apk --no-cache add \
   php7-sqlite3 \
   php7-zip \
   php7-openssl \
-  php7-opcache
+  php7-opcache \
+  php7-json
  
 COPY php/opcache.ini /etc/php7/conf.d/opcache.ini
 COPY php/php-fpm.conf /etc/php7/php-fpm.conf
