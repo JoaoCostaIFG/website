@@ -11,7 +11,8 @@ RUN apk --no-cache add \
   php8-pdo_sqlite \
   php8-session \
   php8-sqlite3 \
-  php8-zip
+  php8-zip \
+  php8-openssl
  
 COPY php-fpm.conf /etc/php8/php-fpm.conf
 COPY php.ini /etc/php8/php.ini

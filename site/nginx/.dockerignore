@@ -1,3 +1,5 @@
+nginx/
+
 src/cache
 src/database
 src/storage

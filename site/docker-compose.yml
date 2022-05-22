@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  php:
+    build: ./php
+    container_name: php
+    volumes:
+      - php-fpm_socket:/socket
+      - ./nginx/src:/main
+      - ./nginx/wiki:/wiki
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - php-fpm_socket:/socket
+      - ./nginx/src:/main
+      - ./nginx/wiki:/wiki
+      - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev/fullchain.cer:ro
+      - ./nginx/keys/server.key:/etc/letsencrypt/joaocosta.dev/joaocosta.dev.key:ro
+      - ./nginx/keys/server.crt:/etc/letsencrypt/joaocosta.dev_ecc/fullchain.cer:ro
+      - ./nginx/keys/server.key:/etc/letsencrypt/joaocosta.dev_ecc/joaocosta.dev.key:ro
+
+volumes:
+  php-fpm_socket:

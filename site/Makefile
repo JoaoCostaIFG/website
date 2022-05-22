@@ -10,16 +10,6 @@ build:
 	@docker build -t "${IMAGE_NAME}:${IMAGE_TAG}" .
 	@docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${IMAGE_NAME}:latest"
 
-run:
-	@docker run -it -p 80:80 -p 443:443 \
-		-v $(CURDIR)/src/database:/var/lib/joaocosta.dev/main/database \
-		-v $(CURDIR)/src/storage:/var/lib/joaocosta.dev/main/storage \
-		-v $(CURDIR)/keys/server.crt:/etc/letsencrypt/joaocosta.dev/fullchain.cer:ro \
-		-v $(CURDIR)/keys/server.key:/etc/letsencrypt/joaocosta.dev/joaocosta.dev.key:ro \
-		-v $(CURDIR)/keys/server.crt:/etc/letsencrypt/joaocosta.dev_ecc/fullchain.cer:ro \
-		-v $(CURDIR)/keys/server.key:/etc/letsencrypt/joaocosta.dev_ecc/joaocosta.dev.key:ro \
-		"${IMAGE_NAME}:latest"
-
 push: build
 	@echo "Pushing docker image"
 	@docker push "${IMAGE_NAME}:${IMAGE_TAG}"
