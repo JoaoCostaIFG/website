@@ -12,8 +12,10 @@ RUN apk --no-cache add \
   php8-session \
   php8-sqlite3 \
   php8-zip \
-  php8-openssl
+  php8-openssl \
+  php8-opcache
  
+COPY opcache.ini /etc/php8/conf.d/opcache.ini
 COPY php-fpm.conf /etc/php8/php-fpm.conf
 COPY php.ini /etc/php8/php.ini
 COPY www.conf /etc/php8/php-fpm.d/www.conf
