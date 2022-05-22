@@ -33,5 +33,4 @@ networks:
     driver: bridge
 
 volumes:
-  php_socket:
   tor_socket:
