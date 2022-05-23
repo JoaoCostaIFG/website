@@ -16,8 +16,6 @@ services:
     container_name: php
     networks:
       - php_internal
-    volumes:
-      - tor_socket:/socket
     restart: unless-stopped
   nginx:
     build:
@@ -30,6 +28,8 @@ services:
     networks:
       - php_internal
       - tor_internal
+    volumes:
+      - tor_socket:/socket
     restart: unless-stopped
 
 networks:
