@@ -4,7 +4,7 @@ server {
   # serve onion service
   listen tor:6667;
 
-  server_name localhost joaocosta.dev www.joaocosta.dev oz42dnhduj56kkuly25rpih43lszmkmh4yat7ztvdequ7qxf75mdmzyd.onion;
+  server_name localhost joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
   error_log  /var/log/nginx/error.log error;
 
   root /app/main;
@@ -31,7 +31,7 @@ server {
   add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
   add_header X-Frame-Options DENY;
   add_header X-Content-Type-Options nosniff;
-  add_header Onion-Location http://pkpi6zeaofckivldth3g2pdourtpyw6rp6b6j3jdusxonbhaisagt7yd.onion$request_uri;
+  add_header Onion-Location http://erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion$request_uri;
 
   error_page 403 =301 /404;
   error_page 404 =301 /404;
