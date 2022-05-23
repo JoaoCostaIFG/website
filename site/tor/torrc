@@ -73,7 +73,7 @@ DataDirectory /var/lib/tor
 
 HiddenServiceDir /var/lib/tor/joaocosta.dev/
 HiddenServiceVersion 3
-HiddenServicePort 6667 0.0.0.0:6667
+HiddenServicePort 80 nginx:80
 
 #HiddenServiceDir /var/lib/tor/other_hidden_service/
 #HiddenServicePort 80 127.0.0.1:80
