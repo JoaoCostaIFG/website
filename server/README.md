@@ -97,6 +97,11 @@ to work.
 - [rsnapshot](https://wiki.archlinux.org/title/Rsnapshot);
 - [rsync](https://wiki.archlinux.org/title/Rsync).
 
+### Cool pages
+
+- [Using Rsnapshot and SSH, by troy.jdmz.net](https://troy.jdmz.net/rsnapshot/index.html)
+- [Using Rsync and SSH, by troy.jdmz.net](https://troy.jdmz.net/rsync/index.html)
+
 ## Contributors
 
 This section is for thanking people that contributed with parts (or other stuff)
