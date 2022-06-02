@@ -6,3 +6,7 @@ wiki/conf
 wiki/data
 wiki/lib/plugins
 wiki/lib/tpl
+wiki/.editorconfig
+wiki/.git**
+wiki/README
+wiki/SECURITY.md
