@@ -2,7 +2,7 @@
 
 This repo contains the stuff I use for my server.
 
-![Image representing my website](./favicon.png)
+![Me and my gf](./favicon.png)
 
 ## Server hardware
 
