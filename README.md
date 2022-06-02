@@ -2,6 +2,8 @@
 
 This repo contains the stuff I use for my server.
 
+![Image representing my website](./favicon.png)
+
 ## Server hardware
 
 ![Picture of the server](./server/parts/pics/mobo.jpg)
