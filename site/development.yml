@@ -9,6 +9,9 @@ services:
       - ./src:/app/main
       - ./wiki:/app/wiki
       - ./log:/var/log
-      - ./nginx/keys:/etc/letsencrypt/joaocosta.dev:ro
-      - ./nginx/keys:/etc/letsencrypt/joaocosta.dev_ecc:ro
 
+secrets:
+  joaocosta.dev:
+    file: ./nginx/keys
+  joaocosta.dev_ecc:
+    file: ./nginx/keys

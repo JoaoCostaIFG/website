@@ -11,7 +11,7 @@ services:
   nginx:
     volumes:
       - /var/log:/var/log
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - :/etc/letsencrypt:ro
       - app_code:/app
       - site_app_data:/data
 
@@ -20,3 +20,9 @@ volumes:
   site_app_data:
     external: true
   tor_data:
+
+secrets:
+  joaocosta.dev:
+    file: /etc/letsencrypt/joaocosta.dev
+  joaocosta.dev_ecc:
+    file: /etc/letsencrypt/joaocosta.dev_ecc

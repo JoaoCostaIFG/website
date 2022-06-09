@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   tor:
@@ -30,6 +30,9 @@ services:
       - tor_internal
     volumes:
       - tor_socket:/socket
+    secrets:
+      - joaocosta.dev
+      - joaocosta.dev_ecc
     restart: unless-stopped
 
 networks:
