@@ -9,9 +9,11 @@ services:
       - app_code:/app
       - site_app_data:/data
   nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile.prod
     volumes:
       - /var/log:/var/log
-      - :/etc/letsencrypt:ro
       - app_code:/app
       - site_app_data:/data
 

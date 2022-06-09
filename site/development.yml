@@ -1,14 +1,21 @@
 services:
   php:
     volumes:
-      - ./src:/app/main
-      - ./wiki:/app/wiki
       - ./log:/var/log
+      - ./src:/app/main
+      - ./src/data/database:/app/main/database
+      - ./src/data/storage:/app/main/storage
+      - ./wiki:/app/wiki
   nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile.dev
     volumes:
-      - ./src:/app/main
-      - ./wiki:/app/wiki
       - ./log:/var/log
+      - ./src:/app/main
+      - ./src/data/database:/app/main/database
+      - ./src/data/storage:/app/main/storage
+      - ./wiki:/app/wiki
 
 secrets:
   joaocosta.dev:
