@@ -14,6 +14,8 @@ RUN ln -s /data/main/database /app/main/database && \
 # composer
 RUN cd /app/main && composer install -n -o
 
+# ----------------------------------------------------------------------------
+
 FROM nginx:alpine
 
 # nginx conf

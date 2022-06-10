@@ -5,7 +5,6 @@ server {
   listen unix:/socket/tor-joaocosta.dev.sock;
 
   server_name joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
-  error_log /var/log/nginx/error.log error;
 
   root /app/main;
   index index.php;
