@@ -14,12 +14,11 @@ RUN ln -s /data/main/database /app/main/database && \
 # composer
 RUN cd /app/main && composer install -n -o
 
-FROM alpine:3.14
+FROM nginx:alpine
 
-RUN apk --no-cache add nginx
 # nginx conf
 COPY nginx/nginx-conf /etc/nginx
 
 COPY --from=builder /app /app
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+EXPOSE 80 443
