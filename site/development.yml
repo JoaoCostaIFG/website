@@ -2,13 +2,21 @@ services:
   php:
     volumes:
       - ./src:/app/main
+      - ./src/data/database:/app/main/database
+      - ./src/data/storage:/app/main/storage
       - ./wiki:/app/wiki
-      - ./log:/var/log
   nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile.dev
     volumes:
       - ./src:/app/main
+      - ./src/data/database:/app/main/database
+      - ./src/data/storage:/app/main/storage
       - ./wiki:/app/wiki
-      - ./log:/var/log
-      - ./nginx/keys:/etc/letsencrypt/joaocosta.dev:ro
-      - ./nginx/keys:/etc/letsencrypt/joaocosta.dev_ecc:ro
 
+secrets:
+  joaocosta.dev:
+    file: ./nginx/keys
+  joaocosta.dev_ecc:
+    file: ./nginx/keys

@@ -5,17 +5,16 @@ server {
   listen unix:/socket/tor-joaocosta.dev.sock;
 
   server_name wiki.localhost wiki.joaocosta.dev wiki.erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
-  error_log  /var/log/nginx/error.log error;
 
   root /app/wiki;
   index doku.php;
 
   # RSA
-  ssl_certificate     /etc/letsencrypt/joaocosta.dev/fullchain.cer;
-  ssl_certificate_key /etc/letsencrypt/joaocosta.dev/joaocosta.dev.key;
+  ssl_certificate     /run/secrets/joaocosta.dev/fullchain.cer;
+  ssl_certificate_key /run/secrets/joaocosta.dev/joaocosta.dev.key;
   # ECDSA
-  ssl_certificate     /etc/letsencrypt/joaocosta.dev_ecc/fullchain.cer;
-  ssl_certificate_key /etc/letsencrypt/joaocosta.dev_ecc/joaocosta.dev.key;
+  ssl_certificate     /run/secrets/joaocosta.dev_ecc/fullchain.cer;
+  ssl_certificate_key /run/secrets/joaocosta.dev_ecc/joaocosta.dev.key;
 
   ssl_protocols TLSv1.2 TLSv1.3;
   ssl_prefer_server_ciphers on;
@@ -46,7 +45,6 @@ server {
     include fastcgi.conf;
   }
 }
-
 
 server {
   # redirect all http to https

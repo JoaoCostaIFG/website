@@ -1,17 +1,16 @@
 services:
   tor:
     volumes:
-      - /var/log:/var/log
       - tor_data:/var/lib/tor
   php:
     volumes:
-      - /var/log:/var/log
       - app_code:/app
       - site_app_data:/data
   nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile.prod
     volumes:
-      - /var/log:/var/log
-      - /etc/letsencrypt:/etc/letsencrypt:ro
       - app_code:/app
       - site_app_data:/data
 
@@ -20,3 +19,9 @@ volumes:
   site_app_data:
     external: true
   tor_data:
+
+secrets:
+  joaocosta.dev:
+    file: /etc/letsencrypt/joaocosta.dev
+  joaocosta.dev_ecc:
+    file: /etc/letsencrypt/joaocosta.dev_ecc
