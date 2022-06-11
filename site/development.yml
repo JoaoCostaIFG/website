@@ -1,7 +1,7 @@
 services:
   php:
     build:
-      target: php_test
+      target: php_dev
     volumes:
       - ./src:/app/main
       - ./src/data/database:/app/main/database
@@ -9,8 +9,7 @@ services:
       - ./wiki:/app/wiki
   nginx:
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile.dev
+      target: nginx_dev
     volumes:
       - ./src:/app/main
       - ./src/data/database:/app/main/database

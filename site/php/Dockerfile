@@ -28,7 +28,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # ----------------------------------------------------------------------------
 
-FROM php_base AS php_test
+FROM php_base AS php_dev
 
 RUN install-php-extensions xdebug
 

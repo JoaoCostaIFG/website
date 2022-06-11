@@ -16,6 +16,9 @@ services:
       - php_internal
     restart: unless-stopped
   nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
     container_name: nginx
     ports:
       - 80:80

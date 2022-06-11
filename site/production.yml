@@ -10,8 +10,7 @@ services:
       - site_app_data:/data
   nginx:
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile.prod
+      target: nginx_prod
     volumes:
       - app_code:/app
       - site_app_data:/data
