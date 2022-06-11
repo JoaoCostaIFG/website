@@ -1,10 +1,13 @@
 FROM alpine:3.14
 
+# create user with same ID as the one used by nginx
+RUN addgroup -g 101 -S php \
+    && adduser -S -D -H -u 101 -h /var/cache/php -s /sbin/nologin -G php -g php php
+
 RUN apk --no-cache add \
-  php7 \
+  php7 php7-fpm \
   php7-curl \
   php7-exif \
-  php7-fpm \
   php7-gd \
   php7-pdo_sqlite \
   php7-session \
