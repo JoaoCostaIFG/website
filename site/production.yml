@@ -4,7 +4,7 @@ services:
       - tor_data:/var/lib/tor
   php:
     build:
-      target: php
+      target: php_prod
     volumes:
       - app_code:/app
       - site_app_data:/data

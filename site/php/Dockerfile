@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine AS php
+FROM php:7.4-fpm-alpine AS php_base
 # https://hub.docker.com/_/php/
 
 WORKDIR /
@@ -17,15 +17,18 @@ RUN curl -sSLf \
 COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
 COPY php/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-ARG DEV
-# choose default configuration
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-
 EXPOSE 9000
 
 # ----------------------------------------------------------------------------
 
-FROM php AS php_test
+FROM php_base AS php_prod
+
+# use production settings
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# ----------------------------------------------------------------------------
+
+FROM php_base AS php_test
 
 RUN install-php-extensions xdebug
 
