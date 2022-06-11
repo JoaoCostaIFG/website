@@ -1,5 +1,7 @@
 services:
   php:
+    build:
+      target: php_test
     volumes:
       - ./src:/app/main
       - ./src/data/database:/app/main/database
