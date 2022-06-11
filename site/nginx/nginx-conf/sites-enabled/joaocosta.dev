@@ -27,7 +27,7 @@ server {
   ssl_prefer_server_ciphers on;
   ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
 
-  add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
+  add_header Strict-Transport-Security max-age=31536000;
   add_header X-Frame-Options DENY;
   add_header X-Content-Type-Options nosniff;
   add_header Onion-Location http://erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion$request_uri;
