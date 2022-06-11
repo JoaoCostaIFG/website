@@ -22,4 +22,4 @@ COPY php/php-fpm.conf /etc/php7/php-fpm.conf
 COPY php/php.ini /etc/php7/php.ini
 COPY php/www.conf /etc/php7/php-fpm.d/www.conf
 
-CMD ["php-fpm7", "-F", "-R"]
+CMD ["php-fpm7", "-F"]
