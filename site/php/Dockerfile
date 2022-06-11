@@ -27,6 +27,8 @@ EXPOSE 9000
 
 FROM php AS php_test
 
+RUN install-php-extensions xdebug
+
 # use development settings and run as root
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 RUN sed -i 's/php-fpm/root/g' "/usr/local/etc/php-fpm.d/www.conf"
