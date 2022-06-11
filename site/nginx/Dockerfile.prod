@@ -21,6 +21,6 @@ FROM nginx:alpine
 # nginx conf
 COPY nginx/nginx-conf /etc/nginx
 
-COPY --from=builder /app /app
+COPY --from=builder --chown=nginx:nginx /app /app
 
 EXPOSE 80 443
