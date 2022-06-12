@@ -6,13 +6,11 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=true
-WorkingDirectory=/usr/local/share/website/site
-ExecStartPre=-git pull
-ExecStartPre=-git submodule update
+WorkingDirectory=/usr/local/src/website/site
 ExecStartPre=-docker compose -f docker-compose.yml -f production.yml down
 ExecStartPre=-docker volume rm site_app_code
 ExecStart=docker compose -f docker-compose.yml -f production.yml up -d --remove-orphans --build 
-ExecStop=docker compose down
+ExecStop=docker compose -f docker-compose.yml -f production.yml down
 
 [Install]
 WantedBy=multi-user.target

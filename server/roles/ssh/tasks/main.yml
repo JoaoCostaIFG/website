@@ -5,7 +5,12 @@
       - openssh
       - mosh
     state: present
-  notify: systemctl enable --now sshd
+  notify: restart sshd
+- name: Enable SSHD systemd service
+  systemd:
+    name: sshd
+    enabled: yes
+    masked: no
 - name: Update SSH daemon config
   copy:
     src: sshd_config
