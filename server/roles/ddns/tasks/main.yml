@@ -1,0 +1,16 @@
+---
+- name: Install cloudflare DDNS daemon python dependencies
+  community.general.pacman:
+    name:
+      - python-cloudflare
+      - python-requests
+    state: present
+- name: Schedule DDNS update with cron
+  ansible.builtin.cron:
+    name: "DDNS"
+    minute: "*/10"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "CFDDNS_CONFIG=/usr/local/etc/cfddns-config.json /usr/local/bin/cfddns.py"

@@ -1,0 +1,10 @@
+---
+- name: Install docker and docker-compose
+  community.general.pacman:
+    name:
+      - docker
+      - docker-compose
+    state: present
+  notify: systemctl enable docker
+- name: Change default log-driver to `local`
+  copy: src=daemon.json dest=/etc/docker/daemon.json

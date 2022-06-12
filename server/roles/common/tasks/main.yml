@@ -1,0 +1,14 @@
+---
+- name: Update packages and cache
+  community.general.pacman:
+    update_cache: yes
+    upgrade: yes
+- name: Install base dependencies
+  community.general.pacman:
+    name:
+      - cronie
+      - neovim
+      - pacman-contrib
+      - reflector
+      - rsync
+    state: present

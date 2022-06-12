@@ -1,0 +1,13 @@
+---
+- name: joaocosta.dev (ifgsv) Ansible playbook
+  hosts: joaocosta_dev
+  become: yes
+
+  roles:
+    - common
+    - ssh
+    - docker
+    - mail
+    - letsencrypt
+    - backup
+    - ddns
