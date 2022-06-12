@@ -1,0 +1,20 @@
+---
+- name: Fetch site files
+  ansible.builtin.git:
+    repo: "https://gitlab.com/JoaoCostaIFG/website.git"
+    dest: /usr/local/src/website
+  environment:
+    GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+- name: Copy site systemd service file
+  copy:
+    src: joaocosta.dev.service
+    dest: /etc/systemd/system/joaocosta.dev.service
+    owner: root
+    group: root
+    mode: '0666'
+  notify: update joaocosta.dev service
+- name: Enable site's systemd service files
+  systemd:
+    name: joaocosta.dev
+    enabled: yes
+    masked: no

@@ -1,0 +1,3 @@
+---
+- name: build backup container
+  command: docker build -t backupcontainer /usr/local/src/backupcontainer

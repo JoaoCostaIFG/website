@@ -5,6 +5,15 @@
       - docker
       - docker-compose
     state: present
-  notify: systemctl enable docker
+  notify: restart docker
+- name: Enable docker socket systemd service
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
 - name: Change default log-driver to `local`
-  copy: src=daemon.json dest=/etc/docker/daemon.json
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root

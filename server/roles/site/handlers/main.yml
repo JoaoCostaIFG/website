@@ -1,0 +1,6 @@
+---
+- name: update joaocosta.dev service
+  systemd:
+    name: joaocosta.dev
+    state: restarted
+    daemon_reload: yes

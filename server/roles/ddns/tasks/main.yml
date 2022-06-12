@@ -5,6 +5,21 @@
       - python-cloudflare
       - python-requests
     state: present
+- name: Fetch cloudflare DDNS source files
+  ansible.builtin.git:
+    repo: "https://gitlab.com/JoaoCostaIFG/cloudflareddns.git"
+    dest: /usr/local/src/cloudflareddns
+  environment:
+    GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+  notify: install cfddns
+- name: Configure cloudflare DDNS
+  template:
+    src: cfddns-config.json.j2
+    dest: /usr/local/etc/cfddns-config.json
+    owner: root
+    group: root
+    mode: '0600'
+  no_log: True
 - name: Schedule DDNS update with cron
   ansible.builtin.cron:
     name: "DDNS"

@@ -5,6 +5,25 @@
       - openssh
       - mosh
     state: present
-  notify: systemctl enable --now sshd
+  notify: restart sshd
+- name: Enable SSHD systemd service
+  systemd:
+    name: sshd
+    enabled: yes
+    masked: no
 - name: Update SSH daemon config
-  copy: src=sshd_config dest=/etc/ssh/sshd_config
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0600'
+    validate: /usr/bin/sshd -t -f %s
+    backup: yes
+- name: Setup script to validate SSH forced commands (allow only rsync for remote backups)
+  copy:
+    src: validate-rsync.sh
+    dest: /usr/local/bin/validate-rsync.sh
+    owner: root
+    group: root
+    mode: '0775'

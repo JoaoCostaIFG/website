@@ -5,13 +5,33 @@
       - msmtp
       - msmtp-mta
     state: present
+- name: Config msmtp
+  copy:
+    src: msmtprc
+    dest: /etc/msmtprc
+    owner: root
+    group: root
+- name: Setup email aliases
+  template:
+    src: aliases.j2
+    dest: /etc/aliases
+    owner: root
+    group: root
+    mode: '0644'
+- name: Config machine email account creds
+  template:
+    src: root_msmtprc.j2
+    dest: /root/.msmtprc
+    owner: root
+    group: root
+    mode: '0600'
 - name: Update crontab config to send mails - MAILTO
   ansible.builtin.cron:
     name: MAILTO
     env: yes
-    job: joaocosta@posteo.net
+    job: "{{ admin_email }}"
 - name: Update crontab config to send mails - MAILFROM
   ansible.builtin.cron:
     name: MAILFROM
     env: yes
-    job: euviumsapo.umgrande@sapo.pt
+    job: "{{ machine_email }}"
