@@ -1,0 +1,44 @@
+---
+- name: Install rsnapshot
+  community.general.pacman:
+    name:
+      - rsnapshot
+    state: present
+- name: Config cron
+  copy: src=rsnapshot.conf dest=/etc/rsnapshot.conf
+- name: Schedule backups with cron - hourly
+  ansible.builtin.cron:
+    name: "rsnapshot hourly"
+    minute: "0"
+    hour: "*/4"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "rsnapshot hourly"
+- name: Schedule backups with cron - daily
+  ansible.builtin.cron:
+    name: "rsnapshot daily"
+    minute: "30"
+    hour: "21"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "rsnapshot daily"
+- name: Schedule backups with cron - weekly
+  ansible.builtin.cron:
+    name: "rsnapshot weekly"
+    minute: "30"
+    hour: "22"
+    day: "*"
+    month: "*"
+    weekday: "0"
+    job: "rsnapshot weekly"
+- name: Schedule backups with cron - monthly
+  ansible.builtin.cron:
+    name: "rsnapshot monthly"
+    minute: "30"
+    hour: "23"
+    day: "1"
+    month: "*"
+    weekday: "*"
+    job: "rsnapshot monthly"

@@ -1,0 +1,10 @@
+---
+- name: Install SSH/MOSH
+  community.general.pacman:
+    name:
+      - openssh
+      - mosh
+    state: present
+  notify: systemctl enable --now sshd
+- name: Update SSH daemon config
+  copy: src=sshd_config dest=/etc/ssh/sshd_config

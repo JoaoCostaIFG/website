@@ -1,0 +1,15 @@
+---
+- name: Install acme.sh
+  community.general.pacman:
+    name:
+      - acme.sh
+    state: present
+- name: Schedule SSL certificate update with cron
+  ansible.builtin.cron:
+    name: "acme.sh"
+    minute: "0"
+    hour: "22"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: '/usr/bin/acme.sh --cron --home "/etc/letsencrypt/"'

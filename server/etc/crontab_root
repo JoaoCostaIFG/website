@@ -1,9 +1,0 @@
-MAILTO=joaocosta@posteo.net
-MAILFROM=euviumsapo.umgrande@sapo.pt
-0 22 * * * /usr/bin/acme.sh --cron --home "/etc/letsencrypt/"
-*/10 * * * * CFDDNS_CONFIG=/usr/local/etc/cfddns-config.json /usr/local/bin/cfddns.py
-
-0 */4 * * * rsnapshot hourly
-30 21 * * * rsnapshot daily
-30 22 * * 0 rsnapshot weekly
-30 23 1 * * rsnapshot monthly

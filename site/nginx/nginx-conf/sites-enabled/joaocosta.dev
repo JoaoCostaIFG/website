@@ -4,33 +4,10 @@ server {
   # serve onion service
   listen unix:/socket/tor-joaocosta.dev.sock;
 
-  server_name joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
+  server_name localhost joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
 
   root /app/main;
   index index.php;
-
-  gzip            on;
-  gzip_disable    "msie6";
-  gzip_vary       on;
-  gzip_proxied    any;
-  gzip_min_length 256;
-  gzip_types      text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/vnd.ms-fontobject application/x-font-ttf font/opentype image/svg+xml image/x-icon;
-
-  # RSA
-  ssl_certificate     /run/secrets/joaocosta.dev/fullchain.cer;
-  ssl_certificate_key /run/secrets/joaocosta.dev/joaocosta.dev.key;
-  # ECDSA
-  ssl_certificate     /run/secrets/joaocosta.dev_ecc/fullchain.cer;
-  ssl_certificate_key /run/secrets/joaocosta.dev_ecc/joaocosta.dev.key;
-
-  ssl_protocols TLSv1.2 TLSv1.3;
-  ssl_prefer_server_ciphers on;
-  ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
-
-  add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-  add_header X-Frame-Options DENY;
-  add_header X-Content-Type-Options nosniff;
-  add_header Onion-Location http://erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion$request_uri;
 
   error_page 403 =301 /404;
   error_page 404 =301 /404;
