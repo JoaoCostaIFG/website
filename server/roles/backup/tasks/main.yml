@@ -6,6 +6,12 @@
     state: present
 - name: Config cron
   copy: src=rsnapshot.conf dest=/etc/rsnapshot.conf
+- name: Copy backup container files
+  copy:
+    src: backupcontainer
+    dest: /usr/local/share/
+- name: Build backup container
+  command: docker build -t backupcontainer /usr/local/share/backupcontainer
 - name: Setup script that rsnapshot uses to backup docker volumes
   copy:
     src: backup-site.sh
