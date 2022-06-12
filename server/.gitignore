@@ -1,0 +1,2 @@
+# don't version secrets file
+group_vars/joaocosta_dev

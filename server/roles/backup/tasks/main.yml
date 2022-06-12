@@ -6,6 +6,14 @@
     state: present
 - name: Config cron
   copy: src=rsnapshot.conf dest=/etc/rsnapshot.conf
+- name: Setup script that rsnapshot uses to backup docker volumes
+  copy:
+    src: backup-site.sh
+    dest: /usr/local/bin/backup-site.sh
+    owner: root
+    group: root
+    mode: '0775'
+# cron schedules
 - name: Schedule backups with cron - hourly
   ansible.builtin.cron:
     name: "rsnapshot hourly"

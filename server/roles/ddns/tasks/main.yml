@@ -5,6 +5,14 @@
       - python-cloudflare
       - python-requests
     state: present
+- name: Configure cloudflare DDNS
+  template:
+    src: cfddns-config.json.j2
+    dest: /usr/local/etc/cfddns-config.json
+    owner: root
+    group: root
+    mode: '0600'
+  no_log: True
 - name: Schedule DDNS update with cron
   ansible.builtin.cron:
     name: "DDNS"
