@@ -31,8 +31,6 @@ services:
       - joaocosta.dev
       - joaocosta.dev_ecc
     restart: unless-stopped
-    volumes:
-      - /run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock
 
 networks:
   php_internal:
