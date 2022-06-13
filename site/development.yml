@@ -15,7 +15,6 @@ services:
       - ./src/data/database:/app/main/database
       - ./src/data/storage:/app/main/storage
       - ./wiki:/app/wiki
-      - /run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock
 
 secrets:
   joaocosta.dev:

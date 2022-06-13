@@ -14,6 +14,7 @@ services:
     volumes:
       - app_code:/app
       - site_app_data:/data
+      - /run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock
 
 volumes:
   app_code:
