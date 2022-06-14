@@ -25,6 +25,7 @@ services:
       - 443:443
     networks:
       - php_internal
+      - languagetool_internal
     volumes:
       - tor_socket:/socket
     secrets:
@@ -34,14 +35,16 @@ services:
   languagetool:
     image: erikvl87/languagetool
     container_name: languagetool
-    ports:
-        - 8010:8010
+    networks:
+      - languagetool_internal
     environment:
         - Java_Xms=256m  # minimum Java heap size of 256 mib
         - Java_Xmx=1g  # maximum Java heap size of 1 Gib
 
 networks:
   php_internal:
+    driver: bridge
+  languagetool_internal:
     driver: bridge
 
 volumes:
