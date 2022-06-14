@@ -1,0 +1,35 @@
+server {
+  listen 80;
+  server_name tail.localhost tail.joaocosta.dev ifgsv.joaocostaifg.github.beta.tailscale.net;
+
+  location /auth {
+    internal;
+
+    proxy_pass http://unix:/run/tailscale.nginx-auth.sock;
+    proxy_pass_request_body off;
+
+    proxy_set_header Host $http_host;
+    proxy_set_header Remote-Addr $remote_addr;
+    proxy_set_header Remote-Port $remote_port;
+    proxy_set_header Original-URI $request_uri;
+    # throw a 403 - forbidden to those outside the net
+    proxy_set_header Expected-Tailnet "joaocostaifg.github";
+  }
+
+  location / {
+    auth_request /auth;
+    auth_request_set $auth_user $upstream_http_tailscale_user;
+    auth_request_set $auth_name $upstream_http_tailscale_name;
+    auth_request_set $auth_login $upstream_http_tailscale_login;
+    auth_request_set $auth_tailnet $upstream_http_tailscale_tailnet;
+    auth_request_set $auth_profile_picture $upstream_http_tailscale_profile_picture;
+
+    proxy_set_header X-Webauth-User "$auth_user";
+    proxy_set_header X-Webauth-Name "$auth_name";
+    proxy_set_header X-Webauth-Login "$auth_login";
+    proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
+    proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
+
+    proxy_pass http://localhost:8010;
+  }
+}

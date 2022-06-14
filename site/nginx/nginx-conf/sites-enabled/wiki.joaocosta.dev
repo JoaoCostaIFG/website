@@ -13,18 +13,6 @@ server {
   client_max_body_size 4M;
   client_body_buffer_size 128k;
 
-  location = /auth {
-    internal;
-
-    proxy_pass http://unix:/run/tailscale.nginx-auth.sock;
-    proxy_pass_request_body off;
-
-    proxy_set_header Host $http_host;
-    proxy_set_header Remote-Addr $remote_addr;
-    proxy_set_header Remote-Port $remote_port;
-    proxy_set_header Original-URI $request_uri;
-  }
-
   #Remember to comment the below out when you're installing DokuWiki, and uncomment it when you're done.
   location ~ /(data/|conf/|bin/|inc/|install.php) { deny all; } # secure Dokuwiki
 
@@ -39,21 +27,8 @@ server {
 
   location / { try_files $uri $uri/ @dokuwiki; }
   location ~ \.php$ {
-    auth_request /auth;
-    auth_request_set $auth_user $upstream_http_tailscale_user;
-    auth_request_set $auth_name $upstream_http_tailscale_name;
-    auth_request_set $auth_login $upstream_http_tailscale_login;
-    auth_request_set $auth_tailnet $upstream_http_tailscale_tailnet;
-    auth_request_set $auth_profile_picture $upstream_http_tailscale_profile_picture;
-
-    proxy_set_header X-Webauth-User "$auth_user";
-    proxy_set_header X-Webauth-Name "$auth_name";
-    proxy_set_header X-Webauth-Login "$auth_login";
-    proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
-    proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
-
-
     try_files $uri =404;
+    #fastcgi_pass unix:/php-socket/php-fpm.sock;
     fastcgi_pass php:9000;
     fastcgi_index index.php;
     include fastcgi.conf;
