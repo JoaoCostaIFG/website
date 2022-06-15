@@ -31,6 +31,9 @@ services:
     secrets:
       - joaocosta.dev
       - joaocosta.dev_ecc
+    depends_on:
+      - tor
+      - php
     restart: unless-stopped
   languagetool:
     image: erikvl87/languagetool
