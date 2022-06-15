@@ -4,7 +4,7 @@ server {
   # serve onion service
   listen unix:/socket/tor-joaocosta.dev.sock;
 
-  server_name wiki.localhost wiki.joaocosta.dev wiki.erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
+  server_name wiki.joaocosta.dev wiki.erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion wiki.localhost;
 
   root /app/wiki;
   index doku.php;
@@ -40,6 +40,6 @@ server {
   listen 80;
   listen [::]:80;
 
-  server_name wiki.joaocosta.dev;
+  server_name wiki.joaocosta.dev wiki.localhost;
   return 301 https://wiki.joaocosta.dev$request_uri;
 }

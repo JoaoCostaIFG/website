@@ -1,8 +1,8 @@
 server {
   listen 80;
-  server_name ifgsv.joaocostaifg.github.beta.tailscale.net;
+  server_name ifgsv.joaocostaifg.github.beta.tailscale.net tail.joaocosta.dev;
 
-  location /auth {
+  location = /auth {
     internal;
 
     proxy_pass http://unix:/run/tailscale.nginx-auth.sock;
@@ -30,6 +30,8 @@ server {
     proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
     proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
-    proxy_pass http://languagetool:8010;
+    location /lt {
+      proxy_pass http://languagetool:8010;
+    }
   }
 }

@@ -4,7 +4,7 @@ server {
   # serve onion service
   listen unix:/socket/tor-joaocosta.dev.sock;
 
-  server_name localhost joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
+  server_name joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion localhost www.localhost;
 
   root /app/main;
   index index.php;
@@ -42,10 +42,10 @@ server {
 
 server {
   # redirect all http to https
-  listen 80;
-  listen [::]:80;
+  listen 80 default_server;
+  listen [::]:80 default_server;
 
-  server_name localhost joaocosta.dev www.joaocosta.dev;
+  server_name joaocosta.dev www.joaocosta.dev localhost www.localhost;
 
   return 301 https://$host$request_uri;
 }
