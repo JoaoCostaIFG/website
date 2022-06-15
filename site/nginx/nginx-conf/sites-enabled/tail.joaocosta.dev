@@ -1,6 +1,6 @@
 server {
   listen 80;
-  server_name ifgsv.joaocostaifg.github.beta.tailscale.net tail.joaocosta.dev;
+  server_name tail.joaocosta.dev;
 
   location = /auth {
     internal;
