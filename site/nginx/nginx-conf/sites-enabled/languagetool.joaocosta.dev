@@ -2,7 +2,7 @@ server {
   listen 443 ssl;
   listen [::]:443 ssl;
 
-  server_name tail.joaocosta.dev ifgsv.joaocostaifg.github.beta.tailscale.net;
+  server_name languagetool.joaocosta.dev;
 
   location = /auth {
     internal;
@@ -32,9 +32,6 @@ server {
     proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
     proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
-    #location /lt {
-    #  proxy_pass http://languagetool:8010;
-    #}
     proxy_pass http://languagetool:8010;
   }
 }
@@ -44,7 +41,7 @@ server {
   listen 80;
   listen [::]:80;
 
-  server_name tail.joaocosta.dev ifgsv.joaocostaifg.github.beta.tailscale.net;
+  server_name languagetool.joaocosta.dev;
 
   return 301 https://$host$request_uri;
 }
