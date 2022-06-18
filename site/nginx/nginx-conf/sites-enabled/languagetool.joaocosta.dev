@@ -5,7 +5,7 @@ server {
   server_name languagetool.tail.joaocosta.dev;
 
   location / {
-    auth_request tail.joaocosta.dev/auth;
+    auth_request https://tail.joaocosta.dev/auth;
     auth_request_set $auth_user $upstream_http_tailscale_user;
     auth_request_set $auth_name $upstream_http_tailscale_name;
     auth_request_set $auth_login $upstream_http_tailscale_login;
