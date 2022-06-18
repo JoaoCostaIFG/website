@@ -1,0 +1,18 @@
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+
+  server_name tail.joaocosta.dev;
+
+  include /etc/nginx/auth.locations;
+}
+
+server {
+  # redirect all http to https
+  listen 80;
+  listen [::]:80;
+
+  server_name tail.joaocosta.dev;
+
+  return 301 https://$host$request_uri;
+}

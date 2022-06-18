@@ -5,6 +5,7 @@
     dest: /usr/local/src/website
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+  notify: update joaocosta.dev service
 - name: Copy site systemd service file
   copy:
     src: joaocosta.dev.service

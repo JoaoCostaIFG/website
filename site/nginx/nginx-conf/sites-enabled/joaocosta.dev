@@ -4,7 +4,7 @@ server {
   # serve onion service
   listen unix:/socket/tor-joaocosta.dev.sock;
 
-  server_name localhost joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion;
+  server_name joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion localhost www.localhost;
 
   root /app/main;
   index index.php;
@@ -24,15 +24,15 @@ server {
   location = /robots.txt  { access_log off; log_not_found off; }
 
   location ~ ^/index\.php(/|$) { 
-    #fastcgi_pass unix:/php-socket/php-fpm.sock;
-    fastcgi_pass php:9000;
-    fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    include fastcgi_params;
-    include fastcgi.conf;
     # Prevents URIs that include the front controller. This will 404:
     # http://domain.tld/index.php/some-path
     # Remove the internal directive to allow URIs like this
     internal;
+
+    fastcgi_pass php:9000;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    include fastcgi_params;
+    include fastcgi.conf;
   }
 
   # return 404 for all other php files not matching the front controller
@@ -42,10 +42,10 @@ server {
 
 server {
   # redirect all http to https
-  listen 80;
-  listen [::]:80;
+  listen 80 default_server;
+  listen [::]:80 default_server;
 
-  server_name localhost joaocosta.dev www.joaocosta.dev;
+  server_name joaocosta.dev www.joaocosta.dev localhost www.localhost;
 
   return 301 https://$host$request_uri;
 }

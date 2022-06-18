@@ -37,13 +37,14 @@ SOCKSPort 0
 ## may provide sensitive information to an attacker who obtains the logs.
 ##
 ## Send all messages of level 'notice' or higher to /var/log/tor/notices.log
-Log notice file /var/log/tor/notices.log
+#Log notice file /var/log/tor/notices.log
 ## Send every possible message to /var/log/tor/debug.log
 #Log debug file /var/log/tor/debug.log
 ## Use the system log instead of Tor's logfiles
 #Log notice syslog
 ## To send all messages to stderr:
 #Log debug stderr
+Log notice stdout
 
 ## Uncomment this to start the process in the background... or use
 ## --runasdaemon 1 on the command line. This is ignored on Windows;

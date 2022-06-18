@@ -10,5 +10,6 @@
     - mail
     - letsencrypt
     - backup
+    - tailscale
     - ddns
     - site

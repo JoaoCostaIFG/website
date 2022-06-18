@@ -1,0 +1,12 @@
+---
+- name: Install tailscale daemon
+  community.general.pacman:
+    name:
+      - tailscale
+    state: present
+  notify: restart tailscaled
+- name: Enable tailscale daemon systemd service
+  systemd:
+    name: tailscaled
+    enabled: yes
+    masked: no
