@@ -8,7 +8,7 @@ Type=oneshot
 RemainAfterExit=true
 WorkingDirectory=/usr/local/src/website/site
 ExecStartPre=-docker compose -f docker-compose.yml -f production.yml down
-ExecStartPre=-docker volume rm site_app_code
+ExecStartPre=-docker volume rm site_app_code site_tor_socket
 ExecStart=docker compose -f docker-compose.yml -f production.yml up -d --remove-orphans --build 
 ExecStop=docker compose -f docker-compose.yml -f production.yml down
 
