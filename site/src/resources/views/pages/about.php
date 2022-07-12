@@ -16,27 +16,28 @@
       <a href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a>
       and this is my personal website.<br>
       I started this website so I could learn more about web development and have
-      a place to share my experiences, mostly relating to programming although not
-      necessarly.
+      a place to share my experiences/thoughts (mostly) relating to informatics. This
+      website passed through multiple changes and is now hosted on my personal home-server
+      (alongside other self-hosted services I use).
     </p>
     <p>
-      Over the years, I've dealt with numerous programming languages, but I am
-      the most confortable with the following: <b>Bash/POSIX shell</b>,
-      <b>C</b>, <b>C++</b>, <b>Java</b>, <b>Python3</b>, and <b>Zig</b>.
+      As part of both my academic, work, and personal experience, I've had the
+      opportunity to deal with numerous programming languages. As of writing, my
+      favorites are: <b>Bash/POSIX shell</b>, <b>C</b>, <b>C++</b>, <b>Java</b>,
+      <b>Python3</b>, and <b>Zig</b>.
     </p>
     <p>
-      In my free time, I enjoy playing games, reading, listening to music, and
-      working on personal projects, which usually revolve around customizing my
-      Linux machines <i>(I use Arch BTW)</i>.<br>
+      In my free time, I enjoy working on personal projects, listening to music,
+      playing games, and reading. Many of my personal projects revolve around
+      customizing my Linux machines, be it the personal ones or the servers
+      <i>(I use Arch BTW)</i>.
     </p>
     <p>
-      I'm a supporter of the sovereignty of people's data (<b>privacy</b>),
-      <a href="https://www.fsf.org">free software</a> (or at least open-source
-      software) and the <a href="https://repair.eu">right to repair</a>.<br>
-      Generally speaking, I don't like social media so I try to stay as far away
-      from it as possible. This is mostly due to privacy concerns but also because I
-      believe it is harmful to the human psyche. You can contact me using the following
-      email address: <b>joaocosta.work@posteo.net</b>.
+      I enjoy contributing to open-source software and always try to release mine
+      with open licenses (often the MIT license). Generally speaking, I don't like
+      social media, so I try to stay as far away from it as possible (which isn't
+      always possible). The best/fastest way to contact me is through email at:
+      <a href="mailto:joaocosta.work@posteo.net">joaocosta.work@posteo.net</a>
     </p>
     <p>
       You can find my CV <a href="<?= route('cv_route') ?>">here</a>.
