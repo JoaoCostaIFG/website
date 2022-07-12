@@ -35,8 +35,8 @@
       I manage a small <a href="https://wiki.joaocosta.dev">wiki</a> with a couple of friends where we post small
       "cookbooks", "cheatsheets" and other general guides/annotations about things we've had to work/deal with
       in the past and would like to have an easy to follow guide in the future. Editing of the wiki is restricted
-      to us but you reading is public. <a href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a> is the software
-      behind itinstance for it.
+      to us, but reading is public. <a href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a> is the software
+      powering it.
     </p>
   </section>
 </div>
