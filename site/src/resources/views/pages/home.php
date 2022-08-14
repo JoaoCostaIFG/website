@@ -1,6 +1,6 @@
 <?php layout_header('Home'); ?>
 
-<h2>Welcome to my corner of the net!</h2>
+<h2>Welcome to my corner of the Internet!</h2>
 
 <div class="row">
   <section class="seven columns">
@@ -33,10 +33,9 @@
     <h3><a href="https://wiki.joaocosta.dev">Wiki</a></h3>
     <p>
       I manage a small <a href="https://wiki.joaocosta.dev">wiki</a> with a couple of friends where we post small
-      "cookbooks", "cheatsheets" and other general guides/annotations about things we've had to work/deal with
-      in the past and would like to have an easy to follow guide in the future. Editing of the wiki is restricted
-      to us but you reading is public. <a href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a> is the software
-      behind itinstance for it.
+      "cookbooks", "cheat-sheets" and other general guides/annotations. These focus on things we've had to work/deal
+      with in the past and would like to have an easy-to-follow guide in the future. Although editing of the wiki is
+      restricted, reading is public to everyone. The wiki is powered by <a href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a>.
     </p>
   </section>
 </div>
