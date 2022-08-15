@@ -7,7 +7,7 @@
     state: present
 - name: Fetch cloudflare DDNS source files
   ansible.builtin.git:
-    repo: "https://gitlab.com/JoaoCostaIFG/cloudflareddns.git"
+    repo: "https://github.com/JoaoCostaIFG/cloudflareddns.git"
     dest: /usr/local/src/cloudflareddns
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
