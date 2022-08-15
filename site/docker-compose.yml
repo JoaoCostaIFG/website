@@ -47,6 +47,8 @@ services:
   radio:
     image: joaocostaifg/broadcast-server
     container_name: radio
+    ports:
+      - 9222:9222
     networks:
       - radio_internal
 

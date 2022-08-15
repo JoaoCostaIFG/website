@@ -4,7 +4,7 @@ server {
 
   server_name radio.joaocosta.dev radio.localhost;
 
-  include /etc/nginx/auth.locations;
+  #include /etc/nginx/auth.locations;
 
   location / {
     #auth_request /auth;
@@ -20,7 +20,12 @@ server {
     #proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
     #proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
-    proxy_pass http://radio:9222;
+    proxy_http_version 1.1;
+    proxy_buffering off;
+    proxy_request_buffering off;
+    #limit_except GET {
+      proxy_pass http://radio:9222;
+    #}
   }
 }
 
