@@ -6,6 +6,8 @@ server {
 
   include /etc/nginx/auth.locations;
 
+  client_max_body_size 0;
+
   location / {
     auth_request /auth;
     auth_request_set $auth_user $upstream_http_tailscale_user;
