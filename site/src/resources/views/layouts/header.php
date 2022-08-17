@@ -50,9 +50,9 @@
 </head>
 
 <body>
-  <header id="header-container" class="container">
+  <header id="header-container">
     <input type="checkbox" id="navbar-dropdown-btn">
-    <label class="navbar-dropdown-label button" for="navbar-dropdown-btn"></label>
+    <label for="navbar-dropdown-btn"></label>
     <h1 id="brand"><a href="<?= route('home_route'); ?>">JoaoCostaIFG</a></h1>
     <nav id="navbar" arial-label="primary navigation">
       <ul class="menu">
@@ -85,4 +85,4 @@
     </nav>
   </header>
 
-  <div id="main-container" class="container">
+  <div id="main-container">
