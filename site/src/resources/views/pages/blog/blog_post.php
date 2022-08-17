@@ -6,7 +6,10 @@ else $has_code_blocks = false;
 if ($has_code_blocks) layout_header_args(array('title' => $args['b']->getTitle(), 'css' => ['prism.css']));
 else layout_header($args['b']->getTitle());
 
+// title
 echo Parsedown::instance()->text('##' . $args['b']->getTitle());
+
+echo '<em>Average ' . $args['b']->readingTime() . ' minute(s) of reading time</em><br><br>';
 
 if (is_auth()) { ?>
   <a class="button button-primary" href="<?= route_args('blog_edit_route', array('id' => $args['b']->getId())); ?>">Edit</a>
