@@ -23,6 +23,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" type="text/css" href="<?= res_css('style.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?= res_css('print.css'); ?>" media="print">
+  <link rel="stylesheet" type="text/css" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
   <?php
   if (isset($args['css'])) {
     foreach ($args['css'] as $css) { ?>
@@ -63,22 +64,22 @@
       </ul>
       <ul class="menu menu-right">
         <li class="menu-item menu-item-icon">
-          <a href="https://wiki.joaocosta.dev"><img src="<?= img('wiki-icon.png'); ?>" alt="Wiki"></a>
+          <a href="https://wiki.joaocosta.dev"><i class="fa-solid fa-file-pen"></i></a>
         </li>
         <li class="menu-item menu-item-icon">
-          <a href="https://gitlab.com/JoaoCostaIFG"><img src="<?= img('gitlab-icon.png'); ?>" alt="Gitlab"></a>
+          <a href="https://gitlab.com/JoaoCostaIFG"><i class="fa-brands fa-gitlab"></i></a>
         </li>
         <li class="menu-item menu-item-icon">
-          <a href="https://github.com/JoaoCostaIFG"><img src="<?= img('github-icon.png'); ?>" alt="Github"></a>
+          <a href="https://github.com/JoaoCostaIFG"><i class="fa-brands fa-github"></i></a>
         </li>
         <li class="menu-item menu-item-icon">
-          <a href="<?= route('rss_route'); ?>"><img src="<?= img('rss-icon.png'); ?>" alt="RSS"></a>
+          <a href="<?= route('rss_route'); ?>"><i class="fa-solid fa-square-rss"></i></a>
         </li>
         <li class="menu-item">
           <?php if (is_auth()) { ?>
-            <a href="<?= route('user_logout_route'); ?>">Logout</a>
+            <a href="<?= route('user_logout_route'); ?>"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
           <?php } else { ?>
-            <a href="<?= route('user_login_route'); ?>">Login</a>
+            <a href="<?= route('user_login_route'); ?>"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
           <?php } ?>
         </li>
       </ul>
