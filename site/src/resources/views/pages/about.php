@@ -1,4 +1,4 @@
-<?php layout_header('About'); ?>
+<?php layout_header('About me'); ?>
 
 <h2>Hello c|:D</h2>
 

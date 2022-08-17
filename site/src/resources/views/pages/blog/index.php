@@ -1,4 +1,4 @@
-<?php layout_header('Blog index'); ?>
+<?php layout_header('Blog'); ?>
 
 <h2>All of my blog posts</h2>
 
