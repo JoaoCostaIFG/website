@@ -1,13 +1,17 @@
 FROM alpine:3.14 AS nginx_builder
 
-RUN apk --no-cache add composer
+RUN apk --no-cache add composer npm
 
 # wiki code
 COPY wiki /app/wiki
 # site code
 COPY src /app/main
-# install stuff with composer
+# install php packages with composer
 RUN cd /app/main && composer install -n -o
+# install javascript packages with npm
+RUN cd /app/main && npm install -D
+# build css with tailwindcss
+RUN cd /app/main && npx tailwindcss -i ./resources/css/style_input.css -o ./resources/css/style.css
 
 # -----------------------------------------------------------------------------
 
@@ -37,5 +41,11 @@ RUN ln -s /data/wiki/conf /app/wiki/conf && \
 
 FROM nginx_base AS nginx_dev
 
+RUN apk --no-cache add npm
+
+COPY nginx/dev_cmd.sh /dev_cmd.sh
+
 # run development as root
 RUN sed -i 's/user nginx;/user root;/' "/etc/nginx/nginx.conf"
+
+CMD ["sh", "/dev_cmd.sh"]

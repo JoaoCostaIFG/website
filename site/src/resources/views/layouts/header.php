@@ -21,9 +21,7 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" type="text/css" href="<?= res_css('normalize.css'); ?>">
-  <link rel="stylesheet" type="text/css" href="<?= res_css('skeleton.css'); ?>">
-  <link rel="stylesheet" type="text/css" href="<?= res_css('custom.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= res_css('style.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?= res_css('print.css'); ?>" media="print">
   <?php
   if (isset($args['css'])) {

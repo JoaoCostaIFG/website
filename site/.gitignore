@@ -7,6 +7,9 @@ src/data/
 src/cache/
 src/composer.phar
 src/vendor/
+src/node_modules/
+## tailwindcss
+src/resources/css/style.css
 
 # wiki
 wiki/conf

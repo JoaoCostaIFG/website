@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --fonts: Helvetica, Arial, sans-serif;
   --background: #121212;
