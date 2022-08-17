@@ -1,7 +1,7 @@
 ---
 - name: Fetch site files
   ansible.builtin.git:
-    repo: "https://gitlab.com/JoaoCostaIFG/website.git"
+    repo: "https://github.com/JoaoCostaIFG/website.git"
     dest: /usr/local/src/website
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password

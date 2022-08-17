@@ -26,6 +26,7 @@ services:
     networks:
       - php_internal
       - languagetool_internal
+      - radio_internal
     volumes:
       - tor_socket:/socket
     secrets:
@@ -43,11 +44,20 @@ services:
     environment:
         - Java_Xms=256m  # minimum Java heap size of 256 mib
         - Java_Xmx=1g  # maximum Java heap size of 1 Gib
+  radio:
+    image: joaocostaifg/broadcast-server
+    container_name: radio
+    ports:
+      - 9222:9222
+    networks:
+      - radio_internal
 
 networks:
   php_internal:
     driver: bridge
   languagetool_internal:
+    driver: bridge
+  radio_internal:
     driver: bridge
 
 volumes:
