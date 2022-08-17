@@ -1,17 +1,28 @@
-    </div>
-    <footer class="container">
-      <hr>
-      <p>
-        Copyright (c) 2019, 2020, 2021, 2022 <b>João Costa</b><br>
-        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License.</a>
-      </p>
-    </footer>
+  </div>
+  <footer class="container">
+    <hr class="my-4">
+    <p class="text-sm text-gray-600">
+      Copyright <a class="text-blue-400" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a> <i class="fa-solid fa-copyright"></i> 2019, 2020, 2021, 2022 <b>João Costa</b>
+    </p>
+  </footer>
 
-    <?php
-    if (isset($args['js'])) {
-      foreach ($args['js'] as $js) { ?>
-        <script type="text/javascript" src="<?= res_js($js); ?>"></script>
-    <?php }
-    } ?>
-  </body>
+  <!-- JS
+  -------------------------------------------------- -->
+  <script type="text/javascript">
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+      } else {
+        mobileMenu.classList.add("hidden");
+      }
+    }
+  </script>
+  <?php
+  if (isset($args['js'])) {
+    foreach ($args['js'] as $js) { ?>
+      <script type="text/javascript" src="<?= res_js($js); ?>"></script>
+  <?php }
+  } ?>
+</body>
 </html>
