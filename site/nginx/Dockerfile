@@ -11,7 +11,7 @@ RUN cd /app/main && composer install -n -o
 # install javascript packages with npm
 RUN cd /app/main && npm install -D
 # build css with tailwindcss
-RUN cd /app/main && npx tailwindcss -i ./resources/css/style_input.css -o ./resources/css/style.css
+RUN cd /app/main && npx tailwindcss -i ./resources/css/style_input.css -o ./resources/css/style.css --minify
 
 # -----------------------------------------------------------------------------
 
