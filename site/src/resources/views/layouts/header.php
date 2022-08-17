@@ -47,20 +47,6 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="alternate" type="application/rss+xml" title="Posts - João Costa" href="<?= route('projects_route'); ?>">
 
-  <!-- JS
-  -------------------------------------------------- -->
-  <script type="text/javascript">
-    function toggleMobileMenu() {
-console.log("ASD");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (mobileMenu.classList.contains("hidden")) {
-        mobileMenu.classList.remove("hidden");
-      } else {
-        mobileMenu.classList.add("hidden");
-      }
-    }
-  </script>
-
   <!-- CSRF
   -------------------------------------------------- -->
   <meta name="csrf-token" content="<?= $_SESSION['csrf']; ?>">
