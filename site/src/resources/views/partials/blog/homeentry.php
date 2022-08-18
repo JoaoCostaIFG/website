@@ -1,6 +1,9 @@
-<a class="max-w-xl p-2 rounded-md text-gray-100 bg-gray-600 ring-2 ring-inset ring-green-400 hover:bg-gray-800 hover:ring-green-600"
+<a class="max-w-xl p-2 rounded-md ring-inset
+      bg-background-200 text-foreground-800 dark:bg-background-900 dark:text-foreground-200
+      hover:bg-gray-300 dark:hover:bg-gray-800
+      hover:ring-2 hover:ring-primary-600 dark:hover:ring-primary-800"
     href="<?= route_args('blog_post_route', array('id' => $args['b']->getId())) ?>">
   <span class="font-semibold"><?= $args['b']->getTitle(); ?></span><?php if (!$args['b']->isVisible()) echo '(hidden)'; ?>
   <br>
-  <span class="text-gray-200"><?= $args['b']->getDateStr(); ?></span>
+  <span class="text-foreground-600 dark:text-foreground-500"><?= $args['b']->getDateStr(); ?></span>
 </a>
