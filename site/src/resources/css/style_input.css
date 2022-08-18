@@ -100,3 +100,20 @@
     @apply decoration-primary-600;
   }
 }
+
+@layer components {
+  .btn {
+    @apply rounded-full;
+    @apply text-white;
+    @apply font-semibold;
+    @apply text-sm;
+    @apply shadow-sm;
+    @apply px-4;
+    @apply py-1;
+  }
+
+  .btn:hover {
+    @apply underline;
+    @apply underline-offset-2;
+  }
+}

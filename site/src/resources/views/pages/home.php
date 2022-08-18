@@ -5,14 +5,19 @@
 <div class="grid grid-cols-12 gap-x-4 gap-y-4">
   <section class="col-span-12 md:col-span-7">
     <h2>Recent posts</h2>
-    <div class="grid grid-cols-1 gap-y-1">
+    <div class="grid grid-cols-1 gap-y-1  mb-4">
       <?php
       foreach ($args['bs'] as $b) {
         partial_args('blog/homeentry.php', array('b' => $b));
       }
       ?>
     </div>
-    <a href="<?php echo route('blog_index_route') ?>">(see more)</a>
+    <div class="text-right max-w-xl">
+      <a class="btn bg-primary-500 hover:bg-primary-400 dark:bg-primary-600 dark:hover:bg-primary-700"
+          href="<?php echo route('blog_index_route') ?>">
+        See More
+      </a>
+    </div>
   </section>
 
   <section class="col-span-12 md:col-span-5">
