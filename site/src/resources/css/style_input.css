@@ -19,7 +19,17 @@
   h5 > a,
   h6 > a {
     @apply underline;
-    @apply underline-offset-auto;
+    @apply underline-offset-2;
+    @apply decoration-primary-500;
+  }
+
+  h1 > a:hover,
+  h2 > a:hover,
+  h3 > a:hover,
+  h4 > a:hover,
+  h5 > a:hover,
+  h6 > a:hover {
+    @apply decoration-2;
   }
 
   h1 {
@@ -80,12 +90,13 @@
     @apply text-foreground-100;
   }
 
-  .dark h1 > a:hover,
-  .dark h2 > a:hover,
-  .dark h3 > a:hover,
-  .dark h4 > a:hover,
-  .dark h5 > a:hover,
-  .dark h6 > a:hover {
-    @apply text-primary-200;
+  .dark h1 > a,
+  .dark h2 > a,
+  .dark h3 > a,
+  .dark h4 > a,
+  .dark h5 > a,
+  .dark h6 > a {
+    @apply decoration-primary-600;
+    @apply decoration-primary-600;
   }
 }

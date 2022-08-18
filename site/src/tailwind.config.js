@@ -27,9 +27,11 @@ module.exports = {
         anchor: colors.blue,
         background: colors.zinc,
         foreground: colors.gray,
-        primary: colors.lime,
+        primary: colors.teal,
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 };

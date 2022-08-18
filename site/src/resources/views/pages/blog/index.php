@@ -2,7 +2,7 @@
 
 <h1>All of my blog posts</h1>
 
-<div class="grid grid-cols-1 gap-y-1">
+<div class="grid grid-cols-1 gap-y-2">
   <?php
   foreach ($args['bs'] as $b) {
     partial_args('blog/entry.php', array('b' => $b));
