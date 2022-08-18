@@ -2,3 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  h1::before {
+    content: '# ';
+  }
+
+  h2 {
+    margin-bottom: 0.50rem;
+  }
+
+  h2::before {
+    content: '## ';
+  }
+
+  h3::before {
+    content: '### ';
+  }
+
+  h4::before {
+    content: '#### ';
+  }
+
+  h5::before {
+    content: '##### ';
+  }
+
+  h6::before {
+    content: '###### ';
+  }
+}

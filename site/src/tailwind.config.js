@@ -10,8 +10,8 @@ module.exports = {
       serif: ['Merriweather', 'serif'],
     },
     container: {
+      center: true,
       padding: {
-        center: true,
         DEFAULT: '1rem',
         sm: '2rem',
         lg: '4rem',
