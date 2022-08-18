@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
   <!-- Basic page needs
@@ -47,12 +47,69 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="alternate" type="application/rss+xml" title="Posts - João Costa" href="<?= route('projects_route'); ?>">
 
+  <!-- JS
+  -------------------------------------------------- -->
+  <script type="text/javascript">
+    function setDarkTheme() {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+
+      const themeToggler = document.getElementById("theme-toggler");
+      if (themeToggler == null) return;
+
+      const newToggler = document.createElement("button");
+      newToggler.onclick = toggleTheme;
+      newToggler.classList.add("px-1", "text-cyan-600", "hover:text-cyan-500");
+      newToggler.innerHTML = '<i class="fa-solid fa-moon"></i>';
+
+      themeToggler.parentNode.replaceChild(newToggler, themeToggler);
+      newToggler.id = "theme-toggler";
+    }
+
+    function setLightTheme() {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+
+      const themeToggler = document.getElementById("theme-toggler");
+      if (themeToggler == null) return;
+
+      const newToggler = document.createElement("button");
+      newToggler.onclick = toggleTheme;
+      newToggler.classList.add("px-1", "text-yellow-200", "hover:text-yellow-400");
+      newToggler.innerHTML = '<i class="fa-solid fa-sun"></i>';
+
+      themeToggler.parentNode.replaceChild(newToggler, themeToggler);
+      newToggler.id = "theme-toggler";
+    }
+
+    function toggleTheme() {
+      if (localStorage.theme === "dark") {
+        setLightTheme();
+      } else {
+        setDarkTheme();
+      }
+    }
+
+    // call on page load and when changing themes (defaults to dark theme)
+    function onThemeChange() {
+      if (localStorage.theme === 'light' ||
+        (!('theme' in localStorage) && !(window.matchMedia('(prefers-color-scheme: dark)').matches))) {
+        setLightTheme();
+      } else {
+        setDarkTheme();
+      }
+    }
+
+    // placed inline on head to avoid FOUC
+    onThemeChange();
+  </script>
+
   <!-- CSRF
   -------------------------------------------------- -->
   <meta name="csrf-token" content="<?= $_SESSION['csrf']; ?>">
 </head>
 
-<body>
+<body class="dark:bg-background-900">
   <header id="header-container" class="w-full">
     <nav id="navbar" arial-label="primary navigation" class="bg-gray-800">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -118,6 +175,9 @@
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
               </a>
             <?php } ?>
+            <button id="theme-toggler" class="px-1 text-cyan-600 hover:text-cyan-500" onclick="toggleTheme()">
+              <i class="fa-solid fa-moon"></i>
+            </button>
           </div>
         </div>
       </div>

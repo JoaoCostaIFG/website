@@ -9,6 +9,9 @@
   <!-- JS
   -------------------------------------------------- -->
   <script type="text/javascript">
+    // called again here to update theme toggler icon
+    onThemeChange();
+
     function toggleMobileMenu() {
       const mobileMenu = document.getElementById("mobile-menu");
       if (mobileMenu.classList.contains("hidden")) {
