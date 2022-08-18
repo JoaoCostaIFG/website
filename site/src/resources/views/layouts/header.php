@@ -217,4 +217,4 @@
     </nav>
   </header>
 
-  <div class="container py-4 rounded-b bg-background-100 dark:bg-background-800">
+  <div class="container py-4 sm:rounded-b bg-background-100 dark:bg-background-800">
