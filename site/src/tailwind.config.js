@@ -23,8 +23,11 @@ module.exports = {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        background: colors.neutral,
+        navbar: colors.gray,
+        anchor: colors.blue,
+        background: colors.zinc,
         foreground: colors.gray,
+        primary: colors.lime,
       },
     },
   },

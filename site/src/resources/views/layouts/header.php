@@ -109,9 +109,9 @@
   <meta name="csrf-token" content="<?= $_SESSION['csrf']; ?>">
 </head>
 
-<body class="dark:bg-background-900">
+<body class="bg-background-200 text-foreground-800 dark:bg-background-900 dark:text-foreground-50">
   <header id="header-container" class="w-full">
-    <nav id="navbar" arial-label="primary navigation" class="bg-gray-800">
+    <nav id="navbar" arial-label="primary navigation" class="bg-navbar-800">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -217,4 +217,4 @@
     </nav>
   </header>
 
-  <div class="container mt-4">
+  <div class="container py-4 rounded-b bg-background-100 dark:bg-background-800">

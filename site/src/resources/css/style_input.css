@@ -3,39 +3,89 @@
 @tailwind utilities;
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: bold;
   }
 
-  h1 {
-    margin-bottom: 1rem;
+  h1 > a,
+  h2 > a,
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    @apply underline;
+    @apply underline-offset-auto;
   }
 
-  h1::before {
-    content: '# ';
+  h1 {
+    @apply mb-4;
   }
 
   h2 {
-    margin-bottom: 0.50rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h1::before {
+    content: "# ";
   }
 
   h2::before {
-    content: '## ';
+    content: "## ";
   }
 
   h3::before {
-    content: '### ';
+    content: "### ";
   }
 
   h4::before {
-    content: '#### ';
+    content: "#### ";
   }
 
   h5::before {
-    content: '##### ';
+    content: "##### ";
   }
 
   h6::before {
-    content: '###### ';
+    content: "###### ";
+  }
+
+  em::before {
+    content: "_";
+  }
+
+  em::after {
+    content: "_";
+  }
+
+  b::before {
+    content: "**";
+  }
+
+  b::after {
+    content: "**";
+  }
+
+  /* dark theme */
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-foreground-100;
+  }
+
+  .dark h1 > a:hover,
+  .dark h2 > a:hover,
+  .dark h3 > a:hover,
+  .dark h4 > a:hover,
+  .dark h5 > a:hover,
+  .dark h6 > a:hover {
+    @apply text-primary-200;
   }
 }
