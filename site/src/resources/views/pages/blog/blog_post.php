@@ -27,21 +27,6 @@ else layout_header($args['b']->getTitle());
     </div>
   <?php } ?>
 
-  <?= Parsedown::instance()->text('
-
-| Item         | Price     | # In stock |
-|:-------------|:----------|:-----------|
-| Juicy Apples | 1.99      | *7*        |
-| Bananas      | **1.89**  | 5234       |
-
----
-- asdasd asdasd a:
-  - asdpok
-  - asdopaksp dokaop dkopask
-- aspdjasopdkasop k
-
-
-'); ?>
   <?= Parsedown::instance()->text($args['b']->getContent()); ?>
 </article>
 

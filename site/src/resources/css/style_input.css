@@ -100,10 +100,12 @@
     content: "_";
   }
 
+  strong::before,
   b::before {
     content: "**";
   }
 
+  strong::after,
   b::after {
     content: "**";
   }
