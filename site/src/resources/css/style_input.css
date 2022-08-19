@@ -171,9 +171,26 @@
 }
 
 @layer utilities {
+  /* >> prose */
   .prose {
     @apply leading-loose;
   }
+
+  /* .prose h1, */
+  /* .prose h2, */
+  /* .prose h3, */
+  /* .prose h4, */
+  /* .prose h5, */
+  /* .prose h6 { */
+    /* @apply sticky; */
+    /* @apply top-0; */
+    /* @apply z-10; */
+    /* @apply bg-background-100; */
+    /* @apply dark:bg-background-800; */
+    /* @apply border-b-2; */
+    /* @apply border-primary-500; */
+    /* @apply dark:border-primary-600; */
+  /* } */
 
   .prose a {
     @apply anchor;
@@ -183,6 +200,7 @@
     @apply my-5;
   }
 
+  /* >>>> prose list */
   .prose ol,
   .prose ul {
     @apply my-5;
@@ -205,17 +223,13 @@
     @apply my-2;
   }
 
-  /*
-   * .prose ul {
-   *   @apply list-disc;
-   * }
-   */
-
   .prose ul li::before {
     @apply font-black;
     content: "- ";
   }
+  /* <<<< prose list */
 
+  /* >>>> prose quote */
   .prose blockquote {
     @apply font-semibold;
     @apply italic;
@@ -232,7 +246,9 @@
   .prose blockquote p:last-of-type::after {
     content: close-quote;
   }
+  /* <<<< prose quote */
 
+  /* >>>> prose img */
   .prose img,
   .prose video,
   .prose figure {
@@ -248,6 +264,7 @@
     @apply text-sm;
     @apply mt-3.5;
   }
+  /* <<<< prose img */
 
   .prose hr {
     @apply my-12;
@@ -257,6 +274,7 @@
     @apply mt-0;
   }
 
+  /* >>>> prose table */
   .prose table {
     @apply my-8;
     @apply w-full; /* expand tables to full width */
@@ -281,10 +299,12 @@
     @apply border-muted-300;
     @apply dark:border-muted-600;
   }
+  /* <<<< prose table */
 
   .prose pre {
     @apply text-sm !important;
     @apply whitespace-pre-line !important; /* wrap long lines */
     @apply rounded-md;
   }
+  /* << prose */
 }
