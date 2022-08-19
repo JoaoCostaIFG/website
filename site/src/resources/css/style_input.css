@@ -176,21 +176,48 @@
     @apply leading-loose;
   }
 
-  /* .prose h1, */
-  /* .prose h2, */
-  /* .prose h3, */
-  /* .prose h4, */
-  /* .prose h5, */
-  /* .prose h6 { */
-    /* @apply sticky; */
-    /* @apply top-0; */
-    /* @apply z-10; */
-    /* @apply bg-background-100; */
-    /* @apply dark:bg-background-800; */
-    /* @apply border-b-2; */
-    /* @apply border-primary-500; */
-    /* @apply dark:border-primary-600; */
-  /* } */
+  /* >>>> prose heading */
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply sticky;
+    @apply top-0;
+    @apply z-10;
+    @apply leading-10; /* needed so smaller headings block bigger ones */
+    @apply bg-background-100;
+    @apply dark:bg-background-800;
+    /* the border is useful to denote the text cutoff */
+    @apply border-b-2;
+  }
+
+  /* rainbow colors */
+  .prose h1 {
+    @apply border-red-400;
+  }
+
+  .prose h2 {
+    @apply border-orange-400;
+  }
+
+  .prose h3 {
+    @apply border-yellow-400;
+  }
+
+  .prose h4 {
+    @apply border-green-400;
+  }
+
+  .prose h5 {
+    @apply border-blue-400;
+  }
+
+  .prose h6 {
+    @apply border-purple-400;
+  }
+  /* <<<< prose heading */
 
   .prose a {
     @apply anchor;
