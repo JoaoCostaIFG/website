@@ -122,7 +122,9 @@
             </button>
           </div>
           <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <img id="brand" class="block flex-shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
+            <a title="go home" href="<?= route('home_route') ?>">
+              <img id="brand" class="block flex-shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
+            </a>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
                 <?php
