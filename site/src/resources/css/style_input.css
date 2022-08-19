@@ -9,7 +9,8 @@
   h4,
   h5,
   h6 {
-    font-weight: bold;
+    @apply font-bold;
+    @apply text-foreground-900;
   }
 
   h1 > a,
@@ -104,7 +105,6 @@
   .dark h5 > a,
   .dark h6 > a {
     @apply decoration-primary-600;
-    @apply decoration-primary-600;
   }
 }
 
@@ -122,5 +122,19 @@
   .btn:hover {
     @apply underline;
     @apply underline-offset-2;
+  }
+
+  .anchor {
+    @apply underline;
+    @apply underline-offset-2;
+    @apply decoration-primary-500;
+  }
+
+  .anchor:hover {
+    @apply decoration-2;
+  }
+
+  .dark anchor {
+    @apply decoration-primary-600;
   }
 }
