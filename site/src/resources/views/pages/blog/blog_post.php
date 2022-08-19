@@ -15,8 +15,8 @@ else layout_header($args['b']->getTitle());
       </a>
     <?php } ?>
 
-    <div class="mb-4 flex flex-row flex-wrap flex-start items-baseline gap-x-4">
-      <h1 class="inline-block mb-0">
+    <div class="mb-4">
+      <h1 class="mb-0">
         <?= Parsedown::instance()->line($args['b']->getTitle()); ?>
       </h1>
       <em class="muted">Avg. <?= $args['b']->readingTime(); ?> minute(s) of reading</em>

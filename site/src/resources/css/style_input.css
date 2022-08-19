@@ -165,8 +165,8 @@
   /* << muted */
 
   .blog {
-    /* https://tailwindcss.com/docs/max-width#reading-width */
-    @apply max-w-prose;
+    @apply max-w-prose; /* https://tailwindcss.com/docs/max-width#reading-width */
+    @apply break-words;
   }
 }
 
@@ -283,6 +283,7 @@
 
   .prose pre {
     @apply text-sm !important;
+    @apply whitespace-pre-line !important; /* wrap long lines */
     @apply rounded-md;
   }
 }
