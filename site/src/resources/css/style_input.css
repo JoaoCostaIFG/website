@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* prose style based on: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js */
+
 @layer base {
   h1,
   h2,
@@ -33,32 +35,44 @@
 
   h1 {
     @apply text-4xl;
+    @apply mt-0;
     @apply mb-4;
   }
 
   h2 {
     @apply text-2xl;
-    @apply mb-2;
+    @apply mt-8;
+    @apply mb-4;
   }
 
   h3 {
     @apply text-xl;
-    @apply mb-1;
+    @apply mt-6;
+    @apply mb-2.5;
   }
 
-  h4 {
+  h4,
+  h5,
+  h6 {
     @apply text-lg;
-    @apply mb-1;
+    @apply mt-6;
+    @apply mb-2;
   }
 
   h5 {
     @apply text-base;
-    @apply mb-1;
   }
 
   h6 {
     @apply text-sm;
-    @apply mb-1;
+  }
+
+  h2 + *,
+  h3 + *,
+  h4 + *,
+  h5 + *,
+  h6 + * {
+    @apply mt-0;
   }
 
   /* >> markdown style */
@@ -189,12 +203,22 @@
 }
 
 @layer utilities {
+  .prose {
+    @apply leading-loose;
+  }
+
   .prose a {
     @apply anchor;
   }
-  
+
   .prose p {
-    @apply mb-2;
+    @apply my-5;
+  }
+
+  .prose ol,
+  .prose ul {
+    @apply my-5;
+    @apply pl-6;
   }
 
   .prose ol {
@@ -202,7 +226,25 @@
     @apply list-inside;
   }
 
+  .prose ul ul,
+  .prose ul ol,
+  .prose ol ul,
+  .prose ol ol {
+    @apply my-3;
+  }
+
+  .prose li {
+    @apply my-2;
+  }
+
+  /*
+   * .prose ul {
+   *   @apply list-disc;
+   * }
+   */
+
   .prose ul li::before {
+    @apply font-black;
     content: "- ";
   }
 
@@ -211,5 +253,55 @@
     @apply font-semibold;
     @apply border-l-2;
     @apply border-foreground-500;
+  }
+
+  .prose img,
+  .prose video,
+  .prose figure {
+    @apply my-8;
+  }
+
+  .prose figure > * {
+    @apply my-0;
+  }
+
+  .prose figcaption {
+    @apply text-sm;
+    @apply mt-3.5;
+  }
+
+  .prose hr {
+    @apply my-12;
+  }
+
+  .prose hr + * {
+    @apply mt-0;
+  }
+
+  .prose table {
+    @apply text-sm;
+    @apply w-full;
+    @apply shadow-sm;
+    @apply border-collapse;
+    @apply bg-muted-100;
+    @apply dark:bg-muted-800;
+  }
+
+  .prose thead {
+    @apply bg-muted-50;
+    @apply dark:bg-muted-700;
+  }
+
+  .prose thead th,
+  .prose tbody td,
+  .prose tfoot td {
+    @apply p-2.5;
+    @apply border;
+    @apply border-muted-300;
+    @apply dark:border-muted-600;
+  }
+
+  .prose pre {
+    @apply rounded-md;
   }
 }
