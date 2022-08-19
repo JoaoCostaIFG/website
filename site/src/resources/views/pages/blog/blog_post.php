@@ -10,17 +10,13 @@ else layout_header($args['b']->getTitle());
 <div class="w-full">
   <article class="m-auto relative prose blog line-numbers match-braces">
     <?php if (is_auth()) { ?>
-      <a class="absolute top-0 right-0 z-10 icon-btn btn-edit" title="Edit post <?= $args['b']->getId() ?>" href="<?= route_args('blog_edit_route', array('id' => $args['b']->getId())); ?>">
+      <a class="absolute top-0 right-0 z-50 icon-btn btn-edit" title="Edit post <?= $args['b']->getId() ?>" href="<?= route_args('blog_edit_route', array('id' => $args['b']->getId())); ?>">
         <i class="fa-solid fa-pen-to-square"></i>
       </a>
     <?php } ?>
 
-    <div class="mb-4">
-      <h1 class="mb-0">
-        <?= Parsedown::instance()->line($args['b']->getTitle()); ?>
-      </h1>
-      <em class="muted">Avg. <?= $args['b']->readingTime(); ?> minute(s) of reading</em>
-    </div>
+    <h1 class="mb-0"><?= Parsedown::instance()->line($args['b']->getTitle()); ?></h1>
+    <em class="block muted mb-4">Avg. <?= $args['b']->readingTime(); ?> minute(s) of reading</em>
 
     <?php if (!is_null($args['b']->getIntro())) { ?>
       <div class="mx-2 p-2 rounded-md bg-background-300 dark:bg-background-900">
