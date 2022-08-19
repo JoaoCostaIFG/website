@@ -2,11 +2,11 @@
 
 <h1>Hello c|:D</h1>
 
-<div class="grid grid-cols-12 gap-4">
+<div class="prose grid grid-cols-12 gap-4">
   <div class="col-span-12 sm:col-span-8">
     <p>
       I'm a twenty-something year old computer engineering student at the
-      <a class="anchor" href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a>
+      <a href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a>
       and this is my personal website.<br>
       I started this website so I could learn more about web development and have
       a place to share my experiences/thoughts (mostly) relating to informatics. This
@@ -34,16 +34,16 @@
     <br>
     <p>
       The best/fastest way to contact me is through email at:
-      <a class="anchor" href="mailto:joaocosta.work@posteo.net">joaocosta.work@posteo.net</a>
+      <a href="mailto:joaocosta.work@posteo.net">joaocosta.work@posteo.net</a>
       <br>
-      You can find my CV <a class="anchor" href="https://github.com/JoaoCostaIFG/cv/blob/master/JoaoCostaCV.pdf">here</a>.
+      You can find my CV <a href="https://github.com/JoaoCostaIFG/cv/blob/master/JoaoCostaCV.pdf">here</a>.
     </p>
   </div>
   <div class="col-span-12 sm:order-first sm:col-span-4 flex flex-col">
     <img class="inline-block self-center max-w-xs sm:max-w-full" src="<?= img('pfp.jpg') ?>" alt="Me">
     <p class="text-center">
       (This is the profile picture I usually use online. It was generated using
-      my <a class="anchor" href="https://gitlab.com/JoaoCostaIFG/allrgb">AllRGB program</a>.)
+      my <a href="https://gitlab.com/JoaoCostaIFG/allrgb">AllRGB program</a>.)
     </p>
   </div>
 </div>
