@@ -13,6 +13,15 @@
     @apply text-foreground-900;
   }
 
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-foreground-100;
+  }
+
   h1 > a,
   h2 > a,
   h3 > a,
@@ -33,6 +42,15 @@
     @apply decoration-2;
   }
 
+  .dark h1 > a,
+  .dark h2 > a,
+  .dark h3 > a,
+  .dark h4 > a,
+  .dark h5 > a,
+  .dark h6 > a {
+    @apply decoration-primary-600;
+  }
+
   h1 {
     @apply text-3xl;
     @apply mb-4;
@@ -48,6 +66,7 @@
     @apply mb-1;
   }
 
+  /* >> markdown style */
   h1::before {
     content: "# ";
   }
@@ -87,25 +106,7 @@
   b::after {
     content: "**";
   }
-
-  /* dark theme */
-  .dark h1,
-  .dark h2,
-  .dark h3,
-  .dark h4,
-  .dark h5,
-  .dark h6 {
-    @apply text-foreground-100;
-  }
-
-  .dark h1 > a,
-  .dark h2 > a,
-  .dark h3 > a,
-  .dark h4 > a,
-  .dark h5 > a,
-  .dark h6 > a {
-    @apply decoration-primary-600;
-  }
+  /* << markdown style */
 }
 
 @layer components {
