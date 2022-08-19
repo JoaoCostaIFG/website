@@ -265,6 +265,7 @@
     @apply border-collapse;
     @apply bg-muted-100;
     @apply dark:bg-muted-800;
+    border-style: hidden;
   }
 
   .prose thead {
