@@ -1,4 +1,4 @@
-<article class="relative p-3 rounded-lg max-w-xs flex flex-col text-center items-center bg-background-200 hover:bg-background-300 dark:bg-background-900 hover:dark:bg-gray-900">
+<article class="prose relative p-3 rounded-lg max-w-xs flex flex-col text-center items-center bg-background-200 hover:bg-background-300 dark:bg-background-900 hover:dark:bg-gray-900">
   <h2 class="line-clamp-1">
     <a title="<?= $args['p']->getTitle(); ?>" href="<?= $args['p']->getUrl(); ?>"><?= $args['p']->getTitle(); ?></a>
   </h2>
