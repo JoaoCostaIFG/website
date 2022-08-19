@@ -27,25 +27,7 @@ else layout_header($args['b']->getTitle());
     </div>
   <?php } ?>
 
-  <?= Parsedown::instance()->text(''/*$args['b']->getContent()*/); ?>
-  <?= Parsedown::instance()->text('
-```css
-  #header-container {
-  display: none;
-}
-
-/* revert black theme */
-* {
-  background-color: white !important;
-  color: black !important;
-}
-
-pre {
-  border: 1px solid black;
-}
-
-```
-'); ?>
+  <?= Parsedown::instance()->text($args['b']->getContent()); ?>
 </article>
 
 <?php

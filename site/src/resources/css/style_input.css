@@ -205,4 +205,11 @@
   .prose ul li::before {
     content: "- ";
   }
+
+  .prose blockquote {
+    @apply pl-2;
+    @apply font-semibold;
+    @apply border-l-2;
+    @apply border-foreground-500;
+  }
 }
