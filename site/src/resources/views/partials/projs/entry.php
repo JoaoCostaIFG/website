@@ -9,7 +9,7 @@
     <?= Parsedown::instance()->line($args['p']->getDescription()); ?>
   </p>
   <?php if (is_auth()) { ?>
-    <a class="absolute -top-5 -right-4 z-10 icon-btn btn-edit opacity-50 hover:opacity-100"
+    <a class="absolute -top-4 -right-4 z-10 icon-btn btn-edit" title="Edit project <?= $args['p']->getId() ?>"
         href="<?= route_args('proj_edit_route', array('id' =>  $args['p']->getId())); ?>">
       <i class="fa-solid fa-pen-to-square"></i>
     </a>

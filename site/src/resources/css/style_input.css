@@ -32,17 +32,32 @@
   }
 
   h1 {
-    @apply text-3xl;
+    @apply text-4xl;
     @apply mb-4;
   }
 
   h2 {
-    @apply text-xl;
+    @apply text-2xl;
     @apply mb-2;
   }
 
   h3 {
+    @apply text-xl;
+    @apply mb-1;
+  }
+
+  h4 {
     @apply text-lg;
+    @apply mb-1;
+  }
+
+  h5 {
+    @apply text-base;
+    @apply mb-1;
+  }
+
+  h6 {
+    @apply text-sm;
     @apply mb-1;
   }
 
@@ -176,5 +191,18 @@
 @layer utilities {
   .prose a {
     @apply anchor;
+  }
+  
+  .prose p {
+    @apply mb-2;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+    @apply list-inside;
+  }
+
+  .prose ul li::before {
+    content: "- ";
   }
 }
