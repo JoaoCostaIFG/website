@@ -163,6 +163,11 @@
     @apply dark:text-muted-400;
   }
   /* << muted */
+
+  .blog {
+    /* https://tailwindcss.com/docs/max-width#reading-width */
+    @apply max-w-prose;
+  }
 }
 
 @layer utilities {
@@ -232,6 +237,7 @@
   .prose video,
   .prose figure {
     @apply my-8;
+    @apply mx-auto; /* center img and video */
   }
 
   .prose figure > * {
@@ -252,8 +258,9 @@
   }
 
   .prose table {
+    @apply my-8;
+    @apply w-full; /* expand tables to full width */
     @apply text-sm;
-    @apply w-full;
     @apply shadow-sm;
     @apply border-collapse;
     @apply bg-muted-100;
@@ -275,6 +282,7 @@
   }
 
   .prose pre {
+    @apply text-sm !important;
     @apply rounded-md;
   }
 }
