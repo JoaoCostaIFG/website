@@ -168,7 +168,7 @@
   }
 
   .dark .muted {
-    @apply text-muted-500;
+    @apply text-muted-400;
   }
   /* << muted */
 }
