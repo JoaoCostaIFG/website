@@ -31,7 +31,6 @@
       social media, so I try to stay as far away from it as possible (which isn't
       always possible).
     </p>
-    <br>
     <p>
       The best/fastest way to contact me is through email at:
       <a href="mailto:joaocosta.work@posteo.net">joaocosta.work@posteo.net</a>
@@ -39,13 +38,13 @@
       You can find my CV <a href="https://github.com/JoaoCostaIFG/cv/blob/master/JoaoCostaCV.pdf">here</a>.
     </p>
   </div>
-  <div class="col-span-12 sm:order-first sm:col-span-4 flex flex-col">
-    <img class="inline-block self-center max-w-xs sm:max-w-full" src="<?= img('pfp.jpg') ?>" alt="Me">
-    <p class="text-center">
+  <figure class="col-span-12 max-w-xs sm:max-w-full sm:order-first sm:col-span-4 flex flex-col">
+    <img class="inline self-center" src="<?= img('pfp.jpg') ?>" alt="Me">
+    <figcaption class="text-center">
       (This is the profile picture I usually use online. It was generated using
       my <a href="https://gitlab.com/JoaoCostaIFG/allrgb">AllRGB program</a>.)
-    </p>
-  </div>
+    </figcaption>
+  </figure>
 </div>
 
 <?php layout_footer(); ?>
