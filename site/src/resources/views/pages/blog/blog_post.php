@@ -22,7 +22,7 @@ else layout_header($args['b']->getTitle());
   </div>
 
   <?php if (!is_null($args['b']->getIntro())) { ?>
-    <div class="mx-2 mb-4 p-2 rounded-md bg-background-300 dark:bg-background-900">
+    <div class="mx-2 p-2 rounded-md bg-background-300 dark:bg-background-900">
       <?= Parsedown::instance()->text($args['b']->getIntro()); ?>
     </div>
   <?php } ?>

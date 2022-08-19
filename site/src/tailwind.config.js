@@ -20,6 +20,9 @@ module.exports = {
       },
     },
     extend: {
+      listStyleType: {
+        lowerroman: 'lower-roman',
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",

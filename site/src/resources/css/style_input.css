@@ -148,6 +148,7 @@
 
   /* >> anchor */
   .anchor {
+    @apply font-semibold;
     @apply underline;
     @apply underline-offset-2;
     @apply decoration-primary-500;
@@ -184,7 +185,7 @@
   }
 
   .prose ol {
-    @apply list-decimal;
+    @apply list-lowerroman;
     @apply list-inside;
   }
 
@@ -211,10 +212,20 @@
   }
 
   .prose blockquote {
-    @apply pl-2;
     @apply font-semibold;
+    @apply italic;
+    @apply pl-2;
     @apply border-l-2;
     @apply border-foreground-500;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+
+  .prose blockquote p:first-of-type::before {
+    content: open-quote;
+  }
+
+  .prose blockquote p:last-of-type::after {
+    content: close-quote;
   }
 
   .prose img,
