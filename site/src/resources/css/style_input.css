@@ -13,15 +13,7 @@
   h6 {
     @apply font-bold;
     @apply text-foreground-900;
-  }
-
-  .dark h1,
-  .dark h2,
-  .dark h3,
-  .dark h4,
-  .dark h5,
-  .dark h6 {
-    @apply text-foreground-100;
+    @apply dark:text-foreground-100;
   }
 
   h1 > a,
@@ -119,6 +111,7 @@
 }
 
 @layer components {
+  /* >> button */
   .btn {
     @apply rounded-full;
     @apply text-white;
@@ -127,11 +120,8 @@
     @apply shadow-sm;
     @apply px-4;
     @apply py-1;
-  }
-
-  .btn:hover {
-    @apply underline;
-    @apply underline-offset-2;
+    @apply hover:underline;
+    @apply hover:underline-offset-2;
   }
 
   .icon-btn {
@@ -139,65 +129,35 @@
     @apply py-3;
   }
 
-  /* >> button primary colors */
   .btn-primary {
     @apply bg-primary-500;
-  }
-
-  .btn-primary:hover {
     @apply hover:bg-primary-400;
+    @apply dark:bg-primary-600;
+    @apply dark:hover:bg-primary-700;
   }
 
-  .dark .btn-primary {
-    @apply bg-primary-600;
-  }
-
-  .dark .btn-primary:hover {
-    @apply bg-primary-700;
-  }
-  /* << button primary colors */
-
-  /* >> button edit colors */
   .btn-edit {
     @apply bg-yellow-600;
+    @apply hover:bg-yellow-500;
+    @apply dark:bg-yellow-500;
+    @apply dark:hover:bg-yellow-600;
   }
-
-  .btn-edit:hover {
-    @apply bg-yellow-500;
-  }
-
-  .dark .btn-edit {
-    @apply bg-yellow-500;
-  }
-
-  .dark .btn-edit:hover {
-    @apply hover:bg-yellow-600;
-  }
-  /* << button edit colors */
+  /* << button */
 
   /* >> anchor */
   .anchor {
     @apply underline;
     @apply underline-offset-2;
     @apply decoration-primary-500;
-  }
-
-  .anchor:hover {
-    @apply decoration-2;
-  }
-
-  .dark anchor {
-    @apply decoration-primary-600;
+    @apply hover:decoration-2;
+    @apply dark:decoration-primary-600;
   }
   /* << anchor */
 
   /* >> muted */
   .muted {
     @apply text-muted-600;
-  }
-
-  .dark .muted {
-    @apply text-muted-400;
+    @apply dark:text-muted-400;
   }
   /* << muted */
 }
