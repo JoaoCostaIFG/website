@@ -38,11 +38,11 @@
   <section class="col-span-12">
     <h2><a href="https://wiki.joaocosta.dev">Wiki</a></h2>
     <p>
-      I manage a small <a href="https://wiki.joaocosta.dev">wiki</a> with a couple of friends where we post small
+      I manage a small <a class="anchor" href="https://wiki.joaocosta.dev">wiki</a> with a couple of friends where we post small
       "cookbooks", "cheat-sheets" and other general guides/annotations. These focus on things we've had to work/deal
       with in the past and would like to have an easy-to-follow guide in the future. Although editing of the wiki is
       restricted, reading is public to everyone. The wiki is powered by
-      <a href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a>.
+      <a class="anchor" href="https://www.dokuwiki.org/dokuwiki">Dokuwiki</a>.
     </p>
   </section>
 </div>
