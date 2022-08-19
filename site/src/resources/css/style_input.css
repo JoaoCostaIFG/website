@@ -33,11 +33,18 @@
   }
 
   h1 {
+    @apply text-3xl;
     @apply mb-4;
   }
 
   h2 {
-    margin-bottom: 0.5rem;
+    @apply text-xl;
+    @apply mb-2;
+  }
+
+  h3 {
+    @apply text-lg;
+    @apply mb-1;
   }
 
   h1::before {
