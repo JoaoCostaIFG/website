@@ -161,6 +161,16 @@
     @apply decoration-primary-600;
   }
   /* << anchor */
+
+  /* >> muted */
+  .muted {
+    @apply text-muted-600;
+  }
+
+  .dark .muted {
+    @apply text-muted-500;
+  }
+  /* << muted */
 }
 
 @layer utilities {

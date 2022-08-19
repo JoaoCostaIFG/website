@@ -25,6 +25,7 @@ module.exports = {
         current: "currentColor",
         navbar: colors.gray,
         anchor: colors.blue,
+        muted: colors.slate,
         background: colors.zinc,
         foreground: colors.gray,
         primary: colors.teal,

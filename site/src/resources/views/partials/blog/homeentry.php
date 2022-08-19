@@ -10,7 +10,7 @@
     <?php } ?>
   </span>
   <br>
-  <span class="text-foreground-600 dark:text-foreground-500">
+  <span class="muted">
     <?= $args['b']->getDateStr(); ?>
   </span>
 </a>

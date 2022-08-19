@@ -13,7 +13,7 @@
   <span class="line-clamp-1 lg:line-clamp-2 ml-2 text-foreground-800 dark:text-foreground-400">
     <?= $args['b']->getIntro(); /* Parsedown::instance()->setUrlsLinked(false)->line($args['b']->getIntro()); */ ?>
   </span>
-  <span class="text-foreground-600 dark:text-foreground-500">
+  <span class="muted">
     <?= $args['b']->getDateStr(); ?>
   </span>
 </a>
