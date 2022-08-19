@@ -13,8 +13,7 @@
       ?>
     </div>
     <div class="text-right max-w-xl">
-      <a class="btn bg-primary-500 hover:bg-primary-400 dark:bg-primary-600 dark:hover:bg-primary-700"
-          href="<?php echo route('blog_index_route') ?>">
+      <a class="btn btn-primary" href="<?php echo route('blog_index_route') ?>">
         See More
       </a>
     </div>
@@ -28,8 +27,7 @@
       This page's main focus is for me to share some ideas/processes behind projects that I've worked on.
     </p>
     <div class="text-right">
-      <a class="btn bg-primary-500 hover:bg-primary-400 dark:bg-primary-600 dark:hover:bg-primary-700"
-          href="<?= route('about_route'); ?>">
+      <a class="btn btn-primary" href="<?= route('about_route'); ?>">
         More About Me
       </a>
     </div>

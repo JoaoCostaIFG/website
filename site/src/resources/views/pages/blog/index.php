@@ -12,8 +12,7 @@
 
 <?php if (is_auth()) { ?>
   <div class="text-right mt-4">
-    <a class="btn bg-primary-500 hover:bg-primary-400 dark:bg-primary-600 dark:hover:bg-primary-700"
-        href="<?php echo route('blog_insert_route'); ?>">
+    <a class="btn btn-primary" href="<?php echo route('blog_insert_route'); ?>">
       Add New Post
     </a>
   </div>

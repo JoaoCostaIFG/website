@@ -40,7 +40,7 @@
     </p>
   </div>
   <div class="col-span-12 sm:order-first sm:col-span-4 flex flex-col">
-    <img class="self-center max-w-xs sm:max-w-full" src="<?= img('pfp.jpg') ?>" alt="Me">
+    <img class="inline-block self-center max-w-xs sm:max-w-full" src="<?= img('pfp.jpg') ?>" alt="Me">
     <p class="text-center">
       (This is the profile picture I usually use online. It was generated using
       my <a class="anchor" href="https://gitlab.com/JoaoCostaIFG/allrgb">AllRGB program</a>.)

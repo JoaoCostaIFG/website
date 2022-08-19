@@ -124,6 +124,47 @@
     @apply underline-offset-2;
   }
 
+  .icon-btn {
+    @apply btn;
+    @apply py-3;
+  }
+
+  /* >> button primary colors */
+  .btn-primary {
+    @apply bg-primary-500;
+  }
+
+  .btn-primary:hover {
+    @apply hover:bg-primary-400;
+  }
+
+  .dark .btn-primary {
+    @apply bg-primary-600;
+  }
+
+  .dark .btn-primary:hover {
+    @apply bg-primary-700;
+  }
+  /* << button primary colors */
+
+  /* >> button edit colors */
+  .btn-edit {
+    @apply bg-yellow-600;
+  }
+
+  .btn-edit:hover {
+    @apply bg-yellow-500;
+  }
+
+  .dark .btn-edit {
+    @apply bg-yellow-500;
+  }
+
+  .dark .btn-edit:hover {
+    @apply hover:bg-yellow-600;
+  }
+  /* << button edit colors */
+
   .anchor {
     @apply underline;
     @apply underline-offset-2;

@@ -11,8 +11,7 @@
 </p>
 
 <div class="text-center mt-4">
-  <a class="btn bg-primary-500 hover:bg-primary-400 dark:bg-primary-600 dark:hover:bg-primary-700"
-      href="<?= route('home_route'); ?>">
+  <a class="btn btn-primary" href="<?= route('home_route'); ?>">
     Go Home
   </a>
 </div>
