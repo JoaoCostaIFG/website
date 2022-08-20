@@ -20,7 +20,7 @@ The site's back-end is written in PHP. I use some PHP libraries:
 
 Front-end dependencies:
 
-- [Skeleton CSS](http://getskeleton.com/) - This is used as the basis of the
+- [TailwindCSS](https://tailwindcss.com) - This is used as the basis of the
   site's CSS.
 - [Prism.js](https://prismjs.com/) - This is used for code blocks syntax
   highlighting (Okaidia theme).

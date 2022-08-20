@@ -5,17 +5,30 @@ else $has_code_blocks = false;
 
 if ($has_code_blocks) layout_header_args(array('title' => $args['b']->getTitle(), 'css' => ['prism.css']));
 else layout_header($args['b']->getTitle());
+?>
 
-echo Parsedown::instance()->text('##' . $args['b']->getTitle());
+<div class="w-full">
+  <article class="m-auto relative prose blog line-numbers match-braces">
+    <?php if (is_auth()) { ?>
+      <a class="absolute top-0 right-0 z-50 icon-btn btn-edit" title="Edit post <?= $args['b']->getId() ?>" href="<?= route_args('blog_edit_route', array('id' => $args['b']->getId())); ?>">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </a>
+    <?php } ?>
 
-if (is_auth()) { ?>
-  <a class="button button-primary" href="<?= route_args('blog_edit_route', array('id' => $args['b']->getId())); ?>">Edit</a>
-<?php }
+    <h1 class="mb-0"><?= Parsedown::instance()->line($args['b']->getTitle()); ?></h1>
+    <em class="block muted mb-4">Avg. <?= $args['b']->readingTime(); ?> minute(s) of reading</em>
 
-if (!is_null($args['b']->getIntro()))
-  echo Parsedown::instance()->text($args['b']->getIntro());
+    <?php if (!is_null($args['b']->getIntro())) { ?>
+      <div class="mx-2 p-2 rounded-md bg-background-300 dark:bg-background-900">
+        <?= Parsedown::instance()->text($args['b']->getIntro()); ?>
+      </div>
+    <?php } ?>
 
-echo Parsedown::instance()->text($args['b']->getContent());
+    <?= Parsedown::instance()->text($args['b']->getContent()); ?>
+  </article>
+</div>
+
+<?php
 
 if ($has_code_blocks) layout_footer_args(array('js' => ['prism.js']));
 else layout_footer();

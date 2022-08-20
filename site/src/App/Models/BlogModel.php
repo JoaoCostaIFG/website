@@ -5,6 +5,12 @@ namespace App\Models;
 use App\Database;
 use Exception;
 
+/**
+ * Average silent reading words per minute of an adult.
+ * Source: https://thereadtime.com
+ */
+define("AVG_WPM", 238);
+
 class BlogModel
 {
   private $id, $date, $title, $intro, $content, $visible;
@@ -106,6 +112,27 @@ class BlogModel
   public function isVisible()
   {
     return $this->visible;
+  }
+
+  /**
+   * @return number of words in intro + content
+   */
+  public function wordCount()
+  {
+    $cnt = str_word_count($this->content);
+    if (!is_null($this->intro)) {
+      $cnt += str_word_count($this->intro);
+    }
+    return $cnt;
+  }
+
+  /**
+   * Returns the average silent reading time for the content.
+   * Based on a paper by Marc Brysbaert (2019): https://www.sciencedirect.com/science/article/abs/pii/S0749596X19300786
+   * @return the average reading time in minutes
+   */
+  public function readingTime() {
+    return ceil($this->wordCount() / AVG_WPM);
   }
 
   /**

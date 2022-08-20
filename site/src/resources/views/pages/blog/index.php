@@ -1,17 +1,21 @@
-<?php layout_header('Blog index'); ?>
+<?php layout_header('Blog'); ?>
 
-<h2>All of my blog posts</h2>
+<h1>All of my blog posts</h1>
 
-<ul class="list-unstyled">
+<div class="grid grid-cols-1 gap-y-2">
   <?php
   foreach ($args['bs'] as $b) {
     partial_args('blog/entry.php', array('b' => $b));
   }
   ?>
-</ul>
+</div>
 
 <?php if (is_auth()) { ?>
-  <a class="button button-primary" href="<?php echo route('blog_insert_route'); ?>">Add new post</a>
+  <div class="text-right mt-4">
+    <a class="btn btn-primary" href="<?php echo route('blog_insert_route'); ?>">
+      Add New Post
+    </a>
+  </div>
 <?php } ?>
 
 <?php layout_footer(); ?>
