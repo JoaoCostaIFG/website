@@ -60,7 +60,7 @@
       const newToggler = document.createElement("button");
       newToggler.setAttribute('aria-label', "Set light theme");
       newToggler.onclick = toggleTheme;
-      newToggler.classList.add("px-1", "text-cyan-600", "hover:text-cyan-500");
+      newToggler.classList.add("text-xl", "w-5", "text-cyan-600", "hover:text-cyan-500");
       newToggler.innerHTML = '<i class="fa-solid fa-moon"></i>';
 
       themeToggler.parentNode.replaceChild(newToggler, themeToggler);
@@ -77,7 +77,7 @@
       const newToggler = document.createElement("button");
       newToggler.setAttribute('aria-label', "Set dark theme");
       newToggler.onclick = toggleTheme;
-      newToggler.classList.add("px-1", "text-yellow-200", "hover:text-yellow-400");
+      newToggler.classList.add("text-xl", "w-5", "text-yellow-200", "hover:text-yellow-400");
       newToggler.innerHTML = '<i class="fa-solid fa-sun"></i>';
 
       themeToggler.parentNode.replaceChild(newToggler, themeToggler);
@@ -114,21 +114,20 @@
 <body class="bg-background-200 dark:bg-background-900 min-h-screen">
   <header id="header-container" class="w-full">
     <nav id="navbar" arial-label="primary navigation" class="bg-navbar-800">
+      <!-- navbar contents -->
       <div class="container mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
-          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <!-- Mobile menu button-->
-            <button type="button" class="sm:hidden py-2 px-3 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 hover:animate-pulse focus:ring-2 focus:ring-inset focus:ring-white" onclick="toggleMobileMenu()" aria-controls="mobile-menu" aria-expanded="false">
-              <span class="sr-only">Open main menu</span>
-              <i class="fa-solid fa-bars"></i>
-            </button>
-          </div>
-          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <!-- Mobile menu button-->
+          <button type="button" class="absolute left-0 sm:hidden py-2 px-3 rounded-md text-navbar-400 hover:text-white hover:bg-gray-700 focus:ring-2 focus:ring-inset focus:ring-white" onclick="toggleMobileMenu()" aria-label="Open navbar menu" aria-controls="mobile-menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="flex flex-1 justify-center sm:justify-start">
             <a class="shrink-0" title="Go home" href="<?= route('home_route') ?>">
               <img id="brand" class="aspect-square shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
             </a>
-            <div class="hidden sm:block sm:ml-4">
-              <div class="flex gap-x-3">
+            <div class="hidden sm:block sm:ml-2">
+              <div class="flex gap-x-2">
                 <?php
                 partial_args('nav/nav_link.php', array(
                   'href' => route('home_route'),
@@ -155,65 +154,82 @@
             </div>
           </div>
 
-          <div class="absolute right-0 inset-y-0 flex gap-x-1 items-center mr-2 sm:mr-0">
+          <div class="absolute inset-y-0 right-0 mr-4 sm:mr-0 flex items-center gap-x-4">
             <?php
             partial_args('nav/nav_icon.php', array(
               'title' => "My wiki",
-              'href' => "https://wiki.joaocosta.dev", 'icon' => "fa-solid fa-file-pen"
+              'href' => "https://wiki.joaocosta.dev", 'icon' => "fa-solid fa-file-pen",
+              'classes' => "hidden sm:inline-block"
             ));
             partial_args('nav/nav_icon.php', array(
               'title' => "My GitHub page",
-              'href' => "https://github.com/JoaoCostaIFG", 'icon' => "fa-brands fa-github"
+              'href' => "https://github.com/JoaoCostaIFG", 'icon' => "fa-brands fa-github",
+              'classes' => "hidden sm:inline-block"
             ));
             partial_args('nav/nav_icon.php', array(
               'title' => "My blog's RSS",
-              'href' => route('rss_route'), 'icon' => "fa-solid fa-square-rss"
+              'href' => route('rss_route'), 'icon' => "fa-solid fa-square-rss",
+              'classes' => "hidden sm:inline-block"
             ));
             ?>
             <?php if (is_auth()) { ?>
-              <a class="px-1 text-red-200 hover:text-red-400" title="logout" href="<?= route('user_logout_route'); ?>">
+              <a class="text-xl w-5 text-red-200 hover:text-red-400" title="logout" href="<?= route('user_logout_route'); ?>">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
               </a>
             <?php } else { ?>
-              <a class="px-1 text-green-200 hover:text-green-400" title="login" href="<?= route('user_login_route'); ?>">
+              <a class="text-xl w-5 text-green-200 hover:text-green-400" title="login" href="<?= route('user_login_route'); ?>">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
               </a>
             <?php } ?>
-            <button id="theme-toggler" class="px-1 text-cyan-600 hover:text-cyan-500" onclick="toggleTheme()" aria-label="Set light theme">
-              <i class="fa-solid fa-moon"></i>
+            <button id="theme-toggler" class="text-xl w-5 text-yellow-200 hover:text-yellow-400" onclick="toggleTheme()" aria-label="Set light theme">
+              <i class="fa-solid fa-sun"></i>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Mobile menu, show/hide based on menu state. -->
-      <div id="mobile-menu" class="hidden sm:hidden">
-        <div class="px-2 pb-2 space-y-1">
+      <!-- mobile menu (show/hide based on menu state) -->
+      <div id="mobile-menu" class="sm:hidden px-2 pb-2 flex flex-col gap-y-1">
+        <?php
+        partial_args('nav/nav_link.php', array(
+          'href' => route('home_route'),
+          'title' => '<i class="fa-solid fa-house w-6"></i> Home',
+          'selected' => "Home" === $args['title']
+        ));
+        partial_args('nav/nav_link.php', array(
+          'href' => route('blog_index_route'),
+          'title' => '<i class="fa-solid fa-blog w-6"></i> Blog',
+          'selected' => "Blog" === $args['title']
+        ));
+        partial_args('nav/nav_link.php', array(
+          'href' => route('projects_route'),
+          'title' => '<i class="fa-solid fa-lightbulb w-6"></i> Projects',
+          'selected' => "Projects" === $args['title']
+        ));
+        partial_args('nav/nav_link.php', array(
+          'href' => route('workshops_route'),
+          'title' => '<i class="fa-solid fa-chalkboard-user w-6"></i> Workshops',
+          'selected' => "Workshops" === $args['title']
+        ));
+        partial_args('nav/nav_link.php', array(
+          'href' => route('about_route'),
+          'title' => '<i class="fa-solid fa-address-card w-6"></i> About/Contacts',
+          'selected' => "About me" === $args['title']
+        ));
+        ?>
+        <div class="flex flex-row justify-around flex-wrap gap-x-4">
           <?php
-          partial_args('nav/nav_link.php', array(
-            'href' => route('home_route'),
-            'title' => '<i class="fa-solid fa-house w-6"></i> Home',
-            'selected' => "Home" === $args['title']
+          partial_args('nav/nav_icon.php', array(
+            'title' => "My wiki",
+            'href' => "https://wiki.joaocosta.dev", 'icon' => "fa-solid fa-file-pen"
           ));
-          partial_args('nav/nav_link.php', array(
-            'href' => route('blog_index_route'),
-            'title' => '<i class="fa-solid fa-blog w-6"></i> Blog',
-            'selected' => "Blog" === $args['title']
+          partial_args('nav/nav_icon.php', array(
+            'title' => "My GitHub page",
+            'href' => "https://github.com/JoaoCostaIFG", 'icon' => "fa-brands fa-github"
           ));
-          partial_args('nav/nav_link.php', array(
-            'href' => route('projects_route'),
-            'title' => '<i class="fa-solid fa-lightbulb w-6"></i> Projects',
-            'selected' => "Projects" === $args['title']
-          ));
-          partial_args('nav/nav_link.php', array(
-            'href' => route('workshops_route'),
-            'title' => '<i class="fa-solid fa-chalkboard-user w-6"></i> Workshops',
-            'selected' => "Workshops" === $args['title']
-          ));
-          partial_args('nav/nav_link.php', array(
-            'href' => route('about_route'),
-            'title' => '<i class="fa-solid fa-address-card w-6"></i> About/Contacts',
-            'selected' => "About me" === $args['title']
+          partial_args('nav/nav_icon.php', array(
+            'title' => "My blog's RSS",
+            'href' => route('rss_route'), 'icon' => "fa-solid fa-square-rss"
           ));
           ?>
         </div>
