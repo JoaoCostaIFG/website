@@ -194,12 +194,12 @@
     @apply disabled:border-muted-400;
     @apply disabled:text-muted-400;
     @apply disabled:placeholder-muted-400;
-    @aaply disabled:shadow-none;
+    @apply disabled:shadow-none;
 
     @apply focus:outline-none;
     @apply focus:ring-1;
     @apply focus:border-primary-400;
-    @aplpy focus:ring-primary-400;
+    @apply focus:ring-primary-400;
 
     @apply invalid:border-pink-500;
     @apply invalid:text-pink-600;
