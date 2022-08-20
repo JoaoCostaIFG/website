@@ -1,27 +1,34 @@
 <?php layout_header('New project'); ?>
 
-<h2>New project</h2>
+<h1>New project</h1>
 
-<form method="POST" action="<?= route('proj_insert_action'); ?>" enctype="multipart/form-data">
-  <?= partial('csrf.php'); ?>
-
-  <div class="row">
-    <div class="six columns">
-      <label for="title">Title *</label>
-      <input class="u-full-width" type="text" id="title" name="title" placeholder="Proj title..." required autofocus>
+<div class="w-full">
+  <form class="m-auto max-w-prose" method="POST" action="<?= route('proj_insert_action'); ?>" enctype="multipart/form-data">
+    <?= partial('csrf.php'); ?>
+    <div>
+      <label class="form-label form-label-required" for="title">Title</label>
+      <input class="form-input" id="title" type="text" name="title" placeholder="Project title..." required autofocus>
     </div>
-    <div class="six columns">
-      <label for="url">Url *</label>
-      <input class="u-full-width" type="url" id="url" name="url" placeholder="Proj url..." required>
+
+    <div class="mt-6">
+      <label class="form-label form-label-required" for="url">Url</label>
+      <input class="form-input" id="url" type="url" name="url" placeholder="Project url..." required>
     </div>
-  </div>
 
-  <label for="description">Description</label>
-  <textarea class="u-full-width" id="description" name="description" rows="20" placeholder="Proj description..."></textarea>
-  <label for="img">Img *</label>
-  <input class="u-full-width" type="file" id="img" name="img" required>
+    <div class="mt-6">
+      <label class="form-label" for="description">Description</label>
+      <textarea class="form-input" id="description" name="description" rows="10" placeholder="Project description..."></textarea>
+    </div>
 
-  <input class="button-primary" type="submit" value="Submit">
-</form>
+    <div class="mt-6">
+      <label class="form-label form-label-required" for="img">Img</label>
+      <input class="form-file" type="file" id="img" name="img" required>
+    </div>
+
+    <div class="mt-6 text-right">
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+  </form>
+</div>
 
 <?php layout_footer(); ?>

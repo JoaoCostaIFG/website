@@ -29,6 +29,7 @@ module.exports = {
         navbar: colors.gray,
         anchor: colors.blue,
         muted: colors.slate,
+        info: colors.indigo,
         background: colors.zinc,
         foreground: colors.gray,
         primary: colors.teal,
@@ -36,6 +37,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),
   ],
 };
