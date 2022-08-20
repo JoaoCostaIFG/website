@@ -298,6 +298,7 @@
   /* <<<< prose img */
 
   .prose hr {
+    @apply w-full;
     @apply my-12;
   }
 
