@@ -113,111 +113,6 @@
 }
 
 @layer components {
-  /* >> button */
-  .btn {
-    @apply rounded-full;
-    @apply text-white;
-    @apply font-semibold;
-    @apply text-sm;
-    @apply shadow-sm;
-    @apply px-4;
-    @apply py-1;
-    @apply hover:underline;
-    @apply hover:underline-offset-2;
-  }
-
-  .icon-btn {
-    @apply btn;
-    @apply py-3;
-  }
-
-  .btn-primary {
-    @apply bg-primary-500;
-    @apply hover:bg-primary-400;
-    @apply dark:bg-primary-600;
-    @apply dark:hover:bg-primary-700;
-  }
-
-  .btn-edit {
-    @apply bg-yellow-600;
-    @apply hover:bg-yellow-500;
-    @apply dark:bg-yellow-500;
-    @apply dark:hover:bg-yellow-600;
-  }
-  /* << button */
-
-  /* >> anchor */
-  .anchor {
-    @apply font-semibold;
-    @apply underline;
-    @apply underline-offset-2;
-    @apply decoration-primary-500;
-    @apply hover:decoration-2;
-    @apply dark:decoration-primary-600;
-  }
-  /* << anchor */
-
-  /* >> muted */
-  .muted {
-    @apply text-muted-600;
-    @apply dark:text-muted-400;
-  }
-  /* << muted */
-
-  /* >> forms */
-  .form-label {
-    @apply block;
-    @apply text-sm;
-    @apply font-medium;
-  }
-
-  .form-label-required {
-    @apply after:content-['*'];
-    @apply after:ml-0.5;
-    @apply after:text-red-500;
-  }
-
-  .form-input {
-    @apply rounded-md;
-    @apply w-full;
-    @apply shadow-md;
-
-    @apply text-foreground-800;
-    @apply placeholder-muted-500;
-
-    @apply disabled:bg-slate-200;
-    @apply disabled:border-muted-400;
-    @apply disabled:text-muted-400;
-    @apply disabled:placeholder-muted-400;
-    @apply disabled:shadow-none;
-
-    @apply focus:outline-none;
-    @apply focus:ring-1;
-    @apply focus:border-primary-400;
-    @apply focus:ring-primary-400;
-    @apply focus:dark:border-primary-600;
-    @apply focus:dark:ring-primary-600;
-
-    @apply invalid:border-pink-500;
-    @apply invalid:text-pink-600;
-    @apply focus:invalid:border-pink-500;
-    @apply focus:invalid:ring-pink-500;
-  }
-
-  .form-checkbox {
-    @apply bg-transparent;
-    @apply text-primary-400;
-    @apply dark:text-primary-600;
-    @apply focus:border-primary-400;
-    @apply focus:ring-primary-400;
-    @apply focus:outline-primary-400;
-    @apply focus:dark:border-primary-600;
-    @apply focus:dark:ring-primary-600;
-    @apply focus:dark:outline-primary-600;
-    box-shadow: none !important;
-  }
-  /* << forms */
-
   /* >> prose */
   .prose {
     @apply leading-loose;
@@ -351,6 +246,111 @@
 }
 
 @layer utilities {
+  /* >> button */
+  .btn {
+    @apply rounded-full;
+    @apply text-white;
+    @apply font-semibold;
+    @apply text-sm;
+    @apply shadow-sm;
+    @apply px-4;
+    @apply py-1;
+    @apply hover:underline;
+    @apply hover:underline-offset-2;
+  }
+
+  .icon-btn {
+    @apply btn;
+    @apply py-3;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500;
+    @apply hover:bg-primary-400;
+    @apply dark:bg-primary-600;
+    @apply dark:hover:bg-primary-700;
+  }
+
+  .btn-edit {
+    @apply bg-yellow-600;
+    @apply hover:bg-yellow-500;
+    @apply dark:bg-yellow-500;
+    @apply dark:hover:bg-yellow-600;
+  }
+  /* << button */
+
+  /* >> anchor */
+  .anchor {
+    @apply font-semibold;
+    @apply underline;
+    @apply underline-offset-2;
+    @apply decoration-primary-500;
+    @apply hover:decoration-2;
+    @apply dark:decoration-primary-600;
+  }
+  /* << anchor */
+
+  /* >> muted */
+  .muted {
+    @apply text-muted-600;
+    @apply dark:text-muted-400;
+  }
+  /* << muted */
+
+  /* >> forms */
+  .form-label {
+    @apply block;
+    @apply text-sm;
+    @apply font-medium;
+  }
+
+  .form-label-required {
+    @apply after:content-['*'];
+    @apply after:ml-0.5;
+    @apply after:text-red-500;
+  }
+
+  .form-input {
+    @apply rounded-md;
+    @apply w-full;
+    @apply shadow-md;
+
+    @apply text-foreground-800;
+    @apply placeholder-muted-500;
+
+    @apply disabled:bg-slate-200;
+    @apply disabled:border-muted-400;
+    @apply disabled:text-muted-400;
+    @apply disabled:placeholder-muted-400;
+    @apply disabled:shadow-none;
+
+    @apply focus:outline-none;
+    @apply focus:ring-1;
+    @apply focus:border-primary-400;
+    @apply focus:ring-primary-400;
+    @apply focus:dark:border-primary-600;
+    @apply focus:dark:ring-primary-600;
+
+    @apply invalid:border-pink-500;
+    @apply invalid:text-pink-600;
+    @apply focus:invalid:border-pink-500;
+    @apply focus:invalid:ring-pink-500;
+  }
+
+  .form-checkbox {
+    @apply bg-transparent;
+    @apply text-primary-400;
+    @apply dark:text-primary-600;
+    @apply focus:border-primary-400;
+    @apply focus:ring-primary-400;
+    @apply focus:outline-primary-400;
+    @apply focus:dark:border-primary-600;
+    @apply focus:dark:ring-primary-600;
+    @apply focus:dark:outline-primary-600;
+    box-shadow: none !important;
+  }
+  /* << forms */
+
   /* >> blog */
   .blog {
     @apply max-w-prose; /* https://tailwindcss.com/docs/max-width#reading-width */
