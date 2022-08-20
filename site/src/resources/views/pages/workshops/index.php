@@ -2,7 +2,7 @@
 
 <h1>My workshop presentations material</h1>
 
-<ul class="prose">
+<ul>
   <?php partial_args(
     'workshops/workshop_entry.php',
     array(

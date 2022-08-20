@@ -19,7 +19,7 @@ else layout_header($args['b']->getTitle());
     <em class="block muted mb-4">Avg. <?= $args['b']->readingTime(); ?> minute(s) of reading</em>
 
     <?php if (!is_null($args['b']->getIntro())) { ?>
-      <div class="mx-2 p-2 rounded-md bg-background-300 dark:bg-background-900">
+      <div class="p-2 rounded-md bg-background-300 dark:bg-background-900">
         <?= Parsedown::instance()->text($args['b']->getIntro()); ?>
       </div>
     <?php } ?>

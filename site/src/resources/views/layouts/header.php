@@ -169,11 +169,11 @@
             ));
             ?>
             <?php if (is_auth()) { ?>
-              <a class="bg-gray-800 px-1 text-red-200 hover:text-red-400" title="logout" href="<?= route('user_logout_route'); ?>">
+              <a class="px-1 text-red-200 hover:text-red-400" title="logout" href="<?= route('user_logout_route'); ?>">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
               </a>
             <?php } else { ?>
-              <a class="bg-gray-800 px-1 text-green-200 hover:text-green-400" title="login" href="<?= route('user_login_route'); ?>">
+              <a class="px-1 text-green-200 hover:text-green-400" title="login" href="<?= route('user_login_route'); ?>">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
               </a>
             <?php } ?>

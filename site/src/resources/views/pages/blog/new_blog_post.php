@@ -1,31 +1,41 @@
 <?php layout_header('New blog post'); ?>
 
-<h2>New blog post</h2>
+<h1>New blog post</h1>
 
-<form method="POST" action="<?= route('blog_insert_action'); ?>">
-  <?= partial('csrf.php'); ?>
-
-  <div class="row">
-    <div class="seven columns">
-      <label for="title">Title *</label>
-      <input class="u-full-width" type="text" id="title" name="title" placeholder="Post title..." required autofocus>
+<div class="w-full">
+  <form class="m-auto max-w-prose" method="POST" action="<?= route('blog_insert_action'); ?>">
+    <?= partial('csrf.php'); ?>
+    <div>
+      <label class="form-label form-label-required" for="title">Title</label>
+      <input class="form-input" id="title" type="text" name="title" placeholder="Post title..." required autofocus>
     </div>
-    <div class="five columns">
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date">
+
+    <div class="mt-6 w-full flex flex-row flex-wrap items-center gap-2">
+      <div class="flex-auto min-w-0">
+        <label class="form-label" for="date">Date</label>
+        <input class="block form-input" type="date" id="date" name="date">
+      </div>
+
+      <label>
+        <input class="form-checkbox" id="visibility" type="checkbox" name="visibility">
+        <span class="ml-1">Publicly visible</span>
+      </label>
     </div>
-  </div>
 
-  <label for="intro">Intro</label>
-  <textarea class="u-full-width" id="intro" name="intro" rows="3" placeholder="Post summary/introduction..."></textarea>
-  <label for="content">Content *</label>
-  <textarea class="u-full-width" id="content" name="content" rows="30" placeholder="Post body..." required></textarea>
+    <div class="mt-6">
+      <label class="form-label" for="intro">Intro</label>
+      <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction..."></textarea>
+    </div>
 
-  <label class="u-pull-right">
-    <input type="checkbox" id="visibility" name="visibility">
-    <span>Publicly visible</span>
-  </label>
-  <input class="button-primary" type="submit" value="Submit">
-</form>
+    <div class="mt-6">
+      <label class="form-label form-label-required" for="content">Content</label>
+      <textarea class="form-input" id="content" name="content" rows="20" placeholder="Content..." required></textarea>
+    </div>
+
+    <div class="mt-6 text-right">
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+  </form>
+</div>
 
 <?php layout_footer(); ?>
