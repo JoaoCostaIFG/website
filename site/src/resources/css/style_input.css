@@ -265,17 +265,24 @@
   }
 
   .btn-primary {
-    @apply bg-primary-500;
-    @apply hover:bg-primary-400;
-    @apply dark:bg-primary-600;
-    @apply dark:hover:bg-primary-700;
+    @apply bg-primary-400;
+    @apply hover:bg-primary-500;
+    @apply dark:bg-primary-700;
+    @apply dark:hover:bg-primary-600;
   }
 
   .btn-edit {
-    @apply bg-yellow-600;
-    @apply hover:bg-yellow-500;
-    @apply dark:bg-yellow-500;
-    @apply dark:hover:bg-yellow-600;
+    @apply bg-yellow-500;
+    @apply hover:bg-yellow-600;
+    @apply dark:bg-yellow-600;
+    @apply dark:hover:bg-yellow-500;
+  }
+
+  .btn-info {
+    @apply bg-info-600;
+    @apply hover:bg-info-700;
+    @apply dark:bg-info-600;
+    @apply dark:hover:bg-info-500;
   }
   /* << button */
 
