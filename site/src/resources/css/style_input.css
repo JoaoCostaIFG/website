@@ -219,7 +219,7 @@
     @apply focus:dark:border-primary-600;
     @apply focus:dark:ring-primary-600;
     @apply focus:dark:outline-primary-600;
-    box-shadow: 0px 0px black !important;
+    box-shadow: none !important;
   }
   /* << forms */
 }
