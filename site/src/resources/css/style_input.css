@@ -333,5 +333,14 @@
     @apply whitespace-pre-line !important; /* wrap long lines */
     @apply rounded-md;
   }
+
+  .prose code {
+    @apply px-1;
+    @apply rounded-md;
+    @apply bg-background-200;
+    @apply text-primary-700;
+    @apply dark:bg-background-900;
+    @apply dark:text-primary-300;
+  }
   /* << prose */
 }
