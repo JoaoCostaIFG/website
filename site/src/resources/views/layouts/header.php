@@ -114,7 +114,7 @@
 <body class="bg-background-200 dark:bg-background-900 min-h-screen">
   <header id="header-container" class="w-full">
     <nav id="navbar" arial-label="primary navigation" class="bg-navbar-800">
-      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="container mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <!-- Mobile menu button-->
@@ -127,8 +127,8 @@
             <a class="shrink-0" title="Go home" href="<?= route('home_route') ?>">
               <img id="brand" class="aspect-square shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
             </a>
-            <div class="hidden sm:block sm:ml-6">
-              <div class="flex gap-x-4">
+            <div class="hidden sm:block sm:ml-4">
+              <div class="flex gap-x-3">
                 <?php
                 partial_args('nav/nav_link.php', array(
                   'href' => route('home_route'),
@@ -155,7 +155,7 @@
             </div>
           </div>
 
-          <div class="absolute right-0 inset-y-0 flex items-center mr-2 sm:static sm:inset-auto sm:mr-0">
+          <div class="absolute right-0 inset-y-0 flex gap-x-1 items-center mr-2 sm:mr-0">
             <?php
             partial_args('nav/nav_icon.php', array(
               'title' => "My wiki",
