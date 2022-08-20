@@ -1,33 +1,43 @@
 <?php layout_header('Edit blog post'); ?>
 
-<h2>Edit blog post</h2>
+<h1>Edit blog post</h1>
 
-<form method="POST" action="<?= route('blog_edit_action'); ?>">
-  <?= partial('csrf.php'); ?>
-  <input type="hidden" id="id" name="id" value="<?= $args['b']->getId(); ?>">
+<div class="w-full">
+  <form class="m-auto max-w-prose" method="POST" action="<?= route('blog_edit_action'); ?>">
+    <?= partial('csrf.php'); ?>
+    <input type="hidden" id="id" name="id" value="<?= $args['b']->getId(); ?>">
 
-  <div class="row">
-    <div class="seven columns">
-      <label for="title">Title *</label>
-      <input class="u-full-width" type="text" id="title" name="title" value="<?= $args['b']->getTitle(); ?>" placeholder="Post title..." required autofocus>
+    <div>
+      <label class="form-label form-label-required" for="title">Title</label>
+      <input class="form-input" id="title" type="text" name="title" placeholder="Post title..." required autofocus value="<?= $args['b']->getTitle(); ?>">
     </div>
-    <div class="five columns">
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date" value="<?= $args['b']->getDateStr(); ?>">
+
+    <div class="mt-6 w-full flex flex-row flex-wrap items-center gap-2">
+      <div class="flex-auto min-w-0">
+        <label class="form-label" for="date">Date</label>
+        <input class="block form-input" type="date" id="date" name="date" value="<?= $args['b']->getDateStr(); ?>">
+      </div>
+
+      <label>
+        <input id="visibility" type="checkbox" name="visibility" <?php if ($args['b']->isVisible()) echo 'checked'; ?>>
+        <span>Publicly visible</span>
+      </label>
     </div>
-  </div>
 
-  <label for="intro">Intro</label>
-  <textarea class="u-full-width" id="intro" name="intro" rows="3" placeholder="Post summary/introduction..."><?= $args['b']->getIntro(); ?></textarea>
-  <label for="content">Content *</label>
-  <textarea class="u-full-width" id="content" name="content" rows="20" placeholder="Post body..." required><?= $args['b']->getContent(); ?></textarea>
+    <div class="mt-6">
+      <label class="form-label" for="intro">Intro</label>
+      <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction..."><?= $args['b']->getIntro(); ?></textarea>
+    </div>
 
-  <label class="u-pull-right">
-    <input type="checkbox" id="visibility" name="visibility" <?php if ($args['b']->isVisible()) echo 'checked'; ?>>
-    <span>Publicly visible</span>
-  </label>
+    <div class="mt-6">
+      <label class="form-label form-label-required" for="content">Content</label>
+      <textarea class="form-input" id="content" name="content" rows="20" placeholder="Content..." required><?= $args['b']->getContent(); ?></textarea>
+    </div>
 
-  <input class="button-primary" type="submit" value="Submit">
-</form>
+    <div class="mt-6 text-right">
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+  </form>
+</div>
 
 <?php layout_footer(); ?>

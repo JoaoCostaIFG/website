@@ -187,7 +187,7 @@
     @apply w-full;
     @apply shadow-md;
 
-    @apply text-foreground-700;
+    @apply text-foreground-800;
     @apply placeholder-muted-500;
 
     @apply disabled:bg-slate-200;
@@ -200,6 +200,8 @@
     @apply focus:ring-1;
     @apply focus:border-primary-400;
     @apply focus:ring-primary-400;
+    @apply focus:dark:border-primary-600;
+    @apply focus:dark:ring-primary-600;
 
     @apply invalid:border-pink-500;
     @apply invalid:text-pink-600;

@@ -24,12 +24,12 @@
 
     <div class="mt-6">
       <label class="form-label" for="intro">Intro</label>
-      <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Post summary/introduction..."></textarea>
+      <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction..."></textarea>
     </div>
 
     <div class="mt-6">
       <label class="form-label form-label-required" for="content">Content</label>
-      <textarea class="form-input" id="content" name="content" rows="20" placeholder="Post body..." required></textarea>
+      <textarea class="form-input" id="content" name="content" rows="20" placeholder="Content..." required></textarea>
     </div>
 
     <div class="mt-6 text-right">
