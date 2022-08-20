@@ -168,6 +168,45 @@
     @apply max-w-prose; /* https://tailwindcss.com/docs/max-width#reading-width */
     @apply break-words;
   }
+
+  /* >> forms */
+  .form-label {
+    @apply block;
+    @apply text-sm;
+    @apply font-medium;
+  }
+
+  .form-label-required {
+    @apply after:content-['*'];
+    @apply after:ml-0.5;
+    @apply after:text-red-500;
+  }
+
+  .form-input {
+    @apply rounded-md;
+    @apply w-full;
+    @apply shadow-md;
+
+    @apply text-foreground-700;
+    @apply placeholder-muted-500;
+
+    @apply disabled:bg-slate-200;
+    @apply disabled:border-muted-400;
+    @apply disabled:text-muted-400;
+    @apply disabled:placeholder-muted-400;
+    @aaply disabled:shadow-none;
+
+    @apply focus:outline-none;
+    @apply focus:ring-1;
+    @apply focus:border-primary-400;
+    @aplpy focus:ring-primary-400;
+
+    @apply invalid:border-pink-500;
+    @apply invalid:text-pink-600;
+    @apply focus:invalid:border-pink-500;
+    @apply focus:invalid:ring-pink-500;
+  }
+  /* << forms */
 }
 
 @layer utilities {
