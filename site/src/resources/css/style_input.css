@@ -315,14 +315,20 @@
     @apply w-full;
     @apply shadow-md;
 
+    @apply bg-white;
     @apply text-foreground-800;
-    @apply placeholder-muted-500;
+    @apply dark:bg-background-900;
+    @apply dark:text-foreground-200;
 
-    @apply disabled:bg-slate-200;
-    @apply disabled:border-muted-400;
+    @apply placeholder-muted-500;
+    @apply dark:placeholder-muted-400;
+
+    @apply disabled:shadow-none;
+    @apply disabled:bg-muted-200;
+    @apply dark:disabled:bg-muted-600;
     @apply disabled:text-muted-400;
     @apply disabled:placeholder-muted-400;
-    @apply disabled:shadow-none;
+    @apply disabled:border-muted-400;
 
     @apply focus:outline-none;
     @apply focus:ring-1;
@@ -333,6 +339,7 @@
 
     @apply invalid:border-pink-500;
     @apply invalid:text-pink-600;
+    @apply dark:invalid:text-pink-500;
     @apply focus:invalid:border-pink-500;
     @apply focus:invalid:ring-pink-500;
   }
@@ -348,6 +355,11 @@
     @apply focus:dark:ring-primary-600;
     @apply focus:dark:outline-primary-600;
     box-shadow: none !important;
+  }
+
+  .form-file {
+    @apply form-input;
+    @apply bg-transparent !important;
   }
   /* << forms */
 
