@@ -208,6 +208,19 @@
     @apply focus:invalid:border-pink-500;
     @apply focus:invalid:ring-pink-500;
   }
+
+  .form-checkbox {
+    @apply bg-transparent;
+    @apply text-primary-400;
+    @apply dark:text-primary-600;
+    @apply focus:border-primary-400;
+    @apply focus:ring-primary-400;
+    @apply focus:outline-primary-400;
+    @apply focus:dark:border-primary-600;
+    @apply focus:dark:ring-primary-600;
+    @apply focus:dark:outline-primary-600;
+    box-shadow: 0px 0px black !important;
+  }
   /* << forms */
 }
 

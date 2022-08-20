@@ -17,8 +17,8 @@
       </div>
 
       <label>
-        <input id="visibility" type="checkbox" name="visibility">
-        <span>Publicly visible</span>
+        <input class="form-checkbox" id="visibility" type="checkbox" name="visibility">
+        <span class="ml-1">Publicly visible</span>
       </label>
     </div>
 

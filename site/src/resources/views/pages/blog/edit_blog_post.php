@@ -19,8 +19,8 @@
       </div>
 
       <label>
-        <input id="visibility" type="checkbox" name="visibility" <?php if ($args['b']->isVisible()) echo 'checked'; ?>>
-        <span>Publicly visible</span>
+        <input class="form-checkbox" id="visibility" type="checkbox" name="visibility" <?php if ($args['b']->isVisible()) echo 'checked'; ?>>
+        <span class="ml-1">Publicly visible</span>
       </label>
     </div>
 
