@@ -58,6 +58,7 @@
       if (themeToggler == null) return;
 
       const newToggler = document.createElement("button");
+      newToggler.setAttribute('aria-label', "Set light theme");
       newToggler.onclick = toggleTheme;
       newToggler.classList.add("px-1", "text-cyan-600", "hover:text-cyan-500");
       newToggler.innerHTML = '<i class="fa-solid fa-moon"></i>';
@@ -74,6 +75,7 @@
       if (themeToggler == null) return;
 
       const newToggler = document.createElement("button");
+      newToggler.setAttribute('aria-label', "Set dark theme");
       newToggler.onclick = toggleTheme;
       newToggler.classList.add("px-1", "text-yellow-200", "hover:text-yellow-400");
       newToggler.innerHTML = '<i class="fa-solid fa-sun"></i>';
@@ -123,7 +125,7 @@
           </div>
           <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <a class="shrink-0" title="Go home" href="<?= route('home_route') ?>">
-              <img id="brand" class="block flex-shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
+              <img id="brand" class="aspect-square shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
             </a>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
@@ -177,7 +179,7 @@
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
               </a>
             <?php } ?>
-            <button id="theme-toggler" class="px-1 text-cyan-600 hover:text-cyan-500" onclick="toggleTheme()">
+            <button id="theme-toggler" class="px-1 text-cyan-600 hover:text-cyan-500" onclick="toggleTheme()" aria-label="Set light theme">
               <i class="fa-solid fa-moon"></i>
             </button>
           </div>

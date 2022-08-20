@@ -265,8 +265,8 @@
   }
 
   .btn-primary {
-    @apply bg-primary-400;
-    @apply hover:bg-primary-500;
+    @apply bg-primary-500;
+    @apply hover:bg-primary-600;
     @apply dark:bg-primary-700;
     @apply dark:hover:bg-primary-600;
   }
