@@ -1,4 +1,3 @@
-<?php header("Content-Security-Policy: default-src 'self'"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,7 +128,7 @@
               <img id="brand" class="aspect-square shrink-0 h-8 w-auto" src="<?= img('irao.png') ?>" alt="My icon">
             </a>
             <div class="hidden sm:block sm:ml-6">
-              <div class="flex space-x-4">
+              <div class="flex gap-x-4">
                 <?php
                 partial_args('nav/nav_link.php', array(
                   'href' => route('home_route'),
@@ -156,7 +155,7 @@
             </div>
           </div>
 
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div class="absolute right-0 inset-y-0 flex items-center mr-2 sm:static sm:inset-auto sm:mr-0">
             <?php
             partial_args('nav/nav_icon.php', array(
               'title' => "My wiki",

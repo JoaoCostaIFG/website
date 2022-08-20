@@ -14,7 +14,7 @@
     </div>
     <div class="text-right max-w-xl">
       <a class="btn btn-primary" href="<?php echo route('blog_index_route') ?>">
-        See More
+        Older posts
       </a>
     </div>
   </section>
