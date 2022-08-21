@@ -23,7 +23,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" type="text/css" href="<?= res_css('style.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?= res_css('print.css'); ?>" media="print">
-  <link rel="stylesheet" type="text/css" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="<?= res_css('fontawesome.css'); ?>">
   <?php
   if (isset($args['css'])) {
     foreach ($args['css'] as $css) { ?>
