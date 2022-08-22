@@ -56,7 +56,7 @@ $icons: (
 );
 
 const cssFile = "./resources/css/fontawesome.css";
-const css = sass.render(
+sass.render(
   {
     file: "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
     outFile: cssFile,
