@@ -49,20 +49,34 @@ certificates automatically by using my DNS provider's API.
 
 ## Cool resources
 
-- [Example HTML boilerplate](https://www.matuzo.at/blog/html-boilerplate/).
-- [Example usage of Symfony's routing component](https://code.tutsplus.com/tutorials/set-up-routing-in-php-applications-using-the-symfony-routing-component--cms-31231).
-- [HTTPS on local dev env](https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec/).
-- [Semantic HTML](https://localghost.dev/2021/06/the-right-tag-for-the-job-why-you-should-use-semantic-html/).
-- [Set up your Onion service](https://community.torproject.org/onion-services/setup/).
+- [Example HTML boilerplate](https://www.matuzo.at/blog/html-boilerplate/)
+- [Example usage of Symfony's routing component](https://code.tutsplus.com/tutorials/set-up-routing-in-php-applications-using-the-symfony-routing-component--cms-31231)
+- [HTTPS on local dev env](https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec/)
+- [Semantic HTML](https://localghost.dev/2021/06/the-right-tag-for-the-job-why-you-should-use-semantic-html/)
+- [Set up your Onion service](https://community.torproject.org/onion-services/setup/)
 
-## TODO
+## FontAwesome
 
-- [Emoji domain](https://github.com/jonroig/emojiurlifier) - Self explanatory.
-- [Showdown](http://showdownjs.com/) - Markdown render for when I'm writing.
-- [File hosting in PHP](https://github.com/Rouji/single_php_filehost) - Could be
-  useful.
-- [Sqlite pagination](https://github.com/leoshtika/pagination/blob/master/demo-sqlite.php) -
-  Blog post index pagination.
+I use [FontAwesome](https://fontawesome.com) to display some icons on the
+website. [FontAwesome](https://fontawesome.com) is quite big, and I don't have a
+Pro License in order to use the _subsetter_ feature. As such, I implemented my
+own using the following node packages:
+
+- [@fortawesome/fontawesome-free](https://www.npmjs.com/package/@fortawesome/fontawesome-free)
+- [fontawesome-subset](https://github.com/omacranger/fontawesome-subset)
+- [node-sass](https://www.npmjs.com/package/node-sass)
+- [csso](https://github.com/css/csso)
+
+### Usage
+
+Running the `fontawesome_subsetter.mjs` script (e.g.,
+`node fontawesome_subsetter.mjs`), will generate the webfonts and CSS containing
+only the required icons. The icons are specified in the `icons` dictionary
+inside the script. This was developed for use in this project only, adapt it to
+your needs.
+
+It should be noted that I haven't tested it with icon aliases (names referring
+to icons with other names).
 
 ## License
 
