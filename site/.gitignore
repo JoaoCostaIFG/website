@@ -8,6 +8,9 @@ src/vendor/
 src/node_modules/
 ## tailwindcss
 src/resources/css/style.css
+## fontawesome
+src/resources/webfonts/
+src/resources/css/fontawesome.css
 
 # wiki
 wiki/conf
