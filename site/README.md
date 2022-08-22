@@ -64,7 +64,7 @@ own using the following node packages:
 
 - [@fortawesome/fontawesome-free](https://www.npmjs.com/package/@fortawesome/fontawesome-free)
 - [fontawesome-subset](https://github.com/omacranger/fontawesome-subset)
-- [node-sass](https://www.npmjs.com/package/node-sass)
+- [sass](https://github.com/sass/sass)
 - [csso](https://github.com/css/csso)
 
 ### Usage
