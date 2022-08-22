@@ -12,6 +12,8 @@ RUN cd /app/main && composer install -n -o
 RUN cd /app/main && npm install -D
 # build css with tailwindcss
 RUN cd /app/main && npx tailwindcss -i ./resources/css/style_input.css -o ./resources/css/style.css --minify
+# build webfonts and css with fontawesome
+RUN cd /app/main && node fontawesome_subsetter.mjs
 
 # -----------------------------------------------------------------------------
 

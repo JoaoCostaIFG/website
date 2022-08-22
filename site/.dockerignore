@@ -3,7 +3,6 @@ src/cache
 src/data
 src/vendor
 src/node_module
-src/fontawesome_subsetter.mjs
 ## tailwindcss is built inside the image
 src/resources/css/style.css
 ## fontawesome
