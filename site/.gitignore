@@ -1,8 +1,6 @@
 # main
 src/data/
 !src/data/storage/img/
-src/database/
-src/storage/
 ## composer
 src/cache/
 src/composer.phar
