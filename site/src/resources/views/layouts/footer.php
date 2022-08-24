@@ -24,7 +24,7 @@
   <?php
   if (isset($args['js'])) {
     foreach ($args['js'] as $js) { ?>
-      <script type="text/javascript" src="<?= res_js($js); ?>"></script>
+      <script type="text/javascript" src="<?= $js; ?>"></script>
   <?php }
   } ?>
 </body>

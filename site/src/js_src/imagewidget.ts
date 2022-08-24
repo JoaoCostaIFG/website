@@ -79,7 +79,9 @@ const imageTheme = EditorView.baseTheme({
     'text-align': "center",
   },
   '.cm-img': {
-    display: 'inline',
+    display: 'block',
+    padding: '0 1em 0',
+    // 'max-width': '65ch',
   }
 })
 

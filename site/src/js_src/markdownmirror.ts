@@ -11,7 +11,7 @@ import {
   foldGutter, foldKeymap
 } from "@codemirror/language"
 import {closeBrackets, closeBracketsKeymap} from "@codemirror/autocomplete"
-import {vim} from "@replit/codemirror-vim";
+import {vim, Vim} from "@replit/codemirror-vim";
 import {markdown} from "@codemirror/lang-markdown";
 import {languages} from "@codemirror/language-data";
 import WordStatPanel from "./wordstatpanel";
@@ -29,6 +29,9 @@ export default class MarkdownMirror {
   view: EditorView
 
   constructor({content, parent, input}: MarkdownMirrorParams) {
+    Vim.map("j", "gj")
+    Vim.map("k", "gk")
+
     let state = EditorState.create({
       doc: content,
       extensions: [
@@ -65,6 +68,15 @@ export default class MarkdownMirror {
         // theme
         markdown({codeLanguages: languages}),
         EditorState.tabSize.of(2),
+        EditorView.theme({
+          ".cm-fullLineWrapping": {
+            'white-space': 'break-spaces',
+            'word-break': 'break-all',
+            'overflow-wrap': 'anywhere',
+            'flex-shrink': 1,
+          }
+        }),
+        EditorView.contentAttributes.of({"class": "cm-fullLineWrapping"}),
         oneDark,
       ],
     });

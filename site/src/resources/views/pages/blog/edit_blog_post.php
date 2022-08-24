@@ -29,15 +29,17 @@
       <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction..."><?= $args['b']->getIntro(); ?></textarea>
     </div>
 
-    <div class="mt-6">
-      <label class="form-label form-label-required" for="content">Content</label>
-      <textarea class="form-input" id="content" name="content" rows="20" placeholder="Content..." required><?= $args['b']->getContent(); ?></textarea>
-    </div>
+    <textarea class="hidden" id="content" name="content" rows="1" required></textarea>
 
     <div class="mt-6 text-right">
       <input class="btn btn-primary" type="submit" value="Submit">
     </div>
   </form>
+
+  <div class="mx-auto mt-6" id="editor-container">
+  </div>
 </div>
+
+<script src="/dist/bundle.js"></script>
 
 <?php layout_footer(); ?>

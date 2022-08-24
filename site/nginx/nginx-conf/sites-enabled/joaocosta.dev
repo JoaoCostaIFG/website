@@ -13,7 +13,7 @@ server {
   error_page 404 =301 /404;
 
   # secure stuff
-  location ~ /(App/|cache/|(data/)?database/|js_src/|node_modules/|vendor/|composer.*|.*json|.*js) {
+  location ~ /(App/|cache/|(data/)?database/|js_src/|node_modules/|vendor/|composer.*|package.*json|rollup.config.js|tailwind.config.js|tsconfig.json) {
     return 404;
   }
 
