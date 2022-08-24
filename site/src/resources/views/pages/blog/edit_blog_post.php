@@ -29,7 +29,7 @@
       <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction..."><?= $args['b']->getIntro(); ?></textarea>
     </div>
 
-    <textarea class="hidden" id="content" name="content" rows="1" required></textarea>
+    <textarea class="hidden" id="content" name="content" rows="1" required><?= $args['b']->getContent(); ?></textarea>
 
     <div class="mt-6 text-right">
       <input class="btn btn-primary" type="submit" value="Submit">

@@ -69,12 +69,27 @@ export default class MarkdownMirror {
         markdown({codeLanguages: languages}),
         EditorState.tabSize.of(2),
         EditorView.theme({
+          "&": {
+            'height': '8em',
+            'z-index': 20,
+          },
+          "&.cm-focused": {
+            'height': 'auto',
+            'position': 'absolute !important',
+            'top': 0,
+            'bottom': 0,
+            'left': 0,
+            'right': 0,
+          },
+          "& .cm-scroller": {
+            'overflow': 'auto',
+          },
           ".cm-fullLineWrapping": {
             'white-space': 'break-spaces',
             'word-break': 'break-all',
             'overflow-wrap': 'anywhere',
             'flex-shrink': 1,
-          }
+          },
         }),
         EditorView.contentAttributes.of({"class": "cm-fullLineWrapping"}),
         oneDark,

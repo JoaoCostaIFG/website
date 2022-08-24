@@ -24,12 +24,15 @@ function currentLine(state: EditorState) {
 }
 
 function wordStatPanel(view: EditorView): Panel {
-  let dom = document.createElement("div"),
-    wordsSpan = document.createElement("span"),
-    linesSpan = document.createElement("span");
+  const dom = document.createElement("div")
+  const wordsSpan = dom.appendChild(document.createElement("span"))
+  const linesSpan = dom.appendChild(document.createElement("span"))
+  const fullscreenBtn = dom.appendChild(document.createElement("button"))
 
-  dom.appendChild(wordsSpan);
-  dom.appendChild(linesSpan);
+  fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i>'
+  fullscreenBtn.onclick = () => {
+    view.focus()
+  }
 
   wordsSpan.textContent = `${countWords(view.state.doc)} | `;
   linesSpan.textContent = `${currentLine(view.state)}`;
