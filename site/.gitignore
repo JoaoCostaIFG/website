@@ -1,6 +1,8 @@
 # main
 src/data/
 !src/data/storage/img/
+src/database/
+src/storage/
 ## composer
 src/cache/
 src/composer.phar
@@ -11,6 +13,8 @@ src/resources/css/style.css
 ## fontawesome
 src/resources/webfonts/
 src/resources/css/fontawesome.css
+## rollup
+src/dist/
 
 # wiki
 wiki/conf

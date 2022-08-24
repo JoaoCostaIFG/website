@@ -1,10 +1,14 @@
 # main
 src/cache/
 src/data/
+src/database/
+src/storage/
 src/vendor/
 src/node_modules/
 ## tailwindcss is built inside the image
 src/resources/css/style.css
+## rollup
+src/dist/
 
 # wiki
 wiki/conf

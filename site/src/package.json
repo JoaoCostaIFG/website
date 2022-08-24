@@ -2,7 +2,9 @@
   "name": "joaocostaifg-blog",
   "version": "1.0.0",
   "description": "JoaoCostaIFG's personal blog",
-  "scripts": {},
+  "scripts": {
+    "build": "rollup -c"
+  },
   "author": "JoaoCostaIFG",
   "license": "MIT",
   "devDependencies": {
