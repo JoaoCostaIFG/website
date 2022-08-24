@@ -1,0 +1,17 @@
+{
+  "name": "fontawesome_subsetter",
+  "version": "1.0.0",
+  "description": "Builds a subset from fontawesome fonts",
+  "author": "",
+  "main": "fontawesome_subsetter.mjs",
+  "scripts": {
+    "start": "node fontawesome_subsetter.mjs"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "csso": "^5.0.5",
+    "fontawesome-subset": "^4.2.0",
+    "sass": "^1.54.5"
+  }
+}

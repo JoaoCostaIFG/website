@@ -13,7 +13,7 @@ server {
   error_page 404 =301 /404;
 
   # secure stuff
-  location ~ /(App/|cache/|database/|vendor/|node_modules/|composer.*|package.json|package-lock.json|tailwind.config.js|fontawesome_subsetter.mjs) {
+  location ~ /(App/|cache/|database/|vendor/|node_modules/|composer.*|package.json|package-lock.json|tailwind.config.js) {
     return 404;
   }
 

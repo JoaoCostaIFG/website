@@ -5,8 +5,6 @@ src/vendor/
 src/node_modules/
 ## tailwindcss is built inside the image
 src/resources/css/style.css
-## fontawesome
-src/fontawesome_subsetter.mjs
 
 # wiki
 wiki/conf
