@@ -13,6 +13,10 @@ function generate_random_token()
 // IMP uncomments the line bellow when hosting (not localhost)
 // session_set_cookie_params(0, '/', '.joaocosta.dev', true, true);
 
+session_set_cookie_params(["SameSite" => "Strict"]);
+session_set_cookie_params(["Secure" => "true"]);
+session_set_cookie_params(["HttpOnly" => "true"]);
+
 session_start();
 
 // Prevents session fixation attacks
