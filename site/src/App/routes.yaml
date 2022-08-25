@@ -61,7 +61,7 @@ blog_insert_action:
     controller: App\Controllers\BlogController::newPost
     methods:    POST
 blog_edit_route:
-    path:       /edit_blog/{id}
+    path:       /blog/{id}/edit
     controller: App\Controllers\BlogController::showEditPostForm
     requirements:
         id: '[0-9]+'

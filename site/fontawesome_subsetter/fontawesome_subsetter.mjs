@@ -12,7 +12,9 @@ const icons = {
     "bars",
     "blog",
     "chalkboard-user",
+    "compress",
     "copyright",
+    "expand",
     "file-pen",
     "house",
     "lightbulb",
@@ -28,7 +30,7 @@ const icons = {
 
 // generate webfont
 // https://github.com/omacranger/fontawesome-subset
-const outDir = "./resources";
+const outDir = "../src/resources";
 fontawesomeSubset(icons, `${outDir}/webfonts/`);
 
 // update SASS files and compile SASS

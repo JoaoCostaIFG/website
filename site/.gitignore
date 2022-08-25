@@ -11,6 +11,8 @@ src/resources/css/style.css
 ## fontawesome
 src/resources/webfonts/
 src/resources/css/fontawesome.css
+## rollup
+src/dist/
 
 # wiki
 wiki/conf
