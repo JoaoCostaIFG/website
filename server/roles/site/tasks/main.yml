@@ -1,18 +1,27 @@
 ---
-- name: Fetch site files
-  ansible.builtin.git:
-    repo: "https://github.com/JoaoCostaIFG/website.git"
-    dest: /usr/local/src/website
-  environment:
-    GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
-  notify: update joaocosta.dev service
-- name: Copy site systemd service file
-  copy:
-    src: joaocosta.dev.service
-    dest: /etc/systemd/system/joaocosta.dev.service
-    owner: root
-    group: root
-    mode: '0666'
+- name: Install npm
+  community.general.pacman:
+    name:
+      - npm
+    state: present
+- block:
+  - name: Fetch site files
+    ansible.builtin.git:
+      repo: "https://github.com/JoaoCostaIFG/website.git"
+      dest: /usr/local/src/website
+    environment:
+      GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+  - name: Build fontawesome font
+    ansible.builtin.shell: npm i && npm run start
+    args:
+      chdir: /usr/local/src/website/site/fontawesome_subsetter
+  - name: Copy site systemd service file
+    copy:
+      src: joaocosta.dev.service
+      dest: /etc/systemd/system/joaocosta.dev.service
+      owner: root
+      group: root
+      mode: '0666'
   notify: update joaocosta.dev service
 - name: Enable site's systemd service files
   systemd:
