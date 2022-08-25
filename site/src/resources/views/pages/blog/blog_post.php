@@ -30,5 +30,5 @@ else layout_header($args['b']->getTitle());
 
 <?php
 
-if ($has_code_blocks) layout_footer_args(array('js' => ['prism.js']));
+if ($has_code_blocks) layout_footer_args(array('js' => [res_js('prism.js')]));
 else layout_footer();

@@ -27,10 +27,7 @@
       <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction..."></textarea>
     </div>
 
-    <div class="mt-6">
-      <label class="form-label form-label-required" for="content">Content</label>
-      <textarea class="form-input" id="content" name="content" rows="20" placeholder="Content..." required></textarea>
-    </div>
+    <textarea class="hidden" id="content" name="content" rows="1" required></textarea>
 
     <div class="mt-6 text-right">
       <input class="btn btn-primary" type="submit" value="Submit">
@@ -38,4 +35,7 @@
   </form>
 </div>
 
-<?php layout_footer(); ?>
+<div class="mx-auto mt-6" id="editor-container">
+</div>
+
+<?php layout_footer_args(array('js' => ["/dist/bundle.js"])); ?>

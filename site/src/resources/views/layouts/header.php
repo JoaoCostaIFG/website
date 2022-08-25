@@ -189,7 +189,7 @@
       </div>
 
       <!-- mobile menu (show/hide based on menu state) -->
-      <div id="mobile-menu" class="sm:hidden px-2 pb-2 flex flex-col gap-y-1">
+      <div id="mobile-menu" class="hidden sm:hidden px-2 pb-2 flex flex-col gap-y-1">
         <?php
         partial_args('nav/nav_link.php', array(
           'href' => route('home_route'),
