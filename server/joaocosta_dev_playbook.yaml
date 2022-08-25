@@ -12,4 +12,5 @@
     - backup
     - tailscale
     - ddns
-    - site
+    - role: site
+      tags: site
