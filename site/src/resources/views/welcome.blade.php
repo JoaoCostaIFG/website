@@ -128,5 +128,11 @@
                 </div>
             </div>
         </div>
+<?php
+use App\Models\Blog;
+foreach (Blog::all() as $proj) {
+  echo $proj["blog_date"] . '<br>';
+}
+?>
     </body>
 </html>
