@@ -20,30 +20,39 @@ function currentLine(state: EditorState) {
   let doc = state.doc;
   let selStart = state.selection.ranges[0].from
   let line = doc.lineAt(selStart);
-  return `${Math.round(line.number * 100 / doc.lines)}% ln:${line.number}/${doc.lines} :${selStart - line.from}`
+  return `ln:${line.number}/${doc.lines} (${Math.round(line.number * 100 / doc.lines)}%) :${selStart - line.from}`
 }
 
 function wordStatPanel(view: EditorView): Panel {
   const dom = document.createElement("div")
-  const wordsSpan = dom.appendChild(document.createElement("span"))
-  const linesSpan = dom.appendChild(document.createElement("span"))
-  const fullscreenBtn = dom.appendChild(document.createElement("button"))
+  dom.style.display = "flex"
+  dom.style.justifyContent = "flex-start"
+  dom.style.flexWrap = "wrap"
+  dom.style.gap = "1em"
+  dom.style.padding = "0 1em 0"
 
+  const wordsSpan = dom.appendChild(document.createElement("span"))
+  wordsSpan.textContent = countWords(view.state.doc);
+  dom.appendChild(document.createElement("span")).textContent = "|" // spacer
+
+  const linesSpan = dom.appendChild(document.createElement("span"))
+  linesSpan.textContent = currentLine(view.state)
+
+  const fullscreenBtn = dom.appendChild(document.createElement("button"))
+  fullscreenBtn.style.position = "absolute"
+  fullscreenBtn.style.right = "1em"
   fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i>'
   fullscreenBtn.onclick = () => {
     view.focus()
   }
 
-  wordsSpan.textContent = `${countWords(view.state.doc)} | `;
-  linesSpan.textContent = `${currentLine(view.state)}`;
-
   return {
     dom,
     update(update) {
       if (update.docChanged)
-        wordsSpan.textContent = `${countWords(update.view.state.doc)} | `;
+        wordsSpan.textContent = countWords(update.view.state.doc)
       if (update.selectionSet)
-        linesSpan.textContent = `${currentLine(update.view.state)}`;
+        linesSpan.textContent = currentLine(update.view.state)
     },
   };
 }
