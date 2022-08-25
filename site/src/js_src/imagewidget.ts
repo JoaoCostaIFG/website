@@ -51,7 +51,7 @@ function imageMatch(state: EditorState): RangeSet<Decoration> {
         const result = regex.exec(doc.sliceString(from, to))
         if (result && result.groups && result.groups.url) {
           let deco = imageDecoration({url: result.groups.url})
-          widgets.push(deco.range(doc.lineAt(to).from))
+          widgets.push(deco.range(doc.lineAt(to).to))
         }
       }
     }
@@ -80,8 +80,9 @@ const imageTheme = EditorView.baseTheme({
   },
   '.cm-img': {
     display: 'block',
+    'margin': '0 auto 0',
+    'max-height': '24em',
     padding: '0 1em 0',
-    // 'max-width': '65ch',
   }
 })
 

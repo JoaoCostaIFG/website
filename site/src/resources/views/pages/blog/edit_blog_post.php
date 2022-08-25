@@ -40,6 +40,4 @@
   </div>
 </div>
 
-<script src="/dist/bundle.js"></script>
-
-<?php layout_footer(); ?>
+<?php layout_footer_args(array('js' => ["/dist/bundle.js"])); ?>
