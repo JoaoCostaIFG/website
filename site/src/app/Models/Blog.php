@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
+/**
+ * Average silent reading words per minute of an adult.
+ * Source: https://thereadtime.com
+ */
+define("AVG_WPM", 238);
+
 class Blog extends Model implements Feedable
 {
   use HasFactory;
@@ -37,6 +43,28 @@ class Blog extends Model implements Feedable
   public function getDateStr(): string
   {
     return $this['blog_date']->toFormattedDateString();
+  }
+
+  /**
+   * @return number of words in intro + content
+   */
+  public function wordCount(): int
+  {
+    $cnt = str_word_count($this->blog_content);
+    if (!is_null($this->blog_intro)) {
+      $cnt += str_word_count($this->blog_intro);
+    }
+    return $cnt;
+  }
+
+  /**
+   * Returns the average silent reading time for the content.
+   * Based on a paper by Marc Brysbaert (2019): https://www.sciencedirect.com/science/article/abs/pii/S0749596X19300786
+   * @return the average reading time in minutes
+   */
+  public function readingTime(): int
+  {
+    return ceil($this->wordCount() / AVG_WPM);
   }
 
   public function toFeedItem(): FeedItem

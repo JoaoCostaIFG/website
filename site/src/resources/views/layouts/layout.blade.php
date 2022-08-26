@@ -24,7 +24,6 @@
   @vite([
   "resources/css/fontawesome.css",
   "resources/css/print.css",
-  "resources/css/style.css",
   ])
   @isset($css)
   @foreach ($css as $c)

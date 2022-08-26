@@ -21,7 +21,7 @@ Route::feeds();
 Route::view('/login', 'pages.home')->name('login');
 Route::view('/logout', 'pages.home')->name('logout');
 
-Route::view('/blog', 'pages.home')->name('blog_index');
+Route::view('/blog', 'pages.blog.index')->name('blog_index');
 Route::view('/blog/{id}', 'pages.home')->where('id', '[0-9]+')->name('blog_post');
 
 Route::view('/projects', 'pages.home')->name('projects');

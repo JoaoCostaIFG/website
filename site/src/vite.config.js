@@ -7,7 +7,7 @@ export default defineConfig({
       input: [
         "resources/css/fontawesome.css",
         "resources/css/print.css",
-        "resources/css/style.css",
+        // "resources/css/style.css",
         "resources/js/app.js",
       ],
       refresh: true,
