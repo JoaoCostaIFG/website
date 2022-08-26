@@ -1,6 +1,6 @@
 <?php
 // look for code blocks (to include syntax highlighting code)
-$args = ['title' => '$b->blog_title'];
+$args = ['title' => $b->blog_title];
 if (strpos($b->blog_content, '```') !== false) {
   $args['css'] = ['resources/css/prism.css'];
   $args['js'] = ['resources/js/prism.js'];

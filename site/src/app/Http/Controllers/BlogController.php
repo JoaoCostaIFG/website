@@ -12,4 +12,10 @@ class BlogController extends Controller
     $b = Blog::find($id);
     return view("pages.blog.post", ['b' => $b]);
   }
+
+  public function edit($id)
+  {
+    $b = Blog::find($id);
+    return view("pages.blog.edit", ['b' => $b]);
+  }
 }

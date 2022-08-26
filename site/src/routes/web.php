@@ -20,7 +20,7 @@ Route::view('/logout', 'pages.home')->name('logout');
 Route::view('/blog', 'pages.blog.index')->name('blogs');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[0-9]+')->name('blog');
 Route::view('/blog/new', 'pages.blog.index')->name('blog_new');
-Route::view('/blog/{id}/edit', 'pages.blog.index')->where('id', '[0-9]+')->name('blog_edit');
+Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->where('id', '[0-9]+')->middleware('auth')->name('blog_edit');
 
 Route::view('/projects', 'pages.home')->name('projects');
 Route::view('/projects/new', 'pages.home')->name('project_new');
