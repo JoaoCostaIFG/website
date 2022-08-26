@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Blog extends Model
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
+
+class Blog extends Model implements Feedable
 {
   use HasFactory;
 
@@ -31,6 +34,28 @@ class Blog extends Model
     'blog_visible' => 'boolean',
   ];
 
+  public function getDateStr(): string
+  {
+    return $this['blog_date']->toFormattedDateString();
+  }
+
+  public function toFeedItem(): FeedItem
+  {
+    return FeedItem::create()
+      ->id($this->blog_id)
+      ->title($this->blog_title)
+      ->summary($this->blog_intro)
+      ->updated($this->blog_date)
+      ->link(route('blog_post', ['id' => $this->blog_id]))
+      ->authorName('JoaoCostaIFG')
+      ->authorEmail('joaocosta.work@posteo.net');
+  }
+
+  public static function getFeedItems()
+  {
+    return Blog::allOnlyVisible(true);
+  }
+
   /**
    * Returns a (max) given number of **visible** Blog.
    * Authed users will also get **hidden** Blog.
@@ -43,6 +68,14 @@ class Blog extends Model
     return Blog::where('blog_visible', true)->orderByDesc('blog_date')->take($cnt)->get($columns);
   }
 
+  public static function allOnlyVisible($onlyVisible = true, $columns = ['*'])
+  {
+    if ($onlyVisible) {
+      return Blog::where('blog_visible', true)->orderByDesc('blog_date')->get($columns);
+    }
+    return Blog::all()->reverse()->get($columns);
+  }
+
   /**
    * Returns a all **visible** Blog.
    * Authed users will also get the **hidden** Blog.
@@ -50,8 +83,8 @@ class Blog extends Model
   public static function allAuth($columns = ['*'])
   {
     if (Auth::check()) {
-      return Blog::all()->reverse()->get($columns);
+      return Blog::allOnlyVisible(false, $columns);
     }
-    return Blog::where('blog_visible', true)->orderByDesc('blog_date')->get($columns);
+    return Blog::allOnlyVisible(true, $columns);
   }
 }

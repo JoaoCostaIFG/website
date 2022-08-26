@@ -10,5 +10,5 @@
     @endif @endauth
   </span>
   <br>
-  <span class="muted">{{ $b['blog_date']->toFormattedDateString() }}</span>
+  <span class="muted">{{ $b->getDateStr() }}</span>
 </a>

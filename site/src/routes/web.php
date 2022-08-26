@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'pages.home')->name('home');
-Route::view('/projects', 'pages.home')->name('projects');
+Route::view('/about', 'pages.about')->name('about');
+Route::feeds();
+Route::view('/workshops', 'pages.home')->name('workshops');
+
 Route::view('/login', 'pages.home')->name('login');
 Route::view('/logout', 'pages.home')->name('logout');
+
 Route::view('/blog', 'pages.home')->name('blog_index');
 Route::view('/blog/{id}', 'pages.home')->where('id', '[0-9]+')->name('blog_post');
-Route::view('/workshops', 'pages.home')->name('workshops');
-Route::view('/about', 'pages.home')->name('about');
-Route::view('/rss', 'pages.home')->name('rss');
+
+Route::view('/projects', 'pages.home')->name('projects');
