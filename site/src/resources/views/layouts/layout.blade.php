@@ -106,6 +106,7 @@
     // placed inline on head to avoid FOUC
     onThemeChange();
   </script>
+  @vite(["resources/js/app.js"])
 
   <!-- CSRF
   -------------------------------------------------- -->

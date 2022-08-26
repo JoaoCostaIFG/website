@@ -1,0 +1,44 @@
+/** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
+
+module.exports = {
+  content: ["./resources/views/**/*.php"],
+  darkMode: "class",
+  theme: {
+    fontFamily: {
+      sans: ["Graphik", "sans-serif"],
+      serif: ["Merriweather", "serif"],
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+        "2xl": "6rem",
+      },
+    },
+    extend: {
+      listStyleType: {
+        lowerroman: 'lower-roman',
+      },
+      colors: {
+        transparent: "transparent",
+        current: "currentColor",
+        navbar: colors.gray,
+        muted: colors.slate,
+        info: colors.indigo,
+        background: colors.zinc,
+        foreground: colors.gray,
+        primary: colors.teal,
+        anchor: colors.teal,
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+  ],
+};
+
