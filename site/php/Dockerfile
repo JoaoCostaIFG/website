@@ -39,6 +39,8 @@ RUN cd /app/main && npm install -D
 
 FROM php_builder AS php_prod
 
+RUN cd /app/main && npm run build
+
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
