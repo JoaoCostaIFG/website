@@ -7,8 +7,11 @@ export default defineConfig({
       input: [
         "resources/css/fontawesome.css",
         "resources/css/print.css",
-        // "resources/css/style.css",
+        "resources/css/prism.css",
+        "resources/css/workshop.css",
+
         "resources/js/app.js",
+        "resources/js/prism.js",
       ],
       refresh: true,
     }),

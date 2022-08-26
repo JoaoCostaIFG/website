@@ -26,9 +26,7 @@
   "resources/css/print.css",
   ])
   @isset($css)
-  @foreach ($css as $c)
-  <link rel="stylesheet" type="text/css" href="{{ $c }}">
-  @endforeach
+  @vite($css)
   @endisset
 
   <!-- OpenGraph
@@ -200,9 +198,7 @@
     }
   </script>
   @isset($js)
-  @foreach ($js as $j)
-  <script type="text/javascript" src="{{ $j }}"></script>
-  @endforeach
+  @vite($js)
   @endisset
   <?php
   ?>

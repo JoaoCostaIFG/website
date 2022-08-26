@@ -234,7 +234,7 @@
     @apply rounded-md;
   }
 
-  .prose code {
+  .prose :not(pre) code {
     @apply px-1;
     @apply rounded-md;
     @apply bg-background-200;
