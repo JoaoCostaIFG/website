@@ -30,8 +30,7 @@ const icons = {
 
 // generate webfont
 // https://github.com/omacranger/fontawesome-subset
-const outDir = "../src/resources";
-fontawesomeSubset(icons, `${outDir}/webfonts/`);
+fontawesomeSubset(icons, "../src/public/webfonts");
 
 // update SASS files and compile SASS
 let iconsCode = [];
@@ -57,6 +56,8 @@ fs.writeFileSync(
   oldVars,
   `
 @import 'fa_variables';
+
+$fa-font-path           : "../../webfonts";
 
 $fa-icons: (
   ${iconsCode.map((i) => `${i},\n`).join("")}
@@ -87,4 +88,4 @@ const result = sass.renderSync({ file: mainFile });
 
 // minify
 const minCss = minify(new TextDecoder("utf-8").decode(result.css));
-fs.writeFileSync(`${outDir}/css/fontawesome.css`, minCss.css, {comments: false});
+fs.writeFileSync("../src/resources/css/fontawesome.css", minCss.css, {comments: false});

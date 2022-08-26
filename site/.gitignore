@@ -16,6 +16,7 @@ src/Homestead.yaml
 src/auth.json
 src/npm-debug.log
 src/yarn-error.log
+src/resources/css/style.css
 
 ## tailwindcss
 #src/resources/css/style.css

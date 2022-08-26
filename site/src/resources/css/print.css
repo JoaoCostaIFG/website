@@ -1,0 +1,15 @@
+@media print {
+  #header-container {
+    display: none;
+  }
+
+  /* revert black theme */
+  * {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  pre {
+    border: 1px solid black;
+  }
+}

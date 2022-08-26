@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'pages.home')->name('home');
+Route::view('/projects', 'pages.home')->name('projects');
+Route::view('/login', 'pages.home')->name('login');
+Route::view('/logout', 'pages.home')->name('logout');
+Route::view('/blog', 'pages.home')->name('blog_index');
+Route::view('/blog/{id}', 'pages.home')->where('id', '[0-9]+')->name('blog_post');
+Route::view('/workshops', 'pages.home')->name('workshops');
+Route::view('/about', 'pages.home')->name('about');
+Route::view('/rss', 'pages.home')->name('rss');
