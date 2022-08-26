@@ -21,11 +21,5 @@ RUN ln -s /data/wiki/conf /app/wiki/conf && \
 
 FROM nginx_base AS nginx_dev
 
-RUN apk --no-cache add npm
-
-## COPY nginx/dev_cmd.sh /dev_cmd.sh
-
 # run development as root
 RUN sed -i 's/user nginx;/user root;/' "/etc/nginx/nginx.conf"
-
-## CMD ["sh", "/dev_cmd.sh"]

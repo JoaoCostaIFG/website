@@ -34,11 +34,6 @@ COPY src /app/main
 RUN cd /app/main && composer install -n -o
 # install javascript packages with npm
 RUN cd /app/main && npm install -D
-# build css with tailwindcss
-## RUN cd /app/main && npx tailwindcss -i ./resources/css/style_input.css -o ./resources/css/style.css --minify
-# build css with tailwindcss
-## RUN cd /app/main && npm run build
-## RUN ls -la /app/main/dist
 
 # ----------------------------------------------------------------------------
 
@@ -51,7 +46,6 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 FROM php_builder AS php_dev
 
-RUN ls -la
 RUN install-php-extensions xdebug
 
 # use development settings and run as root

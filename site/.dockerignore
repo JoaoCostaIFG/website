@@ -1,15 +1,14 @@
 # main
 src/node_modules
+src/public/build
+src/public/hot
+src/public/storage
 src/storage/*.key
 src/vendor
 src/.env.backup
 src/.phpunit.result.cache
 src/npm-debug.log
 src/yarn-error.log
-## tailwindcss is built inside the image
-#src/resources/css/style.css
-## rollup
-#src/dist/
 
 # wiki
 wiki/conf

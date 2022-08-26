@@ -16,13 +16,9 @@ src/Homestead.yaml
 src/auth.json
 src/npm-debug.log
 src/yarn-error.log
-src/resources/css/style.css
-
-## tailwindcss
-#src/resources/css/style.css
 ## fontawesome
-#src/resources/webfonts/
-#src/resources/css/fontawesome.css
+src/public/webfonts
+src/resources/css/fontawesome.css
 
 # wiki
 wiki/conf
