@@ -88,31 +88,31 @@ class Blog extends Model implements Feedable
    * Returns a (max) given number of **visible** Blog.
    * Authed users will also get **hidden** Blog.
    */
-  public static function some($cnt, $columns = ['*'])
+  public static function some($cnt)
   {
     if (Auth::check()) {
-      return Blog::all()->reverse()->take($cnt)->get($columns);
+      return Blog::all()->reverse()->take($cnt);
     }
-    return Blog::where('blog_visible', true)->orderByDesc('blog_date')->take($cnt)->get($columns);
+    return Blog::where('blog_visible', true)->orderByDesc('blog_date')->take($cnt);
   }
 
-  public static function allOnlyVisible($onlyVisible = true, $columns = ['*'])
+  public static function allOnlyVisible($onlyVisible = true)
   {
     if ($onlyVisible) {
-      return Blog::where('blog_visible', true)->orderByDesc('blog_date')->get($columns);
+      return Blog::where('blog_visible', true)->orderByDesc('blog_date')->get();
     }
-    return Blog::all()->reverse()->get($columns);
+    return Blog::all()->reverse();
   }
 
   /**
    * Returns a all **visible** Blog.
    * Authed users will also get the **hidden** Blog.
    */
-  public static function allAuth($columns = ['*'])
+  public static function allAuth()
   {
     if (Auth::check()) {
-      return Blog::allOnlyVisible(false, $columns);
+      return Blog::allOnlyVisible(false);
     }
-    return Blog::allOnlyVisible(true, $columns);
+    return Blog::allOnlyVisible(true);
   }
 }

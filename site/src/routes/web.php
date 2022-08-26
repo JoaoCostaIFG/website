@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,8 @@ Route::view('/', 'pages.home')->name('home');
 Route::view('/about', 'pages.about')->name('about');
 Route::feeds();
 
-Route::view('/login', 'pages.home')->name('login');
+Route::view('/login', 'pages.login')->name('login');
+Route::post('/login', [UserController::class, 'authenticate'])->name('login_action');
 Route::view('/logout', 'pages.home')->name('logout');
 
 Route::view('/blog', 'pages.blog.index')->name('blogs');
