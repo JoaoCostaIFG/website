@@ -19,15 +19,14 @@ class Blog extends Model implements Feedable
 {
   use HasFactory;
 
-  protected $primaryKey = 'blog_id';
   public $timestamps = false;
 
   protected $fillable = [
-    'blog_date',
-    'blog_title',
-    'blog_intro',
-    'blog_content',
-    'blog_visible',
+    'date',
+    'title',
+    'intro',
+    'content',
+    'visible',
   ];
 
   /**
@@ -36,13 +35,13 @@ class Blog extends Model implements Feedable
    * @var array<string, string>
    */
   protected $casts = [
-    'blog_date' => 'datetime',
-    'blog_visible' => 'boolean',
+    'date' => 'datetime',
+    'visible' => 'boolean',
   ];
 
   public function getDateStr(): string
   {
-    return $this['blog_date']->toFormattedDateString();
+    return $this['date']->toFormattedDateString();
   }
 
   /**
@@ -50,9 +49,9 @@ class Blog extends Model implements Feedable
    */
   public function wordCount(): int
   {
-    $cnt = str_word_count($this->blog_content);
-    if (!is_null($this->blog_intro)) {
-      $cnt += str_word_count($this->blog_intro);
+    $cnt = str_word_count($this->content);
+    if (!is_null($this->intro)) {
+      $cnt += str_word_count($this->intro);
     }
     return $cnt;
   }
@@ -70,11 +69,11 @@ class Blog extends Model implements Feedable
   public function toFeedItem(): FeedItem
   {
     return FeedItem::create()
-      ->id($this->blog_id)
-      ->title($this->blog_title)
-      ->summary($this->blog_intro)
-      ->updated($this->blog_date)
-      ->link(route('blog', ['id' => $this->blog_id]))
+      ->id($this->id)
+      ->title($this->title)
+      ->summary($this->intro)
+      ->updated($this->date)
+      ->link(route('blog', ['id' => $this->id]))
       ->authorName('JoaoCostaIFG')
       ->authorEmail('joaocosta.work@posteo.net');
   }
@@ -93,13 +92,13 @@ class Blog extends Model implements Feedable
     if (Auth::check()) {
       return Blog::all()->reverse()->take($cnt);
     }
-    return Blog::where('blog_visible', true)->orderByDesc('blog_date')->take($cnt)->get();
+    return Blog::where('visible', true)->orderByDesc('date')->take($cnt)->get();
   }
 
   public static function allOnlyVisible($onlyVisible = true)
   {
     if ($onlyVisible) {
-      return Blog::where('blog_visible', true)->orderByDesc('blog_date')->get();
+      return Blog::where('visible', true)->orderByDesc('date')->get();
     }
     return Blog::all()->reverse();
   }

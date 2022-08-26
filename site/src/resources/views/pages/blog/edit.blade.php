@@ -5,13 +5,13 @@
 <h1>Edit blog post</h1>
 
 <div class="w-full">
-  <form class="m-auto max-w-prose" method="POST" action="route('blog_edit_action')">
+  <form class="m-auto max-w-prose" method="POST" action="{{ route('blog_edit_action') }}">
     @csrf
-    <input type="hidden" id="id" name="id" value="{{ $b->blog_id }}">
+    <input type="hidden" id="id" name="id" value="{{ $b->id }}">
 
     <div>
       <label class="form-label form-label-required" for="title">Title</label>
-      <input class="form-input" id="title" type="text" name="title" placeholder="Post title..." required autofocus value="{{ $b->blog_title }}">
+      <input class="form-input" id="title" type="text" name="title" placeholder="Post title..." required autofocus value="{{ $b->title }}">
     </div>
 
     <div class="mt-6 w-full flex flex-row flex-wrap items-center gap-2">
@@ -21,17 +21,17 @@
       </div>
 
       <label>
-        <input class="form-checkbox" id="visibility" type="checkbox" name="visibility" <?php if ($b->blog_visible) echo 'checked'; ?>>
+        <input class="form-checkbox" id="visibility" type="checkbox" name="visibility" <?php if ($b->visible) echo 'checked'; ?>>
         <span class="ml-1">Publicly visible</span>
       </label>
     </div>
 
     <div class="mt-6">
       <label class="form-label" for="intro">Intro</label>
-      <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction...">{{ $b->blog_intro }}</textarea>
+      <textarea class="form-input" id="intro" name="intro" rows="3" placeholder="Summary/Introduction...">{{ $b->intro }}</textarea>
     </div>
 
-    <textarea class="hidden" id="content" name="content" rows="1" required>{{ $b->blog_content }}</textarea>
+    <textarea class="hidden" id="content" name="content" rows="1" required>{{ $b->content }}</textarea>
 
     <div class="mt-6 text-right">
       <input class="btn btn-primary" type="submit" value="Submit">

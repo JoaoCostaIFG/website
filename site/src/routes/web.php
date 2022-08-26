@@ -21,8 +21,10 @@ Route::get('/logout', [usercontroller::class, 'logout'])->name('logout');
 
 Route::view('/blog', 'pages.blog.index')->name('blogs');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[0-9]+')->name('blog');
-Route::view('/blog/new', 'pages.blog.index')->name('blog_new');
-Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->where('id', '[0-9]+')->middleware('auth')->name('blog_edit');
+Route::view('/blog/new', 'pages.blog.new')->middleware('auth')->name('blog_new');
+Route::post('/blog/new', [BlogController::class, 'new'])->middleware('auth')->name('blog_new_action');
+Route::get('/blog/{id}/edit', [BlogController::class, 'editForm'])->where('id', '[0-9]+')->middleware('auth')->name('blog_edit');
+Route::post('/blog/edit', [BlogController::class, 'edit'])->middleware('auth')->name('blog_edit_action');
 
 Route::view('/projects', 'pages.home')->name('projects');
 Route::view('/projects/new', 'pages.home')->name('project_new');
