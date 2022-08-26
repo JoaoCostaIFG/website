@@ -9,13 +9,12 @@ class Proj extends Model
 {
   use HasFactory;
 
-  protected $primaryKey = 'proj_id';
   public $timestamps = false;
 
   protected $fillable = [
-    'proj_title',
-    'proj_description',
-    'proj_url',
-    'proj_img',
+    'title',
+    'description',
+    'url',
+    'img',
   ];
 }
