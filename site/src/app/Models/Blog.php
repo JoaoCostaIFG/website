@@ -74,7 +74,7 @@ class Blog extends Model implements Feedable
       ->title($this->blog_title)
       ->summary($this->blog_intro)
       ->updated($this->blog_date)
-      ->link(route('blog_post', ['id' => $this->blog_id]))
+      ->link(route('blog', ['id' => $this->blog_id]))
       ->authorName('JoaoCostaIFG')
       ->authorEmail('joaocosta.work@posteo.net');
   }

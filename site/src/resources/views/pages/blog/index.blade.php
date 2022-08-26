@@ -8,7 +8,7 @@ use App\Models\Blog; ?>
 
 <div class="relative">
   @auth
-  <a class="absolute right-0 icon-btn btn-info" title="Create new blog post" href="route('blog_insert_route')">
+  <a class="absolute right-0 icon-btn btn-info" title="Create new blog post" href="{{ route('blog_new') }}">
     <i class="fa-solid fa-plus"></i>
   </a>
   @endauth

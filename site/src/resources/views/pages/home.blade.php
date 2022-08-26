@@ -13,7 +13,7 @@
       @each('partials.blog.home_entry', Blog::some(3), 'b')
     </div>
     <div class="text-right max-w-xl">
-      <a class="btn btn-primary" href="{{ route('blog_index') }}">
+      <a class="btn btn-primary" href="{{ route('blogs') }}">
         Older posts
       </a>
     </div>

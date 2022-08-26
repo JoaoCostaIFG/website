@@ -130,7 +130,7 @@
             <div class="hidden sm:block sm:ml-2">
               <div class="flex gap-x-2">
                 @include('partials.nav.link', ['href' => route('home'), 'title' => 'Home', 'selected' => 'Home' === $title])
-                @include('partials.nav.link', ['href' => route('blog_index'), 'title' => 'Blog', 'selected' => 'Blog' === $title])
+                @include('partials.nav.link', ['href' => route('blogs'), 'title' => 'Blog', 'selected' => 'Blog' === $title])
                 @include('partials.nav.link', ['href' => route('projects'), 'title' => 'Projects', 'selected' => 'Projects' === $title])
                 @include('partials.nav.link', ['href' => route('workshops'), 'title' => 'Workshops', 'selected' => 'Workshops' === $title])
                 @include('partials.nav.link', ['href' => route('about'), 'title' => 'About/Contacts', 'selected' => 'About me' === $title])
@@ -161,7 +161,7 @@
       <!-- mobile menu (show/hide based on menu state) -->
       <div id="mobile-menu" class="hidden sm:hidden px-2 pb-2 flex flex-col gap-y-1">
         @include('partials.nav.link', ['href' => route('home'), 'title' => '<i class="fa-solid fa-house w-6"></i> Home', 'selected' => 'Home' === $title])
-        @include('partials.nav.link', ['href' => route('blog_index'), 'title' => '<i class="fa-solid fa-blog w-6"></i> Blog', 'selected' => 'Blog' === $title])
+        @include('partials.nav.link', ['href' => route('blogs'), 'title' => '<i class="fa-solid fa-blog w-6"></i> Blog', 'selected' => 'Blog' === $title])
         @include('partials.nav.link', ['href' => route('projects'), 'title' => '<i class="fa-solid fa-lightbulb w-6"></i> Projects', 'selected' => 'Projects' === $title])
         @include('partials.nav.link', ['href' => route('workshops'), 'title' => '<i class="fa-solid fa-chalkboard-user w-6"></i> Workshops', 'selected' => 'Workshops' === $title])
         @include('partials.nav.link', ['href' => route('about'), 'title' => '<i class="fa-solid fa-address-card w-6"></i> About/Contacts', 'selected' => 'About me' === $title])
