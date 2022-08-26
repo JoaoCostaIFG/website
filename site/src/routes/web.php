@@ -16,8 +16,8 @@ Route::view('/about', 'pages.about')->name('about');
 Route::feeds();
 
 Route::view('/login', 'pages.login')->name('login');
-Route::post('/login', [UserController::class, 'authenticate'])->name('login_action');
-Route::view('/logout', 'pages.home')->name('logout');
+Route::post('/login', [usercontroller::class, 'authenticate'])->name('login_action');
+Route::get('/logout', [usercontroller::class, 'logout'])->name('logout');
 
 Route::view('/blog', 'pages.blog.index')->name('blogs');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[0-9]+')->name('blog');

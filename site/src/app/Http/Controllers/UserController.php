@@ -32,4 +32,14 @@ class UserController extends Controller
       'username' => 'Login failed.',
     ])->onlyInput('user_username');
   }
+
+  public function logout(Request $request)
+  {
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+  }
 }

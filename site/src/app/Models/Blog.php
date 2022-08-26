@@ -93,7 +93,7 @@ class Blog extends Model implements Feedable
     if (Auth::check()) {
       return Blog::all()->reverse()->take($cnt);
     }
-    return Blog::where('blog_visible', true)->orderByDesc('blog_date')->take($cnt);
+    return Blog::where('blog_visible', true)->orderByDesc('blog_date')->take($cnt)->get();
   }
 
   public static function allOnlyVisible($onlyVisible = true)
