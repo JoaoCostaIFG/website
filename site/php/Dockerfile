@@ -34,10 +34,18 @@ COPY src /app/main
 RUN cd /app/main && composer install -n -o
 # install javascript packages with npm
 RUN cd /app/main && npm install -D
+# link storage
+RUN cd /app/main && php artisan storage:link && ln -s /data/storage/* /app/main/storage/app/public/
 
 # ----------------------------------------------------------------------------
 
 FROM php_builder AS php_prod
+
+# set links so the app can access the data
+RUN ln -s /data/wiki/conf /app/wiki/conf && \
+    ln -s /data/wiki/data /app/wiki/data && \
+    ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
+    ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
 
 RUN cd /app/main && npm run build
 

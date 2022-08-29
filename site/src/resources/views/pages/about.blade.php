@@ -41,7 +41,7 @@
     </p>
   </div>
   <figure class="col-span-12 max-w-xs sm:max-w-full sm:order-first sm:col-span-4 flex flex-col">
-    <img class="inline self-center" src="{{ asset('img/pfp.jpg') }}" alt="Me">
+    <img class="inline self-center" src="{{ Storage::url('pfp.jpg') }}" alt="Me">
     <figcaption class="text-center">
       (This is the profile picture I usually use online. It was generated using
       my <a href="https://gitlab.com/JoaoCostaIFG/allrgb">AllRGB program</a>.)
