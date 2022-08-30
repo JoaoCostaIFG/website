@@ -41,7 +41,7 @@ class Blog extends Model implements Feedable
 
   public function getCleanTitle(): string
   {
-    return strtolower(preg_replace("/[^A-Za-z0-9\-_]/", '', str_replace(" ", '_', $this->title)));
+    return strtolower(preg_replace("/[^A-Za-z0-9\-_]/", '', str_replace(" ", '-', $this->title)));
   }
 
   public function getDateStr(): string
