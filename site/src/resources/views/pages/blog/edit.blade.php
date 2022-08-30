@@ -1,4 +1,4 @@
-@extends('layouts.layout', ['title' => 'Edit blog post'])
+@extends('layouts.layout', ['title' => 'Edit blog post', 'js' => ['resources/ts/editor.ts']])
 
 @section('content')
 

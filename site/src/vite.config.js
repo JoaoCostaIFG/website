@@ -12,7 +12,7 @@ export default defineConfig({
 
         "resources/js/app.js",
         "resources/js/prism.js",
-        "resources/js/remark.js",
+        "resources/ts/editor.ts",
       ],
       refresh: true,
     }),
