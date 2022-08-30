@@ -34,8 +34,6 @@ COPY src /app/main
 RUN cd /app/main && composer install -n -o
 # install javascript packages with npm
 RUN cd /app/main && npm install -D
-# link storage
-RUN cd /app/main && php artisan storage:link && ln -s /data/storage/* /app/main/storage/app/public/
 
 # ----------------------------------------------------------------------------
 
@@ -46,6 +44,12 @@ RUN ln -s /data/wiki/conf /app/wiki/conf && \
     ln -s /data/wiki/data /app/wiki/data && \
     ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
     ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
+
+# link storage
+RUN cd /app/main && \
+  php artisan storage:link && \
+  rm -rf /app/main/storage/app && \
+  ln -s /data/storage /app/main/storage/app
 
 RUN cd /app/main && npm run build
 
@@ -58,8 +62,10 @@ FROM php_builder AS php_dev
 
 RUN install-php-extensions xdebug
 
+COPY php/dev_entrypoint.sh /dev_entrypoint.sh
+
 # use development settings and run as root
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 RUN sed -i 's/php-fpm/root/g' "/usr/local/etc/php-fpm.d/www.conf"
 
-CMD ["php-fpm", "-R"]
+CMD ["sh", "/dev_entrypoint.sh"]

@@ -10,7 +10,7 @@
 
           <div class="flex flex-1 justify-center sm:justify-start">
             <a class="shrink-0" title="Go home" href="{{ route('home') }}">
-              <img id="brand" class="aspect-square shrink-0 h-8 w-auto" src="{{ Storage::url('irao.png') }}" alt="My icon">
+              <img id="brand" class="aspect-square shrink-0 h-8 w-auto" src="{{ Vite::asset('resources/images/irao.png') }}" alt="My icon">
             </a>
             <div class="hidden sm:block sm:ml-2">
               <div class="flex gap-x-2">
