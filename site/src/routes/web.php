@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController;
@@ -28,7 +29,7 @@ Route::post('/blog/new', [BlogController::class, 'new'])->middleware('auth')->na
 Route::get('/blog/{id}/edit', [BlogController::class, 'editForm'])->whereNumber('id')->middleware('auth')->name('blog_edit');
 Route::post('/blog/edit', [BlogController::class, 'edit'])->middleware('auth')->name('blog_edit_action');
 
-Route::get('/identicons/{input}/{quality?}', [IdenticonsController::class, 'show'])->whereNumber('quality')->name('indenticons');
+Route::get('/identicons/{input}/{quality?}', [IdenticonsController::class, 'show'])->whereNumber('quality')->name('identicons');
 
 Route::view('/projects', 'pages.proj.index')->name('projects');
 Route::view('/projects/new', 'pages.proj.new')->middleware('auth')->name('project_new');
@@ -36,5 +37,7 @@ Route::post('/projects/new', [ProjController::class, 'new'])->middleware('auth')
 Route::get('/projects/{id}/edit', [ProjController::class, 'editForm'])->whereNumber('id')->middleware('auth')->name('project_edit');
 Route::post('/projects/edit', [ProjController::class, 'edit'])->middleware('auth')->name('project_edit_action');
 
-Route::view('/workshops', 'pages.home')->name('workshops');
-Route::view('/workshops/{name}', 'pages.home')->whereAlphaNumeric('name')->name('workshop');
+Route::view('/workshops', 'pages.workshop.index')->name('workshops');
+Route::get('/workshops/{name}', function (Request $request, string $name) {
+  return view('pages.workshop.workshop', ['name' => $name]);
+})->whereAlphaNumeric('name')->name('workshop');
