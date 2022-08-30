@@ -39,6 +39,11 @@ class Blog extends Model implements Feedable
     'visible' => 'boolean',
   ];
 
+  public function getCleanTitle(): string
+  {
+    return strtolower(preg_replace("/[^A-Za-z0-9\-_]/", '', str_replace(" ", '_', $this->title)));
+  }
+
   public function getDateStr(): string
   {
     return $this['date']->toFormattedDateString();

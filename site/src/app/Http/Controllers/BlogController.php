@@ -9,9 +9,18 @@ use App\Models\Blog;
 
 class BlogController extends Controller
 {
-  public function show($id)
+  public function show(int $id)
   {
     $b = Blog::find($id);
+    return redirect()->route('blog_pretty', ['id' => $id, 'title' => $b->getCleanTitle()]);
+  }
+
+  public function showPretty(int $id, string $title)
+  {
+    $b = Blog::find($id);
+    $cleanTitle = $b->getCleanTitle();
+    if ($title !== $cleanTitle)
+      return redirect()->route('blog_pretty', ['id' => $id, 'title' => $cleanTitle]);
     return view("pages.blog.post", ['b' => $b]);
   }
 

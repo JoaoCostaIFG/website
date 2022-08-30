@@ -24,6 +24,7 @@ Route::get('/logout', [usercontroller::class, 'logout'])->name('logout');
 
 Route::view('/blog', 'pages.blog.index')->name('blogs');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->whereNumber('id')->name('blog');
+Route::get('/blog/{id}/{title}', [BlogController::class, 'showPretty'])->whereNumber('id')->name('blog_pretty');
 Route::view('/blog/new', 'pages.blog.new')->middleware('auth')->name('blog_new');
 Route::post('/blog/new', [BlogController::class, 'new'])->middleware('auth')->name('blog_new_action');
 Route::get('/blog/{id}/edit', [BlogController::class, 'editForm'])->whereNumber('id')->middleware('auth')->name('blog_edit');
