@@ -9,7 +9,8 @@
     <a title="{{ $p->title }}" href="{{ $p->url }}">{{ $p->title }}</a>
   </h2>
 
-  <div class="bg-contain bg-no-repeat bg-center w-full h-28" title="{{ $p->title }}" style="background-image: url({{ $p->img }})">
+  <div class="bg-contain bg-no-repeat bg-center w-full h-28" title="{{ $p->title }}"
+      style="background-image: url({{ Storage::url('projects/'.$p->img) }})">
   </div>
 
   <hr class="border-1 w-full my-4 border-foreground-600 dark:border-foreground-500">

@@ -5,8 +5,6 @@ export default defineConfig({
   plugins: [
     laravel({
       input: [
-        "resources/css/fontawesome.css",
-        "resources/css/print.css",
         "resources/css/prism.css",
         "resources/css/workshop.css",
 

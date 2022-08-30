@@ -22,10 +22,6 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  @vite([
-  "resources/css/fontawesome.css",
-  "resources/css/print.css",
-  ])
   @isset($css)
   @vite($css)
   @endisset
