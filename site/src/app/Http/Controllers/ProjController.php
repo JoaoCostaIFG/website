@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Proj;
 
 class ProjController extends Controller
 {
+  private static function imgName(string $title, string $hashName): string
+  {
+    $cleanTitle = strtolower(preg_replace("/[^A-Za-z0-9\-_]/", '', $title));
+    return "{$cleanTitle}_{$hashName}";
+  }
+
   public function new(Request $request)
   {
     $validatedData = $request->validate([
@@ -22,10 +29,10 @@ class ProjController extends Controller
       unset($validatedData['description']);
     }
 
-    print_r($request->file('img')->path());
-    print_r($request->file('img')->extension());
-    die();
+    $imgFile = $request->file('img');
+    $validatedData['img'] = $this->imgName($validatedData['title'], $imgFile->hashName());
     Proj::create($validatedData);
+    $imgFile->storeAs('projects', $validatedData['img']);
 
     return redirect(route('projects'));
   }
@@ -59,6 +66,17 @@ class ProjController extends Controller
     }
 
     $p->save();
+
+    if (isset($validatedData['img'])) {
+      $imgFile = $request->file('img');
+      $imgFileName = $this->imgName($validatedData['title'], $imgFile->hashName());
+      Storage::delete("projects/{$p->img}");
+
+      $imgFile->storeAs('projects', $imgFileName);
+      $p->img = $imgFileName;
+      $p->save();
+    }
+
     return redirect(route('projects'));
   }
 }
