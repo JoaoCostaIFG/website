@@ -30,14 +30,20 @@ FROM php_base AS php_builder
 COPY wiki /app/wiki
 # site code
 COPY src /app/main
-# install php packages with composer
-RUN cd /app/main && composer install -n -o
-# install javascript packages with npm
-RUN cd /app/main && npm install -D
 
 # ----------------------------------------------------------------------------
 
 FROM php_builder AS php_prod
+
+# install php packages with composer
+RUN cd /app/main && composer install -n -o --no-dev
+# install javascript packages with npm
+RUN cd /app/main && npm install
+# cache
+RUN cd /app/main && \
+  php artisan config:cache && \
+  php artisan route:cache && \
+  php artisan view:cache
 
 # set links so the app can access the data
 RUN ln -s /data/wiki/conf /app/wiki/conf && \
@@ -59,6 +65,11 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 # ----------------------------------------------------------------------------
 
 FROM php_builder AS php_dev
+
+# install php packages with composer
+RUN cd /app/main && composer install -n -o
+# install javascript packages with npm
+RUN cd /app/main && npm install -D
 
 RUN install-php-extensions xdebug
 
