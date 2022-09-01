@@ -24,6 +24,7 @@ const icons = {
     "plus",
     "square-rss",
     "sun",
+    "xmark",
   ],
   brands: ["github"],
 };

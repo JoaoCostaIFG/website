@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BlogController extends Controller
 {
+  private static string $blogsStorage = "blogs";
+
   public function show(int $id)
   {
     $b = Blog::find($id);
@@ -99,12 +102,31 @@ class BlogController extends Controller
     ]);
 
     $imgFile = $request->file('img');
-    $path = $imgFile->store("blogs/{$validatedData['id']}");
+    $path = explode("/", $imgFile->store("{$this::$blogsStorage}/{$validatedData['id']}"));
+    $path = end($path);
 
-    return response()->json(
-      [
-        'path' => $path,
-      ]
-    );
+    return response()->json(['path' => $path]);
+  }
+
+  public function imgList(int $id)
+  {
+    $files = array_map(function ($file): string {
+      $tokens = explode("/", $file);
+      return end($tokens);
+    }, Storage::files("{$this::$blogsStorage}/{$id}"));
+
+    return response()->json(['files' => $files]);
+  }
+
+  public function imgDelete(int $id, string $name)
+  {
+    $path = "{$this::$blogsStorage}/{$id}/{$name}";
+
+    if (Storage::exists($path)) {
+      Storage::delete($path);
+      return response()->json(['success' => true]);
+    }
+
+    return response()->json(['success' => false]);
   }
 }

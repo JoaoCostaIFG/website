@@ -38,7 +38,7 @@
     </div>
   </form>
 
-  <div class="mt-6 mx-auto p-1 max-w-prose bg-white dark:bg-background-900 border border-foreground-600 dark:border-foreground-500 rounded-md flex flex-wrap justify-center gap-2" id="imgContainer">
+  <div class="mt-6 mx-auto p-1 max-w-prose bg-white dark:bg-background-900 border border-foreground-600 dark:border-foreground-500 rounded-md flex flex-wrap justify-center gap-4" id="imgContainer">
     <div class="w-full flex flex-row flex-wrap items-center gap-2">
       <hr class="w-full">
       <input class="form-file" type="file" id="img">

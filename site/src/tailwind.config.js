@@ -2,7 +2,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  content: ["./resources/views/**/*.php"],
+  content: ["./resources/views/**/*.php", "./resources/ts/**/*.ts"],
   darkMode: "class",
   theme: {
     fontFamily: {
@@ -29,6 +29,7 @@ module.exports = {
         navbar: colors.gray,
         muted: colors.slate,
         info: colors.indigo,
+        danger: colors.red,
         background: colors.zinc,
         foreground: colors.gray,
         primary: colors.teal,

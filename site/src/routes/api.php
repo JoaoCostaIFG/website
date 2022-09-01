@@ -22,4 +22,6 @@ Route::middleware('auth:sanctum')->group(function () {
   });
 
   Route::post('/blog/img', [BlogController::class, 'imgUpload']);
+  Route::get('/blog/imgs/{id}', [BlogController::class, 'imgList'])->whereNumber('id');
+  Route::delete('/blog/img/{id}/{name}', [BlogController::class, 'imgDelete'])->whereNumber('id');
 });

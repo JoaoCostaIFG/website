@@ -114,13 +114,14 @@
 
 @layer components {
   .blog-edit-img {
+    @apply relative;
     @apply bg-contain;
     @apply bg-no-repeat;
     @apply bg-center;
     @apply w-32;
     @apply h-[4.5rem];
     @apply border;
-    @apply border-muted-600;
+    @apply border-foreground-300;
     @apply rounded-sm;
   }
 
@@ -275,6 +276,13 @@
     @apply py-3;
   }
 
+  .icon-btn-sm {
+    @apply icon-btn;
+    @apply text-xs;
+    @apply px-2;
+    @apply py-1;
+  }
+
   .btn-primary {
     @apply bg-primary-800;
     @apply hover:bg-primary-900;
@@ -292,6 +300,13 @@
     @apply hover:bg-info-700;
     @apply dark:bg-info-600;
     @apply dark:hover:bg-info-500;
+  }
+
+  .btn-danger {
+    @apply bg-danger-600;
+    @apply hover:bg-danger-700;
+    @apply dark:bg-danger-600;
+    @apply dark:hover:bg-danger-500;
   }
   /* << button */
 
