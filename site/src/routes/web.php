@@ -24,13 +24,12 @@ Route::get('/logout', [usercontroller::class, 'logout'])->name('logout');
 Route::prefix('blog')->group(function () {
   Route::view('/', 'pages.blog.index')->name('blogs');
   Route::middleware('auth')->group(function () {
-    Route::view('/new', 'pages.blog.new')->name('blog_new');
-    Route::post('/new', [BlogController::class, 'new'])->name('blog_new_action');
+    Route::get('/new', [BlogController::class, 'new'])->name('blog_new');
     Route::post('/edit', [BlogController::class, 'edit'])->name('blog_edit_action');
-    Route::get('/{id}/edit', [BlogController::class, 'editForm'])->whereNumber('id')->name('blog_edit');
+    Route::get('/{b}/edit', [BlogController::class, 'editForm'])->whereNumber('b')->name('blog_edit');
   });
-  Route::get('/{id}', [BlogController::class, 'show'])->whereNumber('id')->name('blog');
-  Route::get('/{id}/{title}', [BlogController::class, 'showPretty'])->whereNumber('id')->name('blog_pretty');
+  Route::get('/{b}', [BlogController::class, 'show'])->whereNumber('b')->name('blog');
+  Route::get('/{b}/{title}', [BlogController::class, 'showPretty'])->whereNumber('b')->name('blog_pretty');
 });
 
 Route::get('/identicons/{input}/{quality?}', [IdenticonsController::class, 'show'])->whereNumber('quality')->name('identicons');
@@ -40,7 +39,7 @@ Route::prefix('projects')->group(function () {
   Route::middleware('auth')->group(function () {
     Route::view('/new', 'pages.proj.new')->name('project_new');
     Route::post('/new', [ProjController::class, 'new'])->name('project_new_action');
-    Route::get('/{id}/edit', [ProjController::class, 'editForm'])->whereNumber('id')->name('project_edit');
+    Route::get('/{p}/edit', [ProjController::class, 'editForm'])->whereNumber('p')->name('project_edit');
     Route::post('/edit', [ProjController::class, 'edit'])->name('project_edit_action');
   });
 });

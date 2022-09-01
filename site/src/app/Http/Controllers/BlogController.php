@@ -12,50 +12,28 @@ class BlogController extends Controller
 {
   private static string $blogsStorage = "blogs";
 
-  public function show(int $id)
+  public function show(Blog $b)
   {
-    $b = Blog::find($id);
-    return redirect()->route('blog_pretty', ['id' => $id, 'title' => $b->getCleanTitle()]);
+    return redirect()->route('blog_pretty', ['b' => $b, 'title' => $b->getCleanTitle()]);
   }
 
-  public function showPretty(int $id, string $title)
+  public function showPretty(Blog $b, string $title)
   {
-    $b = Blog::find($id);
     $cleanTitle = $b->getCleanTitle();
     if ($title !== $cleanTitle)
-      return redirect()->route('blog_pretty', ['id' => $id, 'title' => $cleanTitle]);
+      return redirect()->route('blog_pretty', ['b' => $b, 'title' => $cleanTitle]);
     return view("pages.blog.post", ['b' => $b]);
   }
 
-  public function editForm($id)
+  public function new()
   {
-    $b = Blog::find($id);
-    return view("pages.blog.edit", ['b' => $b]);
+    $b = Blog::factory()->create();
+    return redirect(route('blog', ['id' => $b->id]));
   }
 
-  public function new(Request $request)
+  public function editForm(Blog $b)
   {
-    $validatedData = $request->validate([
-      'title' => ['required', 'string'],
-      'date' => ['nullable', 'date'],
-      'visible' => ['nullable', 'string'],
-      'intro' => ['nullable', 'string'],
-      'content' => ['required', 'string'],
-    ]);
-
-    if (!isset($validatedData['date'])) {
-      unset($validatedData['date']);
-    }
-
-    if (isset($validatedData['visible']) && $validatedData['visible'] === "on") {
-      $validatedData['visible'] = true;
-    } else {
-      unset($validatedData['visible']);
-    }
-
-    $b = Blog::create($validatedData);
-
-    return redirect(route('blog', ['id' => $b->id]));
+    return view("pages.blog.edit", ['b' => $b]);
   }
 
   public function edit(Request $request)

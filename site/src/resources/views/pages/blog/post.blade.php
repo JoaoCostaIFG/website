@@ -14,7 +14,7 @@ if (strpos($b->content, '```') !== false) {
 <div class="w-full">
   <article class="m-auto relative prose blog line-numbers match-braces">
     @auth
-    <a class="absolute top-0 right-0 z-50 icon-btn btn-edit" title="Edit post {{ $b->id }}" href="{{ route('blog_edit', ['id' => $b->id]) }}">
+    <a class="absolute top-0 right-0 z-50 icon-btn btn-edit" title="Edit post {{ $b->id }}" href="{{ route('blog_edit', ['b' => $b]) }}">
       <i class="fa-solid fa-pen-to-square"></i>
     </a>
     @endauth

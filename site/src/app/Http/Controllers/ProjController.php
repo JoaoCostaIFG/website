@@ -37,9 +37,8 @@ class ProjController extends Controller
     return redirect(route('projects'));
   }
 
-  public function editForm($id)
+  public function editForm(Proj $p)
   {
-    $p = Proj::find($id);
     return view("pages.proj.edit", ['p' => $p]);
   }
 
