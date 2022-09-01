@@ -4,4 +4,5 @@ import '../css/print.css'
 import.meta.glob([
   '../images/**',
 ]);
+
 import './bootstrap';

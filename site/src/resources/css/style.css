@@ -113,6 +113,17 @@
 }
 
 @layer components {
+  .blog-edit-img {
+    @apply bg-contain;
+    @apply bg-no-repeat;
+    @apply bg-center;
+    @apply w-32;
+    @apply h-[4.5rem];
+    @apply border;
+    @apply border-muted-600;
+    @apply rounded-sm;
+  }
+
   /* >> prose */
   .prose {
     @apply leading-loose;

@@ -1,11 +1,11 @@
-@extends('layouts.layout', ['title' => 'Edit blog post', 'js' => ['resources/ts/editor.ts']])
+@extends('layouts.layout', ['title' => 'Edit blog post', 'js' => ['resources/ts/editor.ts', 'resources/ts/blogimg.ts']])
 
 @section('content')
 
 <h1>Edit blog post</h1>
 
 <div class="w-full">
-  <form class="m-auto max-w-prose" method="POST" action="{{ route('blog_edit_action') }}">
+  <form class="mx-auto max-w-prose" method="POST" action="{{ route('blog_edit_action') }}">
     @csrf
     <input type="hidden" id="id" name="id" value="{{ $b->id }}">
 
@@ -37,6 +37,13 @@
       <input class="btn btn-primary" type="submit" value="Submit">
     </div>
   </form>
+
+  <div class="mt-6 mx-auto p-1 max-w-prose bg-white dark:bg-background-900 border border-foreground-600 dark:border-foreground-500 rounded-md flex flex-wrap justify-center gap-2" id="imgContainer">
+    <div class="w-full flex flex-row flex-wrap items-center gap-2">
+      <hr class="w-full">
+      <input class="form-file" type="file" id="img">
+    </div>
+  </div>
 
   <div class="mx-auto mt-6" id="editor-container">
   </div>

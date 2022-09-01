@@ -11,6 +11,7 @@ export default defineConfig({
         "resources/js/app.js",
         "resources/js/prism.js",
         "resources/ts/editor.ts",
+        "resources/ts/blogimg.ts",
       ],
       refresh: true,
     }),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
@@ -88,5 +89,22 @@ class BlogController extends Controller
 
     $b->save();
     return redirect(route('blog', ['id' => $b->id]));
+  }
+
+  public function imgUpload(Request $request)
+  {
+    $validatedData = $request->validate([
+      'id' => ['required', 'integer'],
+      'img' => ['required', 'image'],
+    ]);
+
+    $imgFile = $request->file('img');
+    $path = $imgFile->store("blogs/{$validatedData['id']}");
+
+    return response()->json(
+      [
+        'path' => $path,
+      ]
+    );
   }
 }
