@@ -9,7 +9,7 @@
   $unique_title = 'Joao Costa';
   $description = 'Hey! I&#39;m a computer engineering student and this is my personal website. I try to be active here.';
   if ($title) {
-    $unique_title = $title . ' | ' . $unique_title;
+      $unique_title = $title . ' | ' . $unique_title;
   }
   ?>
   <title>{{ $unique_title }}</title>
@@ -19,12 +19,6 @@
   <!-- Mobile specific metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  @isset($css)
-  @vite($css)
-  @endisset
 
   <!-- OpenGraph
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -37,13 +31,20 @@
   <meta property="og:site_name" content="Joao Costa">
   <meta name="twitter:card" content="summary">
 
+  <!-- CSRF
+  -------------------------------------------------- -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <!-- Favicon and RSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" href="/favicon.ico">
   @include('feed::links')
 
-  <!-- JS
+  <!-- CSS + JS
   -------------------------------------------------- -->
+  @isset($css)
+    @vite($css)
+  @endisset
   <script type="text/javascript">
     function setDarkTheme() {
       document.documentElement.classList.add('dark');
@@ -100,21 +101,37 @@
     // placed inline on head to avoid FOUC
     onThemeChange();
   </script>
-  @vite(["resources/js/app.js"])
-
-  <!-- CSRF
-  -------------------------------------------------- -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  @vite(['resources/js/app.js'])
 </head>
 
 <body class="bg-background-200 dark:bg-background-900 min-h-screen">
   @include('partials.nav.bar')
 
-  <div id="content-container" class="container py-4 sm:rounded-b bg-background-100 text-foreground-800 dark:bg-background-800 dark:text-foreground-50">
+  <div id="content-container"
+    class="bg-background-100 text-foreground-800 dark:bg-background-800 dark:text-foreground-50 container py-4 sm:rounded-b">
     @yield('content')
   </div>
 
   @include('partials.nav.footer')
 </body>
+
+<!-- JS
+  -------------------------------------------------- -->
+<script type="text/javascript">
+  // called again here to update theme toggler icon
+  onThemeChange();
+
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu.classList.contains("hidden")) {
+      mobileMenu.classList.remove("hidden");
+    } else {
+      mobileMenu.classList.add("hidden");
+    }
+  }
+</script>
+@isset($js)
+  @vite($js)
+@endisset
 
 </html>
