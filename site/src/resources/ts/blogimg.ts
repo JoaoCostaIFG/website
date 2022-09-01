@@ -1,4 +1,4 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
+import {AxiosError, AxiosResponse} from "axios";
 
 function createImage(id:number, fileName: string): HTMLElement {
   const newImg = document.createElement('div');
