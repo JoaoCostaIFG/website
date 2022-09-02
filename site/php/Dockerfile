@@ -38,19 +38,15 @@ FROM php_builder AS php_prod
 # install php packages with composer
 RUN cd /app/main && composer install -n -o --no-dev
 # install javascript packages with npm
-RUN cd /app/main && npm install -D && npm run build
+RUN cd /app/main && npm install -D
 # cache
 RUN cd /app/main && \
   php artisan config:cache && \
   php artisan route:cache && \
   php artisan view:cache && \
   php artisan ziggy:generate
-
-# set links so the app can access the data
-RUN ln -s /data/wiki/conf /app/wiki/conf && \
-    ln -s /data/wiki/data /app/wiki/data && \
-    ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
-    ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
+# build stuff
+RUN npm run build
 
 # link storage
 RUN cd /app/main && \
@@ -59,6 +55,12 @@ RUN cd /app/main && \
   ln -s /data/main/storage storage/app
 # own storage
 RUN chown -R php-fpm:php-fpm /app/main/storage
+
+# set links so the app can access the data
+RUN ln -s /data/wiki/conf /app/wiki/conf && \
+    ln -s /data/wiki/data /app/wiki/data && \
+    ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
+    ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
 
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
