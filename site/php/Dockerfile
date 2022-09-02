@@ -38,7 +38,7 @@ FROM php_builder AS php_prod
 # install php packages with composer
 RUN cd /app/main && composer install -n -o --no-dev
 # install javascript packages with npm
-RUN cd /app/main && npm install && npm run build
+RUN cd /app/main && npm install -D && npm run build
 # cache
 RUN cd /app/main && \
   php artisan config:cache && \
