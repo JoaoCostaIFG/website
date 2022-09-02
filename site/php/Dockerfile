@@ -56,6 +56,8 @@ RUN cd /app/main && \
   php artisan storage:link && \
   rm -rf storage/app && \
   ln -s /data/main/storage storage/app
+# own storage
+RUN chown -R php-fpm:php-fpm /app/main/storage
 
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
