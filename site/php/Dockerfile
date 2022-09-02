@@ -46,7 +46,7 @@ RUN cd /app/main && \
   php artisan view:cache && \
   php artisan ziggy:generate
 # build stuff
-RUN npm run build
+RUN cd /app/main && npm run build
 
 # link storage
 RUN cd /app/main && \
