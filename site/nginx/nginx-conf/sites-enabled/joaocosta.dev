@@ -21,7 +21,6 @@ server {
 
   error_page 403 =301 /404;
   error_page 404 =301 /404;
-  error_page 405 =301 /404;
 
   # location ~ ^/index\.php(/|$) {
   location ~ \.php$ { 
