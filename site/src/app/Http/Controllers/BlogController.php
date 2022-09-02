@@ -28,7 +28,7 @@ class BlogController extends Controller
   public function new()
   {
     $b = Blog::factory()->create();
-    return redirect(route('blog', ['id' => $b->id]));
+    return redirect(route('blog', ['b' => $b]));
   }
 
   public function editForm(Blog $b)
@@ -68,7 +68,7 @@ class BlogController extends Controller
     }
 
     $b->save();
-    return redirect(route('blog', ['id' => $b->id]));
+    return redirect(route('blog', ['b' => $b]));
   }
 
   public function imgUpload(Request $request)
