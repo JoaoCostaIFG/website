@@ -5,16 +5,14 @@ services:
     volumes:
       - ./src:/app/main
       - ./wiki:/app/wiki
-      - ./data/database:/data/database
-      - ./data/storage:/data/storage
+      - ./data/main:/data/main
   nginx:
     build:
       target: nginx_dev
     volumes:
       - ./src:/app/main
       - ./wiki:/app/wiki
-      - ./data/database:/data/database
-      - ./data/storage:/data/storage
+      - ./data/main:/data/main
 
 secrets:
   joaocosta.dev:

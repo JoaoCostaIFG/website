@@ -38,7 +38,7 @@ FROM php_builder AS php_prod
 # install php packages with composer
 RUN cd /app/main && composer install -n -o --no-dev
 # install javascript packages with npm
-RUN cd /app/main && npm install
+RUN cd /app/main && npm install && npm run build
 # cache
 RUN cd /app/main && \
   php artisan config:cache && \
@@ -54,10 +54,8 @@ RUN ln -s /data/wiki/conf /app/wiki/conf && \
 # link storage
 RUN cd /app/main && \
   php artisan storage:link && \
-  rm -rf /app/main/storage/app && \
-  ln -s /data/storage /app/main/storage/app
-
-RUN cd /app/main && npm run build
+  rm -rf storage/app && \
+  ln -s /data/main/storage storage/app
 
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
