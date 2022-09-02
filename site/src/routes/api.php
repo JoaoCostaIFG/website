@@ -19,9 +19,9 @@ use App\Http\Controllers\BlogController;
 Route::middleware('auth:sanctum')->group(function () {
   Route::get('/user', function (Request $request) {
     return $request->user();
-  });
+  })->name('api-user');
 
-  Route::post('/blog/img', [BlogController::class, 'imgUpload']);
-  Route::get('/blog/imgs/{id}', [BlogController::class, 'imgList'])->whereNumber('id');
-  Route::delete('/blog/img/{id}/{name}', [BlogController::class, 'imgDelete'])->whereNumber('id');
+  Route::post('/blog/img', [BlogController::class, 'imgUpload'])->name('api-img');
+  Route::get('/blog/imgs/{id}', [BlogController::class, 'imgList'])->whereNumber('id')->name('api-img_list');
+  Route::delete('/blog/img/{id}/{name}', [BlogController::class, 'imgDelete'])->whereNumber('id')->name('api-img_delete');
 });
