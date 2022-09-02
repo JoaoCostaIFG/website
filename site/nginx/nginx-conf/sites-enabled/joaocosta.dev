@@ -6,40 +6,37 @@ server {
 
   server_name joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion localhost www.localhost;
 
-  root /app/main;
+  root /app/main/public;
   index index.php;
 
-  error_page 403 =301 /404;
-  error_page 404 =301 /404;
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-Content-Type-Options "nosniff";
 
-  # secure stuff
-  location ~ /(App/|cache/|(data/)?database/|js_src/|node_modules/|vendor/|composer.*|package.*json|rollup.config.js|tailwind.config.js|tsconfig.json) {
-    return 404;
-  }
-
-  # adapted from: https://www.nginx.com/resources/wiki/start/topics/recipes/symfony/
   location / {
-    try_files $uri /index.php$is_args$args;
+    try_files $uri $uri/ /index.php?$query_string;
   }
 
   location = /favicon.ico { access_log off; log_not_found off; }
   location = /robots.txt  { access_log off; log_not_found off; }
 
-  location ~ ^/index\.php(/|$) { 
-    # Prevents URIs that include the front controller. This will 404:
-    # http://domain.tld/index.php/some-path
-    # Remove the internal directive to allow URIs like this
+  error_page 403 =301 /404;
+  error_page 404 =301 /404;
+
+  # location ~ ^/index\.php(/|$) {
+  location ~ \.php$ { 
+    # Prevents URIs that include the front controller. This will 404: http://domain.tld/index.php/some-path
     internal;
 
     fastcgi_pass php:9000;
-    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
     include fastcgi_params;
     include fastcgi.conf;
   }
 
-  # return 404 for all other php files not matching the front controller
-  # this prevents access to other php files you don't want to be accessible.
+  # return 404 for all other php files (not index)
   location ~ \.php$ { return 404; }
+  
+  location ~ /\.(?!well-known).* { deny all; }
 }
 
 server {
