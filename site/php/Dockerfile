@@ -43,7 +43,8 @@ RUN cd /app/main && npm install -D && npm run build
 RUN cd /app/main && \
   php artisan config:cache && \
   php artisan route:cache && \
-  php artisan view:cache
+  php artisan view:cache && \
+  php artisan ziggy:generate
 
 # set links so the app can access the data
 RUN ln -s /data/wiki/conf /app/wiki/conf && \
