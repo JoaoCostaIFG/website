@@ -11,8 +11,12 @@
       dest: /usr/local/src/website
     environment:
       GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+  - name: Copy production env file
+    copy:
+      src: .env
+      dest: /usr/local/src/website/site/src/
   - name: Build fontawesome font
-    ansible.builtin.shell: npm i && npm run start
+    ansible.builtin.shell: npm i -D && npm run build
     args:
       chdir: /usr/local/src/website/site/fontawesome_subsetter
   - name: Copy site systemd service file

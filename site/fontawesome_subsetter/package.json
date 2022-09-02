@@ -5,7 +5,7 @@
   "author": "",
   "main": "fontawesome_subsetter.mjs",
   "scripts": {
-    "start": "node fontawesome_subsetter.mjs"
+    "build": "node fontawesome_subsetter.mjs"
   },
   "license": "ISC",
   "dependencies": {
