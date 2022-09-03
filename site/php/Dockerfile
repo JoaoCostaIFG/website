@@ -1,5 +1,7 @@
-FROM php:7.4-fpm-alpine AS php_base
+FROM php:fpm-alpine3.16 AS php_base
 # https://hub.docker.com/_/php/
+
+RUN apk --no-cache add npm
 
 WORKDIR /
 
@@ -12,7 +14,8 @@ RUN curl -sSLf \
         -o /usr/local/bin/install-php-extensions \
         https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
     chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions curl exif gd pdo_sqlite session sqlite3 zip openssl opcache json
+    install-php-extensions @composer \
+      curl exif gd pdo_sqlite session sqlite3 zip openssl opcache json fileinfo tokenizer dom
 
 COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
 COPY php/www.conf /usr/local/etc/php-fpm.d/www.conf
@@ -21,19 +24,62 @@ EXPOSE 9000
 
 # ----------------------------------------------------------------------------
 
-FROM php_base AS php_prod
+FROM php_base AS php_builder
+
+# wiki code
+COPY wiki /app/wiki
+# site code
+COPY src /app/main
+
+# ----------------------------------------------------------------------------
+
+FROM php_builder AS php_prod
+
+# install php packages with composer
+RUN cd /app/main && composer install -n -o --no-dev
+# install javascript packages with npm
+RUN cd /app/main && npm install -D
+# cache
+RUN cd /app/main && \
+  php artisan config:cache && \
+  php artisan route:cache && \
+  php artisan view:cache && \
+  php artisan ziggy:generate
+# build stuff
+RUN cd /app/main && npm run build
+
+# link storage
+RUN cd /app/main && \
+  php artisan storage:link && \
+  rm -rf storage/app && \
+  ln -s /data/main/storage storage/app
+# own storage
+RUN chown -R php-fpm:php-fpm /app/main/storage
+
+# set links so the app can access the data
+RUN ln -s /data/wiki/conf /app/wiki/conf && \
+    ln -s /data/wiki/data /app/wiki/data && \
+    ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
+    ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
 
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # ----------------------------------------------------------------------------
 
-FROM php_base AS php_dev
+FROM php_builder AS php_dev
+
+# install php packages with composer
+RUN cd /app/main && composer install -n -o
+# install javascript packages with npm
+RUN cd /app/main && npm install -D
 
 RUN install-php-extensions xdebug
+
+COPY php/dev_entrypoint.sh /dev_entrypoint.sh
 
 # use development settings and run as root
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 RUN sed -i 's/php-fpm/root/g' "/usr/local/etc/php-fpm.d/www.conf"
 
-CMD ["php-fpm", "-R"]
+CMD ["sh", "/dev_entrypoint.sh"]

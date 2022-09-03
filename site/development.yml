@@ -4,17 +4,15 @@ services:
       target: php_dev
     volumes:
       - ./src:/app/main
-      - ./src/data/database:/app/main/database
-      - ./src/data/storage:/app/main/storage
       - ./wiki:/app/wiki
+      - ./data/main:/data/main
   nginx:
     build:
       target: nginx_dev
     volumes:
       - ./src:/app/main
-      - ./src/data/database:/app/main/database
-      - ./src/data/storage:/app/main/storage
       - ./wiki:/app/wiki
+      - ./data/main:/data/main
 
 secrets:
   joaocosta.dev:
