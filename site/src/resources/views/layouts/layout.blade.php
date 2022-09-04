@@ -49,8 +49,10 @@
   @isset($js)
     @vite($js)
   @endisset
+  @livewireStyles
 </head>
 
+<livewire:counter />
 <body class="bg-background-200 dark:bg-background-900 min-h-screen">
   @include('partials.nav.bar')
 
@@ -60,6 +62,7 @@
   </div>
 
   @include('partials.nav.footer')
+  @livewireScripts
 </body>
 
 </html>
