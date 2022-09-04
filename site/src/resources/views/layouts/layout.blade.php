@@ -45,63 +45,10 @@
   @isset($css)
     @vite($css)
   @endisset
-  <script type="text/javascript">
-    function setDarkTheme() {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-
-      const themeToggler = document.getElementById("theme-toggler");
-      if (themeToggler == null) return;
-
-      const newToggler = document.createElement("button");
-      newToggler.setAttribute('aria-label', "Set light theme");
-      newToggler.onclick = toggleTheme;
-      newToggler.classList.add("text-xl", "w-5", "text-cyan-600", "hover:text-cyan-500");
-      newToggler.innerHTML = '<i class="fa-solid fa-moon"></i>';
-
-      themeToggler.parentNode.replaceChild(newToggler, themeToggler);
-      newToggler.id = "theme-toggler";
-    }
-
-    function setLightTheme() {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-
-      const themeToggler = document.getElementById("theme-toggler");
-      if (themeToggler == null) return;
-
-      const newToggler = document.createElement("button");
-      newToggler.setAttribute('aria-label', "Set dark theme");
-      newToggler.onclick = toggleTheme;
-      newToggler.classList.add("text-xl", "w-5", "text-yellow-200", "hover:text-yellow-400");
-      newToggler.innerHTML = '<i class="fa-solid fa-sun"></i>';
-
-      themeToggler.parentNode.replaceChild(newToggler, themeToggler);
-      newToggler.id = "theme-toggler";
-    }
-
-    function toggleTheme() {
-      if (localStorage.theme === "dark") {
-        setLightTheme();
-      } else {
-        setDarkTheme();
-      }
-    }
-
-    // call on page load and when changing themes (defaults to dark theme)
-    function onThemeChange() {
-      if (localStorage.theme === 'light' ||
-        (!('theme' in localStorage) && !(window.matchMedia('(prefers-color-scheme: dark)').matches))) {
-        setLightTheme();
-      } else {
-        setDarkTheme();
-      }
-    }
-
-    // placed inline on head to avoid FOUC
-    onThemeChange();
-  </script>
   @vite(['resources/js/app.js'])
+  @isset($js)
+    @vite($js)
+  @endisset
 </head>
 
 <body class="bg-background-200 dark:bg-background-900 min-h-screen">
@@ -114,24 +61,5 @@
 
   @include('partials.nav.footer')
 </body>
-
-<!-- JS
-  -------------------------------------------------- -->
-<script type="text/javascript">
-  // called again here to update theme toggler icon
-  onThemeChange();
-
-  function toggleMobileMenu() {
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (mobileMenu.classList.contains("hidden")) {
-      mobileMenu.classList.remove("hidden");
-    } else {
-      mobileMenu.classList.add("hidden");
-    }
-  }
-</script>
-@isset($js)
-  @vite($js)
-@endisset
 
 </html>

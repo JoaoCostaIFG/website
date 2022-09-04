@@ -103,37 +103,4 @@ export default class MarkdownMirror {
       parent: parent,
     });
   }
-
-  uploadFile(file: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-      resolve("A string: " + file.name);
-    });
-  }
-
-  uploadImg(file: File): void {
-    let id = {} // fresh object to act as the ID for this upload
-
-    /*
-  
-    // Replace the selection with a placeholder
-    let tr = view.state.tr
-    if (!tr.selection.empty) tr.deleteSelection()
-    tr.setMeta(placeholderPlugin, {add: {id, pos: tr.selection.from}})
-    view.dispatch(tr)
-  
-    this.uploadFile(file).then(url => {
-      let pos = findPlaceholder(view.state, id)
-      // If the content around the placeholder has been deleted, drop the image
-      if (pos == null) return
-      // Otherwise, insert it at the placeholder's position, and remove the placeholder
-      view.dispatch(view.state.tr
-        .replaceWith(pos, pos, schema.nodes.image.create({src: url}))
-        .setMeta(placeholderPlugin, {remove: {id}}))
-    }, () => {
-      // On failure, just clean up the placeholder
-      view.dispatch(tr.setMeta(placeholderPlugin, {remove: {id}}))
-    })
-  
-    */
-  }
 }
