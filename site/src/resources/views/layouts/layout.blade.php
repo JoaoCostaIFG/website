@@ -49,10 +49,9 @@
   @isset($js)
     @vite($js)
   @endisset
-  @livewireStyles
+  @livewireStyles(['nonce' => Vite::cspNonce()])
 </head>
 
-<livewire:counter />
 <body class="bg-background-200 dark:bg-background-900 min-h-screen">
   @include('partials.nav.bar')
 
@@ -62,7 +61,7 @@
   </div>
 
   @include('partials.nav.footer')
-  @livewireScripts
+  @livewireScripts(['nonce' => Vite::cspNonce()])
 </body>
 
 </html>
