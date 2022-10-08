@@ -4,7 +4,7 @@
       <div class="container mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <!-- Mobile menu button-->
-          <button type="button" class="absolute left-0 sm:hidden py-2 px-3 rounded-md text-navbar-400 hover:text-white hover:bg-gray-700 focus:ring-2 focus:ring-inset focus:ring-white" onclick="toggleMobileMenu()" aria-label="Open navbar menu" aria-controls="mobile-menu" aria-expanded="false">
+          <button id="mobile-menu-btn" type="button" class="absolute left-0 sm:hidden py-2 px-3 rounded-md text-navbar-400 hover:text-white hover:bg-gray-700 focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Open navbar menu" aria-controls="mobile-menu" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
           </button>
 
@@ -36,7 +36,7 @@
               <i class="fa-solid fa-arrow-right-to-bracket"></i>
             </a>
             @endif
-            <button id="theme-toggler" class="text-xl w-5 text-yellow-200 hover:text-yellow-400" onclick="toggleTheme()" aria-label="Set light theme">
+            <button id="theme-toggler" class="text-xl w-5 text-yellow-200 hover:text-yellow-400" aria-label="Set light theme">
               <i class="fa-solid fa-sun"></i>
             </button>
           </div>

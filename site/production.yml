@@ -15,6 +15,11 @@ services:
       - app_code:/app
       - site_app_data:/data
       - /run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock
+  languagetool:
+    environment:
+      - langtool_languageModel=/ngrams
+    volumes:
+      - /usr/local/lib/ngrams:/ngrams
 
 volumes:
   app_code:
