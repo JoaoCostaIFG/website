@@ -7,7 +7,7 @@ location = /auth {
   proxy_set_header Original-URI $request_uri;
 
   # throw a 403 - forbidden to those outside the net
-  proxy_set_header Expected-Tailnet "tail1dfda.ts.net";
+  proxy_set_header Expected-Tailnet "tail1dfda.ts.net.";
 
   proxy_pass http://unix:/run/tailscale.nginx-auth.sock;
   proxy_pass_request_body off;
