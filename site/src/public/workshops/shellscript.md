@@ -845,7 +845,7 @@ class: middle, center
 
 ## Thank you for listening
 
-![Typing cat](gato.gif)
+![Typing cat](https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif)
 
-Download the presentation:  
-[https://joaocosta.dev/storage/files/shellscript.zip](https://joaocosta.dev/storage/files/shellscript.zip)
+Download the presentation's source:  
+[https://localhost/workshops/shellscript.md](https://localhost/workshops/shellscript.md)
