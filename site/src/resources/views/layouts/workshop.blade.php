@@ -17,7 +17,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS
+  <!-- CSS + JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   @vite(["resources/css/workshop.css"])
 
