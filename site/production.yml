@@ -20,6 +20,9 @@ services:
       - langtool_languageModel=/ngrams
     volumes:
       - /usr/local/lib/ngrams:/ngrams
+  vaultwarden:
+    volumes:
+      - /bw-data:/bw-data
 
 volumes:
   app_code:
