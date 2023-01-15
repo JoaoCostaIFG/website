@@ -1,10 +1,11 @@
-#Adapted from: https://github.com/dani-garcia/vaultwarden/wiki/Proxy-examples
-
 server {
+  #Adapted from: https://github.com/dani-garcia/vaultwarden/wiki/Proxy-examples
   listen 443 ssl;
   listen [::]:443 ssl;
 
   server_name vaultwarden.tail.joaocosta.dev;
+
+  include /etc/nginx/auth.locations;
 
   # Send functionality of BW allows up to 100MB
   client_max_body_size 128M;
