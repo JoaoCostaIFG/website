@@ -22,7 +22,7 @@ services:
       - /usr/local/lib/ngrams:/ngrams
   vaultwarden:
     volumes:
-      - /bw-data:/bw-data
+      - /bw-data:/data
 
 volumes:
   app_code:
