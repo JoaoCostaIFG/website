@@ -6,8 +6,20 @@ location = /auth {
   proxy_set_header Remote-Port $remote_port;
   proxy_set_header Original-URI $request_uri;
 
+  proxy_pass http://unix:/run/tailscale.nginx-auth.sock;
+  proxy_pass_request_body off;
+}
+
+location = /auth-mine {
+  internal;
+
+  proxy_set_header Host $http_host;
+  proxy_set_header Remote-Addr $remote_addr;
+  proxy_set_header Remote-Port $remote_port;
+  proxy_set_header Original-URI $request_uri;
+
   # throw a 403 - forbidden to those outside the net
-  #proxy_set_header Expected-Tailnet "tail1dfda.ts.net.";
+  proxy_set_header Expected-Tailnet "tail1dfda.ts.net.";
 
   proxy_pass http://unix:/run/tailscale.nginx-auth.sock;
   proxy_pass_request_body off;
