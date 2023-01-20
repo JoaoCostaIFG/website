@@ -43,6 +43,7 @@ services:
       - uptimekuma_internal
     volumes:
       - /uptime-kuma:/app/data
+      - /run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
 
 volumes:
