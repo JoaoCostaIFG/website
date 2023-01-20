@@ -21,11 +21,6 @@ server {
     proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
     proxy_pass http://languagetool:8010;
-
-    # Needed because of WebSocket
-    # https://github.com/louislam/uptime-kuma/wiki/Reverse-Proxy#nginx
-    proxy_set_header   Upgrade $http_upgrade;
-    proxy_set_header   Connection "upgrade";
   }
 }
 
