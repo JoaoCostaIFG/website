@@ -36,21 +36,6 @@ services:
       - tor
       - php
     restart: unless-stopped
-  languagetool:
-    image: erikvl87/languagetool
-    container_name: languagetool
-    networks:
-      - languagetool_internal
-    environment:
-      - Java_Xms=256m  # minimum Java heap size of 256 mib
-      - Java_Xmx=1g  # maximum Java heap size of 1 Gib
-    restart: unless-stopped
-  vaultwarden:
-    image: vaultwarden/server
-    container_name: vaultwarden
-    networks:
-      - vaultwarden_internal
-    restart: unless-stopped
 
 networks:
   php_internal:

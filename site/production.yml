@@ -16,13 +16,26 @@ services:
       - site_app_data:/data
       - /run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock
   languagetool:
+    image: erikvl87/languagetool
+    container_name: languagetool
+    networks:
+      - languagetool_internal
     environment:
       - langtool_languageModel=/ngrams
     volumes:
       - /usr/local/lib/ngrams:/ngrams
+    environment:
+      - Java_Xms=256m  # minimum Java heap size of 256 mib
+      - Java_Xmx=1g  # maximum Java heap size of 1 Gib
+    restart: unless-stopped
   vaultwarden:
+    image: vaultwarden/server
+    container_name: vaultwarden
+    networks:
+      - vaultwarden_internal
     volumes:
       - /bw-data:/data
+    restart: unless-stopped
 
 volumes:
   app_code:
