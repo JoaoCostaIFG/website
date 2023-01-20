@@ -27,6 +27,7 @@ services:
       - php_internal
       - languagetool_internal
       - vaultwarden_internal
+      - uptimekuma_internal
     volumes:
       - tor_socket:/socket
     secrets:
@@ -43,6 +44,8 @@ networks:
   languagetool_internal:
     driver: bridge
   vaultwarden_internal:
+    driver: bridge
+  uptimekuma_internal:
     driver: bridge
 
 volumes:

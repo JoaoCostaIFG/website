@@ -36,6 +36,14 @@ services:
     volumes:
       - /bw-data:/data
     restart: unless-stopped
+  uptimekuma:
+    image: louislam/uptime-kuma
+    container_name: uptime-kuma
+    networks:
+      - uptimekuma_internal
+    volumes:
+      - /uptime-kuma:/app/data
+    restart: unless-stopped
 
 volumes:
   app_code:
