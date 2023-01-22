@@ -24,8 +24,8 @@ server {
 
     # Needed because of WebSocket
     # https://github.com/louislam/uptime-kuma/wiki/Reverse-Proxy#nginx
-    proxy_set_header   Upgrade $http_upgrade;
-    proxy_set_header   Connection "upgrade";
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
   }
 }
 
