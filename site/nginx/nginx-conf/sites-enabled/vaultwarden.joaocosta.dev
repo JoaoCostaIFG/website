@@ -43,9 +43,9 @@ server {
 
     proxy_pass http://vaultwarden:80;
 
+    # Needed because of WebSocket
     # https://github.com/dani-garcia/vaultwarden/wiki/Enabling-WebSocket-notifications
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
+    proxy_set_header "Connection" "";
   }
 
   location /notifications/hub {
@@ -63,6 +63,8 @@ server {
     proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
     proxy_pass http://vaultwarden:3012;
+
+    # Needed because of WebSocket
     # https://github.com/dani-garcia/vaultwarden/wiki/Enabling-WebSocket-notifications
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
