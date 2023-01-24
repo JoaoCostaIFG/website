@@ -47,6 +47,15 @@ services:
       - /uptime-kuma:/app/data
       - /run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
+  minecraft:
+    image: joaocostaifg/lazymc-purpur:1.19.3-lazymc0.2.7x64
+    container_name: minecraft
+    volumes:
+      - /minecraft_server:/data
+    ports:
+      - "25565:25565"
+      - "25566:25566"
+    restart: unless-stopped
 
 volumes:
   app_code:
