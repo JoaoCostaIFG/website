@@ -50,6 +50,8 @@ services:
   minecraft:
     image: joaocostaifg/lazymc-purpur:1.19.3-lazymc0.2.7x64
     container_name: minecraft
+    environment:
+      - MC_RAM_MAX=4G
     volumes:
       - /minecraft_server:/data
     ports:
