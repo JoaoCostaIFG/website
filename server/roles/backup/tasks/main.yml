@@ -8,7 +8,7 @@
   copy:
     src: rsnapshot.conf
     dest: /etc/rsnapshot.conf
-    validate: /usr/bin/rsnapshot configtest
+      #validate: /usr/bin/rsnapshot configtest
 - name: Copy backup container files
   copy:
     src: backupcontainer

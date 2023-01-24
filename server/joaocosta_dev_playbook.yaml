@@ -9,7 +9,8 @@
     - docker
     - mail
     - letsencrypt
-    - backup
+    - role: backup
+      tags: backup
     - tailscale
     - ddns
     - role: site
