@@ -48,7 +48,7 @@ services:
       - /run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
   minecraft:
-    image: joaocostaifg/lazymc-purpur:1.19.3-lazymc0.2.7x64
+    image: joaocostaifg/multiprovider-lazymc:1.19.3-lazymc0.2.7x64-purpur
     container_name: minecraft
     environment:
       - MC_RAM_MAX=4G
