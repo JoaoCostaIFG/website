@@ -57,6 +57,8 @@ services:
     ports:
       - "25565:25565"
       - "25566:25566"
+    stdin_open: true
+    tty: true
     restart: unless-stopped
 
 volumes:
