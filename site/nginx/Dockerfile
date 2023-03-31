@@ -10,9 +10,14 @@ EXPOSE 80 443
 
 FROM nginx_base AS nginx_prod
 
+COPY nginx/sites-enabled /etc/nginx/sites-enabled
+
 # -----------------------------------------------------------------------------
 
 FROM nginx_base AS nginx_dev
+
+COPY nginx/sites-enabled/joaocosta.dev /etc/nginx/sites-enabled/joaocosta.dev
+COPY nginx/sites-enabled/wiki.joaocosta.dev /etc/nginx/sites-enabled/wiki.joaocosta.dev
 
 # run development as root
 RUN sed -i 's/user nginx;/user root;/' "/etc/nginx/nginx.conf"
