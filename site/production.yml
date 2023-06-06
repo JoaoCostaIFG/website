@@ -20,11 +20,10 @@ services:
     container_name: languagetool
     networks:
       - languagetool_internal
-    environment:
-      - langtool_languageModel=/ngrams
     volumes:
       - /usr/local/lib/ngrams:/ngrams
     environment:
+      - langtool_languageModel=/ngrams
       - Java_Xms=256m  # minimum Java heap size of 256 mib
       - Java_Xmx=1g  # maximum Java heap size of 1 Gib
     restart: unless-stopped
