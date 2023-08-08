@@ -59,6 +59,12 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
+  ritmo:
+    image: joaocostaifg/ritmo:latest
+    environment:
+      - RITMO_ENV=/run/secrets/ritmo_env
+    container_name: ritmo
+    restart: unless-stopped
 
 volumes:
   app_code:
@@ -71,3 +77,5 @@ secrets:
     file: /etc/letsencrypt/joaocosta.dev
   joaocosta.dev_ecc:
     file: /etc/letsencrypt/joaocosta.dev_ecc
+  ritmo_env:
+    file: /usr/local/etc/ritmo_env
