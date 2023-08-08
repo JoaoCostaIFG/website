@@ -1,10 +1,10 @@
 <?php
- 
+
 namespace App\Http\Middleware;
- 
+
 use Closure;
 use Illuminate\Support\Facades\Vite;
- 
+
 class AddContentSecurityPolicyHeaders
 {
     /**
@@ -17,9 +17,10 @@ class AddContentSecurityPolicyHeaders
     public function handle($request, Closure $next)
     {
         Vite::useCspNonce();
- 
-        return $next($request)->withHeaders([
-            'Content-Security-Policy' => "script-src 'nonce-".Vite::cspNonce()."'",
-        ]);
+
+        return $next($request);
+//->withHeaders([
+//            'Content-Security-Policy' => "script-src 'self' 'unsafe-inline' 'nonce-".Vite::cspNonce()."'",
+//        ]);
     }
 }
