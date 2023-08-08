@@ -63,6 +63,8 @@ services:
     image: joaocostaifg/ritmo:latest
     environment:
       - RITMO_ENV=/run/secrets/ritmo_env
+    secrets:
+      - ritmo_env
     container_name: ritmo
     restart: unless-stopped
 
