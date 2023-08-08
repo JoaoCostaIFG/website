@@ -18,9 +18,8 @@ class AddContentSecurityPolicyHeaders
     {
         Vite::useCspNonce();
 
-        return $next($request);
-//->withHeaders([
-//            'Content-Security-Policy' => "script-src 'self' 'unsafe-inline' 'nonce-".Vite::cspNonce()."'",
-//        ]);
+        return $next($request)->withHeaders([
+            'Content-Security-Policy' => "script-src 'self' 'unsafe-inline' 'nonce-".Vite::cspNonce()."'",
+        ]);
     }
 }
