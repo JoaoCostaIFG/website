@@ -7,8 +7,8 @@
     <div class="col-span-12 sm:col-span-8">
       <p>
         I'm a twenty-something year old computer/informatics engineer. I finished by master's degree
-        at <a href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a> in 2023.<br>
-        I started this website so I could learn more about web development and have
+        at <a href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a> in 2023. I started this website
+        so I could learn more about web development and have
         a place to share my experiences/thoughts (mostly) relating to informatics. This
         website passed through multiple changes and is now hosted on my personal home-server
         (alongside other self-hosted services I use).
