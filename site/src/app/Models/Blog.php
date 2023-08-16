@@ -62,6 +62,20 @@ class Blog extends Model implements Feedable
   }
 
   /**
+   * Returns an intro for the blog post. This can be just the first line of the content when
+   * no intro is set.
+   * @return the intro string
+   */
+  public function getIntro(): string
+  {
+    if (is_null($this->intro)) {
+      $wrapedLines = wordwrap($this->content, 80); // lines word-wrapped at 80 characters
+      return substr($wrapedLines, 0, strpos($wrapedLines, "\n")); // get first line
+    }
+    return $this->intro;
+  }
+
+  /**
    * Returns the average silent reading time for the content.
    * Based on a paper by Marc Brysbaert (2019): https://www.sciencedirect.com/science/article/abs/pii/S0749596X19300786
    * @return the average reading time in minutes
@@ -76,9 +90,9 @@ class Blog extends Model implements Feedable
     return FeedItem::create()
       ->id($this->id)
       ->title($this->title)
-      ->summary($this->intro)
+      ->summary($this->getIntro())
       ->updated($this->date)
-      ->link(route('blog', ['id' => $this->id]))
+      ->link(route('blog', ['b' => $this->id]))
       ->authorName('JoaoCostaIFG')
       ->authorEmail('joaocosta.work@posteo.net');
   }
