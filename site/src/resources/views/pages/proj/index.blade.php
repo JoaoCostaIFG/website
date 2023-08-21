@@ -19,7 +19,7 @@ use App\Models\Proj; ?>
     The following are some projects I've created/worked on that I feel proud of.
   </p>
 
-  <section id="projs-container" class="mt-4 flex flex-row gap-5 flex-wrap justify-center">
+  <section id="projs-container" class="mt-4 flex flex-row gap-6 flex-wrap justify-center">
     @each('partials.proj.entry', Proj::all(), 'p')
   </section>
 </div>
