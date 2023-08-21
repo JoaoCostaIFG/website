@@ -1,6 +1,6 @@
 import { fontawesomeSubset } from "fontawesome-subset";
 import * as fs from "node:fs";
-import sass from "sass";
+import * as sass from 'sass'
 import { minify } from "csso";
 
 // icons used
