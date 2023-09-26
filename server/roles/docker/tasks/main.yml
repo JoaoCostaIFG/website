@@ -3,6 +3,7 @@
   community.general.pacman:
     name:
       - docker
+      - docker-buildx
       - docker-compose
     state: present
   notify: restart docker
