@@ -54,7 +54,7 @@ RUN mkdir -p /data/wiki/conf && ln -s /data/wiki/conf /app/wiki/conf && \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 WORKDIR /app/main/
-CMD ["php", "artisan", "octane:start", "-n", "--server=roadrunner", "--host=0.0.0.0", "--port=8000"]
+CMD ["rr", "serve", "-c", "./.rr.yaml"]
 
 # ----------------------------------------------------------------------------
 

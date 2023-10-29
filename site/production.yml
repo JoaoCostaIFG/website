@@ -25,6 +25,7 @@ services:
       - WEBSOCKET_ENABLED=true
     ports:
       - "8020:80"
+      - "8021:3012"
     volumes:
       - /bw-data:/data
     restart: unless-stopped

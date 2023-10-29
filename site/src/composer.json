@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "spatie/laravel-feed": "^4.1",
+        "spiral/roadrunner-laravel": "^5.12",
         "tightenco/ziggy": "^1.4"
     },
     "require-dev": {
