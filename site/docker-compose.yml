@@ -1,52 +1,11 @@
 version: "3.9"
 
 services:
-  tor:
-    build: ./tor
-    container_name: tor
-    volumes:
-      - tor_socket:/socket
-    restart: unless-stopped
   php:
     build:
       context: .
       dockerfile: ./php/Dockerfile
     container_name: php
-    networks:
-      - php_internal
-    restart: unless-stopped
-  nginx:
-    build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
-    container_name: nginx
     ports:
-      - 80:80
-      - 443:443
-    networks:
-      - php_internal
-      - languagetool_internal
-      - vaultwarden_internal
-      - uptimekuma_internal
-    volumes:
-      - tor_socket:/socket
-    secrets:
-      - joaocosta.dev
-      - joaocosta.dev_ecc
-    depends_on:
-      - tor
-      - php
+      - "8000:8000"
     restart: unless-stopped
-
-networks:
-  php_internal:
-    driver: bridge
-  languagetool_internal:
-    driver: bridge
-  vaultwarden_internal:
-    driver: bridge
-  uptimekuma_internal:
-    driver: bridge
-
-volumes:
-  tor_socket:

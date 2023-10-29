@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   php:
     build:
@@ -6,16 +8,3 @@ services:
       - ./src:/app/main
       - ./wiki:/app/wiki
       - ./data/main:/data/main
-  nginx:
-    build:
-      target: nginx_dev
-    volumes:
-      - ./src:/app/main
-      - ./wiki:/app/wiki
-      - ./data/main:/data/main
-
-secrets:
-  joaocosta.dev:
-    file: ./nginx/keys
-  joaocosta.dev_ecc:
-    file: ./nginx/keys
