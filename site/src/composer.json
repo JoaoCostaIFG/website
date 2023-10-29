@@ -9,11 +9,9 @@
         "erusev/parsedown": "^1.7",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
-        "laravel/octane": "^1.5",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "spatie/laravel-feed": "^4.1",
-        "spiral/roadrunner": "^2.8.2",
         "tightenco/ziggy": "^1.4"
     },
     "require-dev": {
