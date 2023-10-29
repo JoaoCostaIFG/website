@@ -45,10 +45,10 @@ RUN cd /app/main && \
   ln -s /data/main/storage storage/app
 
 # set links so the app can access the data
-RUN ln -s /data/wiki/conf /app/wiki/conf && \
-    ln -s /data/wiki/data /app/wiki/data && \
-    ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
-    ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
+RUN mkdir -p /data/wiki/conf && ln -s /data/wiki/conf /app/wiki/conf && \
+    mkdir -p /data/wiki/data && ln -s /data/wiki/data /app/wiki/data && \
+    mkdir -p /data/wiki/lib/plugins && ln -s /data/wiki/lib/plugins /app/wiki/lib/plugins && \
+    mkdir -p /data/wiki/lib/tpl && ln -s /data/wiki/lib/tpl /app/wiki/lib/tpl
 
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
