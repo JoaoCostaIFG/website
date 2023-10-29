@@ -1,0 +1,50 @@
+server {
+  listen 443 ssl http2 default_server;
+  listen [::]:443 ssl http2 default_server;
+  # serve onion service
+  listen unix:/socket/tor-joaocosta.dev.sock;
+
+  server_name joaocosta.dev www.joaocosta.dev erycap2gpjs7vi5ax2nw3yo5oo4567vi3ompttcqlklcx3ownrfey6ad.onion localhost www.localhost;
+
+  root /app/main/public;
+  index index.php;
+
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-Content-Type-Options "nosniff";
+
+  location / {
+    try_files $uri $uri/ /index.php?$query_string;
+  }
+
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location = /robots.txt  { access_log off; log_not_found off; }
+
+  error_page 403 =301 /404;
+  error_page 404 =301 /404;
+
+  # location ~ ^/index\.php(/|$) {
+  location ~ \.php$ { 
+    # Prevents URIs that include the front controller. This will 404: http://domain.tld/index.php/some-path
+    internal;
+
+    fastcgi_pass php:9000;
+    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+    include fastcgi_params;
+    include fastcgi.conf;
+  }
+
+  # return 404 for all other php files (not index)
+  location ~ \.php$ { return 404; }
+  
+  location ~ /\.(?!well-known).* { deny all; }
+}
+
+server {
+  # redirect all http to https
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+  server_name joaocosta.dev www.joaocosta.dev localhost www.localhost;
+
+  return 301 https://$host$request_uri;
+}
