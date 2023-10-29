@@ -1,3 +1,6 @@
 [submodule "site/wiki"]
 	path = site/wiki
 	url = https://github.com/splitbrain/dokuwiki
+[submodule "site/multiprovider-lazymc"]
+	path = site/multiprovider-lazymc
+	url = https://github.com/JoaoCostaIFG/multiprovider-lazymc.git

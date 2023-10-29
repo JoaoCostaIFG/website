@@ -29,9 +29,11 @@ services:
       - /bw-data:/data
     restart: unless-stopped
   minecraft:
-    image: joaocostaifg/multiprovider-lazymc:1.19.3-lazymc0.2.7x64-purpur
+    build: multiprovider-lazymc
     container_name: minecraft
     environment:
+      - SERVER_PROVIDER=purpur
+      - MC_VERSION=1.19.4
       - MC_RAM_MAX=4G
     volumes:
       - /minecraft_server:/data
