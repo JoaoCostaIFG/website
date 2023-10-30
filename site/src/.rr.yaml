@@ -6,6 +6,8 @@ server:
 
 http:
   address: 0.0.0.0:8000
+  fcgi:
+    address: tcp://0.0.0.0:9000
   middleware: ["static"]
   pool:
     max_jobs: 64
