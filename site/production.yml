@@ -37,7 +37,7 @@ services:
       - MC_VERSION=1.19.4
       - MC_RAM_MAX=4G
     volumes:
-      - /minecraft_server:/data
+      - site_mine_data:/data
     ports:
       - "25565:25565"
       - "25566:25566"
@@ -55,6 +55,7 @@ services:
 
 volumes:
   site_app_data:
+  site_mine_data:
 
 secrets:
   ritmo_env:
