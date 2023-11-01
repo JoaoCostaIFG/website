@@ -30,11 +30,13 @@ services:
       - /bw-data:/data
     restart: unless-stopped
   minecraft:
-    build: multiprovider-lazymc
+    build:
+      context: ./multiprovider-lazymc
+      args:
+        SERVER_PROVIDER=purpur
+        MC_VERSION=1.19.4
     container_name: minecraft
     environment:
-      - SERVER_PROVIDER=purpur
-      - MC_VERSION=1.19.4
       - MC_RAM_MAX=4G
     volumes:
       - site_mine_data:/data
