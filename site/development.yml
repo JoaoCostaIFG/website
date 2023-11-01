@@ -5,6 +5,5 @@ services:
     build:
       target: php_dev
     volumes:
-      - ./src:/app/main
-      - ./wiki:/app/wiki
-      - ./data/main:/data/main
+      - ./src:/app
+      - ./data:/data
