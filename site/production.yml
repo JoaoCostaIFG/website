@@ -34,6 +34,9 @@ services:
     container_name: wiki
     environment:
       - DB_TYPE=sqlite
+      - DB_FILEPATH=/data/db.sqlite
+    volumes:
+      - site_wiki_data:/data
     ports:
       - "8030:3000"
     restart: unless-stopped
@@ -66,6 +69,7 @@ services:
 volumes:
   site_app_data:
   site_bw_data:
+  site_wiki_data:
   site_mine_data:
 
 secrets:
