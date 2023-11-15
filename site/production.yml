@@ -40,6 +40,18 @@ services:
     ports:
       - "8030:3000"
     restart: unless-stopped
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - site_heimdall_data:/config
+    ports:
+      - 8040:80
+    restart: unless-stopped
   minecraft:
     build:
       context: ./multiprovider-lazymc
@@ -70,6 +82,7 @@ volumes:
   site_app_data:
   site_bw_data:
   site_wiki_data:
+  site_heimdall_data:
   site_mine_data:
 
 secrets:
