@@ -1,17 +1,11 @@
 ---
-- name: joaocosta.dev (ifgsv) Ansible playbook
-  hosts: joaocosta_dev
-  become: yes
+- name: joaocosta.dev nginx VM (ifgsv) Ansible playbook
+  hosts: joaocostadev_nginx
+  become: no
 
   roles:
-    - common
-    - ssh
-    - docker
-    - mail
-    - letsencrypt
-    - role: backup
-      tags: backup
-    - tailscale
+    - acme
     - ddns
-    - role: site
-      tags: site
+    - mail
+    - tailscale
+    - ssh

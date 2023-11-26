@@ -1,8 +1,7 @@
 ---
 - name: Install SSH/MOSH
-  community.general.pacman:
+  ansible.builtin.apt:
     name:
-      - openssh
       - mosh
     state: present
   notify: restart sshd
@@ -18,12 +17,5 @@
     owner: root
     group: root
     mode: '0600'
-    validate: /usr/bin/sshd -t -f %s
+    validate: /usr/sbin/sshd -t -f %s
     backup: yes
-- name: Setup script to validate SSH forced commands (allow only rsync for remote backups)
-  copy:
-    src: validate-rsync.sh
-    dest: /usr/local/bin/validate-rsync.sh
-    owner: root
-    group: root
-    mode: '0775'

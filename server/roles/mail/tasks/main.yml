@@ -1,6 +1,6 @@
 ---
 - name: Install msmtp and msmtp-mta
-  community.general.pacman:
+  ansible.builtin.apt:
     name:
       - msmtp
       - msmtp-mta

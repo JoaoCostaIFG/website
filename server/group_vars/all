@@ -1,4 +1,6 @@
 ---
+cfddns_version: v1.0.0
+
 cloudflare_api_key: secret
 
 admin_email: joaocosta@posteo.net

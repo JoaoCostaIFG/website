@@ -1,0 +1,5 @@
+---
+- name: Install acme.sh
+  shell: 'curl https://get.acme.sh | sh -s email=joaocosta@posteo.net'
+- name: Install acme.sh cron
+  shell: '/root/.acme.sh/acme.sh --install-cronjob'

@@ -6,12 +6,12 @@ tls_trust_file /etc/ssl/certs/ca-certificates.crt
 logfile        ~/.msmtp.log
 
 # Sapo
-account        sapo
-host           smtp.sapo.pt
+account        gmail
+host           smtp.gmail.pt
 port           587
 from           {{ machine_email }}
 user           {{ machine_email }}
 password       {{ machine_email_pass }}
 
 # Set a default account
-account default : sapo
+account default : gmail

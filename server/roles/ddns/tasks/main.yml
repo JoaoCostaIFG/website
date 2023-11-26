@@ -1,14 +1,17 @@
 ---
 - name: Install cloudflare DDNS daemon python dependencies
-  community.general.pacman:
+  ansible.builtin.apt:
     name:
-      - python-cloudflare
-      - python-requests
+      - python3-cloudflare
+      - python3-requests
+      - git
+      - make
     state: present
 - name: Fetch cloudflare DDNS source files
   ansible.builtin.git:
     repo: "https://github.com/JoaoCostaIFG/cloudflareddns.git"
     dest: /usr/local/src/cloudflareddns
+    version: "{{ cfddns_version }}"
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
   notify: install cfddns
