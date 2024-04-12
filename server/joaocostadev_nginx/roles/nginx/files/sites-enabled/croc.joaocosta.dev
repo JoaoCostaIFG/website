@@ -4,6 +4,8 @@ server {
 
   server_name croc.joaocosta.dev;
 
+  client_max_body_size 10G;
+
   location / {
     proxy_pass http://10.0.0.3:8050;
     proxy_set_header Host $host;
