@@ -77,6 +77,14 @@ services:
       - ritmo_env
     container_name: ritmo
     restart: unless-stopped
+  pingvin-share:
+    image: stonith404/pingvin-share
+    restart: unless-stopped
+    ports:
+      - 8050:3000
+    volumes:
+      - site_pingvin_data:/opt/app/backend/data
+      - site_pingvin_imgs:/opt/app/frontend/public/img
 
 volumes:
   site_app_data:
@@ -84,6 +92,8 @@ volumes:
   site_wiki_data:
   site_heimdall_data:
   site_mine_data:
+  site_pingvin_data:
+  site_pingvin_imgs:
 
 secrets:
   ritmo_env:
