@@ -79,6 +79,7 @@ services:
     restart: unless-stopped
   pingvin-share:
     image: stonith404/pingvin-share
+    container_name: pingvin
     restart: unless-stopped
     ports:
       - 8050:3000
