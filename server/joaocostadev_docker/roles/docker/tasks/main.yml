@@ -1,0 +1,19 @@
+---
+- name: Install docker and docker-compose
+  community.general.apk:
+    name:
+      - docker
+      - docker-cli-compose
+    update_cache: true
+    state: present
+- name: Enable docker service
+  ansible.builtin.service:
+    name: docker
+    state: started
+- name: Set docker daemon options
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+  notify: restart docker

@@ -1,0 +1,4 @@
+{
+  "log-driver": "local",
+  "userns-remap": "dockremap"
+}

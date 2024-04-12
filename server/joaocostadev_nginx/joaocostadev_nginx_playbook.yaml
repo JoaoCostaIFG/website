@@ -7,5 +7,6 @@
     - acme
     - ddns
     - mail
-    - tailscale
     - ssh
+    - tailscale
+    - nginx

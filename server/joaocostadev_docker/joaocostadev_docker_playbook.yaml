@@ -1,0 +1,8 @@
+---
+- name: joaocosta.dev docker VM (ifgsv) Ansible playbook
+  hosts: joaocostadev_docker
+  become: no
+
+  roles:
+    - docker
+    - services
