@@ -80,12 +80,22 @@ services:
   pingvin-share:
     image: stonith404/pingvin-share
     container_name: pingvin
-    restart: unless-stopped
     ports:
       - 8050:3000
     volumes:
       - site_pingvin_data:/opt/app/backend/data
       - site_pingvin_imgs:/opt/app/frontend/public/img
+    restart: unless-stopped
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    container_name: pdf
+    ports:
+      - '8060:8080'
+    volumes:
+      - site_pdf_trainingdata:/usr/share/tesseract-ocr/5/tessdata #Required for extra OCR languages
+      - site_pdf_config:/configs
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
 
 volumes:
   site_app_data:
@@ -95,6 +105,8 @@ volumes:
   site_mine_data:
   site_pingvin_data:
   site_pingvin_imgs:
+  site_pdf_trainingdata:
+  site_pdf_config:
 
 secrets:
   ritmo_env:
