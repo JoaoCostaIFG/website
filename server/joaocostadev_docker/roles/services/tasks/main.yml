@@ -1,20 +1,13 @@
 ---
-- name: Install npm
-  community.general.apk:
-    name:
-      - nodejs
-      - nodejs-npm
-    update_cache: true
-    state: present
-- block:
-  - name: Fetch site files
-    ansible.builtin.git:
-      repo: "https://github.com/JoaoCostaIFG/website.git"
-      dest: /usr/local/src/website
-    environment:
-      GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
-  - name: Build fontawesome font
-    ansible.builtin.shell: npm i -D && npm run build
-    args:
-      chdir: /usr/local/src/website/site/fontawesome_subsetter
-  notify: restart services
+- name: Fetch site files
+  ansible.builtin.git:
+    repo: "https://github.com/JoaoCostaIFG/website.git"
+    dest: /root/website
+    version:  "{{ repo_branch }}"
+  environment:
+    GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+  #notify: restart services
+- name: (re)start services
+  command:
+    chdir: /root/website/site
+    cmd: docker compose -f docker-compose.yml -f production.yml up --build -d

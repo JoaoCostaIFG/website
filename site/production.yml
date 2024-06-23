@@ -57,7 +57,10 @@ services:
       - EULA=TRUE
       - TYPE=PURPUR
       - VERSION=1.19.4
-      - MEMORY=4G
+      - MEMORY=6G
+      - MAX_MEMORY=10G
+      - USE_AIKAR_FLAGS=TRUE
+      - USE_SIMD_FLAGS=TRUE
     volumes:
       - site_mine_data:/data
     ports:
