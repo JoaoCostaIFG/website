@@ -69,12 +69,12 @@ services:
     tty: true
     restart: unless-stopped
   ritmo:
-    image: joaocostaifg/ritmo:latest
-    environment:
-      - RITMO_ENV=/run/secrets/ritmo_env
+    image: codetheweb/muse:latest
+    container_name: ritmo
     secrets:
       - ritmo_env
-    container_name: ritmo
+    volumes:
+      - site_ritmo_data:/data
     restart: unless-stopped
   pingvin-share:
     image: stonith404/pingvin-share
@@ -102,6 +102,7 @@ volumes:
   site_wiki_data:
   site_heimdall_data:
   site_mine_data:
+  site_ritmo_data:
   site_pingvin_data:
   site_pingvin_imgs:
   site_pdf_trainingdata:
