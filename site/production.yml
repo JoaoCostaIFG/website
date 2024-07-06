@@ -69,10 +69,12 @@ services:
     tty: true
     restart: unless-stopped
   ritmo:
-    image: codetheweb/muse:latest
+    image: joaocostaifg/muse:latest
     container_name: ritmo
     secrets:
       - ritmo_env
+    environment:
+      - ENV_FILE=/run/secrets/ritmo_env
     volumes:
       - site_ritmo_data:/data
     restart: unless-stopped
