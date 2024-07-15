@@ -17,6 +17,10 @@
     group: root
     mode: '0600'
   notify: restart nginx
+- name: Remove sites enabled directory
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/
+    state: absent
 - name: Update sites enabled
   copy:
     src: sites-enabled/
