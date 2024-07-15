@@ -97,6 +97,7 @@ services:
       - site_pdf_config:/configs
     environment:
       - DOCKER_ENABLE_SECURITY=false
+    restart: unless-stopped
 
 volumes:
   site_app_data:
