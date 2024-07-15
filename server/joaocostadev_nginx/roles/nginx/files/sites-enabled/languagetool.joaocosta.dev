@@ -20,7 +20,7 @@ server {
     proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
     proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
-    proxy_pass http://10.0.0.3:8010;
+    proxy_pass http://docker.ifgsv:8010;
   }
 }
 
