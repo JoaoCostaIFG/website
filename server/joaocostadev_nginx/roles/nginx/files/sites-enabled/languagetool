@@ -2,7 +2,7 @@ server {
   listen 443 ssl;
   listen [::]:443 ssl;
 
-  server_name languagetool.tail.joaocosta.dev;
+  server_name languagetool.joaocosta.dev;
 
   include /etc/nginx/auth.locations;
 
@@ -29,7 +29,7 @@ server {
   listen 80;
   listen [::]:80;
 
-  server_name languagetool.tail.joaocosta.dev;
+  server_name languagetool.joaocosta.dev;
 
   return 301 https://$host$request_uri;
 }
