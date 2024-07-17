@@ -17,7 +17,7 @@ services:
       - /usr/local/lib/ngrams:/ngrams
     restart: unless-stopped
   vaultwarden:
-    image: vaultwarden/server:latest
+    image: vaultwarden/server:1.30.5
     container_name: vaultwarden
     environment:
       - WEBSOCKET_ENABLED=true
