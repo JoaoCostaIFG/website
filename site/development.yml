@@ -1,7 +1,12 @@
 services:
   php:
     build:
+      context: .
+      dockerfile: ./php/Dockerfile
       target: php_dev
+    ports:
+      - "8000:8000"
+      - "8001:9000"
     volumes:
       - ./src:/app
       - ./data:/data

@@ -1,9 +1,16 @@
 services:
   php:
     build:
+      context: .
+      dockerfile: ./php/Dockerfile
       target: php_prod
+    container_name: php
+    ports:
+      - "8000:8000"
+      - "8001:9000"
     volumes:
       - site_app_data:/data
+    restart: unless-stopped
   languagetool:
     image: erikvl87/languagetool
     container_name: languagetool
