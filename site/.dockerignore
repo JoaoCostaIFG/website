@@ -1,4 +1,3 @@
-# main
 src/node_modules
 src/public/build
 src/public/hot
@@ -10,13 +9,3 @@ src/.env.backup
 src/.phpunit.result.cache
 src/npm-debug.log
 src/yarn-error.log
-
-# wiki
-wiki/conf
-wiki/data
-wiki/lib/plugins
-wiki/lib/tpl
-wiki/.editorconfig
-wiki/.git**
-wiki/README
-wiki/SECURITY.md

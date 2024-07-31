@@ -24,7 +24,7 @@ RUN install-php-extensions \
         sockets \
         pcntl
 
-COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
+COPY opcache.ini $PHP_INI_DIR/opcache.ini
 
 EXPOSE 8000
 
@@ -57,7 +57,7 @@ RUN php artisan storage:link && \
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-CMD ["php", "artisan", "octane:frankenphp"]
+CMD ["php", "artisan", "octane:start"]
 
 # ----------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ RUN npm install -D
 
 RUN install-php-extensions xdebug
 
-COPY php/dev_entrypoint.sh /dev_entrypoint.sh
+COPY dev_entrypoint.sh /dev_entrypoint.sh
 
 # use development settings and run as root
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"

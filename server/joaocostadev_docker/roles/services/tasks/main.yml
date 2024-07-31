@@ -10,4 +10,4 @@
 - name: (re)start services
   command:
     chdir: /root/website/site
-    cmd: docker compose -f docker-compose.yml -f production.yml up --build -d
+    cmd: docker compose -f production.yml up --build -d

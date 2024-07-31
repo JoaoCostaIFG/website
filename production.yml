@@ -1,8 +1,7 @@
 services:
   php:
     build:
-      context: .
-      dockerfile: ./php/Dockerfile
+      context: ./site
       target: php_prod
     container_name: php
     ports:
