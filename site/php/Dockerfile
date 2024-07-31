@@ -1,16 +1,28 @@
-FROM ghcr.io/roadrunner-server/roadrunner AS roadrunner
-FROM php:cli-alpine3.18 AS php_base
-# https://hub.docker.com/_/php/
+FROM dunglas/frankenphp AS php_base
 
-COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
-RUN apk --no-cache add npm
+RUN apt-get update && \
+        apt-get install -y npm && \
+        apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
 
-# install dependencies using https://github.com/mlocati/docker-php-extension-installer
-RUN curl -sSLf \
-        -o /usr/local/bin/install-php-extensions \
-        https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
-    chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions @composer curl exif gd pdo_sqlite session sqlite3 zip openssl opcache json fileinfo tokenizer dom sodium sockets pcntl
+RUN install-php-extensions \
+        @composer \
+        curl \
+        exif \
+        gd \
+        pdo_sqlite \
+        session \
+        sqlite3 \
+        zip \
+        openssl \
+        opcache \
+        json \
+        fileinfo \
+        tokenizer \
+        dom \
+        sodium \
+        sockets \
+        pcntl
 
 COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
 
@@ -28,6 +40,7 @@ FROM php_base AS php_prod
 RUN composer install --optimize-autoloader -n -o --no-dev
 # install javascript packages with npm
 RUN npm install -D
+
 # cache
 RUN php artisan config:cache && \
     php artisan route:cache && \
@@ -44,14 +57,14 @@ RUN php artisan storage:link && \
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-CMD ["rr", "serve", "-c", "./.rr.yaml"]
+CMD ["php", "artisan", "octane:frankenphp"]
 
 # ----------------------------------------------------------------------------
 
 FROM php_base AS php_dev
 
 # install php packages with composer
-RUN composer install -n -o
+RUN composer install -n
 # install javascript packages with npm
 RUN npm install -D
 
