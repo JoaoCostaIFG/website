@@ -4,7 +4,7 @@ server {
 
   server_name croc.joaocosta.dev;
 
-  client_max_body_size 10G;
+  client_max_body_size 20G;
 
   location / {
     proxy_pass http://docker.ifgsv:8050;
