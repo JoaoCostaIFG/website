@@ -9,5 +9,5 @@
   #notify: restart services
 - name: (re)start services
   command:
-    chdir: /root/website
+    chdir: /root/website/site
     cmd: docker compose -f production.yml up --build -d

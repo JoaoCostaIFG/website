@@ -1,7 +1,7 @@
 services:
   php:
     build:
-      context: ./site
+      context: .
       target: php_dev
     ports:
       - "8000:8000"
