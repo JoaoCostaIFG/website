@@ -1,6 +1,9 @@
 server {
   listen 443 ssl http2 default_server;
   listen [::]:443 ssl http2 default_server;
+  # serve onion service
+  # http://as4dqa4drmeu34k42aqjhxzhrm3xihrxcxapchwgyoh5dzcv5jlbogad.onion/
+  listen unix:/var/run/tor/joaocosta_dev.sock;
 
   server_name joaocosta.dev www.joaocosta.dev;
 
