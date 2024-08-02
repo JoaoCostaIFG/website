@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Artisan::command('sup', function () {
-    $this->comment("sup");
+    $this->comment('sup');
 })->purpose('Display a greeting');

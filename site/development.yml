@@ -7,5 +7,5 @@ services:
       - "8000:8000"
       - "8001:9000"
     volumes:
-      - ./site/src:/app
-      - ./site/data:/data
+      - ./src:/app
+      - ./data:/data

@@ -21,7 +21,7 @@
       </div>
 
       <label>
-        <input class="form-checkbox" id="visibility" type="checkbox" name="visibility" <?php if ($b->visible) echo 'checked'; ?>>
+        <input class="form-checkbox" id="visible" type="checkbox" name="visible" <?php if ($b->visible) echo 'checked'; ?>>
         <span class="ml-1">Publicly visible</span>
       </label>
     </div>

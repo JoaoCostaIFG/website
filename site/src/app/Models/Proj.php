@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proj extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  public $timestamps = false;
+    public $timestamps = false;
 
-  protected $fillable = [
-    'title',
-    'description',
-    'url',
-    'img',
-  ];
+    protected $fillable = [
+        'title',
+        'description',
+        'url',
+        'img',
+    ];
 }

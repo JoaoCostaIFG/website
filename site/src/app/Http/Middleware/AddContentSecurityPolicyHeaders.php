@@ -11,7 +11,6 @@ class AddContentSecurityPolicyHeaders
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -19,7 +18,7 @@ class AddContentSecurityPolicyHeaders
         Vite::useCspNonce();
 
         return $next($request)->withHeaders([
-            'Content-Security-Policy' => "script-src 'self' 'unsafe-inline' 'nonce-".Vite::cspNonce()."'",
+            'Content-Security-Policy' => "'nonce-".Vite::cspNonce()."'",
         ]);
     }
 }
