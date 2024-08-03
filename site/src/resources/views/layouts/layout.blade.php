@@ -43,16 +43,11 @@
   <!-- CSS + JS
   -------------------------------------------------- -->
   @routes(nonce: Vite::cspNonce())
-  @isset($css)
-    @vite($css)
-  @endisset
-  @vite(['resources/js/app.js'])
-  @isset($js)
-    @vite($js)
-  @endisset
+  @vite(array_merge(['resources/css/style.css'], $css ?? []))
+  @vite(array_merge(['resources/js/app.js'], $js ?? []))
 </head>
 
-<body class="bg-background-200 dark:bg-background-900 min-h-screen">
+<body class="bg-background-200 dark:bg-background-900 min-h-screen transition-all duration-300 ease-in-out">
   @include('partials.nav.bar')
 
   <div id="content-container"

@@ -1,8 +1,9 @@
-import "./bootstrap";
-
 import "../css/style.css";
 import "../css/fontawesome.css";
 import "../css/print.css";
+
+import "./bootstrap";
+
 import.meta.glob(["../images/**"]);
 
 import MobileMenu from "../ts/mobilemenu";

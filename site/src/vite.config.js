@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [
     laravel({
       input: [
+        "resources/css/style.css",
         "resources/css/prism.css",
         "resources/css/workshop.css",
 
