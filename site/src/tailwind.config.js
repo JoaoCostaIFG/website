@@ -3,7 +3,10 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: ["./resources/views/**/*.php", "./resources/ts/**/*.ts"],
-  darkMode: "class",
+  darkMode: ['variant', [
+    '@media (prefers-color-scheme: dark) { &:not(.light *) }',
+    '&:is(.dark *)',
+  ]],
   theme: {
     fontFamily: {
       // source (StackOverflow): https://github.com/StackExchange/Stacks/blob/develop/lib/css/exports/constants-type.less

@@ -10,7 +10,8 @@ export default class ThemeToggler {
   }
 
   setDarkTheme() {
-    document.documentElement.classList.add('dark');
+    document.documentElement.classList.remove('light');
+    // document.documentElement.classList.add('dark');
     localStorage.theme = 'dark';
 
     this.btn.setAttribute('aria-label', "Set light theme")
@@ -20,7 +21,8 @@ export default class ThemeToggler {
   }
 
   setLightTheme() {
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
+    // document.documentElement.classList.remove('dark');
     localStorage.theme = 'light';
 
     this.btn.setAttribute('aria-label', "Set dark theme");
@@ -39,11 +41,10 @@ export default class ThemeToggler {
 
   // call on page load and when changing themes (defaults to dark theme)
   initTheme() {
-    if (localStorage.theme === 'light' ||
-      (!('theme' in localStorage) && !(window.matchMedia('(prefers-color-scheme: dark)').matches))) {
-      this.setLightTheme();
-    } else {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       this.setDarkTheme();
+    } else {
+      this.setLightTheme();
     }
   }
 }
