@@ -13,7 +13,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.7",
         "spatie/laravel-feed": "^4.1",
-        "tightenco/ziggy": "^1.4"
+        "tightenco/ziggy": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

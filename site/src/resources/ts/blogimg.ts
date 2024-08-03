@@ -1,6 +1,4 @@
 import {AxiosError, AxiosResponse} from "axios";
-import route from 'ziggy-js';
-import {Ziggy} from "../js/ziggy";
 
 function createImage(id: number, fileName: string): HTMLElement {
   const newImg = document.createElement('div');
@@ -13,7 +11,7 @@ function createImage(id: number, fileName: string): HTMLElement {
   rmBtn.classList.add('absolute', '-right-2', '-top-1', 'icon-btn-sm', 'btn-danger', 'z-10');
   rmBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   rmBtn.onclick = () => {
-    window.axios.delete(route('api-img_delete', [id, fileName], undefined, Ziggy))
+    window.axios.delete(route('api-img_delete', [id, fileName]))
       .then(function (response: AxiosResponse) {
         newImg.remove();
       })
@@ -31,7 +29,7 @@ function uploadBlogImg(id: number, img: File) {
     "img": img,
   };
 
-  window.axios.post(route('api-img', undefined, undefined, Ziggy), data, {
+  window.axios.post(route('api-img'), data, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -55,7 +53,7 @@ imgInput.onchange = () => {
 }
 
 // load existing images
-window.axios.get(route('api-img_list', id, undefined, Ziggy))
+window.axios.get(route('api-img_list', id))
   .then(function (response: AxiosResponse) {
     response.data.files.forEach((imgFile: string) => {
       imgContainer.prepend(createImage(id, imgFile));

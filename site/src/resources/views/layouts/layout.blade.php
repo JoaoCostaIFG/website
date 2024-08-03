@@ -42,6 +42,7 @@
 
   <!-- CSS + JS
   -------------------------------------------------- -->
+  @routes(nonce: Vite::cspNonce())
   @isset($css)
     @vite($css)
   @endisset
