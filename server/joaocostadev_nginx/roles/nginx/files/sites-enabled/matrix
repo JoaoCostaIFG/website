@@ -1,0 +1,39 @@
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+
+  # For the federation port
+  #listen 8448 ssl default_server;
+  #listen [::]:8448 ssl default_server;
+
+  server_name matrix.joaocosta.dev;
+
+  client_max_body_size 2G;
+
+  location ~ ^(/_matrix|/_synapse/client|/.well-known) {
+    # note: do not add a path (even a single /) after the port in `proxy_pass`,
+    # otherwise nginx will canonicalise the URI and cause signature verification
+    # errors.
+    proxy_pass http://docker.ifgsv:8070;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Host $host;
+
+    # Synapse responses may be chunked, which is an HTTP/1.1 feature.
+    proxy_http_version 1.1;
+  }
+
+  location / {
+    return 301 /_matrix/static;
+  }
+}
+
+server {
+  # redirect all http to https
+  listen 80;
+  listen [::]:80;
+
+  server_name matrix.joaocosta.dev;
+
+  return 301 https://$host$request_uri;
+}

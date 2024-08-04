@@ -1,0 +1,33 @@
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    container_name: synapse
+    ports:
+      - "8070:8008"
+    volumes:
+      - site_synapse_data:/data
+    restart: unless-stopped
+  coturn:
+    image: instrumentisto/coturn:latest
+    container_name: coturn
+    userns_mode: 'host'
+    network_mode: host
+    environment:
+      - DETECT_EXTERNAL_IP=yes
+      - DETECT_RELAY_IP=yes
+    volumes:
+      - ./turnserver.conf:/etc/coturn/turnserver.conf
+    # to speedup coturn, the data retention is mapped to a tmpfs
+    tmpfs:
+      - /var/lib/coturn
+    secrets:
+      - coturn_conf
+    command: ["--log-file=stdout", "--external-ip=$(detect-external-ip)", "-c /run/secrets/coturn_conf"]
+    restart: unless-stopped
+
+volumes:
+  site_synapse_data:
+
+secrets:
+  coturn_conf:
+    file: /usr/local/etc/turnserver.conf

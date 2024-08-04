@@ -6,8 +6,16 @@
     version:  "{{ repo_branch }}"
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
-  #notify: restart services
+  # notify: restart services
+- name: Set Coturn config
+  template:
+    src: turnserver.conf.j2
+    dest: /usr/local/etc/turnserver.conf
+    owner: root
+    group: root
+    mode: '0600'
+  # notify: restart services
 - name: (re)start services
   command:
     chdir: /root/website/site
-    cmd: docker compose -f production.yml -f snikket.yml up --build -d
+    cmd: docker compose -f production.yml -f matrix.yml up --build -d
