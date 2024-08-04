@@ -105,6 +105,18 @@ services:
     environment:
       - DOCKER_ENABLE_SECURITY=false
     restart: unless-stopped
+  couchdb_obsidian:
+    build:
+      context: couchdb_for_obsidian
+    container_name: couchdb_obsidian
+    ports:
+      - "5984:5984"
+    # need COUCHDB_USER AND COUCHDB_PASSWORD env vars
+    env_file: "/usr/local/etc/couchdb.env"
+    volumes:
+      - obsidian_data:/opt/couchdb/data
+      - obsidian_etc:/opt/couchdb/etc/local.d
+    restart: unless-stopped
 
 volumes:
   site_app_data:
@@ -117,6 +129,8 @@ volumes:
   site_pingvin_imgs:
   site_pdf_trainingdata:
   site_pdf_config:
+  obsidian_data:
+  obsidian_etc:
 
 secrets:
   ritmo_env:
