@@ -24,17 +24,18 @@ RUN install-php-extensions \
         sockets \
         pcntl
 
-COPY opcache.ini $PHP_INI_DIR/opcache.ini
+COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
 
-EXPOSE 8000
+EXPOSE 8000 9000
 
-# site code
 WORKDIR /app
-COPY src .
 
 # ----------------------------------------------------------------------------
 
 FROM php_base AS php_prod
+
+# site code
+COPY src .
 
 # install php packages with composer
 RUN composer install --optimize-autoloader -n -o --no-dev
@@ -63,14 +64,7 @@ CMD ["php", "artisan", "octane:start"]
 
 FROM php_base AS php_dev
 
-# install php packages with composer
-RUN composer install -n
-# install javascript packages with npm
-RUN npm install -D
-
-RUN install-php-extensions xdebug
-
-COPY dev_entrypoint.sh /dev_entrypoint.sh
+COPY php/dev_entrypoint.sh /dev_entrypoint.sh
 
 # use development settings and run as root
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
