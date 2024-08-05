@@ -28,9 +28,17 @@ services:
     image: awesometechnologies/synapse-admin:latest
     container_name: synapse-admin
     volumes:
-      - ./synapse/synapse_admin.json:/app/config.json:ro
+      - ./matrix/synapse_admin.json:/app/config.json:ro
     ports:
       - "8071:80"
+    restart: unless-stopped
+  element:
+    image: vectorim/element-web:latest
+    container_name: element
+    volumes:
+      - ./matrix/element-web.json:/app/config.json:ro
+    ports:
+      - "8072:80"
     restart: unless-stopped
 
 volumes:

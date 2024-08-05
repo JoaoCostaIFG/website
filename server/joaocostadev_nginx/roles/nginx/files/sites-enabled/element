@@ -1,0 +1,29 @@
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+
+  server_name element.joaocosta.dev;
+
+  location / {
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Content-Security-Policy "frame-ancestors 'self'";
+
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Host $host;
+
+    proxy_pass http://docker.ifgsv:8072;
+  }
+}
+
+server {
+  # redirect all http to https
+  listen 80;
+  listen [::]:80;
+
+  server_name element.joaocosta.dev;
+
+  return 301 https://$host$request_uri;
+}
