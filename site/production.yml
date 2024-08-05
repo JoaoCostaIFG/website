@@ -75,16 +75,6 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
-  # ritmo:
-  #   image: joaocostaifg/muse:latest
-  #   container_name: ritmo
-  #   secrets:
-  #     - ritmo_env
-  #   environment:
-  #     - ENV_FILE=/run/secrets/ritmo_env
-  #   volumes:
-  #     - site_ritmo_data:/data
-  #   restart: unless-stopped
   pingvin-share:
     image: stonith404/pingvin-share
     container_name: pingvin
