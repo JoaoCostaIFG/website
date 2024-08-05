@@ -24,6 +24,14 @@ services:
       - coturn_conf
     command: ["--log-file=stdout", "--external-ip=$(detect-external-ip)", "-c /run/secrets/coturn_conf"]
     restart: unless-stopped
+  synapse-admin:
+    image: awesometechnologies/synapse-admin:latest
+    container_name: synapse-admin
+    volumes:
+      - ./synapse/synapse_admin.json:/app/config.json:ro
+    ports:
+      - "8071:80"
+    restart: unless-stopped
 
 volumes:
   site_synapse_data:
