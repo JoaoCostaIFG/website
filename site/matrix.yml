@@ -1,6 +1,7 @@
 services:
   synapse:
-    image: matrixdotorg/synapse:latest
+    build:
+      context: ./matrix/synapse
     container_name: synapse
     ports:
       - "8070:8008"
