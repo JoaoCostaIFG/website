@@ -9,6 +9,7 @@
 - name: Enable docker service
   ansible.builtin.service:
     name: docker
+    enabled: yes
     state: started
 - name: Set docker daemon options
   copy:

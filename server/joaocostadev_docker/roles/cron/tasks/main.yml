@@ -1,0 +1,13 @@
+---
+- name: Enable crond service
+  ansible.builtin.service:
+    name: crond
+    enabled: yes
+    state: started
+- name: Config cron to run the cleanup script for synapse
+  template:
+    src: matrix_cleanup.sh.j2
+    dest: /etc/periodic/daily/matrix_cleanup.sh
+    owner: root
+    group: root
+    mode: '0750'
