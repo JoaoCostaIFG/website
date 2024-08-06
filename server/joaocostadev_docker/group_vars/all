@@ -1,4 +1,10 @@
 ---
 repo_branch: master
+
 cleanup_update_duration: 2d
 turnserver_secret: secret
+
+matrix_email: email@example.com
+matrix_email_pass: pass
+
+paperless_secret_key: secret
