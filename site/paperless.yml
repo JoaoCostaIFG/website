@@ -11,13 +11,8 @@
 #   Office documents (Word, Excel, Power Point and their LibreOffice counter-
 #   parts.
 #
-# To install and update paperless with this file, do the following:
-#
-# - Copy this file as 'docker-compose.yml' and the files 'docker-compose.env'
-#   and '.env' into a folder.
-# - Run 'docker compose pull'.
-# - Run 'docker compose run --rm paperless createsuperuser' to create a user.
-# - Run 'docker compose up -d'.
+# - Run 'docker compose -f paperless.yml run --rm paperless createsuperuser'
+# to create a user.
 
 services:
   paperless:
@@ -33,7 +28,7 @@ services:
       - paperless_media:/usr/src/paperless/media
       - /papeless/export:/usr/src/paperless/export
       - /paperless/consume:/usr/src/paperless/consume
-    env_file: paperless.env
+    env_file: /usr/local/etc/paperless.env
     environment:
       PAPERLESS_REDIS: redis://paperless-broker:6379
       PAPERLESS_TIKA_ENABLED: 1
