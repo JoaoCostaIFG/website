@@ -18,7 +18,17 @@ server {
   }
 
   location / {
-    return 301 /_matrix/static;
+    # Serve Element-web otherwise
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Content-Security-Policy "frame-ancestors 'self'";
+
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Host $host;
+
+    proxy_pass http://docker.ifgsv:8072;
   }
 }
 
