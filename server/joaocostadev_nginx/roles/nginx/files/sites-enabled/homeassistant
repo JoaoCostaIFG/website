@@ -22,6 +22,9 @@ server {
     proxy_read_timeout 1200s;
 
     proxy_pass http://ha.ifgsv:8123;
+
+    # to get file editor embed working
+    add_header X-Frame-Options SAMEORIGIN always;
   }
 }
 
