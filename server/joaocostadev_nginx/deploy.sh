@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook joaocostadev_nginx_playbook.yaml
+ansible-playbook joaocostadev_nginx_deploy.yaml
