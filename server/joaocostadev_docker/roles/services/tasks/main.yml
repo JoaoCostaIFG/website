@@ -24,4 +24,4 @@
 - name: (re)start services
   command:
     chdir: /root/website/site
-    cmd: docker compose -f production.yml -f matrix.yml -f paperless.yml up --build -d
+    cmd: ./prod.sh up --build -d
