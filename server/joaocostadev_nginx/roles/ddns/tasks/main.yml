@@ -31,4 +31,4 @@
     day: "*"
     month: "*"
     weekday: "*"
-    job: "CFDDNS_CONFIG=/usr/local/etc/cfddns-config.json /usr/local/bin/cfddns.py"
+    job: "CFDDNS_CONFIG=/usr/local/etc/cfddns-config.json /usr/local/src/cloudflareddns/cfddns.py"
