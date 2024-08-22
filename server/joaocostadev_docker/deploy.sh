@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook joaocostadev_docker_playbook.yaml
+ansible-playbook joaocostadev_docker_deploy.yaml

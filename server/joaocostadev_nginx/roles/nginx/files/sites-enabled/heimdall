@@ -31,7 +31,7 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "Upgrade";
 
-    proxy_pass http://docker.ifgsv:8040;
+    proxy_pass http://docker.lan:8040;
   }
 }
 

@@ -1,0 +1,17 @@
+---
+- name: joaocosta.dev docker VM (ifgsv) Ansible playbook (update)
+  hosts: joaocostadev_docker
+  become: no
+  tasks:
+    - name: Update services' images
+      command:
+        chdir: /root/website/site
+        cmd: ./prod.sh pull
+    - name: Restart services
+      command:
+        chdir: /root/website/site
+        cmd: ./prod.sh up --force-recreate --build -d
+    - name: Clean old/unused images
+      command:
+        chdir: /root/website/site
+        cmd: docker image prune -f
