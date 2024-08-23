@@ -20,7 +20,7 @@ server {
     proxy_set_header X-Webauth-Tailnet "$auth_tailnet";
     proxy_set_header X-Webauth-Profile-Picture "$auth_profile_picture";
 
-    proxy_pass http://docker.lan:8010;
+    proxy_pass http://docker.tail1dfda.ts.net:8010;
   }
 }
 

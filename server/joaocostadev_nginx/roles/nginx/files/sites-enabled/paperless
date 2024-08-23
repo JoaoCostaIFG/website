@@ -33,7 +33,7 @@ server {
     proxy_set_header X-Forwarded-Host $server_name;
     add_header Referrer-Policy "strict-origin-when-cross-origin";
 
-    proxy_pass http://docker.lan:8080;
+    proxy_pass http://docker.tail1dfda.ts.net:8080;
   }
 }
 

@@ -7,7 +7,7 @@ server {
   client_max_body_size 1G;
 
   location / {
-    proxy_pass http://docker.lan:5984;
+    proxy_pass http://docker.tail1dfda.ts.net:5984;
     proxy_set_header X-Forwarded-For $remote_addr;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header Host $host;
