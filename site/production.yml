@@ -107,6 +107,15 @@ services:
       - obsidian_data:/opt/couchdb/data
       - obsidian_etc:/opt/couchdb/etc/local.d
     restart: unless-stopped
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    ports:
+      - "8100:8080"
+    userns_mode: 'host'
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: unless-stopped
 
 volumes:
   site_app_data:
