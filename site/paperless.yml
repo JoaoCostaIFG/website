@@ -26,7 +26,7 @@ services:
     volumes:
       - paperless_data:/usr/src/paperless/data
       - paperless_media:/usr/src/paperless/media
-      - /papeless/export:/usr/src/paperless/export
+      - /paperless/export:/usr/src/paperless/export
       - /paperless/consume:/usr/src/paperless/consume
     env_file: /usr/local/etc/paperless.env
     environment:
