@@ -35,7 +35,7 @@ services:
       - site_bw_data:/data
     restart: unless-stopped
   wiki:
-    image: ghcr.io/requarks/wiki:2
+    image: ghcr.io/requarks/wiki:2.5
     container_name: wiki
     environment:
       - DB_TYPE=sqlite
