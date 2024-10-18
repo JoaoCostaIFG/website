@@ -116,6 +116,13 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
+  shiori:
+    image: ghcr.io/go-shiori/shiori
+    container_name: shiori
+    ports:
+      - "8110:8080"
+    volumes:
+      - shiori_data:/shiori
 
 volumes:
   site_app_data:
@@ -128,6 +135,7 @@ volumes:
   site_pingvin_imgs:
   site_pdf_trainingdata:
   site_pdf_config:
+  shiori_data:
   obsidian_data:
   obsidian_etc:
 
