@@ -31,7 +31,7 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "Upgrade";
 
-    proxy_pass http://docker.tail1dfda.ts.net:8100;
+    proxy_pass http://docker.tail1dfda.ts.net:8110;
   }
 }
 
