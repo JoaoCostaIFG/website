@@ -1,9 +1,6 @@
-FROM dunglas/frankenphp AS php_base
+FROM dunglas/frankenphp:1.2.5-builder-php8.3-alpine AS php_base
 
-RUN apt-get update && \
-        apt-get install -y npm && \
-        apt-get clean && \
-        rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache npm
 
 RUN install-php-extensions \
         @composer \
