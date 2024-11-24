@@ -31,10 +31,12 @@
             <a class="text-xl w-5 text-red-200 hover:text-red-400" title="logout" href="{{ route('logout') }}">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </a>
+            {{--
             @else
             <a class="text-xl w-5 text-green-200 hover:text-green-400" title="login" href="{{ route('login') }}">
               <i class="fa-solid fa-arrow-right-to-bracket"></i>
             </a>
+            --}}
             @endif
             <button id="theme-toggler" class="text-xl w-5 text-yellow-200 hover:text-yellow-400" aria-label="Set light theme">
               <i class="fa-solid fa-sun"></i>
