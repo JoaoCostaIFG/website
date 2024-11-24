@@ -1,8 +1,9 @@
 FROM dunglas/frankenphp:1.2.5-builder-php8.3-alpine AS php_base
 
-RUN apk add --no-cache npm
-
-RUN install-php-extensions \
+RUN \
+apk add --no-cache npm py3-pip && \
+\
+install-php-extensions \
         @composer \
         curl \
         exif \
@@ -19,7 +20,10 @@ RUN install-php-extensions \
         dom \
         sodium \
         sockets \
-        pcntl
+        pcntl && \
+\
+python3 -m venv /venv && source /venv/bin/activate && \
+pip install "git+https://github.com/JoaoCostaIFG/osig-cli.git"
 
 COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
 
