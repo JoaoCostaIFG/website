@@ -4,6 +4,10 @@ services:
       context: ./src
       target: php_prod
     container_name: php
+    environment:
+      - ENV_PASSWORD_FILE=/run/secrets/site_env_password
+    secrets:
+      - site_env_password
     ports:
       - "8000:8000"
       - "8001:9000"
@@ -139,5 +143,5 @@ volumes:
   obsidian_etc:
 
 secrets:
-  ritmo_env:
-    file: /usr/local/etc/ritmo_env
+  site_env_password:
+    file: /usr/local/etc/site_env_password
