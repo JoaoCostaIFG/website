@@ -26,5 +26,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/JoaoCostaIFG/website:latest
-            ghcr.io/JoaoCostaIFG/website:$(date +%s)
+            ghcr.io/joaocostaifg/website:latest
+            ghcr.io/joaocostaifg/website:$(date +%s)
