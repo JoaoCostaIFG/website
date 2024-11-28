@@ -1,16 +1,14 @@
 #!/bin/sh
 
-php artisan optimize --force
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+source "$ENV_PASSWORD_FILE"
+php artisan env:decrypt --env=production
+
+php artisan optimize:clear
+php artisan optimize
 php artisan ziggy:generate
 
 php artisan storage:link
 rm -rf storage/app
 ln -s /data/storage storage/app
-
-source "$ENV_PASSWORD_FILE"
-php artisan env:decrypt --env=production
 
 php artisan octane:start
