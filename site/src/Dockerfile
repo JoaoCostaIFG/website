@@ -46,7 +46,7 @@ RUN composer install --optimize-autoloader -n -o --no-dev && \
         npm install -D && \
         npm run build
 
-CMD ["/bin/sh", "/prod_entrypoint.sh"]
+CMD ["/bin/sh", "prod_entrypoint.sh"]
 
 # ----------------------------------------------------------------------------
 
