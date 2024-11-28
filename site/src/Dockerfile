@@ -25,7 +25,7 @@ install-php-extensions \
 python3 -m venv /venv && source /venv/bin/activate && \
 pip install "git+https://github.com/JoaoCostaIFG/osig-cli.git"
 
-COPY php/opcache.ini $PHP_INI_DIR/opcache.ini
+COPY opcache.ini $PHP_INI_DIR/opcache.ini
 
 EXPOSE 8000 9000
 
@@ -36,7 +36,7 @@ WORKDIR /app
 FROM php_base AS php_prod
 
 # site code
-COPY src .
+COPY . .
 
 # install php packages with composer
 RUN composer install --optimize-autoloader -n -o --no-dev
@@ -59,13 +59,15 @@ RUN php artisan storage:link && \
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-CMD ["php", "artisan", "octane:start"]
+CMD ["/bin/sh", "/prod_entrypoint.sh"]
 
 # ----------------------------------------------------------------------------
 
 FROM php_base AS php_dev
 
-COPY php/dev_entrypoint.sh /dev_entrypoint.sh
+COPY . .
+
+COPY dev_entrypoint.sh /dev_entrypoint.sh
 
 # use development settings and run as root
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"

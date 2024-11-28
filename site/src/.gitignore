@@ -2,8 +2,10 @@ node_modules
 storage/app
 storage/*.key
 vendor
-.env
-.env.backup
+.env*
+!.env.production.encrypted
+!.env.example
+!.env.development
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
