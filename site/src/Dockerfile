@@ -38,26 +38,13 @@ FROM php_base AS php_prod
 # site code
 COPY . .
 
-# install php packages with composer
-RUN composer install --optimize-autoloader -n -o --no-dev
-# install javascript packages with npm
-RUN npm install -D
-
-# cache
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache && \
-    php artisan ziggy:generate
-# build stuff
-RUN npm run build
-
-# link storage
-RUN php artisan storage:link && \
-    rm -rf storage/app && \
-    ln -s /data/storage storage/app
-
 # use production settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# install php packages with composer
+RUN composer install --optimize-autoloader -n -o --no-dev && \
+        npm install -D && \
+        npm run build
 
 CMD ["/bin/sh", "/prod_entrypoint.sh"]
 
