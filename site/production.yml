@@ -1,8 +1,6 @@
 services:
   php:
-    build:
-      context: ./src
-      target: php_prod
+    image: ghcr.io/joaocostaifg/website:master
     container_name: php
     environment:
       - ENV_PASSWORD_FILE=/run/secrets/site_env_password
