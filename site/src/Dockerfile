@@ -33,6 +33,19 @@ WORKDIR /app
 
 # ----------------------------------------------------------------------------
 
+FROM php_base AS php_dev
+
+COPY . .
+
+COPY dev_entrypoint.sh /dev_entrypoint.sh
+
+# use development settings and run as root
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+CMD ["/bin/sh", "/dev_entrypoint.sh"]
+
+# ----------------------------------------------------------------------------
+
 FROM php_base AS php_prod
 
 # site code
@@ -47,16 +60,3 @@ RUN composer install --optimize-autoloader -n -o --no-dev && \
         npm run build
 
 CMD ["/bin/sh", "prod_entrypoint.sh"]
-
-# ----------------------------------------------------------------------------
-
-FROM php_base AS php_dev
-
-COPY . .
-
-COPY dev_entrypoint.sh /dev_entrypoint.sh
-
-# use development settings and run as root
-RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
-
-CMD ["/bin/sh", "/dev_entrypoint.sh"]
