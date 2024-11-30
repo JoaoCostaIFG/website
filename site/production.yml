@@ -12,6 +12,7 @@ services:
     volumes:
       - site_app_data:/data
     restart: unless-stopped
+# ---
   languagetool:
     image: erikvl87/languagetool
     container_name: languagetool
@@ -24,6 +25,7 @@ services:
     volumes:
       - /usr/local/lib/ngrams:/ngrams
     restart: unless-stopped
+# ---
   vaultwarden:
     image: vaultwarden/server:1.30.5
     container_name: vaultwarden
@@ -35,6 +37,7 @@ services:
     volumes:
       - site_bw_data:/data
     restart: unless-stopped
+# ---
   wiki:
     image: ghcr.io/requarks/wiki:2.5
     container_name: wiki
@@ -46,6 +49,7 @@ services:
     ports:
       - "8030:3000"
     restart: unless-stopped
+# ---
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
@@ -58,8 +62,9 @@ services:
     ports:
       - 8040:80
     restart: unless-stopped
+# ---
   minecraft:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     container_name: minecraft
     environment:
       - EULA=TRUE
@@ -76,6 +81,7 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
+# ---
   pingvin-share:
     image: stonith404/pingvin-share
     container_name: pingvin
@@ -85,6 +91,7 @@ services:
       - site_pingvin_data:/opt/app/backend/data
       - site_pingvin_imgs:/opt/app/frontend/public/img
     restart: unless-stopped
+# ---
   stirling-pdf:
     image: frooodle/s-pdf:latest
     container_name: pdf
@@ -96,6 +103,25 @@ services:
     environment:
       - DOCKER_ENABLE_SECURITY=false
     restart: unless-stopped
+# ---
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    ports:
+      - "8100:8080"
+    userns_mode: 'host'
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: unless-stopped
+# ---
+  shiori:
+    image: ghcr.io/go-shiori/shiori
+    container_name: shiori
+    ports:
+      - "8110:8080"
+    volumes:
+      - shiori_data:/shiori
+# ---
   couchdb_obsidian:
     build:
       context: couchdb_for_obsidian
@@ -108,22 +134,19 @@ services:
       - obsidian_data:/opt/couchdb/data
       - obsidian_etc:/opt/couchdb/etc/local.d
     restart: unless-stopped
-  dozzle:
-    image: amir20/dozzle:latest
-    container_name: dozzle
+# ---
+  joplin:
+    image: joplin/server:latest
+    container_name: joplin
     ports:
-      - "8100:8080"
-    userns_mode: 'host'
+      - "8120:22300"
+    environment:
+      - APP_BASE_URL=https://joplin.joaocosta.dev
+      - APP_PORT=22300
+      - SQLITE_DATABASE=/data/db.sqlite
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - joplin_data:/data
     restart: unless-stopped
-  shiori:
-    image: ghcr.io/go-shiori/shiori
-    container_name: shiori
-    ports:
-      - "8110:8080"
-    volumes:
-      - shiori_data:/shiori
 
 volumes:
   site_app_data:
@@ -131,12 +154,12 @@ volumes:
   site_wiki_data:
   site_heimdall_data:
   site_mine_data:
-  site_ritmo_data:
   site_pingvin_data:
   site_pingvin_imgs:
   site_pdf_trainingdata:
   site_pdf_config:
   shiori_data:
+  joplin_data:
   obsidian_data:
   obsidian_etc:
 
