@@ -6,6 +6,11 @@
       - docker-cli-compose
     update_cache: true
     state: present
+- name: Enable ntpd service
+  ansible.builtin.service:
+    name: ntpd
+    enabled: yes
+    state: started
 - name: Enable docker service
   ansible.builtin.service:
     name: docker
