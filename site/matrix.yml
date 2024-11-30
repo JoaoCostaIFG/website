@@ -1,7 +1,6 @@
 services:
   synapse:
-    build:
-      context: ./matrix/synapse
+    image: ghcr.io/joaocostaifg/synapse:master
     container_name: synapse
     ports:
       - "8070:8008"
