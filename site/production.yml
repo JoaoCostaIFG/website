@@ -64,7 +64,7 @@ services:
     restart: unless-stopped
 # ---
   minecraft:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server:java21-graalvm
     container_name: minecraft
     environment:
       - EULA=TRUE
