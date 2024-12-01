@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker compose -f production.yml -f matrix.yml -f paperless.yml "$@"
+docker compose -f production.yml -f paperless.yml "$@"
