@@ -122,19 +122,6 @@ services:
     volumes:
       - shiori_data:/shiori
 # ---
-  couchdb_obsidian:
-    build:
-      context: couchdb_for_obsidian
-    container_name: couchdb_obsidian
-    ports:
-      - "5984:5984"
-    # need COUCHDB_USER AND COUCHDB_PASSWORD env vars
-    env_file: "/usr/local/etc/couchdb.env"
-    volumes:
-      - obsidian_data:/opt/couchdb/data
-      - obsidian_etc:/opt/couchdb/etc/local.d
-    restart: unless-stopped
-# ---
   joplin:
     image: joplin/server:latest
     container_name: joplin
