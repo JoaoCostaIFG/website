@@ -92,7 +92,7 @@
     content: "###### ";
   }
 
-  // decided to disable this markdown styling for text stuff
+  /* decided to disable this markdown styling for text stuff */
   /*
   em::before {
     content: "_";
