@@ -20,7 +20,10 @@
     owner: root
     group: root
     mode: '0600'
-  # notify: restart services
+- name: pull containers
+  command:
+    chdir: /root/website/site
+    cmd: ./prod.sh pull
 - name: (re)start services
   command:
     chdir: /root/website/site
