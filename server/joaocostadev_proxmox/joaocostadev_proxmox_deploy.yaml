@@ -1,0 +1,8 @@
+---
+- name: joaocosta.dev proxmox host (ifgsv) Ansible playbook
+  hosts: joaocostadev_proxmox
+  become: no
+
+  roles:
+    - apcupsd
+    - tailscale

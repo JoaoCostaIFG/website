@@ -1,0 +1,10 @@
+[Unit]
+Description=Tailscale serve webui
+After=pve-guests.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tailscale serve https+insecure://localhost:8006
+
+[Install]
+WantedBy=default.target
