@@ -1,0 +1,11 @@
+---
+- name: Config apt sources
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+- name: Update packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: yes

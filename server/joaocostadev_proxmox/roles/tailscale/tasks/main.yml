@@ -1,16 +1,17 @@
 ---
 - name: Add tailscale repo keys
   ansible.builtin.command:
-    cmd: curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg >/usr/share/keyrings/tailscale-archive-keyring.gpg
+    cmd: curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg -o /usr/share/keyrings/tailscale-archive-keyring.gpg
     creates: /usr/share/keyrings/tailscale-archive-keyring.gpg
 - name: Add tailscale repo list
   ansible.builtin.command:
-    cmd: curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list >/etc/apt/sources.list.d/tailscale.list
+    cmd: curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list -o /etc/apt/sources.list.d/tailscale.list
     creates: /etc/apt/sources.list.d/tailscale.list
 - name: Install tailscale
   ansible.builtin.apt:
     name:
       - tailscale
+    update_cache: true
     state: present
 - name: Add tailscale serve service
   copy:

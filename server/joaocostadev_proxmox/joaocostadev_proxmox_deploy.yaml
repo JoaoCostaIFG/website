@@ -4,5 +4,6 @@
   become: no
 
   roles:
+    - pve
     - apcupsd
     - tailscale
