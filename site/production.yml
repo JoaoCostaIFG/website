@@ -1,4 +1,19 @@
 services:
+  caddy:
+    image: ghcr.io/joaocostaifg/caddy:master
+    container_name: caddy
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - "/run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock"
+    restart: unless-stopped
+# ---
   php:
     image: ghcr.io/joaocostaifg/website:master
     container_name: php
@@ -102,14 +117,6 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
 # ---
-  shiori:
-    image: ghcr.io/go-shiori/shiori
-    container_name: shiori
-    ports:
-      - "8110:8080"
-    volumes:
-      - shiori_data:/shiori
-# ---
   joplin:
     image: joplin/server:latest
     container_name: joplin
@@ -133,10 +140,11 @@ volumes:
   site_pingvin_imgs:
   site_pdf_trainingdata:
   site_pdf_config:
-  shiori_data:
   joplin_data:
   obsidian_data:
   obsidian_etc:
+  caddy_data:
+  caddy_config:
 
 secrets:
   site_env_password:
