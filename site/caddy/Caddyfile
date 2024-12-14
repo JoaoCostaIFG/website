@@ -1,85 +1,85 @@
 joaocosta.dev {
-        reverse_proxy :8000
+	reverse_proxy :8000
 }
 
 www.joaocosta.dev {
-        redir https://joaocosta.dev{uri} permanent
+	redir https://joaocosta.dev{uri} permanent
 }
 
 wiki.joaocosta.dev {
-        redir https://joaocostaifg.github.io/wiki
+	redir https://joaocostaifg.github.io/wiki
 }
 
 croc.joaocosta.dev {
-        reverse_proxy :8050
+	reverse_proxy :8050
 }
 
 ha.joaocosta.dev {
-        reverse_proxy :8123
+	reverse_proxy :8123
 }
 
 chat.joaocosta.dev,
 groups.chat.joaocosta.dev,
 share.chat.joaocosta.dev {
-        reverse_proxy :5443
+	reverse_proxy :5443
 }
 
 joplin.joaocosta.dev {
-        reverse_proxy :8120
+	reverse_proxy :8120
 }
 
 # --- tailscale
 
 (auth) {
-        forward_auth unix//run/tailscale.nginx-auth.sock {
-                uri /auth
-                header_up Remote-Addr {remote_host}
-                header_up Remote-Port {remote_port}
-                header_up Original-URI {uri}
-                copy_headers {
-                        Tailscale-User>X-Webauth-User
-                        Tailscale-Name>X-Webauth-Name
-                        Tailscale-Login>X-Webauth-Login
-                        Tailscale-Tailnet>X-Webauth-Tailnet
-                        Tailscale-Profile-Picture>X-Webauth-Profile-Picture
-                }
-        }
+	forward_auth unix//run/tailscale.nginx-auth.sock {
+		uri /auth
+		header_up Remote-Addr {remote_host}
+		header_up Remote-Port {remote_port}
+		header_up Original-URI {uri}
+		copy_headers {
+			Tailscale-User>X-Webauth-User
+			Tailscale-Name>X-Webauth-Name
+			Tailscale-Login>X-Webauth-Login
+			Tailscale-Tailnet>X-Webauth-Tailnet
+			Tailscale-Profile-Picture>X-Webauth-Profile-Picture
+		}
+	}
 }
 
 languagetool.joaocosta.dev {
-        import auth *
-        reverse_proxy :8010
+	import auth *
+	reverse_proxy :8010
 }
 
 vaultwarden.joaocosta.dev {
-        import auth *
-        reverse_proxy /admin :8020
-        reverse_proxy /notifications/hub/negotiate :8020
-        reverse_proxy /notifications/hub :8021
-        reverse_proxy / :8020
+	import auth *
+	reverse_proxy /admin :8020
+	reverse_proxy /notifications/hub/negotiate :8020
+	reverse_proxy /notifications/hub :8021
+	reverse_proxy / :8020
 }
 
 tail.joaocosta.dev {
-        import auth *
-        reverse_proxy :8040
+	import auth *
+	reverse_proxy :8040
 }
 
 pdf.joaocosta.dev {
-        import auth *
-        reverse_proxy :8060
+	import auth *
+	reverse_proxy :8060
 }
 
 paperless.joaocosta.dev {
-        import auth *
-        reverse_proxy :8080
+	import auth *
+	reverse_proxy :8080
 }
 
 immich.joaocosta.dev {
-        import auth *
-        reverse_proxy 10.0.0.21:30041
+	import auth *
+	reverse_proxy 10.0.0.21:30041
 }
 
 dozzle.joaocosta.dev {
-        import auth *
-        reverse_proxy :8100
+	import auth *
+	reverse_proxy :8100
 }
