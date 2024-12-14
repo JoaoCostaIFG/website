@@ -14,14 +14,5 @@
     update_cache: true
     state: present
 - name: Add tailscale serve service
-  copy:
-    src: tailscale_serve.service
-    dest: /etc/systemd/system/tailscale_serve.service
-    owner: root
-    group: root
-- name: Enable tailscale_serve service
-  systemd:
-    name: tailscale_serve
-    enabled: yes
-    masked: no
-    daemon_reload: true
+  ansible.builtin.command:
+    cmd: /usr/bin/tailscale serve --bg https+insecure://localhost:8006
