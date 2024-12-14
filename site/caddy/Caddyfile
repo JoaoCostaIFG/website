@@ -1,5 +1,11 @@
+{
+	email {env.CONTACT_EMAIL}
+	#acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+	acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+}
+
 joaocosta.dev {
-	reverse_proxy :8000
+	reverse_proxy php:8000
 }
 
 www.joaocosta.dev {
@@ -11,75 +17,62 @@ wiki.joaocosta.dev {
 }
 
 croc.joaocosta.dev {
-	reverse_proxy :8050
+	reverse_proxy pingvin:3000
 }
 
 ha.joaocosta.dev {
-	reverse_proxy :8123
+	reverse_proxy 10.0.0.22:8123
 }
 
 chat.joaocosta.dev,
 groups.chat.joaocosta.dev,
 share.chat.joaocosta.dev {
-	reverse_proxy :5443
+	reverse_proxy 10.0.0.20:5080
 }
 
 joplin.joaocosta.dev {
-	reverse_proxy :8120
+	reverse_proxy joplin:22300
 }
 
 # --- tailscale
 
-(auth) {
-	forward_auth unix//run/tailscale.nginx-auth.sock {
-		uri /auth
-		header_up Remote-Addr {remote_host}
-		header_up Remote-Port {remote_port}
-		header_up Original-URI {uri}
-		copy_headers {
-			Tailscale-User>X-Webauth-User
-			Tailscale-Name>X-Webauth-Name
-			Tailscale-Login>X-Webauth-Login
-			Tailscale-Tailnet>X-Webauth-Tailnet
-			Tailscale-Profile-Picture>X-Webauth-Profile-Picture
-		}
-	}
-}
-
 languagetool.joaocosta.dev {
-	import auth *
-	reverse_proxy :8010
+	tailscale_auth
+	reverse_proxy languagetool:8010
 }
 
 vaultwarden.joaocosta.dev {
-	import auth *
-	reverse_proxy /admin :8020
-	reverse_proxy /notifications/hub/negotiate :8020
-	reverse_proxy /notifications/hub :8021
-	reverse_proxy / :8020
+	tailscale_auth
+	reverse_proxy /admin/* vaultwarden:80
+	reverse_proxy /notifications/hub/negotiate/* vaultwarden:80
+	reverse_proxy /notifications/hub/* vaultwarden:3012
+	reverse_proxy /* vaultwarden:80
 }
 
 tail.joaocosta.dev {
-	import auth *
-	reverse_proxy :8040
+	tailscale_auth
+	reverse_proxy heimdall:80
 }
 
 pdf.joaocosta.dev {
-	import auth *
-	reverse_proxy :8060
+	tailscale_auth
+	reverse_proxy pdf:8080
 }
 
 paperless.joaocosta.dev {
-	import auth *
-	reverse_proxy :8080
+	tailscale_auth
+	reverse_proxy paperless:8000 {
+		header_down Referrer-Policy "strict-origin-when-cross-origin"
+	}
 }
 
 immich.joaocosta.dev {
-	import auth *
+	tailscale_auth
 	reverse_proxy 10.0.0.21:30041
 }
 
 dozzle.joaocosta.dev {
-	import auth *
-	reverse_proxy :8100
+	tailscale_auth
+	reverse_proxy dozzle:8080
 }
+

@@ -11,7 +11,8 @@ services:
     volumes:
       - caddy_data:/data
       - caddy_config:/config
-      - "/run/tailscale.nginx-auth.sock:/run/tailscale.nginx-auth.sock"
+      - /run/tailscale/tailscaled.sock:/run/tailscale/tailscaled.sock
+    env_file: /usr/local/etc/caddy.env
     restart: unless-stopped
 # ---
   php:
@@ -21,9 +22,9 @@ services:
       - ENV_PASSWORD_FILE=/run/secrets/site_env_password
     secrets:
       - site_env_password
-    ports:
-      - "8000:8000"
-      - "8001:9000"
+    expose:
+      - "8000"
+      - "9000"
     volumes:
       - site_app_data:/data
     restart: unless-stopped
@@ -35,20 +36,20 @@ services:
       - langtool_languageModel=/ngrams
       - Java_Xms=256m  # minimum Java heap size of 256 mib
       - Java_Xmx=1g  # maximum Java heap size of 1 Gib
-    ports:
-      - "8010:8010"
+    expose:
+      - "8010"
     volumes:
       - /usr/local/lib/ngrams:/ngrams
     restart: unless-stopped
 # ---
   vaultwarden:
-    image: vaultwarden/server:1.30.5
+    image: vaultwarden/server:1.32.6
     container_name: vaultwarden
     environment:
       - WEBSOCKET_ENABLED=true
-    ports:
-      - "8020:80"
-      - "8021:3012"
+    expose:
+      - "80"
+      - "3012"
     volumes:
       - site_bw_data:/data
     restart: unless-stopped
@@ -62,8 +63,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - site_heimdall_data:/config
-    ports:
-      - 8040:80
+    expose:
+      - "80"
     restart: unless-stopped
 # ---
   minecraft:
@@ -88,8 +89,8 @@ services:
   pingvin-share:
     image: stonith404/pingvin-share
     container_name: pingvin
-    ports:
-      - 8050:3000
+    expose:
+      - "3000"
     volumes:
       - site_pingvin_data:/opt/app/backend/data
       - site_pingvin_imgs:/opt/app/frontend/public/img
@@ -98,8 +99,8 @@ services:
   stirling-pdf:
     image: frooodle/s-pdf:latest
     container_name: pdf
-    ports:
-      - '8060:8080'
+    expose:
+      - "8080"
     volumes:
       - site_pdf_trainingdata:/usr/share/tesseract-ocr/5/tessdata #Required for extra OCR languages
       - site_pdf_config:/configs
@@ -110,8 +111,8 @@ services:
   dozzle:
     image: amir20/dozzle:latest
     container_name: dozzle
-    ports:
-      - "8100:8080"
+    expose:
+      - "8080"
     userns_mode: 'host'
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
@@ -120,8 +121,8 @@ services:
   joplin:
     image: joplin/server:latest
     container_name: joplin
-    ports:
-      - "8120:22300"
+    expose:
+      - "22300"
     environment:
       - APP_BASE_URL=https://joplin.joaocosta.dev
       - APP_PORT=22300
@@ -129,6 +130,92 @@ services:
     volumes:
       - joplin_data:/data
     restart: unless-stopped
+# --- paperless
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    depends_on:
+      - paperless-broker
+      - gotenberg
+      - tika
+    expose:
+      - "8000"
+    volumes:
+      - paperless_data:/usr/src/paperless/data
+      - paperless_media:/usr/src/paperless/media
+      - /paperless/export:/usr/src/paperless/export
+      - /paperless/consume:/usr/src/paperless/consume
+    env_file: /usr/local/etc/paperless.env
+    environment:
+      PAPERLESS_REDIS: redis://paperless-broker:6379
+      PAPERLESS_TIKA_ENABLED: 1
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
+      PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+    restart: unless-stopped
+  paperless-broker:
+    image: docker.io/library/redis:7
+    expose:
+      - "6379"
+    volumes:
+      - redisdata:/data
+    restart: unless-stopped
+  gotenberg:
+    image: docker.io/gotenberg/gotenberg:8.7
+    expose:
+      - "3000"
+    # The gotenberg chromium route is used to convert .eml files. We do not
+    # want to allow external content like tracking pixels or even javascript.
+    command:
+      - "gotenberg"
+      - "--chromium-disable-javascript=true"
+      - "--chromium-allow-list=file:///tmp/.*"
+    restart: unless-stopped
+  tika:
+    # - Apache Tika and Gotenberg servers are started with paperless and paperless
+    #   is configured to use these services. These provide support for consuming
+    #   Office documents (Word, Excel, Power Point and their LibreOffice counter-
+    #   parts.
+    image: docker.io/apache/tika:latest
+    expose:
+      - "9998"
+    restart: unless-stopped
+# --- snikket
+  snikket_proxy:
+    container_name: snikket-proxy
+    image: snikket/snikket-web-proxy:stable
+    env_file: snikket.conf
+    userns_mode: 'host'
+    network_mode: host
+    volumes:
+      - snikket_data:/snikket
+      - snikket_acme_challenges:/var/www/html/.well-known/acme-challenge
+    restart: "unless-stopped"
+  snikket_certs:
+    container_name: snikket-certs
+    image: snikket/snikket-cert-manager:stable
+    userns_mode: 'host'
+    network_mode: host
+    env_file: snikket.conf
+    volumes:
+      - snikket_data:/snikket
+      - snikket_acme_challenges:/var/www/.well-known/acme-challenge
+    restart: "unless-stopped"
+    command: ["--", "/bin/bash", "-c", "/usr/bin/chown -R root:root /usr/bin && /entrypoint.sh"]
+  snikket_portal:
+    container_name: snikket-portal
+    image: snikket/snikket-web-portal:stable
+    userns_mode: 'host'
+    network_mode: host
+    env_file: snikket.conf
+    restart: "unless-stopped"
+  snikket_server:
+    container_name: snikket
+    image: snikket/snikket-server:stable
+    userns_mode: 'host'
+    network_mode: host
+    volumes:
+      - snikket_data:/snikket
+    env_file: snikket.conf
+    restart: "unless-stopped"
 
 volumes:
   site_app_data:
@@ -145,7 +232,14 @@ volumes:
   obsidian_etc:
   caddy_data:
   caddy_config:
+  # ---
+  paperless_data:
+  paperless_media:
+  redisdata:
+  snikket_acme_challenges:
+  snikket_data:
 
 secrets:
   site_env_password:
     file: /usr/local/etc/site_env_password
+
