@@ -1,5 +1,3 @@
-version: "3.3"
-
 services:
   snikket_proxy:
     container_name: snikket-proxy
