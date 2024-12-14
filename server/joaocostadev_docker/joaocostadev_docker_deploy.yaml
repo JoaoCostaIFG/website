@@ -4,6 +4,7 @@
   become: no
 
   roles:
+    - core
     - docker
     - cron
     - services

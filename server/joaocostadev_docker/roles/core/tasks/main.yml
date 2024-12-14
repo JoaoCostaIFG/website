@@ -1,0 +1,7 @@
+---
+- name: Set sysctl params
+  copy:
+    src: local.conf
+    dest: /etc/sysctl.d/local.conf
+    owner: root
+    group: root
