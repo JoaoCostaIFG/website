@@ -1,5 +1,0 @@
----
-- name: install cfddns
-  make:
-    chdir: /usr/local/src/cloudflareddns
-    target: install

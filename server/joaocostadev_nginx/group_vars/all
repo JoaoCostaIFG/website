@@ -1,9 +1,0 @@
----
-cfddns_version: main
-
-cloudflare_api_key: secret
-
-admin_email: joaocosta@posteo.net
-
-machine_email: secret
-machine_email_pass: secret
