@@ -32,11 +32,6 @@ joplin.joaocosta.dev {
 
 # --- tailscale
 
-ha.joaocosta.dev {
-	tailscale_auth
-	reverse_proxy 10.0.0.22:8123
-}
-
 languagetool.joaocosta.dev {
 	tailscale_auth
 	reverse_proxy languagetool:8010
