@@ -20,10 +20,6 @@ croc.joaocosta.dev {
 	reverse_proxy pingvin:3000
 }
 
-ha.joaocosta.dev {
-	reverse_proxy 10.0.0.22:8123
-}
-
 chat.joaocosta.dev,
 groups.chat.joaocosta.dev,
 share.chat.joaocosta.dev {
@@ -35,6 +31,11 @@ joplin.joaocosta.dev {
 }
 
 # --- tailscale
+
+ha.joaocosta.dev {
+	tailscale_auth
+	reverse_proxy 10.0.0.22:8123
+}
 
 languagetool.joaocosta.dev {
 	tailscale_auth
