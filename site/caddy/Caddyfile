@@ -72,7 +72,9 @@ immich.joaocosta.dev {
 }
 
 dozzle.joaocosta.dev {
-	tailscale_auth
+	tailscale_auth set_headers {
+		allowed_logins joaocosta.work@posteo.net
+	}
+
 	reverse_proxy dozzle:8080
 }
-
