@@ -67,6 +67,11 @@ immich.joaocosta.dev {
 	reverse_proxy 10.0.0.21:30041
 }
 
+files.joaocosta.dev {
+	tailscale_auth
+	reverse_proxy 10.0.0.21:30044
+}
+
 dozzle.joaocosta.dev {
 	tailscale_auth
 	reverse_proxy dozzle:8080
