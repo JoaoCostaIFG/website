@@ -20,10 +20,20 @@ croc.joaocosta.dev {
 	reverse_proxy pingvin:3000
 }
 
-chat.joaocosta.dev,
-groups.chat.joaocosta.dev,
-share.chat.joaocosta.dev {
+http://chat.example.com,
+http://groups.chat.example.com,
+http://share.chat.example.com {
 	reverse_proxy 10.0.0.20:5080
+}
+
+chat.example.com,
+groups.chat.example.com,
+share.chat.example.com {
+	reverse_proxy https://10.0.0.20:5443 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
 }
 
 joplin.joaocosta.dev {
