@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Website Docker Image CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  docker:
+  website_docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

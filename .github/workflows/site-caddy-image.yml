@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Caddy Docker Image CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  docker:
+  caddy_docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
