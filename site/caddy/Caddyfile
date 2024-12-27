@@ -27,6 +27,10 @@ croc.joaocosta.dev {
 	reverse_proxy pingvin:3000
 }
 
+traccar.joaocosta.dev {
+	reverse_proxy 10.0.0.22:8082
+}
+
 http://chat.joaocosta.dev,
 http://groups.chat.joaocosta.dev,
 http://share.chat.joaocosta.dev {
