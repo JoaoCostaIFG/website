@@ -59,7 +59,7 @@ fs.writeFileSync(
   `
 @import 'fa_variables';
 
-$fa-font-path           : "../../webfonts";
+$fa-font-path           : "../../public/webfonts";
 
 $fa-icons: (
   ${iconsCode.map((i) => `${i},\n`).join("")}
