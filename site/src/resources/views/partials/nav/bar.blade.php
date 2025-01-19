@@ -24,9 +24,9 @@
           </div>
 
           <div class="absolute inset-y-0 right-0 mr-4 sm:mr-0 flex items-center gap-x-4">
-            @include('partials.nav.icon', ['href' => 'https://wiki.joaocosta.dev', 'title' => 'My wiki', 'icon' => 'fa-solid fa-file-pen', 'classes' => 'hidden sm:inline-block'])
-            @include('partials.nav.icon', ['href' => 'https://github.com/JoaoCostaIFG', 'title' => 'My GitHub page', 'icon' => 'fa-brands fa-github', 'classes' => 'hidden sm:inline-block'])
-            @include('partials.nav.icon', ['href' => route('feeds.rss'), 'title' => "My blog's RSS", 'icon' => 'fa-solid fa-square-rss', 'classes' => 'hidden sm:inline-block'])
+            @include('partials.nav.icon', ['href' => 'https://wiki.joaocosta.dev', 'title' => 'My wiki', 'icon' => 'fa-solid fa-file-pen', 'classes' => 'hidden sm:inline-block', 'rel' => false])
+            @include('partials.nav.icon', ['href' => 'https://github.com/JoaoCostaIFG', 'title' => 'My GitHub page', 'icon' => 'fa-brands fa-github', 'classes' => 'hidden sm:inline-block', 'rel' => true])
+            @include('partials.nav.icon', ['href' => route('feeds.rss'), 'title' => "My blog's RSS", 'icon' => 'fa-solid fa-square-rss', 'classes' => 'hidden sm:inline-block', 'rel' => false])
             @if (Auth::check())
             <a class="text-xl w-5 text-red-200 hover:text-red-400" title="logout" href="{{ route('logout') }}">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
