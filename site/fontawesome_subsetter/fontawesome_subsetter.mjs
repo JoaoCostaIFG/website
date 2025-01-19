@@ -14,6 +14,7 @@ const icons = {
     "chalkboard-user",
     "compress",
     "copyright",
+    "envelope",
     "expand",
     "file-pen",
     "house",
