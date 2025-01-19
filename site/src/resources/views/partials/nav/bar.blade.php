@@ -24,10 +24,10 @@
           </div>
 
           <div class="absolute inset-y-0 right-0 mr-4 sm:mr-0 flex items-center gap-x-4">
-            @include('partials.nav.icon', ['href' => 'https://wiki.joaocosta.dev', 'title' => 'My wiki', 'icon' => 'fa-solid fa-file-pen', 'classes' => 'hidden sm:inline-block', 'rel' => ''])
-            @include('partials.nav.icon', ['href' => 'https://github.com/JoaoCostaIFG', 'title' => 'My GitHub page', 'icon' => 'fa-brands fa-github', 'classes' => 'hidden sm:inline-block', 'rel' => 'me'])
-            @include('partials.nav.icon', ['href' => 'mailto:me@joaocosta.dev', 'title' => 'Email me', 'icon' => 'fa-solid fa-envelope', 'classes' => 'hidden sm:inline-block', 'rel' => 'me'])
-            @include('partials.nav.icon', ['href' => route('feeds.rss'), 'title' => "My blog's RSS", 'icon' => 'fa-solid fa-square-rss', 'classes' => 'hidden sm:inline-block', 'rel' => 'alternate'])
+            @include('partials.nav.icon', ['href' => 'https://wiki.joaocosta.dev', 'title' => 'My wiki', 'icon' => 'fa-solid fa-file-pen', 'classes' => ['hidden', 'sm:inline-block'], 'rel' => ''])
+            @include('partials.nav.icon', ['href' => 'https://github.com/JoaoCostaIFG', 'title' => 'My GitHub page', 'icon' => 'fa-brands fa-github', 'classes' => ['hidden', 'sm:inline-block'], 'rel' => 'me'])
+            @include('partials.nav.icon', ['href' => 'mailto:me@joaocosta.dev', 'title' => 'Email me', 'icon' => 'fa-solid fa-envelope', 'classes' => ['hidden', 'sm:inline-block'], 'rel' => 'me'])
+            @include('partials.nav.icon', ['href' => route('feeds.rss'), 'title' => "My blog's RSS", 'icon' => 'fa-solid fa-square-rss', 'classes' => ['hidden', 'sm:inline-block'], 'rel' => 'alternate'])
             @if (Auth::check())
             <a class="text-xl w-5 text-red-200 hover:text-red-400" title="logout" href="{{ route('logout') }}">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -56,7 +56,7 @@
         <div class="flex flex-row justify-around flex-wrap gap-x-4">
           @include('partials.nav.icon', ['href' => 'https://wiki.joaocosta.dev', 'title' => 'My wiki', 'icon' => 'fa-solid fa-file-pen', 'rel' => ''])
           @include('partials.nav.icon', ['href' => 'https://github.com/JoaoCostaIFG', 'title' => 'My GitHub page', 'icon' => 'fa-brands fa-github', 'rel' => 'me'])
-          @include('partials.nav.icon', ['href' => 'mailto:me@joaocosta.dev', 'title' => 'Email me', 'icon' => 'fa-solid fa-envelope', 'classes' => 'hidden sm:inline-block', 'rel' => 'me'])
+          @include('partials.nav.icon', ['href' => 'mailto:me@joaocosta.dev', 'title' => 'Email me', 'icon' => 'fa-solid fa-envelope', 'rel' => 'me'])
           @include('partials.nav.icon', ['href' => route('feeds.rss'), 'title' => "My blog's RSS", 'icon' => 'fa-solid fa-square-rss', 'rel' => 'alternate'])
         </div>
       </div>
