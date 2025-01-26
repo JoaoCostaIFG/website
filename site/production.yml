@@ -130,6 +130,14 @@ services:
     volumes:
       - joplin_data:/data
     restart: unless-stopped
+# ---
+  owncast:
+    image: owncast/owncast:latest
+    expose:
+      - "8080"
+      - "1935"
+    volumes:
+      - owncast_data:/app/data
 # --- paperless
   paperless:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
@@ -228,14 +236,14 @@ volumes:
   site_pdf_trainingdata:
   site_pdf_config:
   joplin_data:
-  obsidian_data:
-  obsidian_etc:
+  owncast_data:
   caddy_data:
   caddy_config:
   # ---
   paperless_data:
   paperless_media:
   redisdata:
+  # ---
   snikket_acme_challenges:
   snikket_data:
 
