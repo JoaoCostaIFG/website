@@ -141,8 +141,8 @@ services:
 # ---
   rss2email:
     image: ghcr.io/skx/rss2email:master
+    container_name: rss2email
     working_dir: /app
-    user: app
     entrypoint: rss2email
     command: daemon -verbose rss@joaocosta.dev
     environment:
