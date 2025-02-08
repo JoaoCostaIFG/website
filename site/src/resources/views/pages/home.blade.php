@@ -40,5 +40,16 @@
         "cheat-sheets" and other general guides/annotations. It's basically part of my notes that I decided to make public.
       </p>
     </section>
+
+    <section class="col-span-12">
+      <h2>My friends</h2>
+      <p>
+        This is a list of my friends' websites. Pay them a visit sometime.
+        <ul class="list-disc">
+          <li><a href="https://educorreia932.dev">educorreia932</a></li>
+          <li><a href="https://marceloborges.dev">jmarcelomb</a></li>
+        </ul>
+      </p>
+    </section>
   </div>
 @endsection
