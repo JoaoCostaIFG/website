@@ -76,6 +76,11 @@ pdf.joaocosta.dev {
 	reverse_proxy pdf:8080
 }
 
+ai.joaocosta.dev {
+	tailscale_auth
+	reverse_proxy open-webui:8080
+}
+
 paperless.joaocosta.dev {
 	tailscale_auth
 	reverse_proxy paperless:8000 {

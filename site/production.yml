@@ -14,7 +14,7 @@ services:
       - /run/tailscale/tailscaled.sock:/run/tailscale/tailscaled.sock
     env_file: /usr/local/etc/caddy.env
     restart: unless-stopped
-# ---
+  # ---
   php:
     image: ghcr.io/joaocostaifg/website:master
     container_name: php
@@ -28,20 +28,20 @@ services:
     volumes:
       - site_app_data:/data
     restart: unless-stopped
-# ---
+  # ---
   languagetool:
     image: erikvl87/languagetool
     container_name: languagetool
     environment:
       - langtool_languageModel=/ngrams
-      - Java_Xms=256m  # minimum Java heap size of 256 mib
-      - Java_Xmx=1g  # maximum Java heap size of 1 Gib
+      - Java_Xms=256m # minimum Java heap size of 256 mib
+      - Java_Xmx=1g # maximum Java heap size of 1 Gib
     expose:
       - "8010"
     volumes:
       - /usr/local/lib/ngrams:/ngrams
     restart: unless-stopped
-# ---
+  # ---
   vaultwarden:
     image: vaultwarden/server:1.32.6
     container_name: vaultwarden
@@ -53,7 +53,7 @@ services:
     volumes:
       - site_bw_data:/data
     restart: unless-stopped
-# ---
+  # ---
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
@@ -66,7 +66,7 @@ services:
     expose:
       - "80"
     restart: unless-stopped
-# ---
+  # ---
   minecraft:
     image: itzg/minecraft-server:java21-graalvm
     container_name: minecraft
@@ -85,7 +85,7 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
-# ---
+  # ---
   pingvin-share:
     image: stonith404/pingvin-share
     container_name: pingvin
@@ -95,7 +95,7 @@ services:
       - site_pingvin_data:/opt/app/backend/data
       - site_pingvin_imgs:/opt/app/frontend/public/img
     restart: unless-stopped
-# ---
+  # ---
   stirling-pdf:
     image: frooodle/s-pdf:latest
     container_name: pdf
@@ -107,17 +107,17 @@ services:
     environment:
       - DOCKER_ENABLE_SECURITY=false
     restart: unless-stopped
-# ---
+  # ---
   dozzle:
     image: amir20/dozzle:latest
     container_name: dozzle
     expose:
       - "8080"
-    userns_mode: 'host'
+    userns_mode: "host"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
-# ---
+  # ---
   joplin:
     image: joplin/server:latest
     container_name: joplin
@@ -130,7 +130,7 @@ services:
     volumes:
       - joplin_data:/data
     restart: unless-stopped
-# ---
+  # ---
   owncast:
     image: owncast/owncast:latest
     expose:
@@ -138,7 +138,7 @@ services:
       - "1935"
     volumes:
       - owncast_data:/app/data
-# ---
+  # ---
   rss2email:
     image: ghcr.io/skx/rss2email:master
     container_name: rss2email
@@ -146,12 +146,21 @@ services:
     entrypoint: rss2email
     command: daemon -verbose rss@joaocosta.dev
     environment:
-    - TZ=UTC
+      - TZ=UTC
     env_file: /usr/local/etc/rss2email.env
     volumes:
-    - rss2email-data:/app/.rss2email
+      - rss2email-data:/app/.rss2email
     restart: unless-stopped
-# --- paperless
+  # ---
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    container_name: open-webui
+    volumes:
+      - open-webui_data:/app/backend/data
+    expose:
+      - "8080"
+    restart: unless-stopped
+  # --- paperless
   paperless:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
     depends_on:
@@ -199,12 +208,12 @@ services:
     expose:
       - "9998"
     restart: unless-stopped
-# --- snikket
+  # --- snikket
   snikket_proxy:
     container_name: snikket-proxy
     image: snikket/snikket-web-proxy:stable
     env_file: snikket.conf
-    userns_mode: 'host'
+    userns_mode: "host"
     network_mode: host
     volumes:
       - snikket_data:/snikket
@@ -213,25 +222,31 @@ services:
   snikket_certs:
     container_name: snikket-certs
     image: snikket/snikket-cert-manager:stable
-    userns_mode: 'host'
+    userns_mode: "host"
     network_mode: host
     env_file: snikket.conf
     volumes:
       - snikket_data:/snikket
       - snikket_acme_challenges:/var/www/.well-known/acme-challenge
     restart: "unless-stopped"
-    command: ["--", "/bin/bash", "-c", "/usr/bin/chown -R root:root /usr/bin && /entrypoint.sh"]
+    command:
+      [
+        "--",
+        "/bin/bash",
+        "-c",
+        "/usr/bin/chown -R root:root /usr/bin && /entrypoint.sh",
+      ]
   snikket_portal:
     container_name: snikket-portal
     image: snikket/snikket-web-portal:stable
-    userns_mode: 'host'
+    userns_mode: "host"
     network_mode: host
     env_file: snikket.conf
     restart: "unless-stopped"
   snikket_server:
     container_name: snikket
     image: snikket/snikket-server:stable
-    userns_mode: 'host'
+    userns_mode: "host"
     network_mode: host
     volumes:
       - snikket_data:/snikket
@@ -251,6 +266,7 @@ volumes:
   joplin_data:
   owncast_data:
   rss2email-data:
+  open-webui_data:
   caddy_data:
   caddy_config:
   # ---
@@ -264,4 +280,3 @@ volumes:
 secrets:
   site_env_password:
     file: /usr/local/etc/site_env_password
-
