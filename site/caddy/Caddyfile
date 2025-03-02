@@ -53,11 +53,6 @@ joplin.joaocosta.dev {
 
 # --- tailscale
 
-languagetool.joaocosta.dev {
-	tailscale_auth
-	reverse_proxy languagetool:8010
-}
-
 vaultwarden.joaocosta.dev {
 	tailscale_auth
 	reverse_proxy /admin/* vaultwarden:80

@@ -29,19 +29,6 @@ services:
       - site_app_data:/data
     restart: unless-stopped
   # ---
-  languagetool:
-    image: erikvl87/languagetool
-    container_name: languagetool
-    environment:
-      - langtool_languageModel=/ngrams
-      - Java_Xms=256m # minimum Java heap size of 256 mib
-      - Java_Xmx=1g # maximum Java heap size of 1 Gib
-    expose:
-      - "8010"
-    volumes:
-      - /usr/local/lib/ngrams:/ngrams
-    restart: unless-stopped
-  # ---
   vaultwarden:
     image: vaultwarden/server:1.32.6
     container_name: vaultwarden
