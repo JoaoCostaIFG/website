@@ -118,14 +118,6 @@ services:
       - joplin_data:/data
     restart: unless-stopped
   # ---
-  owncast:
-    image: owncast/owncast:latest
-    expose:
-      - "8080"
-      - "1935"
-    volumes:
-      - owncast_data:/app/data
-  # ---
   rss2email:
     image: ghcr.io/skx/rss2email:master
     container_name: rss2email
@@ -251,7 +243,6 @@ volumes:
   site_pdf_trainingdata:
   site_pdf_config:
   joplin_data:
-  owncast_data:
   rss2email-data:
   open-webui_data:
   caddy_data:
