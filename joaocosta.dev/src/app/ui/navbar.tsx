@@ -1,42 +1,48 @@
+"use client"
+
 import Image from 'next/image'
 import Link from 'next/link'
-import ThemeToggler from '@/app/ui/theme-toggler'
+import { useState } from 'react'
+import { BookOpenIcon, EnvelopeIcon, RssIcon } from '@heroicons/react/16/solid'
+import GithunIcon from '@/app/ui/icons/github-icon'
+import MobileMenu from '@/app/ui/navbar/mobile-menu';
+import NavbarIcon from '@/app/ui/navbar/navbar-icon';
+import NavbarLink from '@/app/ui/navbar/navbar-link';
 
-function NavbarLink(props: { title: string, href: string, selected: boolean }) {
-  const { title, href, selected } = props;
-  const classes = selected ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white";
-  return <Link className={`${classes} block px-2 py-2 rounded-md text-sm`} href={href}>{title}</Link>
-}
-
-function NavbarIcon(props: { title: string, href: string, classes: string, icon: string, rel: string }) {
-  const { title, href, classes, icon, rel } = props;
-  return (
-    <a className={`${classes} text-xl w-5 text-gray-400 hover:text-white`} title={title} href={href} rel={rel}>
-      <i className={icon}></i>
-    </a>
-  )
-}
 
 export default function Navbar(props: { selectedTitle: string }) {
+  const [isOpen, setIsOpen] = useState(false);
   const { selectedTitle: title } = props;
 
   function navlinks() {
     return (<>
-      <NavbarLink href="/" title='Home' selected={'Home' === title} />
-      <NavbarLink href='/blogs' title='Blog' selected={'Blog' === title} />
-      <NavbarLink href='/projects' title='Projects' selected={'Projects' === title} />
-      <NavbarLink href='/workshops' title='Workshops' selected={'Workshops' === title} />
-      <NavbarLink href='/about' title='About/Contacts' selected={'About me' === title} />
+      <NavbarLink href="/" title='Home' />
+      <NavbarLink href='/blogs' title='Blog' />
+      <NavbarLink href='/projects' title='Projects' />
+      <NavbarLink href='/workshops' title='Workshops' />
+      <NavbarLink href='/about' title='About' />
     </>)
   }
 
   function navicons() {
     return (<>
-      <NavbarIcon href="https://wiki.joaocosta.dev" title="My wiki" icon="fa-solid fa-file-pen" classes="hidden sm:inline-block" rel="" />
-      <NavbarIcon href="https://github.com/JoaoCostaIFG" title="My GitHub profile" icon="fa-brands fa-github" classes="hidden sm:inline-block" rel="me" />
-      <NavbarIcon href="mailto:me@joaocosta.dev" title="Email me" icon="fa-solid fa-envelope" classes="hidden sm:inline-block" rel="me" />
-      <NavbarIcon href="/rss" title="My blog's RSS" icon="fa-solid fa-square-rss" classes="hidden sm:inline-block" rel="alternate" />
+      <NavbarIcon href="https://wiki.joaocosta.dev" title="My wiki" rel="" >
+        <BookOpenIcon />
+      </NavbarIcon>
+      <NavbarIcon href="https://github.com/JoaoCostaIFG" title="My GitHub profile" rel="me" >
+        <GithunIcon />
+      </NavbarIcon>
+      <NavbarIcon href="mailto:me@joaocosta.dev" title="Email me" rel="me" >
+        <EnvelopeIcon />
+      </NavbarIcon >
+      <NavbarIcon href="/rss" title="My blog's RSS" rel="alternate" >
+        <RssIcon />
+      </NavbarIcon >
     </>)
+  }
+
+  function handleMobileMenu() {
+    setIsOpen(!isOpen);
   }
 
   return (
@@ -44,7 +50,9 @@ export default function Navbar(props: { selectedTitle: string }) {
       <nav id="navbar" arial-label="primary navigation" className="bg-gray-800">
         <div className="container mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
-            <button id="mobile-menu-btn" type="button" className="absolute left-0 sm:hidden py-2 px-3 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Open navbar menu" aria-controls="mobile-menu" aria-expanded="false">
+            <button id="mobile-menu-btn" type="button"
+              className="absolute left-0 sm:hidden py-2 px-3 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
+              onClick={handleMobileMenu} aria-label="Open navbar menu" aria-controls="mobile-menu" aria-expanded={isOpen}>
               <i className="fa-solid fa-bars"></i>
             </button>
 
@@ -61,17 +69,16 @@ export default function Navbar(props: { selectedTitle: string }) {
 
             <div className="absolute inset-y-0 right-0 mr-4 sm:mr-0 flex items-center gap-x-4">
               {navicons()}
-              <ThemeToggler />
             </div>
           </div>
         </div>
 
-        <div id="mobile-menu" className="hidden sm:hidden px-2 pb-2 flex flex-col gap-y-1">
+        <MobileMenu isOpen={isOpen}>
           {navlinks()}
           <div className="flex flex-row justify-around flex-wrap gap-x-4">
             {navicons()}
           </div>
-        </div>
+        </MobileMenu>
       </nav>
     </header>
   )

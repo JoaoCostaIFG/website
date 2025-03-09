@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-import "@/app/fontawesome.css";
 import Footer from "@/app/ui/footer";
 import Navbar from "@/app/ui/navbar";
 
@@ -28,11 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-200 dark:bg-zinc-900 min-h-screen transition-all duration-300 ease-in-out`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-900 min-h-screen transition-all duration-300 ease-in-out`}
       >
         <Navbar selectedTitle="Home" />
 
-        <div id="content-container" className="bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-50 container py-4 sm:rounded-b">
+        <div id="content-container" className="bg-zinc-800 text-gray-50 container py-4 sm:rounded-b">
           {children}
         </div>
 
