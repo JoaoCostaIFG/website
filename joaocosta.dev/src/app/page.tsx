@@ -13,7 +13,7 @@ function HomeEntry(props: { b: Prisma.Blog }) {
         {b.title}
       </span>
       <br />
-      <span className="muted">{b.date.toDateString()}</span>
+      <span className="muted">{b.createDate.toDateString()}</span>
     </Link>
   )
 }
@@ -23,7 +23,7 @@ export default async function Home() {
   const blogs = await prisma.blog.findMany({
     take: 3,
     orderBy: {
-      date: 'desc',
+      createDate: 'desc',
     },
   })
 

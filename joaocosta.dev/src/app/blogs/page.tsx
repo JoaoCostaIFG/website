@@ -12,7 +12,7 @@ function BlogPageEntry(props: { b: Prisma.Blog }) {
       <span className="line-clamp-1 lg:line-clamp-2 ml-2 text-gray-400">
         <Markdown>{b.intro}</Markdown>
       </span>
-      <span className="muted">{b.date.toDateString()}</span>
+      <span className="muted">{b.createDate.toDateString()}</span>
     </Link>
   )
 }
@@ -20,7 +20,7 @@ function BlogPageEntry(props: { b: Prisma.Blog }) {
 export default async function Blogs() {
   const blogs = await prisma.blog.findMany({
     orderBy: {
-      date: 'desc',
+      createDate: 'desc',
     },
   })
   return (
