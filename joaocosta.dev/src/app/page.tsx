@@ -8,7 +8,7 @@ function HomeEntry(props: { b: Prisma.Blog }) {
     <Link className="max-w-xl p-2 rounded-md ring-inset
       bg-zinc-900 text-gray-200 hover:bg-gray-900
       hover:ring-2 hover:ring-teal-600"
-      href={`blog/${b.id}`}>
+      href={`blog/${encodeURIComponent(b.id)}`}>
       <span className="font-semibold">
         {b.title}
       </span>
@@ -35,7 +35,7 @@ export default async function Home() {
         <section className="col-span-12 md:col-span-7">
           <h2>Recent posts</h2>
           <div className="mb-4 grid grid-cols-1 gap-y-1">
-            {blogs.map((b) => <HomeEntry b={b} />)}
+            {blogs.map((b) => <HomeEntry key={b.id} b={b} />)}
           </div>
           <div className="max-w-xl text-right">
             <Link className="btn btn-teal" href="/blogs">
