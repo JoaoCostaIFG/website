@@ -1,26 +1,32 @@
-import Image from "next/image";
 import Link from 'next/link'
+import Prisma from '@prisma/client'
+import { prisma } from '@/lib/prisma';
 
-function HomeEntry() {
-  const title = "A blog title"
-  const visible = true
-  const date = "2021-09-01"
+function HomeEntry(props: { b: Prisma.Blog }) {
+  const { b } = props
   return (
-    <a className="max-w-xl p-2 rounded-md ring-inset
+    <Link className="max-w-xl p-2 rounded-md ring-inset
       bg-zinc-900 text-gray-200 hover:bg-gray-900
       hover:ring-2 hover:ring-teal-600"
-      href="{{ route('blog', ['b' => $b]) }}">
+      href={`blog/${b.id}`}>
       <span className="font-semibold">
-        {title}
-        {visible ? '' : <span className="text-red-400"> (hidden)</span>}
+        {b.title}
       </span>
       <br />
-      <span className="muted">{date}</span>
-    </a>
+      <span className="muted">{b.date.toDateString()}</span>
+    </Link>
   )
 }
 
-export default function Home() {
+export default async function Home() {
+  // get the latest 3 blog posts
+  const blogs = await prisma.blog.findMany({
+    take: 3,
+    orderBy: {
+      date: 'desc',
+    },
+  })
+
   return (
     <>
       <h1>Welcome to my corner of the Internet!</h1>
@@ -29,9 +35,7 @@ export default function Home() {
         <section className="col-span-12 md:col-span-7">
           <h2>Recent posts</h2>
           <div className="mb-4 grid grid-cols-1 gap-y-1">
-            <HomeEntry />
-            <HomeEntry />
-            <HomeEntry />
+            {blogs.map((b) => <HomeEntry b={b} />)}
           </div>
           <div className="max-w-xl text-right">
             <Link className="btn btn-teal" href="/blogs">
