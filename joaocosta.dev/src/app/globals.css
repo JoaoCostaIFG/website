@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -44,33 +46,30 @@ body {
   @apply font-semibold;
   @apply underline;
   @apply underline-offset-2;
-  @apply decoration-teal-500;
-  @apply hover:decoration-2;
-  @apply dark:decoration-teal-600;
+  @apply decoration-teal-600;
+
+  @variant hover {
+    @apply decoration-2;
+  }
 }
 
 @utility btn {
-  @apply rounded-full;
-  @apply text-white;
-  @apply font-semibold;
-  @apply text-sm;
-  @apply shadow-sm;
-  @apply px-4;
-  @apply py-1;
-  @apply hover:underline;
-  @apply hover:underline-offset-2;
+  @apply rounded-full px-4 py-1 shadow-sm;
+  @apply text-white font-semibold text-sm;
+
+  @variant hover {
+    @apply underline;
+    @apply underline-offset-2;
+  }
 }
 
 @utility icon-btn {
-  @apply btn;
-  @apply py-3;
+  @apply btn py-3;
 }
 
 @utility icon-btn-sm {
   @apply icon-btn;
-  @apply text-xs;
-  @apply px-2;
-  @apply py-1;
+  @apply text-xs px-2 py-1;
 }
 
 @utility form-input {
@@ -78,33 +77,33 @@ body {
   @apply w-full;
   @apply shadow-md;
 
-  @apply bg-white;
-  @apply text-gray-800;
-  @apply dark:bg-zinc-900;
-  @apply dark:text-gray-200;
+  @apply bg-zinc-900 text-gray-200;
 
-  @apply placeholder-slate-500;
-  @apply dark:placeholder-slate-400;
+  @apply placeholder-slate-400;
 
-  @apply disabled:shadow-none;
-  @apply disabled:bg-slate-200;
-  @apply dark:disabled:bg-slate-600;
-  @apply disabled:text-slate-400;
-  @apply disabled:placeholder-slate-400;
-  @apply disabled:border-slate-400;
+  @variant disabled {
+    @apply shadow-none;
+    @apply bg-slate-600;
+    @apply text-slate-400;
+    @apply placeholder-slate-400;
+    @apply border-slate-400;
+  }
 
-  @apply focus:outline-none;
-  @apply focus:ring-1;
-  @apply focus:border-teal-400;
-  @apply focus:ring-teal-400;
-  @apply focus:dark:border-teal-600;
-  @apply focus:dark:ring-teal-600;
+  @variant focus {
+    @apply outline-none;
+    @apply ring-1;
+    @apply border-teal-600;
+    @apply ring-teal-600;
+  }
 
-  @apply invalid:border-pink-500;
-  @apply invalid:text-pink-600;
-  @apply dark:invalid:text-pink-500;
-  @apply focus:invalid:border-pink-500;
-  @apply focus:invalid:ring-pink-500;
+  @variant invalid {
+    @apply border-pink-500;
+    @apply text-pink-500;
+    @variant focus {
+      @apply border-pink-500;
+      @apply ring-pink-500;
+    }
+  }
 }
 
 /* prose style based on: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js */
@@ -117,8 +116,7 @@ body {
   h5,
   h6 {
     @apply font-bold;
-    @apply text-teal-100;
-    @apply dark:text-gray-100;
+    @apply text-gray-100;
   }
 
   h1 > a,
@@ -327,14 +325,12 @@ body {
     @apply text-sm;
     @apply shadow-sm;
     @apply border-collapse;
-    @apply bg-slate-100;
-    @apply dark:bg-slate-800;
+    @apply bg-slate-800;
     border-style: hidden;
   }
 
   .prose thead {
-    @apply bg-slate-50;
-    @apply dark:bg-slate-700;
+    @apply bg-slate-700;
   }
 
   .prose thead th,
@@ -342,8 +338,7 @@ body {
   .prose tfoot td {
     @apply p-2.5;
     @apply border;
-    @apply border-slate-300;
-    @apply dark:border-slate-600;
+    @apply border-slate-600;
   }
   /* <<<< prose table */
 
@@ -356,10 +351,8 @@ body {
   .prose code:not([class*="language-"]) {
     @apply px-1;
     @apply rounded-md;
-    @apply bg-zinc-200;
-    @apply text-teal-700;
-    @apply dark:bg-zinc-900;
-    @apply dark:text-teal-300;
+    @apply bg-zinc-900;
+    @apply text-teal-300;
   }
   /* << prose */
 }
@@ -368,37 +361,38 @@ body {
   /* >> button */
 
   .btn-teal {
-    @apply bg-teal-800;
-    @apply hover:bg-teal-900;
+    @apply bg-teal-700;
+    @variant hover {
+      @apply bg-teal-900;
+    }
   }
 
   .btn-edit {
-    @apply bg-yellow-500;
-    @apply hover:bg-yellow-600;
-    @apply dark:bg-yellow-600;
-    @apply dark:hover:bg-yellow-500;
+    @apply bg-yellow-600;
+    @variant hover {
+      @apply bg-yellow-500;
+    }
   }
 
   .btn-indigo {
     @apply bg-indigo-600;
-    @apply hover:bg-indigo-700;
-    @apply dark:bg-indigo-600;
-    @apply dark:hover:bg-indigo-500;
+    @variant hover {
+      @apply bg-indigo-500;
+    }
   }
 
   .btn-red {
     @apply bg-red-600;
-    @apply hover:bg-red-700;
-    @apply dark:bg-red-600;
-    @apply dark:hover:bg-red-500;
+    @variant hover {
+      @apply bg-red-500;
+    }
   }
   /* << button */
 
 
   /* >> muted */
   .muted {
-    @apply text-slate-600;
-    @apply dark:text-slate-400;
+    @apply text-slate-400;
   }
   /* << muted */
 
@@ -417,14 +411,12 @@ body {
 
   .form-checkbox {
     @apply bg-transparent;
-    @apply text-teal-400;
-    @apply dark:text-teal-600;
-    @apply focus:border-teal-400;
-    @apply focus:ring-teal-400;
-    @apply focus:outline-teal-400;
-    @apply focus:dark:border-teal-600;
-    @apply focus:dark:ring-teal-600;
-    @apply focus:dark:outline-teal-600;
+    @apply text-teal-600;
+    @variant focus {
+      @apply border-teal-600;
+      @apply ring-teal-600;
+      @apply outline-teal-600;
+    }
     box-shadow: none;
   }
 
@@ -451,8 +443,7 @@ body {
     @apply top-0;
     @apply z-10;
     @apply leading-10; /* needed so smaller headings block bigger ones */
-    @apply bg-zinc-100;
-    @apply dark:bg-zinc-800;
+    @apply bg-zinc-800;
     /* the border is useful to denote the text cutoff */
     @apply border-b-2;
   }
