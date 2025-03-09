@@ -10,9 +10,8 @@ import NavbarIcon from '@/app/ui/navbar/navbar-icon';
 import NavbarLink from '@/app/ui/navbar/navbar-link';
 
 
-export default function Navbar(props: { selectedTitle: string }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { selectedTitle: title } = props;
 
   function navlinks() {
     return (<>
@@ -58,7 +57,7 @@ export default function Navbar(props: { selectedTitle: string }) {
 
             <div className="flex flex-1 justify-center sm:justify-start">
               <Link className="shrink-0" title="Go home" href="/">
-                <Image id="brand" className="shrink-0 h-8 w-auto" src="/irao.png" width={276} height={286} alt="My icon" />
+                <Image id="brand" className="shrink-0 h-8 w-auto" alt="My icon" src="/irao.png" width={276} height={286} priority={true} />
               </Link>
               <div className="hidden sm:block sm:ml-2">
                 <div className="flex gap-x-2">
