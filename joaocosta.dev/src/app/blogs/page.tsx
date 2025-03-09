@@ -28,7 +28,6 @@ export default async function Blogs() {
       <h1>All of my blog posts</h1>
 
       <div className="grid grid-cols-1 gap-y-4">
-        @each('partials.blog.entry', Blog::allAuth(), 'b')
         {blogs.map((b) => <BlogPageEntry key={b.id} b={b} />)}
       </div>
     </div>
