@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-900 min-h-screen transition-all duration-300 ease-in-out`}
       >
-        <Navbar selectedTitle="Home" />
+        <Navbar />
 
         <div id="content-container" className="bg-zinc-800 text-gray-50 container py-4 sm:rounded-b">
           {children}
