@@ -1,11 +1,7 @@
 import { notFound } from "next/navigation"
+import Markdown from 'react-markdown'
 import { prisma } from '@/lib/prisma';
-
-function countWords(text: string) {
-  return text.split(' ')
-    .filter(function (n) { return n != '' })
-    .length;
-}
+import { countWords } from '@/lib/word-utils';
 
 export default async function Blog({ params }: { params: Promise<{ id: string }> }) {
   const { id: idStr } = await params
@@ -28,7 +24,8 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
     if (!blog) {
       return 0
     }
-    return Math.ceil(countWords(blog.content) / AVG_WPM)
+    const totalWords = countWords(blog.intro) + countWords(blog.content)
+    return Math.ceil(totalWords / AVG_WPM)
   }
 
   return (
@@ -38,10 +35,10 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
         <em className="block muted mb-4">Avg. {readingTime()} minute(s) of reading</em>
 
         <div className="p-2 rounded-md bg-zinc-900">
-          {blog.intro}
+          <Markdown>{blog.intro}</Markdown>
         </div>
 
-        {blog.content}
+        <Markdown>{blog.content}</Markdown>
       </article>
     </div>
   )
