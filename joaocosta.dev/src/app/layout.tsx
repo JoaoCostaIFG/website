@@ -17,6 +17,23 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Joao Costa",
   description: "Hey! I am a software engineer and this is my personal website. I try to be active here.",
+  openGraph: {
+    title: "Joao Costa",
+    description: "Hey! I am a software engineer and this is my personal website. I try to be active here.",
+    images: [
+      "/og.png"
+    ],
+    locale: "en_US",
+    type: "website",
+    url: "https://joaocosta.dev",
+    siteName: "Joao Costa",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "/og.png"
+    ],
+  },
 };
 
 export default function RootLayout({
