@@ -11,11 +11,12 @@ datasource db {
 }
 
 model Blog {
-  id        Int      @id @default(autoincrement())
-  title     String
-  intro     String
-  content   String
-  date      DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  title       String
+  intro       String
+  content     String
+  createDate  DateTime @default(now())
+  updateDate  DateTime @default(now())
 }
 
 model Proj {
