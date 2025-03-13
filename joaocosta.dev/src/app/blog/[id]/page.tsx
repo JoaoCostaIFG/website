@@ -30,7 +30,7 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
 
   return (
     <div className="w-full">
-      <article className="m-auto relative prose blog line-numbers match-braces">
+      <article className="m-auto relative prose prose-invert blog break-words line-numbers match-braces">
         <h1 className="mb-0">{blog.title}</h1>
         <em className="block muted mb-4">Avg. {readingTime()} minute(s) of reading</em>
 
