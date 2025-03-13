@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 export default function About() {
   return (
-    <div className="prose grid grid-cols-12 gap-4">
-      <div className="col-span-12 sm:col-span-8">
+    <div className="grid grid-cols-12 gap-4">
+      <div className="col-span-12 sm:col-span-8 prose prose-invert">
         <p>
           I'm a twenty-something year old software engineer. I finished by master's degree
           at <a href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a> in 2023.

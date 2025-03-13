@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -105,8 +106,6 @@ body {
     }
   }
 }
-
-/* prose style based on: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js */
 
 @layer base {
   h1,
@@ -218,145 +217,6 @@ body {
   /* << markdown style */
 }
 
-@layer components {
-  .blog-edit-img {
-    @apply relative;
-    @apply bg-contain;
-    @apply bg-no-repeat;
-    @apply bg-center;
-    @apply w-32;
-    @apply h-[4.5rem];
-    @apply border;
-    @apply border-gray-300;
-    @apply rounded-sm;
-  }
-
-  /* >> prose */
-  .prose {
-    @apply leading-loose;
-  }
-
-  .prose a {
-    @apply anchor;
-  }
-
-  .prose p {
-    @apply my-5;
-  }
-
-  /* >>>> prose list */
-  .prose ol,
-  .prose ul {
-    @apply my-5;
-    @apply pl-6;
-  }
-
-  .prose ol {
-    @apply list-[lower-roman] list-inside;
-  }
-
-  .prose ul ul,
-  .prose ul ol,
-  .prose ol ul,
-  .prose ol ol {
-    @apply my-3;
-  }
-
-  .prose li {
-    @apply my-2;
-  }
-
-  .prose ul li::before {
-    @apply font-black;
-    content: "- ";
-  }
-  /* <<<< prose list */
-
-  /* >>>> prose quote */
-  .prose blockquote {
-    @apply font-semibold;
-    @apply italic;
-    @apply pl-2;
-    @apply border-l-2;
-    @apply border-gray-500;
-    quotes: "\201C" "\201D" "\2018" "\2019";
-  }
-
-  .prose blockquote p:first-of-type::before {
-    content: open-quote;
-  }
-
-  .prose blockquote p:last-of-type::after {
-    content: close-quote;
-  }
-  /* <<<< prose quote */
-
-  /* >>>> prose img */
-  .prose img,
-  .prose video,
-  .prose figure {
-    @apply my-8;
-    @apply mx-auto; /* center img and video */
-  }
-
-  .prose figure > * {
-    @apply my-0;
-  }
-
-  .prose figcaption {
-    @apply text-sm;
-    @apply mt-3.5;
-  }
-  /* <<<< prose img */
-
-  .prose hr {
-    @apply w-full;
-    @apply my-12;
-  }
-
-  .prose hr + * {
-    @apply mt-0;
-  }
-
-  /* >>>> prose table */
-  .prose table {
-    @apply my-8;
-    @apply w-full; /* expand tables to full width */
-    @apply text-sm;
-    @apply shadow-sm;
-    @apply border-collapse;
-    @apply bg-slate-800;
-    border-style: hidden;
-  }
-
-  .prose thead {
-    @apply bg-slate-700;
-  }
-
-  .prose thead th,
-  .prose tbody td,
-  .prose tfoot td {
-    @apply p-2.5;
-    @apply border;
-    @apply border-slate-600;
-  }
-  /* <<<< prose table */
-
-  .prose pre {
-    @apply text-sm;
-    @apply whitespace-pre-line;
-    @apply rounded-md;
-  }
-
-  .prose code:not([class*="language-"]) {
-    @apply px-1;
-    @apply rounded-md;
-    @apply bg-zinc-900;
-    @apply text-teal-300;
-  }
-  /* << prose */
-}
-
 @layer utilities {
   /* >> button */
 
@@ -427,12 +287,6 @@ body {
   /* << forms */
 
   /* >> blog */
-  .blog {
-    @apply max-w-prose; /* https://tailwindcss.com/docs/max-width#reading-width */
-    @apply break-words;
-  }
-
-  /* >>>> blog heading */
   .blog h1,
   .blog h2,
   .blog h3,
@@ -472,6 +326,5 @@ body {
   .blog h6 {
     @apply border-purple-400;
   }
-  /* <<<< blog heading */
   /* << blog */
 }
