@@ -2,6 +2,8 @@ import { notFound } from "next/navigation"
 import Markdown from 'react-markdown'
 import { prisma } from '@/lib/prisma';
 import { countWords } from '@/lib/word-utils';
+import BlogMarkdown from "@/lib/blog/BlogMarkdown";
+
 
 export default async function Blog({ params }: { params: Promise<{ id: string }> }) {
   const { id: idStr } = await params
@@ -38,7 +40,7 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
           <Markdown>{blog.intro}</Markdown>
         </div>
 
-        <Markdown>{blog.content}</Markdown>
+        <BlogMarkdown markdown={blog.content} />
       </article>
     </div>
   )
