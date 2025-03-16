@@ -48,19 +48,7 @@ share.chat.joaocosta.dev {
 }
 
 joplin.joaocosta.dev {
-  handle /items* {
-    tailscale_auth
-    reverse_proxy joplin:22300
-  }
-
-  handle /admin* {
-    tailscale_auth
-    reverse_proxy joplin:22300
-  }
-
-  handle {
-    reverse_proxy joplin:22300
-  }
+  reverse_proxy joplin:22300
 }
 
 # --- tailscale
