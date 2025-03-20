@@ -25,15 +25,27 @@ wiki.joaocosta.dev {
 }
 
 croc.joaocosta.dev {
-	reverse_proxy pingvin:3000
+  handle /admin* {
+    tailscale_auth
+	  reverse_proxy pingvin:3000
+  }
+
+  handle {
+	  reverse_proxy pingvin:3000
+  }
 }
 
 traccar.joaocosta.dev {
-	reverse_proxy 10.0.0.22:8082
+  handle /login* {
+	  reverse_proxy 10.0.0.22:8082
+  }
+
+  handle {
+	  reverse_proxy 10.0.0.22:8082
+  }
 }
 
 joplin.joaocosta.dev {
-  # only accessible by users in the tailnet
   handle /admin* {
     tailscale_auth
     reverse_proxy joplin:22300
