@@ -10,6 +10,8 @@
 	}
 }
 
+# -- public
+
 joaocosta.dev {
 	reverse_proxy php:8000
 }
@@ -27,23 +29,10 @@ croc.joaocosta.dev {
 }
 
 traccar.joaocosta.dev {
-	reverse_proxy 10.0.0.22:8082
-}
-
-http://chat.joaocosta.dev,
-http://groups.chat.joaocosta.dev,
-http://share.chat.joaocosta.dev {
-	reverse_proxy 10.0.0.20:5080
-}
-
-chat.joaocosta.dev,
-groups.chat.joaocosta.dev,
-share.chat.joaocosta.dev {
-	reverse_proxy https://10.0.0.20:5443 {
-		transport http {
-			tls_insecure_skip_verify
-		}
-	}
+  handle {
+	  tailscale_auth
+	  reverse_proxy 10.0.0.22:8082
+  }
 }
 
 joplin.joaocosta.dev {
@@ -54,7 +43,7 @@ zulip.joaocosta.dev {
   reverse_proxy http://10.0.0.24:8080
 }
 
-# --- tailscale
+# --- private/tailscale
 
 vaultwarden.joaocosta.dev {
 	tailscale_auth
