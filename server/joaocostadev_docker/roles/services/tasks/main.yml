@@ -28,3 +28,6 @@
   command:
     chdir: /root/website/site
     cmd: ./prod.sh up --build -d --remove-orphans
+- name: docker prune
+  command:
+    cmd: docker system prune -f
