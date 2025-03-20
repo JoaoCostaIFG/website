@@ -3,7 +3,7 @@
   ansible.builtin.git:
     repo: "https://github.com/JoaoCostaIFG/website.git"
     dest: /root/website
-    version:  "{{ repo_branch }}"
+    version: "{{ repo_branch }}"
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
 - name: Set Coturn config
@@ -27,4 +27,4 @@
 - name: (re)start services
   command:
     chdir: /root/website/site
-    cmd: ./prod.sh up --build -d
+    cmd: ./prod.sh up --build -d --remove-orphans
