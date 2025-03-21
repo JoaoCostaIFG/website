@@ -71,48 +71,55 @@ joplin.joaocosta.dev {
 
 # --- private/tailscale
 
-vaultwarden.joaocosta.dev {
-	tailscale_auth
-	reverse_proxy /admin/* vaultwarden:80
-	reverse_proxy /notifications/hub/negotiate/* vaultwarden:80
-	reverse_proxy /notifications/hub/* vaultwarden:3012
-	reverse_proxy /* vaultwarden:80
-}
-
-tail.joaocosta.dev {
-	tailscale_auth
-	reverse_proxy heimdall:80
-}
-
-https://pdf.tail1dfda.ts.net {
-  bind tailscale/pdf
-	tailscale_auth
-	reverse_proxy pdf:8080
-}
-
-ai.joaocosta.dev {
+ai.tail1dfda.ts.net {
+  bind tailscale/ai
 	tailscale_auth
 	reverse_proxy open-webui:8080
 }
 
-paperless.joaocosta.dev {
+dozzle.tail1dfda.ts.net {
+  bind tailscale/dozzle
+	tailscale_auth
+	reverse_proxy dozzle:8080
+}
+
+files.tail1dfda.ts.net {
+  bind tailscale/files
+	tailscale_auth
+	reverse_proxy 10.0.0.21:30044
+}
+
+immich.tail1dfda.ts.net {
+  bind tailscale/immich
+	tailscale_auth
+	reverse_proxy 10.0.0.21:30041
+}
+
+paperless.tail1dfda.ts.net {
+  bind tailscale/paperless
 	tailscale_auth
 	reverse_proxy paperless:8000 {
 		header_down Referrer-Policy "strict-origin-when-cross-origin"
 	}
 }
 
-immich.joaocosta.dev {
+pdf.tail1dfda.ts.net {
+  bind tailscale/pdf
 	tailscale_auth
-	reverse_proxy 10.0.0.21:30041
+	reverse_proxy pdf:8080
 }
 
-files.joaocosta.dev {
+tail.tail1dfda.ts.net {
+  bind tailscale/tail
 	tailscale_auth
-	reverse_proxy 10.0.0.21:30044
+	reverse_proxy heimdall:80
 }
 
-dozzle.joaocosta.dev {
+vaultwarden.tail1dfda.ts.net {
+  bind tailscale/vaultwarden
 	tailscale_auth
-	reverse_proxy dozzle:8080
+	reverse_proxy /admin/* vaultwarden:80
+	reverse_proxy /notifications/hub/negotiate/* vaultwarden:80
+	reverse_proxy /notifications/hub/* vaultwarden:3012
+	reverse_proxy /* vaultwarden:80
 }
