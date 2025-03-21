@@ -33,40 +33,15 @@ zulip.joaocosta.dev {
 }
 
 croc.joaocosta.dev {
-  handle /admin* {
-    tailscale_auth
-	  reverse_proxy pingvin:3000
-  }
-
-  handle {
-	  reverse_proxy pingvin:3000
-  }
+	reverse_proxy pingvin:3000
 }
 
 traccar.joaocosta.dev {
-  handle /login* {
-	  reverse_proxy 10.0.0.22:8082
-  }
-
-  handle {
-	  reverse_proxy 10.0.0.22:8082
-  }
+	reverse_proxy 10.0.0.22:8082
 }
 
 joplin.joaocosta.dev {
-  handle /admin* {
-    tailscale_auth
-    reverse_proxy joplin:22300
-  }
-
-  handle /items* {
-    tailscale_auth
-    reverse_proxy joplin:22300
-  }
-
-  handle {
-    reverse_proxy joplin:22300
-  }
+  reverse_proxy joplin:22300
 }
 
 # --- private/tailscale
