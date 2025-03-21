@@ -8,6 +8,10 @@
 		}
 		versions ipv4 ipv6
 	}
+
+  tailscale {
+    ephemeral true
+  }
 }
 
 # -- public
@@ -22,6 +26,10 @@ www.joaocosta.dev {
 
 wiki.joaocosta.dev {
 	redir https://joaocostaifg.github.io/wiki
+}
+
+zulip.joaocosta.dev {
+  reverse_proxy http://10.0.0.24:8080
 }
 
 croc.joaocosta.dev {
@@ -61,10 +69,6 @@ joplin.joaocosta.dev {
   }
 }
 
-zulip.joaocosta.dev {
-  reverse_proxy http://10.0.0.24:8080
-}
-
 # --- private/tailscale
 
 vaultwarden.joaocosta.dev {
@@ -80,7 +84,8 @@ tail.joaocosta.dev {
 	reverse_proxy heimdall:80
 }
 
-pdf.joaocosta.dev {
+https://pdf.tail1dfda.ts.net {
+  bind tailscale/pdf
 	tailscale_auth
 	reverse_proxy pdf:8080
 }
