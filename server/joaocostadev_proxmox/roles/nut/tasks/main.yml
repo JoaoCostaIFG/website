@@ -1,0 +1,25 @@
+---
+- name: Install nut-client
+  ansible.builtin.apt:
+    name:
+      - nut-client
+    state: present
+- name: Config nut
+  copy:
+    src: nut.conf
+    dest: /etc/nut/nut.conf
+    owner: root
+    group: nut
+    mode: '0640'
+- name: Config upsmon
+  template:
+    src: upsmon.conf.j2
+    dest: /etc/nut/upsmon.conf
+    owner: root
+    group: nut
+    mode: '0640'
+- name: Enable apcupsd service
+  systemd:
+    name: nut-client
+    enabled: yes
+    masked: no
