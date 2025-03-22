@@ -5,5 +5,5 @@
 
   roles:
     - pve
-    - apcupsd
+    - nut
     - tailscale
