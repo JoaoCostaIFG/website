@@ -40,10 +40,6 @@ traccar.joaocosta.dev {
 	reverse_proxy 10.0.0.22:8082
 }
 
-joplin.joaocosta.dev {
-  reverse_proxy joplin:22300
-}
-
 # --- private/tailscale
 
 ai.tail1dfda.ts.net {
@@ -68,6 +64,12 @@ immich.tail1dfda.ts.net {
   bind tailscale/immich
 	tailscale_auth
 	reverse_proxy 10.0.0.21:30041
+}
+
+joplin.tail1dfda.ts.net {
+  bind tailscale/joplin
+	tailscale_auth
+  reverse_proxy joplin:22300
 }
 
 paperless.tail1dfda.ts.net {
