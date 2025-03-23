@@ -30,10 +30,11 @@ services:
     restart: unless-stopped
   # ---
   vaultwarden:
-    image: vaultwarden/server:1.32.6
+    image: vaultwarden/server:1.33.2
     container_name: vaultwarden
     environment:
       - WEBSOCKET_ENABLED=true
+      - EXPERIMENTAL_CLIENT_FEATURE_FLAGS=ssh-key-vault-item,ssh-agent
     expose:
       - "80"
       - "3012"
