@@ -112,7 +112,7 @@ services:
     expose:
       - "22300"
     environment:
-      - APP_BASE_URL=https://joplin.joaocosta.dev
+      - APP_BASE_URL=https://joplin.tail1dfda.ts.net
       - APP_PORT=22300
       - SQLITE_DATABASE=/data/db.sqlite
     volumes:
