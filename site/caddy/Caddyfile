@@ -68,7 +68,6 @@ immich.tail1dfda.ts.net {
 
 joplin.tail1dfda.ts.net {
   bind tailscale/joplin
-	tailscale_auth
   reverse_proxy joplin:22300
 }
 
