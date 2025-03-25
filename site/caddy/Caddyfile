@@ -48,6 +48,11 @@ ai.tail1dfda.ts.net {
 	reverse_proxy open-webui:8080
 }
 
+dns.tail1dfda.ts.net {
+  bind tailscale/dns
+	reverse_proxy 10.0.0.1:8080
+}
+
 dozzle.tail1dfda.ts.net {
   bind tailscale/dozzle
 	tailscale_auth
