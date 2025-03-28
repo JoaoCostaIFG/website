@@ -29,7 +29,7 @@ wiki.joaocosta.dev {
 }
 
 zulip.joaocosta.dev {
-  reverse_proxy http://10.0.0.24:8080
+  reverse_proxy http://10.0.0.24
 }
 
 croc.joaocosta.dev {
