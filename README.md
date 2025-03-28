@@ -2,15 +2,14 @@
 
 This repo contains the stuff I use for my server.
 
-![Me and my gf](./favicon.png)
-
-## Server hardware
-
-![Picture of the server](./server/parts/pics/mobo.jpg)
-
-Head on to the [server directory](./server) to learn more about the hardware
-part.
+![Me and my partner](./favicon.png)
 
 ## Website
 
 The [site directory](./site) contains the code and information about my website.
+
+## Server
+
+My home server:
+
+![Picture of the server](./server_rack.jpg)
