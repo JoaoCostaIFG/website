@@ -9,17 +9,18 @@
 - name: Enable ntpd service
   ansible.builtin.service:
     name: ntpd
-    enabled: yes
+    enabled: true
     state: started
 - name: Enable docker service
   ansible.builtin.service:
     name: docker
-    enabled: yes
+    enabled: true
     state: started
 - name: Set docker daemon options
-  copy:
+  ansible.builtin.copy:
     src: daemon.json
     dest: /etc/docker/daemon.json
     owner: root
     group: root
+    mode: '0644'
   notify: restart docker

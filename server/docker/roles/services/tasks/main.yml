@@ -5,22 +5,22 @@
     dest: /root/website
     version: master
   environment:
-    GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
+    GIT_TERMINAL_PROMPT: "0" # reports "terminal prompts disabled" on missing password
 - name: Set paperless config
-  template:
+  ansible.builtin.template:
     src: paperless.env.j2
     dest: /usr/local/etc/paperless.env
     owner: root
     group: root
     mode: '0600'
 - name: pull containers
-  command:
+  ansible.builtin.command:
     chdir: /root/website/site
     cmd: ./prod.sh pull
 - name: (re)start services
-  command:
+  ansible.builtin.command:
     chdir: /root/website/site
     cmd: ./prod.sh up --build -d --remove-orphans
 - name: docker prune
-  command:
+  ansible.builtin.command:
     cmd: docker system prune -f

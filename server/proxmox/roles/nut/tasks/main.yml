@@ -5,21 +5,21 @@
       - nut-client
     state: present
 - name: Config nut
-  copy:
+  ansible.builtin.copy:
     src: nut.conf
     dest: /etc/nut/nut.conf
     owner: root
     group: nut
     mode: '0640'
 - name: Config upsmon
-  template:
+  ansible.builtin.template:
     src: upsmon.conf.j2
     dest: /etc/nut/upsmon.conf
     owner: root
     group: nut
     mode: '0640'
 - name: Enable apcupsd service
-  systemd:
+  ansible.builtin.systemd:
     name: nut-client
-    enabled: yes
-    masked: no
+    enabled: true
+    masked: false

@@ -1,11 +1,12 @@
 ---
 - name: Config apt sources
-  copy:
+  ansible.builtin.copy:
     src: sources.list
     dest: /etc/apt/sources.list
     owner: root
     group: root
+    mode: '0644'
 - name: Update packages
   ansible.builtin.apt:
     update_cache: true
-    upgrade: yes
+    upgrade: true

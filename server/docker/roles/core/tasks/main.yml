@@ -1,7 +1,8 @@
 ---
 - name: Set sysctl params
-  copy:
+  ansible.builtin.copy:
     src: local.conf
     dest: /etc/sysctl.d/local.conf
     owner: root
     group: root
+    mode: '0644'
