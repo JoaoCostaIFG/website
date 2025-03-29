@@ -3,7 +3,7 @@
   ansible.builtin.git:
     repo: "https://github.com/JoaoCostaIFG/website.git"
     dest: /root/website
-    version: "{{ repo_branch }}"
+    version: master
   environment:
     GIT_TERMINAL_PROMPT: 0 # reports "terminal prompts disabled" on missing password
 - name: Set paperless config
