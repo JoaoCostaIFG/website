@@ -80,7 +80,7 @@ files.joaocosta.dev {
 immich.tail1dfda.ts.net {
   bind tailscale/immich
 	tailscale_auth
-	reverse_proxy immich_server:2283
+	reverse_proxy 10.0.0.20:2283
 }
 immich.joaocosta.dev {
 	redir https://immich.tail1dfda.ts.net{uri} permanent

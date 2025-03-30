@@ -17,8 +17,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - /usr/local/etc/immich.env
-    expose:
-      - "2283"
+    ports:
+      - "2283:2283"
     depends_on:
       - redis
       - database
