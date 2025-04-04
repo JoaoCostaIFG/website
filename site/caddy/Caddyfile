@@ -20,14 +20,6 @@ joaocosta.dev {
 	reverse_proxy php:8000
 }
 
-www.joaocosta.dev {
-	redir https://joaocosta.dev{uri} permanent
-}
-
-wiki.joaocosta.dev {
-	redir https://joaocostaifg.github.io/wiki
-}
-
 zulip.joaocosta.dev {
   reverse_proxy http://10.0.0.24
 }
@@ -47,16 +39,10 @@ ai.tail1dfda.ts.net {
 	tailscale_auth
 	reverse_proxy open-webui:8080
 }
-ai.joaocosta.dev {
-	redir https://ai.tail1dfda.ts.net{uri} permanent
-}
 
 dns.tail1dfda.ts.net {
   bind tailscale/dns
 	reverse_proxy 10.0.0.1:8080
-}
-dns.joaocosta.dev {
-	redir https://dns.tail1dfda.ts.net{uri} permanent
 }
 
 dozzle.tail1dfda.ts.net {
@@ -64,17 +50,11 @@ dozzle.tail1dfda.ts.net {
 	tailscale_auth
 	reverse_proxy dozzle:8080
 }
-dozzle.joaocosta.dev {
-	redir https://dozzle.tail1dfda.ts.net{uri} permanent
-}
 
 files.tail1dfda.ts.net {
   bind tailscale/files
 	tailscale_auth
 	reverse_proxy 10.0.0.21:30044
-}
-files.joaocosta.dev {
-	redir https://files.tail1dfda.ts.net{uri} permanent
 }
 
 immich.tail1dfda.ts.net {
@@ -82,16 +62,10 @@ immich.tail1dfda.ts.net {
 	tailscale_auth
 	reverse_proxy 10.0.0.20:2283
 }
-immich.joaocosta.dev {
-	redir https://immich.tail1dfda.ts.net{uri} permanent
-}
 
 joplin.tail1dfda.ts.net {
   bind tailscale/joplin
   reverse_proxy joplin:22300
-}
-joplin.joaocosta.dev {
-	redir https://joplin.tail1dfda.ts.net{uri} permanent
 }
 
 paperless.tail1dfda.ts.net {
@@ -101,26 +75,17 @@ paperless.tail1dfda.ts.net {
 		header_down Referrer-Policy "strict-origin-when-cross-origin"
 	}
 }
-paperless.joaocosta.dev {
-	redir https://paperless.tail1dfda.ts.net{uri} permanent
-}
 
 pdf.tail1dfda.ts.net {
   bind tailscale/pdf
 	tailscale_auth
 	reverse_proxy pdf:8080
 }
-pdf.joaocosta.dev {
-	redir https://pdf.tail1dfda.ts.net{uri} permanent
-}
 
 tail.tail1dfda.ts.net {
   bind tailscale/tail
 	tailscale_auth
 	reverse_proxy heimdall:80
-}
-tail.joaocosta.dev {
-	redir https://tail.tail1dfda.ts.net{uri} permanent
 }
 
 vaultwarden.tail1dfda.ts.net {
@@ -130,7 +95,4 @@ vaultwarden.tail1dfda.ts.net {
 	reverse_proxy /notifications/hub/negotiate/* vaultwarden:80
 	reverse_proxy /notifications/hub/* vaultwarden:3012
 	reverse_proxy /* vaultwarden:80
-}
-vaultwarden.joaocosta.dev {
-	redir https://vaultwarden.tail1dfda.ts.net{uri} permanent
 }
