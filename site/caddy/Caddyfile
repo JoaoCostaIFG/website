@@ -45,14 +45,20 @@ dns.tail1dfda.ts.net {
 	reverse_proxy 10.0.0.1:8080
 }
 
-dozzle.tail1dfda.ts.net {
+:433 {
   bind tailscale/dozzle
+  tls {
+    get_certificate tailscale
+  }
 	tailscale_auth
 	reverse_proxy dozzle:8080
 }
 
-files.tail1dfda.ts.net {
+:443 {
   bind tailscale/files
+  tls {
+    get_certificate tailscale
+  }
 	tailscale_auth
 	reverse_proxy 10.0.0.21:30044
 }
