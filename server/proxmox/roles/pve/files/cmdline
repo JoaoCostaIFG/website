@@ -1,0 +1,1 @@
+root=ZFS=rpool/ROOT/pve-1 boot=zfs amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction
