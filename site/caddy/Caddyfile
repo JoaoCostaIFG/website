@@ -1,13 +1,13 @@
 {
-	email {env.CONTACT_EMAIL}
-	#acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
-	dynamic_dns {
-		provider cloudflare {env.CLOUDFLARE_API_TOKEN}
-		domains {
-			joaocosta.dev
-		}
-		versions ipv4 ipv6
-	}
+  email {env.CONTACT_EMAIL}
+  #acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+  dynamic_dns {
+    provider cloudflare {env.CLOUDFLARE_API_TOKEN}
+    domains {
+      joaocosta.dev
+    }
+    versions ipv4 ipv6
+  }
 
   tailscale {
     ephemeral true
@@ -17,7 +17,7 @@
 # -- public
 
 joaocosta.dev {
-	reverse_proxy php:8000
+  reverse_proxy php:8000
 }
 
 zulip.joaocosta.dev {
@@ -25,42 +25,42 @@ zulip.joaocosta.dev {
 }
 
 croc.joaocosta.dev {
-	reverse_proxy pingvin:3000
+  reverse_proxy pingvin:3000
 }
 
 traccar.joaocosta.dev {
-	reverse_proxy 10.0.0.22:8082
+  reverse_proxy 10.0.0.22:8082
 }
 
 # --- private/tailscale
 
 ai.tail1dfda.ts.net {
   bind tailscale/ai
-	tailscale_auth
-	reverse_proxy open-webui:8080
+  tailscale_auth
+  reverse_proxy open-webui:8080
 }
 
 dns.tail1dfda.ts.net {
   bind tailscale/dns
-	reverse_proxy 10.0.0.1:8080
+  reverse_proxy 10.0.0.1:8080
 }
 
 dozzle.tail1dfda.ts.net {
   bind tailscale/dozzle
-	tailscale_auth
-	reverse_proxy dozzle:8080
+  tailscale_auth
+  reverse_proxy dozzle:8080
 }
 
 files.tail1dfda.ts.net {
   bind tailscale/files
-	tailscale_auth
-	reverse_proxy 10.0.0.21:30044
+  tailscale_auth
+  reverse_proxy 10.0.0.21:30044
 }
 
 immich.tail1dfda.ts.net {
   bind tailscale/immich
-	tailscale_auth
-	reverse_proxy 10.0.0.20:2283
+  tailscale_auth
+  reverse_proxy 10.0.0.20:2283
 }
 
 joplin.tail1dfda.ts.net {
@@ -70,29 +70,29 @@ joplin.tail1dfda.ts.net {
 
 paperless.tail1dfda.ts.net {
   bind tailscale/paperless
-	tailscale_auth
-	reverse_proxy paperless:8000 {
-		header_down Referrer-Policy "strict-origin-when-cross-origin"
-	}
+  tailscale_auth
+  reverse_proxy paperless:8000 {
+    header_down Referrer-Policy "strict-origin-when-cross-origin"
+  }
 }
 
 pdf.tail1dfda.ts.net {
   bind tailscale/pdf
-	tailscale_auth
-	reverse_proxy pdf:8080
+  tailscale_auth
+  reverse_proxy pdf:8080
 }
 
 tail.tail1dfda.ts.net {
   bind tailscale/tail
-	tailscale_auth
-	reverse_proxy heimdall:80
+  tailscale_auth
+  reverse_proxy heimdall:80
 }
 
 vaultwarden.tail1dfda.ts.net {
   bind tailscale/vaultwarden
-	tailscale_auth
-	reverse_proxy /admin/* vaultwarden:80
-	reverse_proxy /notifications/hub/negotiate/* vaultwarden:80
-	reverse_proxy /notifications/hub/* vaultwarden:3012
-	reverse_proxy /* vaultwarden:80
+  tailscale_auth
+  reverse_proxy /admin/* vaultwarden:80
+  reverse_proxy /notifications/hub/negotiate/* vaultwarden:80
+  reverse_proxy /notifications/hub/* vaultwarden:3012
+  reverse_proxy /* vaultwarden:80
 }
