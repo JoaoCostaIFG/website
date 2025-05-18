@@ -17,7 +17,7 @@
 # -- public
 
 joaocosta.dev {
-  reverse_proxy php:8000
+  reverse_proxy website:3000
 }
 
 zulip.joaocosta.dev {
