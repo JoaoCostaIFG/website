@@ -1,3 +1,5 @@
+name: site
+
 services:
   caddy:
     image: ghcr.io/joaocostaifg/caddy:master

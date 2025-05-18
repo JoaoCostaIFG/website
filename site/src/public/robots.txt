@@ -1,4 +1,0 @@
-user-agent: *
-
-Disallow: /build/
-Disallow: /webfonts/
