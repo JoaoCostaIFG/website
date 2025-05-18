@@ -5,26 +5,26 @@ export default function About() {
     <div className="grid grid-cols-12 gap-4">
       <div className="col-span-12 sm:col-span-8 prose prose-invert">
         <p>
-          I'm a twenty-something year old software engineer. I finished by master's degree
+          I&apos;m a twenty-something year old software engineer. I finished by master&apos;s degree
           at <a href="https://fe.up.pt">Faculty of Engineering of the University of Porto</a> in 2023.
           This website started as a place where I could learn more about web development. Now, it
           is somewhere where I try to share a bit of my experiences and thoughts (mostly) relating
           to informatics. There have been multiple iterations of the website over the years, so
-          don't get too surprised if you come here one day and everything looks different. The
+          don&apos;t get too surprised if you come here one day and everything looks different. The
           website is now hosted on my personal home-server (alongside other self-hosted services I use).
         </p>
         <p>
-          I usually write with little to no spell-checking tools, so I'm sure there are lots
+          I usually write with little to no spell-checking tools, so I&apos;m sure there are lots
           of spelling and grammar errors all over. My partner (who is probably my only reader)
           ends up pointing out most of the errors, so I can fix them. Still, feel free to shoot
           me an email if you thing something not quite right.
         </p>
         <p>
           Professionally, my main foxus has been on several parts of software development for
-          embedded systems. I've started by working on tests for DO-178C (an aviation standard)
-          certification of an OS (Operating System). Then, I've moved one to tooling,
+          embedded systems. I&apos;ve started by working on tests for DO-178C (an aviation standard)
+          certification of an OS (Operating System). Then, I&apos;ve moved one to tooling,
           packaging, and releases: a sort of internal consulting at the companies where
-          I worked. Now, I'm working as a software developer for Linux and baremetal drivers.
+          I worked. Now, I&apos;m working as a software developer for Linux and baremetal drivers.
         </p>
         <p>
           In my free time, I enjoy working on personal projects, listening to music,
@@ -33,14 +33,14 @@ export default function About() {
           (<em>I use Arch BTW</em>), or automating stuff.
         </p>
         <p>
-          In my work life, I've programmed in <b>Bash/POSIX shell</b>, <b>C</b>, <b>C++</b>,
+          In my work life, I&apos;ve programmed in <b>Bash/POSIX shell</b>, <b>C</b>, <b>C++</b>,
           <b>JavaScript</b>, <b>Python</b>, and <b>Scala</b>. In my personal projects I mostly
           use <b>Bash/POSIX shell</b>, <b>JavaScript</b>, <b>Python</b>, and <b>PHP</b>. Now
-          I'm trying to get more proficient in <b>Rust</b>.
+          I&apos;m trying to get more proficient in <b>Rust</b>.
         </p>
         <p>
           I enjoy contributing to open-source software and always try to release mine
-          with open licenses (often the MIT license). Generally speaking, I don't like
+          with open licenses (often the MIT license). Generally speaking, I don&apos;t like
           social media, so I try to stay as far away from it as possible. Still, I have
           a LinkedIn account for work reasons.
         </p>

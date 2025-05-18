@@ -16,9 +16,7 @@ export default function Navbar() {
   function navlinks() {
     return (<>
       <NavbarLink href="/" title='Home' />
-      <NavbarLink href='/blogs' title='Blogs' />
-      <NavbarLink href='/projects' title='Projects' />
-      <NavbarLink href='/workshops' title='Workshops' />
+      <NavbarLink href='/blog' title='Blogs' />
       <NavbarLink href='/about' title='About' />
     </>)
   }

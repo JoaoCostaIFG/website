@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import Prisma from '@prisma/client'
-import { prisma } from '@/lib/prisma';
+import { getSortedPostsData, PostData } from '@/lib/posts';
 
-function HomeEntry(props: { b: Prisma.Blog }) {
+function HomeEntry(props: { b: PostData }) {
   const { b } = props
   return (
     <Link className="max-w-xl p-2 rounded-md ring-inset
@@ -13,19 +12,14 @@ function HomeEntry(props: { b: Prisma.Blog }) {
         {b.title}
       </span>
       <br />
-      <span className="muted">{b.createDate.toDateString()}</span>
+      <span className="muted">{b.date.toDateString()}</span>
     </Link>
   )
 }
 
 export default async function Home() {
   // get the latest 3 blog posts
-  const blogs = await prisma.blog.findMany({
-    take: 3,
-    orderBy: {
-      createDate: 'desc',
-    },
-  })
+  const blogs = getSortedPostsData().slice(0, 3);
 
   return (
     <>
@@ -48,9 +42,9 @@ export default async function Home() {
           <h2>About</h2>
           <p className="mb-4">
             Hey! My name is João Costa and this is my personal corner of the internet.
-            I'm interested in computer science and electronics, and I enjoy implementing my own solutions to
+            I&apos;m interested in computer science and electronics, and I enjoy implementing my own solutions to
             problems/needs.
-            This page's main focus is for me to share some ideas/processes behind projects that I've worked on.
+            This page&apos;s main focus is for me to share some ideas/processes behind projects that I&apos;ve worked on.
           </p>
           <div className="text-right">
             <a className="btn btn-teal" href="/about">
@@ -62,14 +56,14 @@ export default async function Home() {
         <section className="col-span-12">
           <h2><a href="https://wiki.joaocosta.dev">Wiki</a></h2>
           <p>
-            I manage a small <a className="anchor" href="https://wiki.joaocosta.dev">wiki</a> where I post small "cookbooks",
-            "cheat-sheets" and other general guides/annotations. It's basically part of my notes that I decided to make public.
+            I manage a small <a className="anchor" href="https://wiki.joaocosta.dev">wiki</a> where I post small &quot;cookbooks&quot;,
+            &quot;cheat-sheets&quot; and other general guides/annotations. It&apos;s basically part of my notes that I decided to make public.
           </p>
         </section>
 
         <section className="col-span-12">
           <h2>My friends</h2>
-          This is a list of my friends' websites. Pay them a visit sometime.
+          This is a list of my friends&apos; websites. Pay them a visit sometime.
           <ul className="list-disc">
             <li><a href="https://educorreia932.dev">educorreia932</a></li>
             <li><a href="https://marceloborges.dev">jmarcelomb</a></li>

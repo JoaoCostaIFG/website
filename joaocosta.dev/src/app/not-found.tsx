@@ -5,7 +5,7 @@ export default function NotFound() {
     <h1>404 not found D:</h1>
 
     <p>
-      You probably shouldn't be here, so if you reached this place using one of the
+      You probably shouldn&apos;t be here, so if you reached this place using one of the
       buttons/links in my website, let me know so I can fix it :3 <em>thanks</em>
     </p>
     <p>
