@@ -15,11 +15,11 @@
     mode: '0600'
 - name: pull containers
   ansible.builtin.command:
-    chdir: /root/website/site
+    chdir: /root/website
     cmd: ./prod.sh pull
 - name: (re)start services
   ansible.builtin.command:
-    chdir: /root/website/site
+    chdir: /root/website
     cmd: ./prod.sh up --build -d --remove-orphans
 - name: docker prune
   ansible.builtin.command:
