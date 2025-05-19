@@ -30,6 +30,7 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:ci
+
       - name: Login and sync Joplin Wiki notebook
         env:
           JOPLIN_PATH: ${{ secrets.JOPLIN_PATH }}
@@ -49,9 +50,17 @@ jobs:
           mv "$tmp/_resources" joaocosta.dev/public/_resources
           rm -rf "$tmp"
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          add: "joaocosta.dev"
-          default_author: github_actions
-          message: "Sync blog contents with Joplin"
-          pathspec_error_handling: exitImmediately
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+          # Check if there are any changes in the output directory
+          if ! git diff --quiet --exit-code "${ACTUAL_OUTPUT_DIR}"; then
+            echo "Changes detected in ${ACTUAL_OUTPUT_DIR}. Committing..."
+            git add joaocosta.dev
+            git commit -m "Update Joplin export: Blog ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
+            git push
+          else
+            echo "No changes to commit in ${ACTUAL_OUTPUT_DIR}."
+          fi
