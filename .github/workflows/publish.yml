@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          cache-dependency-path: "joplin_exporter/package-lock.json"
+          cache-dependency-path: "${ GITHUB_WORKSPACE }/joplin_exporter/package-lock.json"
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
