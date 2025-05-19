@@ -3,6 +3,10 @@ name: Get Blog contents from Joplin
 on:
   workflow_dispatch:
 
+env:
+  NOTEBOOK_NAME: Blog
+  OUTPUT_DIR: joaocosta.dev
+
 permissions:
   contents: write
   id-token: write
@@ -41,16 +45,11 @@ jobs:
           JOPLIN_PASSWORD: ${{ secrets.JOPLIN_PASSWORD }}
         run: |
           npm i joplin
-          npx joplin config sync.target 9
-          npx joplin config sync.9.path "$JOPLIN_PATH"
-          npx joplin config sync.9.username "$JOPLIN_USER"
-          npx joplin config sync.9.password "$JOPLIN_PASSWORD"
-          npx joplin sync
           tmp="$(mktemp -d)"
-          npx joplin export --format md --notebook Blog "$tmp"
-          rm -rf joaocosta.dev/posts joaocosta.dev/public/_resources
-          mv "$tmp/Blog" joaocosta.dev/posts
-          mv "$tmp/_resources" joaocosta.dev/public/_resources
+          joplin_exporter/export_joplin.sh "${{ env.NOTEBOOK_NAME }}" "$tmp"
+          rm -rf "${{ env.OUTPUT_DIR }}/posts" "${{ env.OUTPUT_DIR }}/public/_resources"
+          mv "$tmp/${{ env.NOTEBOOK_NAME }}" "${{ env.OUTPUT_DIR }}/posts"
+          mv "$tmp/_resources" "${{ env.OUTPUT_DIR }}/public/_resources"
           rm -rf "$tmp"
 
       - name: Commit and push changes
@@ -59,10 +58,10 @@ jobs:
           git config --global user.email "action@github.com"
 
           # Check if there are any changes in the output directory
-          if ! git diff --quiet --exit-code "${ACTUAL_OUTPUT_DIR}"; then
-            echo "Changes detected in ${ACTUAL_OUTPUT_DIR}. Committing..."
-            git add joaocosta.dev
-            git commit -m "Update Joplin export: Blog ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
+          if ! git diff --quiet --exit-code "${{ env.OUTPUT_DIR }}"; then
+            echo "Changes detected in ${{ env.OUTPUT_DIR }}. Committing..."
+            git add ${{ env.OUTPUT_DIR }}
+            git commit -m "Update Joplin export: ${{ env.NOTEBOOK_NAME }} ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
             git push
           else
             echo "No changes to commit in ${ACTUAL_OUTPUT_DIR}."
