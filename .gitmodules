@@ -1,0 +1,3 @@
+[submodule "joplin_exporter"]
+	path = joplin_exporter
+	url = https://github.com/JoaoCostaIFG/joplin_exporter.git

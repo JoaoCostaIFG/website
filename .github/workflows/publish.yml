@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: "joplin_exporter/package-lock.json"
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
@@ -37,7 +38,6 @@ jobs:
           JOPLIN_USER: ${{ secrets.JOPLIN_USER }}
           JOPLIN_PASSWORD: ${{ secrets.JOPLIN_PASSWORD }}
         run: |
-          npm i joplin
           npx joplin config sync.target 9
           npx joplin config sync.9.path "$JOPLIN_PATH"
           npx joplin config sync.9.username "$JOPLIN_USER"
