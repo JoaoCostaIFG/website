@@ -64,5 +64,5 @@ jobs:
             git commit -m "Update Joplin export: ${{ env.NOTEBOOK_NAME }} ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
             git push
           else
-            echo "No changes to commit in ${ACTUAL_OUTPUT_DIR}."
+            echo "No changes to commit in ${{ env.OUTPUT_DIR }}."
           fi
