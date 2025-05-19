@@ -32,7 +32,7 @@ export default async function Home() {
             {blogs.map((b) => <HomeEntry key={b.id} b={b} />)}
           </div>
           <div className="max-w-xl text-right">
-            <Link className="btn btn-teal" href="/blogs">
+            <Link className="btn btn-teal" href="/blog">
               Older posts
             </Link>
           </div>
