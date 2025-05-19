@@ -1,0 +1,57 @@
+name: Get Blog contents from Joplin
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: "joplin"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+      - name: Login and sync Joplin Wiki notebook
+        env:
+          JOPLIN_PATH: ${{ secrets.JOPLIN_PATH }}
+          JOPLIN_USER: ${{ secrets.JOPLIN_USER }}
+          JOPLIN_PASSWORD: ${{ secrets.JOPLIN_PASSWORD }}
+        run: |
+          npm i joplin
+          npx joplin config sync.target 9
+          npx joplin config sync.9.path "$JOPLIN_PATH"
+          npx joplin config sync.9.username "$JOPLIN_USER"
+          npx joplin config sync.9.password "$JOPLIN_PASSWORD"
+          npx joplin sync
+          tmp="$(mktemp -d)"
+          npx joplin export --format md --notebook Blog "$tmp"
+          rm -rf joaocosta.dev/posts joaocosta.dev/public/_resources
+          mv "$tmp/Blog" joaocosta.dev/posts
+          mv "$tmp/_resources" joaocosta.dev/public/_resources
+          rm -rf "$tmp"
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: "joaocosta.dev"
+          default_author: github_actions
+          message: "Sync blog contents with Joplin"
+          pathspec_error_handling: exitImmediately
