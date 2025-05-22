@@ -165,14 +165,14 @@ services:
       PAPERLESS_TIKA_ENDPOINT: http://tika:9998
     restart: unless-stopped
   paperless-broker:
-    image: docker.io/library/redis:7
+    image: docker.io/library/redis:8
     expose:
       - "6379"
     volumes:
       - redisdata:/data
     restart: unless-stopped
   gotenberg:
-    image: docker.io/gotenberg/gotenberg:8.7
+    image: docker.io/gotenberg/gotenberg:8.20
     expose:
       - "3000"
     # The gotenberg chromium route is used to convert .eml files. We do not
@@ -193,9 +193,7 @@ services:
     restart: unless-stopped
 
 volumes:
-  site_app_data:
   site_bw_data:
-  site_wiki_data:
   site_heimdall_data:
   site_mine_data:
   site_pingvin_data:
@@ -211,7 +209,3 @@ volumes:
   paperless_data:
   paperless_media:
   redisdata:
-
-secrets:
-  site_env_password:
-    file: /usr/local/etc/site_env_password
