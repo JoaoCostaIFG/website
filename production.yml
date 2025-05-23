@@ -139,6 +139,7 @@ services:
   traccar:
     image: traccar/traccar:latest
     container_name: traccar
+    volumes:
       - traccar_data:/opt/traccar/data
       - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
     expose:
