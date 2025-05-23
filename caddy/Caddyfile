@@ -29,7 +29,7 @@ croc.joaocosta.dev {
 }
 
 traccar.joaocosta.dev {
-  reverse_proxy 10.0.0.22:8082
+  reverse_proxy traccar:8082
 }
 
 # --- private/tailscale

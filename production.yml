@@ -128,12 +128,21 @@ services:
     restart: unless-stopped
   # ---
   open-webui:
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    image: ghcr.io/open-webui/open-webui:dev
     container_name: open-webui
     volumes:
       - open-webui_data:/app/backend/data
     expose:
       - "8080"
+    restart: unless-stopped
+  # ---
+  traccar:
+    image: traccar/traccar:latest
+    container_name: traccar
+      - traccar_data:/opt/traccar/data
+      - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
+    expose:
+      - "8082"
     restart: unless-stopped
   # --- paperless
   paperless:
@@ -205,6 +214,7 @@ volumes:
   open-webui_data:
   caddy_data:
   caddy_config:
+  traccar_data:
   # ---
   paperless_data:
   paperless_media:
