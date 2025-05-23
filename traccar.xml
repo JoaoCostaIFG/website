@@ -9,4 +9,13 @@
     <entry key='database.user'>sa</entry>
     <entry key='database.password'></entry>
 
+    <entry key='filter.enable'>true</entry>
+    <entry key='filter.invalid'>true</entry>
+    <entry key='filter.zero'>true</entry>
+    <entry key='filter.duplicate'>true</entry>
+    <entry key='filter.outdated'>true</entry>
+    <entry key='filter.relative'>false</entry>
+    <entry key='filter.relative'>true</entry>
+    <entry key='filter.skipLimit'>600</entry>
+
 </properties>
