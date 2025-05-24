@@ -6,7 +6,7 @@ services:
     expose:
       - "2283"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     env_file:
       - /usr/local/etc/immich.env
     volumes:
@@ -28,7 +28,7 @@ services:
     container_name: immich_machine_learning
     image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION}
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     env_file:
       - /usr/local/etc/immich.env
     volumes:

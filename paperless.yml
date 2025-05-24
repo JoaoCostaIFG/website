@@ -9,7 +9,7 @@ services:
       - "8000"
     env_file: /usr/local/etc/paperless.env
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
       - PAPERLESS_URL: "https://paperless.tail1dfda.ts.net"
       - PAPERLESS_OCR_LANGUAGES: "por eng" # languages to install
       - PAPERLESS_OCR_LANGUAGE: "por+eng" # default OCR language
@@ -34,7 +34,7 @@ services:
     expose:
       - "3000"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
     command:
@@ -52,7 +52,7 @@ services:
     expose:
       - "9998"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     restart: unless-stopped
 
 volumes:

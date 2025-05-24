@@ -11,7 +11,7 @@ services:
       - "443:443"
       - "443:443/udp"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     env_file: /usr/local/etc/caddy.env
     volumes:
       - caddy_data:/data
@@ -25,7 +25,7 @@ services:
     expose:
       - "3000"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     restart: unless-stopped
   # ---
   vaultwarden:
@@ -35,9 +35,9 @@ services:
       - "80"
       - "3012"
     environment:
-      - TZ=${TZ}
-      - WEBSOCKET_ENABLED=true
-      - EXPERIMENTAL_CLIENT_FEATURE_FLAGS=ssh-key-vault-item,ssh-agent
+      - TZ: ${TZ}
+      - WEBSOCKET_ENABLED: true
+      - EXPERIMENTAL_CLIENT_FEATURE_FLAGS: ssh-key-vault-item,ssh-agent
     volumes:
       - site_bw_data:/data
     restart: unless-stopped
@@ -48,9 +48,9 @@ services:
     expose:
       - "80"
     environment:
-      - TZ=${TZ}
-      - PUID=1000
-      - PGID=1000
+      - TZ: ${TZ}
+      - PUID: 1000
+      - PGID: 1000
     volumes:
       - site_heimdall_data:/config
     restart: unless-stopped
@@ -61,14 +61,14 @@ services:
     ports:
       - "25565:25565"
     environment:
-      - TZ=${TZ}
-      - EULA=TRUE
-      - TYPE=PURPUR
-      - VERSION=1.19.4
-      - MEMORY=6G
-      - MAX_MEMORY=10G
-      - USE_AIKAR_FLAGS=TRUE
-      - USE_SIMD_FLAGS=TRUE
+      - TZ: ${TZ}
+      - EULA: TRUE
+      - TYPE: PURPUR
+      - VERSION: 1.19.4
+      - MEMORY: 6G
+      - MAX_MEMORY: 10G
+      - USE_AIKAR_FLAGS: TRUE
+      - USE_SIMD_FLAGS: TRUE
     volumes:
       - site_mine_data:/data
     stdin_open: true
@@ -81,7 +81,7 @@ services:
     expose:
       - "3000"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     volumes:
       - site_pingvin_data:/opt/app/backend/data
       - site_pingvin_imgs:/opt/app/frontend/public/img
@@ -93,8 +93,8 @@ services:
     expose:
       - "8080"
     environment:
-      - TZ=${TZ}
-      - DOCKER_ENABLE_SECURITY=false
+      - TZ: ${TZ}
+      - DOCKER_ENABLE_SECURITY: false
     volumes:
       - site_pdf_trainingdata:/usr/share/tesseract-ocr/5/tessdata #Required for extra OCR languages
       - site_pdf_config:/configs
@@ -107,7 +107,7 @@ services:
       - "8080"
     userns_mode: "host"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
@@ -118,10 +118,10 @@ services:
     expose:
       - "22300"
     environment:
-      - TZ=${TZ}
-      - APP_BASE_URL=https://joplin.tail1dfda.ts.net
-      - APP_PORT=22300
-      - SQLITE_DATABASE=/data/db.sqlite
+      - TZ: ${TZ}
+      - APP_BASE_URL: https://joplin.tail1dfda.ts.net
+      - APP_PORT: 22300
+      - SQLITE_DATABASE: /data/db.sqlite
     volumes:
       - joplin_data:/data
     restart: unless-stopped
@@ -133,7 +133,7 @@ services:
     entrypoint: rss2email
     command: daemon -verbose rss@joaocosta.dev
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     env_file: /usr/local/etc/rss2email.env
     volumes:
       - rss2email-data:/app/.rss2email
@@ -145,7 +145,7 @@ services:
     expose:
       - "8080"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     volumes:
       - open-webui_data:/app/backend/data
     restart: unless-stopped
@@ -154,7 +154,7 @@ services:
     container_name: postgres
     image: ghcr.io/immich-app/postgres:16-vectorchord0.3.0-pgvectors0.2.1
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
       - POSTGRES_INITDB_ARGS: "--data-checksums"
     env_file:
       - /usr/local/etc/postgres.env
@@ -168,7 +168,7 @@ services:
     expose:
       - "6379"
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     volumes:
       - redisdata:/data
     healthcheck:
@@ -179,7 +179,7 @@ services:
     image: traccar/traccar:latest
     container_name: traccar
     environment:
-      - TZ=${TZ}
+      - TZ: ${TZ}
     volumes:
       - traccar_data:/opt/traccar/data
       - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
