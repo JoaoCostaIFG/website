@@ -40,7 +40,7 @@ services:
       test: redis-cli ping || exit 1
     restart: always
 
-  postgres:
+  database:
     container_name: postgres
     image: ghcr.io/immich-app/postgres:16-vectorchord0.3.0-pgvectors0.2.1
     environment:
