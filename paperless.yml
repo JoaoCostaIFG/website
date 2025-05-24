@@ -1,0 +1,60 @@
+services:
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    depends_on:
+      - redis
+      - gotenberg
+      - tika
+    expose:
+      - "8000"
+    env_file: /usr/local/etc/paperless.env
+    environment:
+      - TZ=${TZ}
+      - PAPERLESS_URL: "https://paperless.tail1dfda.ts.net"
+      - PAPERLESS_OCR_LANGUAGES: "por eng" # languages to install
+      - PAPERLESS_OCR_LANGUAGE: "por+eng" # default OCR language
+      # for reverse proxy
+      - PAPERLESS_USE_X_FORWARD_HOST: true
+      - PAPERLESS_USE_X_FORWARD_PORT: true
+      # remove digital signature for OCR (still keeps it in the original file)
+      - PAPERLESS_OCR_USER_ARGS: '{"invalidate_digital_signatures": true}'
+      - PAPERLESS_REDIS: redis://redis:6379
+      - PAPERLESS_TIKA_ENABLED: 1
+      - PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
+      - PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+    volumes:
+      - paperless_data:/usr/src/paperless/data
+      - paperless_media:/usr/src/paperless/media
+      - /paperless/export:/usr/src/paperless/export
+      - /paperless/consume:/usr/src/paperless/consume
+    restart: unless-stopped
+  gotenberg:
+    image: docker.io/gotenberg/gotenberg:8.20
+    container_name: gotenberg
+    expose:
+      - "3000"
+    environment:
+      - TZ=${TZ}
+    # The gotenberg chromium route is used to convert .eml files. We do not
+    # want to allow external content like tracking pixels or even javascript.
+    command:
+      - "gotenberg"
+      - "--chromium-disable-javascript=true"
+      - "--chromium-allow-list=file:///tmp/.*"
+    restart: unless-stopped
+  tika:
+    # - Apache Tika and Gotenberg servers are started with paperless and paperless
+    #   is configured to use these services. These provide support for consuming
+    #   Office documents (Word, Excel, Power Point and their LibreOffice counter-
+    #   parts.
+    image: docker.io/apache/tika:latest
+    container_name: tika
+    expose:
+      - "9998"
+    environment:
+      - TZ=${TZ}
+    restart: unless-stopped
+
+volumes:
+  paperless_data:
+  paperless_media:

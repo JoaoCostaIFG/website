@@ -10,11 +10,13 @@ services:
       - "80:80"
       - "443:443"
       - "443:443/udp"
+    environment:
+      - TZ=${TZ}
+    env_file: /usr/local/etc/caddy.env
     volumes:
       - caddy_data:/data
       - caddy_config:/config
       - /run/tailscale/tailscaled.sock:/run/tailscale/tailscaled.sock
-    env_file: /usr/local/etc/caddy.env
     restart: unless-stopped
   # ---
   website:
@@ -22,17 +24,20 @@ services:
     container_name: website
     expose:
       - "3000"
+    environment:
+      - TZ=${TZ}
     restart: unless-stopped
   # ---
   vaultwarden:
     image: vaultwarden/server:1.33.2
     container_name: vaultwarden
-    environment:
-      - WEBSOCKET_ENABLED=true
-      - EXPERIMENTAL_CLIENT_FEATURE_FLAGS=ssh-key-vault-item,ssh-agent
     expose:
       - "80"
       - "3012"
+    environment:
+      - TZ=${TZ}
+      - WEBSOCKET_ENABLED=true
+      - EXPERIMENTAL_CLIENT_FEATURE_FLAGS=ssh-key-vault-item,ssh-agent
     volumes:
       - site_bw_data:/data
     restart: unless-stopped
@@ -40,20 +45,23 @@ services:
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    volumes:
-      - site_heimdall_data:/config
     expose:
       - "80"
+    environment:
+      - TZ=${TZ}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - site_heimdall_data:/config
     restart: unless-stopped
   # ---
   minecraft:
     image: itzg/minecraft-server:java21-graalvm
     container_name: minecraft
+    ports:
+      - "25565:25565"
     environment:
+      - TZ=${TZ}
       - EULA=TRUE
       - TYPE=PURPUR
       - VERSION=1.19.4
@@ -63,8 +71,6 @@ services:
       - USE_SIMD_FLAGS=TRUE
     volumes:
       - site_mine_data:/data
-    ports:
-      - "25565:25565"
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -74,6 +80,8 @@ services:
     container_name: pingvin
     expose:
       - "3000"
+    environment:
+      - TZ=${TZ}
     volumes:
       - site_pingvin_data:/opt/app/backend/data
       - site_pingvin_imgs:/opt/app/frontend/public/img
@@ -84,11 +92,12 @@ services:
     container_name: pdf
     expose:
       - "8080"
+    environment:
+      - TZ=${TZ}
+      - DOCKER_ENABLE_SECURITY=false
     volumes:
       - site_pdf_trainingdata:/usr/share/tesseract-ocr/5/tessdata #Required for extra OCR languages
       - site_pdf_config:/configs
-    environment:
-      - DOCKER_ENABLE_SECURITY=false
     restart: unless-stopped
   # ---
   dozzle:
@@ -97,6 +106,8 @@ services:
     expose:
       - "8080"
     userns_mode: "host"
+    environment:
+      - TZ=${TZ}
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
@@ -107,6 +118,7 @@ services:
     expose:
       - "22300"
     environment:
+      - TZ=${TZ}
       - APP_BASE_URL=https://joplin.tail1dfda.ts.net
       - APP_PORT=22300
       - SQLITE_DATABASE=/data/db.sqlite
@@ -121,7 +133,7 @@ services:
     entrypoint: rss2email
     command: daemon -verbose rss@joaocosta.dev
     environment:
-      - TZ=UTC
+      - TZ=${TZ}
     env_file: /usr/local/etc/rss2email.env
     volumes:
       - rss2email-data:/app/.rss2email
@@ -130,76 +142,49 @@ services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:dev
     container_name: open-webui
-    volumes:
-      - open-webui_data:/app/backend/data
     expose:
       - "8080"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - open-webui_data:/app/backend/data
+    restart: unless-stopped
+  # ---
+  database:
+    container_name: postgres
+    image: ghcr.io/immich-app/postgres:16-vectorchord0.3.0-pgvectors0.2.1
+    environment:
+      - TZ=${TZ}
+      - POSTGRES_INITDB_ARGS: "--data-checksums"
+    env_file:
+      - /usr/local/etc/postgres.env
+    volumes:
+      - immich-db:/var/lib/postgresql/data
+    restart: always
+  # ---
+  redis:
+    container_name: redis
+    image: docker.io/redis:8-alpine
+    expose:
+      - "6379"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: redis-cli ping || exit 1
     restart: unless-stopped
   # ---
   traccar:
     image: traccar/traccar:latest
     container_name: traccar
+    environment:
+      - TZ=${TZ}
     volumes:
       - traccar_data:/opt/traccar/data
       - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
     expose:
       - "8082"
-    restart: unless-stopped
-  # --- paperless
-  paperless:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
-    depends_on:
-      - paperless-broker
-      - gotenberg
-      - tika
-    expose:
-      - "8000"
-    volumes:
-      - paperless_data:/usr/src/paperless/data
-      - paperless_media:/usr/src/paperless/media
-      - /paperless/export:/usr/src/paperless/export
-      - /paperless/consume:/usr/src/paperless/consume
-    env_file: /usr/local/etc/paperless.env
-    environment:
-      PAPERLESS_URL: "https://paperless.tail1dfda.ts.net"
-      PAPERLESS_OCR_LANGUAGES: "por eng" # languages to install
-      PAPERLESS_OCR_LANGUAGE: "por+eng" # default OCR language
-      # for reverse proxy
-      PAPERLESS_USE_X_FORWARD_HOST: true
-      PAPERLESS_USE_X_FORWARD_PORT: true
-      # remove digital signature for OCR (still keeps it in the original file)
-      PAPERLESS_OCR_USER_ARGS: '{"invalidate_digital_signatures": true}'
-      PAPERLESS_REDIS: redis://paperless-broker:6379
-      PAPERLESS_TIKA_ENABLED: 1
-      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
-      PAPERLESS_TIKA_ENDPOINT: http://tika:9998
-    restart: unless-stopped
-  paperless-broker:
-    image: docker.io/library/redis:8
-    expose:
-      - "6379"
-    volumes:
-      - redisdata:/data
-    restart: unless-stopped
-  gotenberg:
-    image: docker.io/gotenberg/gotenberg:8.20
-    expose:
-      - "3000"
-    # The gotenberg chromium route is used to convert .eml files. We do not
-    # want to allow external content like tracking pixels or even javascript.
-    command:
-      - "gotenberg"
-      - "--chromium-disable-javascript=true"
-      - "--chromium-allow-list=file:///tmp/.*"
-    restart: unless-stopped
-  tika:
-    # - Apache Tika and Gotenberg servers are started with paperless and paperless
-    #   is configured to use these services. These provide support for consuming
-    #   Office documents (Word, Excel, Power Point and their LibreOffice counter-
-    #   parts.
-    image: docker.io/apache/tika:latest
-    expose:
-      - "9998"
     restart: unless-stopped
 
 volumes:
@@ -215,8 +200,6 @@ volumes:
   open-webui_data:
   caddy_data:
   caddy_config:
-  traccar_data:
-  # ---
-  paperless_data:
-  paperless_media:
   redisdata:
+  immich-db:
+  traccar_data:

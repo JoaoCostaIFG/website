@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker compose -f production.yml -f immich.yml --env-file /usr/local/etc/immich.env "$@"
+docker compose -f production.yml -f immich.yml -f paperless.yml "$@"
