@@ -96,3 +96,9 @@ vaultwarden.tail1dfda.ts.net {
   reverse_proxy /notifications/hub/* vaultwarden:3012
   reverse_proxy /* vaultwarden:80
 }
+
+searxng.tail1dfda.ts.net {
+  bind tailscale/searxng
+  tailscale_auth
+  reverse_proxy searxng:8080
+}

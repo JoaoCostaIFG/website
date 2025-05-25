@@ -226,6 +226,17 @@ resource "cloudflare_list" "root_redirects" {
     }
     comment = "vaultwarden"
   }
+
+  item {
+    value {
+      redirect {
+        source_url  = "searxng.joaocosta.dev"
+        target_url  = "https://searxng.tail1dfda.ts.net"
+        status_code = 301
+      }
+    }
+    comment = "searxng"
+  }
 }
 
 

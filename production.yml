@@ -151,8 +151,8 @@ services:
     restart: unless-stopped
   # ---
   database:
-    container_name: postgres
     image: ghcr.io/immich-app/postgres:16-vectorchord0.3.0-pgvectors0.2.1
+    container_name: postgres
     environment:
       TZ: ${TZ}
       POSTGRES_INITDB_ARGS: "--data-checksums"
@@ -163,8 +163,8 @@ services:
     restart: always
   # ---
   redis:
-    container_name: redis
     image: docker.io/redis:8-alpine
+    container_name: redis
     expose:
       - "6379"
     environment:
@@ -185,6 +185,15 @@ services:
       - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
     expose:
       - "8082"
+    restart: unless-stopped
+  # ---
+  searxng:
+    image: docker.io/searxng/searxng:latest
+    container_name: searxng
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    expose:
+      - "8080"
     restart: unless-stopped
 
 volumes:
