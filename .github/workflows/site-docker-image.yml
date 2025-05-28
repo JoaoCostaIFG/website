@@ -4,8 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches: ["master"]
+    paths:
+      - "joaocosta.dev/**"
   pull_request:
     branches: ["master"]
+    paths:
+      - "joaocosta.dev/**"
 
 jobs:
   website_docker:

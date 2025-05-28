@@ -3,8 +3,12 @@ name: Caddy Docker Image CI
 on:
   push:
     branches: ["master"]
+    paths:
+      - "caddy/**"
   pull_request:
     branches: ["master"]
+    paths:
+      - "caddy/**"
 
 jobs:
   caddy_docker:
