@@ -50,7 +50,6 @@ jobs:
           ls -la "$tmp/${{ env.NOTEBOOK_NAME }}"
           rm -rf "${{ env.OUTPUT_DIR }}/posts" "${{ env.OUTPUT_DIR }}/public/_resources"
           mv "$tmp/${{ env.NOTEBOOK_NAME }}" "${{ env.OUTPUT_DIR }}/posts"
-          ls -la "${{ env.OUTPUT_DIR }}/posts"
           mv "$tmp/_resources" "${{ env.OUTPUT_DIR }}/public/_resources"
           rm -rf "$tmp"
 
@@ -60,9 +59,9 @@ jobs:
           git config --global user.email "action@github.com"
 
           # Check if there are any changes in the output directory
-          if ! git diff --quiet --exit-code "${{ env.OUTPUT_DIR }}"; then
+          git add ${{ env.OUTPUT_DIR }}
+          if ! git diff --staged --quiet --exit-code "${{ env.OUTPUT_DIR }}"; then
             echo "Changes detected in ${{ env.OUTPUT_DIR }}. Committing..."
-            git add ${{ env.OUTPUT_DIR }}
             git commit -m "Update Joplin export: ${{ env.NOTEBOOK_NAME }} ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))"
             git push
           else
