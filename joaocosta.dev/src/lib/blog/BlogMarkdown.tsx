@@ -1,5 +1,7 @@
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm' // support for GitHub Flavored Markdown
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
 import rangeParser from 'parse-numeric-range';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -91,6 +93,7 @@ export default function BlogMarkdown({ markdown }: { markdown: string }) {
   return (
     <Markdown
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings]}
       components={MarkdownComponents}
     >
       {markdown}
