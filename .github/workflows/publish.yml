@@ -47,9 +47,10 @@ jobs:
           npm i joplin
           tmp="$(mktemp -d)"
           joplin_exporter/export_joplin.sh "${{ env.NOTEBOOK_NAME }}" "$tmp"
-          ls -la "$tmp/Blog"
+          ls -la "$tmp/${{ env.NOTEBOOK_NAME }}"
           rm -rf "${{ env.OUTPUT_DIR }}/posts" "${{ env.OUTPUT_DIR }}/public/_resources"
           mv "$tmp/${{ env.NOTEBOOK_NAME }}" "${{ env.OUTPUT_DIR }}/posts"
+          ls -la "${{ env.OUTPUT_DIR }}/posts"
           mv "$tmp/_resources" "${{ env.OUTPUT_DIR }}/public/_resources"
           rm -rf "$tmp"
 
