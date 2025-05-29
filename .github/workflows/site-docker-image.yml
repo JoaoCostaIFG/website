@@ -2,6 +2,12 @@ name: Website Docker Image CI
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Get Blog contents from Joplin"]
+    types:
+      - completed
+    branches:
+      - master
   push:
     branches: ["master"]
     paths:
