@@ -182,7 +182,7 @@ services:
       TZ: ${TZ}
     volumes:
       - traccar_data:/opt/traccar/data
-      - /usr/local/etc/traccar.xml:/opt/traccar/conf/traccar.xml:ro
+      - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
     expose:
       - "8082"
     restart: unless-stopped
