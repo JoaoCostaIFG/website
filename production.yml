@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
   # ---
   vaultwarden:
-    image: vaultwarden/server:1.33.2
+    image: vaultwarden/server:1.34.1
     container_name: vaultwarden
     expose:
       - "80"
@@ -76,7 +76,7 @@ services:
     restart: unless-stopped
   # ---
   pingvin-share:
-    image: stonith404/pingvin-share
+    image: stonith404/pingvin-share:latest
     container_name: pingvin
     expose:
       - "3000"
