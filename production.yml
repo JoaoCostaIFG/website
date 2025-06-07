@@ -55,24 +55,24 @@ services:
       - site_heimdall_data:/config
     restart: unless-stopped
   # ---
-  minecraft:
-    image: itzg/minecraft-server:java21-graalvm
-    container_name: minecraft
+  crafty:
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    container_name: crafty
+    expose:
+      - "8443:8443" # HTTPS
+      - "8123:8123" # DYNMAP
     ports:
-      - "25565:25565"
+      - "19132:19132/udp" # BEDROCK
+      - "25500-25600:25500-25600" # MC SERV PORT RANGE
     environment:
       TZ: ${TZ}
-      EULA: TRUE
-      TYPE: PURPUR
-      VERSION: 1.19.4
-      MEMORY: 6G
-      MAX_MEMORY: 10G
-      USE_AIKAR_FLAGS: TRUE
-      USE_SIMD_FLAGS: TRUE
     volumes:
-      - site_mine_data:/data
-    stdin_open: true
-    tty: true
+      - crafty-backups:/crafty/backups
+      - crafty-servers:/crafty/servers
+      - crafty-config:/crafty/app/config
+      # It's ok/desirable for these to be lost on container restart
+      #- ./crafty/logs:/crafty/logs
+      #- ./crafty/import:/crafty/import
     restart: unless-stopped
   # ---
   pingvin-share:
@@ -201,11 +201,13 @@ services:
 volumes:
   site_bw_data:
   site_heimdall_data:
-  site_mine_data:
   site_pingvin_data:
   site_pingvin_imgs:
   site_pdf_trainingdata:
   site_pdf_config:
+  crafty-backups:
+  crafty-servers:
+  crafty-config:
   joplin_data:
   rss2email-data:
   open-webui_data:
