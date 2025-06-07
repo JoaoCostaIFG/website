@@ -190,6 +190,8 @@ services:
   searxng:
     image: docker.io/searxng/searxng:latest
     container_name: searxng
+    environment:
+      TZ: ${TZ}
     volumes:
       - ./searxng:/etc/searxng:rw
     expose:
