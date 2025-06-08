@@ -106,15 +106,15 @@ searxng.tail1dfda.ts.net {
 crafty.tail1dfda.ts.net {
 	bind tailscale/crafty
 	tailscale_auth
-	reverse_proxy https://crafty:8443
+	reverse_proxy https://crafty:8443 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
 }
 
 dynmap.tail1dfda.ts.net {
 	bind tailscale/dynmap
 	tailscale_auth
-	reverse_proxy crafty:8123 {
-		transport http {
-			tls_insecure_skip_verify
-		}
-	}
+	reverse_proxy crafty:8123
 }
