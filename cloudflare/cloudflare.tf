@@ -237,6 +237,28 @@ resource "cloudflare_list" "root_redirects" {
     }
     comment = "searxng"
   }
+
+  item {
+    value {
+      redirect {
+        source_url  = "crafty.joaocosta.dev"
+        target_url  = "https://crafty.tail1dfda.ts.net"
+        status_code = 301
+      }
+    }
+    comment = "CraftyController"
+  }
+
+  item {
+    value {
+      redirect {
+        source_url  = "dynmap.joaocosta.dev"
+        target_url  = "https://dynmap.tail1dfda.ts.net"
+        status_code = 301
+      }
+    }
+    comment = "Minecraft Dynmap"
+  }
 }
 
 
