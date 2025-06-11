@@ -38,6 +38,7 @@ services:
       TZ: ${TZ}
       WEBSOCKET_ENABLED: true
       EXPERIMENTAL_CLIENT_FEATURE_FLAGS: ssh-key-vault-item,ssh-agent
+      DOMAIN: https://vaultwarden.tail1dfda.ts.net
     volumes:
       - site_bw_data:/data
     restart: unless-stopped
