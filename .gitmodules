@@ -1,6 +1,3 @@
 [submodule "joplin_exporter"]
 	path = deps/joplin_exporter
 	url = https://github.com/JoaoCostaIFG/joplin_exporter.git
-[submodule "deps/tailscale"]
-	path = deps/tailscale
-	url = https://github.com/tailscale/tailscale.git
