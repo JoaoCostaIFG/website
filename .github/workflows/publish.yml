@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           # cache: "npm"
-          # cache-dependency-path: joplin_exporter/package-lock.json
+          # cache-dependency-path: deps/joplin_exporter/package-lock.json
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
@@ -46,7 +46,7 @@ jobs:
         run: |
           npm i joplin
           tmp="$(mktemp -d)"
-          joplin_exporter/export_joplin.sh "${{ env.NOTEBOOK_NAME }}" "$tmp"
+          deps/joplin_exporter/export_joplin.sh "${{ env.NOTEBOOK_NAME }}" "$tmp"
           ls -la "$tmp/${{ env.NOTEBOOK_NAME }}"
           rm -rf "${{ env.OUTPUT_DIR }}/posts" "${{ env.OUTPUT_DIR }}/public/_resources"
           mv "$tmp/${{ env.NOTEBOOK_NAME }}" "${{ env.OUTPUT_DIR }}/posts"
