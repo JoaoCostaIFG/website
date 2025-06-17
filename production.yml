@@ -19,6 +19,15 @@ services:
       - /run/tailscale/tailscaled.sock:/run/tailscale/tailscaled.sock
     restart: unless-stopped
   # ---
+  tsidp:
+    image: ghcr.io/arunoruto/tsidp:latest
+    container_name: tsidp
+    hostname: tsidp
+    environment:
+      TS_USERSPACE: false
+      VERBOSE: false
+    env_file: /usr/local/etc/tsidp.env
+  # ---
   website:
     image: ghcr.io/joaocostaifg/website:master
     container_name: website
