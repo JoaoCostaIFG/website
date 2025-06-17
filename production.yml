@@ -24,7 +24,7 @@ services:
     container_name: tsidp
     hostname: tsidp
     environment:
-      TS_HOSTNAME: id
+      TS_HOSTNAME: idp
       TS_USERSPACE: false
       VERBOSE: false
     env_file: /usr/local/etc/tsidp.env
