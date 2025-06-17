@@ -24,9 +24,12 @@ services:
     container_name: tsidp
     hostname: tsidp
     environment:
+      TS_HOSTNAME: id
       TS_USERSPACE: false
       VERBOSE: false
     env_file: /usr/local/etc/tsidp.env
+    volumes:
+      - tsidp-state:/var/lib/tsidp
   # ---
   website:
     image: ghcr.io/joaocostaifg/website:master
@@ -223,6 +226,7 @@ volumes:
   open-webui_data:
   caddy_data:
   caddy_config:
+  tsidp-state:
   redisdata:
   immich-db:
   traccar_data:
