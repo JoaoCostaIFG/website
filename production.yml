@@ -168,6 +168,7 @@ services:
       - "8080"
     environment:
       TZ: ${TZ}
+    env_file: /usr/local/etc/openwebui.env
     volumes:
       - open-webui_data:/app/backend/data
     restart: unless-stopped
