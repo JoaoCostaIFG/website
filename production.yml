@@ -19,17 +19,26 @@ services:
       - /run/tailscale/tailscaled.sock:/run/tailscale/tailscaled.sock
     restart: unless-stopped
   # ---
-  tsidp:
-    image: ghcr.io/arunoruto/tsidp:latest
-    container_name: tsidp
-    hostname: tsidp
-    environment:
-      TS_HOSTNAME: idp
-      TS_USERSPACE: false
-      VERBOSE: false
-    env_file: /usr/local/etc/tsidp.env
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:v1
+    expose:
+      - "1411"
     volumes:
-      - tsidp-state:/var/lib/tsidp
+      - pocketid-data:/app/data
+    environment:
+      APP_URL: "https://id.joaocosta.dev"
+      TRUST_PROXY: true
+      PUID: 1000
+      PGID: 1000
+      # for IP geo location
+      # MAXMIND_LICENSE_KEY:
+    restart: unless-stopped
+    healthcheck:
+      test: "curl -f http://localhost:1411/healthz"
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
   # ---
   website:
     image: ghcr.io/joaocostaifg/website:master
@@ -218,6 +227,7 @@ volumes:
   site_pingvin_imgs:
   site_pdf_trainingdata:
   site_pdf_config:
+  pocketid-data:
   crafty-backups:
   crafty-servers:
   crafty-config:
@@ -226,7 +236,6 @@ volumes:
   open-webui_data:
   caddy_data:
   caddy_config:
-  tsidp-state:
   redisdata:
   immich-db:
   traccar_data:

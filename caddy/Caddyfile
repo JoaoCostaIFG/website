@@ -20,6 +20,10 @@ joaocosta.dev {
 	reverse_proxy website:3000
 }
 
+id.joaocosta.dev {
+	reverse_proxy pocket-id:1411
+}
+
 zulip.joaocosta.dev {
 	reverse_proxy http://10.0.0.24
 }
