@@ -36,6 +36,10 @@ traccar.joaocosta.dev {
 	reverse_proxy traccar:8082
 }
 
+wiki.joaocosta.dev {
+  redir https://joaocostaifg.github.io/wiki/{uri} permanent
+}
+
 # --- private/tailscale
 
 ai.tail1dfda.ts.net {
