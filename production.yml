@@ -19,6 +19,12 @@ services:
       - /run/tailscale/tailscaled.sock:/run/tailscale/tailscaled.sock
     restart: unless-stopped
   # ---
+  cloudflared:
+    image: cloudflare/cloudflared
+    env_file: /usr/local/etc/cloudflared.env
+    command: tunnel run
+    restart: unless-stopped
+  # ---
   pocket-id:
     image: ghcr.io/pocket-id/pocket-id:v1
     expose:
