@@ -1,8 +1,24 @@
 import { notFound } from "next/navigation"
 import Markdown from 'react-markdown'
+import { Metadata } from 'next';
 import { readingTime } from '@/lib/word-utils';
 import BlogMarkdown from "@/lib/blog/BlogMarkdown";
 import { getPostById, getSortedPostsData } from "@/lib/posts";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+
+  const b = getPostById(id)
+  if (!b) {
+    notFound()
+  }
+
+  // return an object
+  return {
+    title: `${b.title} | Joao Costa`,
+    description: b.intro,
+  };
+}
 
 export async function generateStaticParams() {
   const posts = getSortedPostsData()
