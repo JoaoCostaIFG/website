@@ -1,0 +1,28 @@
+---
+- name: Install Caddy
+  ansible.builtin.apt:
+    name: caddy
+    state: present
+    update_cache: yes
+
+- name: Ensure Caddy service is enabled
+  ansible.builtin.systemd:
+    name: caddy
+    enabled: yes
+    state: started
+
+- name: Configure Caddyfile
+  ansible.builtin.copy:
+    dest: /etc/caddy/Caddyfile
+    content: |
+      :80 {
+      	reverse_proxy https://10.0.0.30:8006 {
+      		transport http {
+      			tls_insecure_skip_verify
+      		}
+      	}
+      }
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart Caddy

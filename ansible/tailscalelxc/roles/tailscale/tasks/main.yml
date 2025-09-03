@@ -1,0 +1,28 @@
+---
+- name: Install prerequisites for Tailscale
+  ansible.builtin.apt:
+    name: curl
+    state: present
+
+- name: Install tailscale
+  ansible.builtin.shell:
+    cmd: curl -fsSL https://tailscale.com/install.sh | sh
+    creates: /usr/bin/tailscale
+
+- name: Create .pve-ignore.resolv.conf for Tailscale DNS
+  ansible.builtin.file:
+    path: /etc/.pve-ignore.resolv.conf
+    state: touch
+    mode: '0644'
+
+- name: Check tailscale serve status
+  ansible.builtin.command:
+    cmd: /usr/bin/tailscale serve status
+  register: serve_status
+  changed_when: false
+  failed_when: false
+
+- name: Add tailscale serve service
+  ansible.builtin.command:
+    cmd: /usr/bin/tailscale serve --bg http://localhost:80
+  when: "'http://localhost:80' not in serve_status.stdout"

@@ -1,0 +1,8 @@
+---
+- name: joaocosta.dev tailscale jump box (ifgsv) Ansible playbook
+  hosts: joaocostadev_tailscalelxc
+  become: no
+
+  roles:
+    - tailscale
+    - caddy

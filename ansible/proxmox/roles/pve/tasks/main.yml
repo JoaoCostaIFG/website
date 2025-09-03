@@ -1,16 +1,5 @@
 ---
-- name: Config apt sources
-  ansible.builtin.copy:
-    src: sources.list
-    dest: /etc/apt/sources.list
-    owner: root
-    group: root
-    mode: '0644'
-- name: Update packages
-  ansible.builtin.apt:
-    update_cache: true
-    upgrade: true
-- name: Config kernel params
+- name: Config kernel params for sata controller pass-through
   ansible.builtin.copy:
     src: cmdline
     dest: /etc/kernel/cmdline
