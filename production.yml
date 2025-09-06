@@ -78,6 +78,7 @@ services:
     environment:
       TZ: ${TZ}
       LOG_TARGETS: stdout
+      HOMEPAGE_ALLOWED_HOSTS: tail.tail1dfda.ts.net
     volumes:
       - ./homepage:/app/config
     restart: unless-stopped
