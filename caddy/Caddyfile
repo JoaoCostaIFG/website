@@ -93,7 +93,7 @@ pdf.tail1dfda.ts.net {
 tail.tail1dfda.ts.net {
 	bind tailscale/tail
 	tailscale_auth
-	reverse_proxy heimdall:80
+	reverse_proxy homepage:3000
 }
 
 vaultwarden.tail1dfda.ts.net {

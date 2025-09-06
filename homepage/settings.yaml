@@ -1,0 +1,30 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+title: ifgsv homepage
+theme: dark
+color: zinc
+
+layout:
+  Server:
+    header: false
+    style: row
+    columns: 4
+  Documents & Files:
+    style: col
+  Apps:
+    style: col
+  Infrastructure:
+    style: row
+    columns: 4
+
+quicklaunch:
+  searchDescriptions: true
+
+showStats: true
+statusStyle: "dot"
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey

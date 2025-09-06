@@ -1,0 +1,99 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Server:
+    - Proxmox:
+        icon: proxmox
+        href: https://ifgsv.tail1dfda.ts.net/
+        description: ifgsv proxmox
+    - PBS:
+        icon: proxmox
+        href: https://pbs.tail1dfda.ts.net/
+        description: Proxmox Backup Server
+    - Mokerlink:
+        icon: mdi-server-network
+        href: http://10.0.0.2/
+        description: Mokerlink 10GB switch
+    - Openwrt:
+        icon: openwrt
+        href: https://openwrt.tail1dfda.ts.net/
+        description: Router 10.0.0.1
+
+- Documents & Files:
+    - Immich:
+        icon: immich
+        href: https://immich.tail1dfda.ts.net/
+        description: Photos/videos gallery
+    - PDF:
+        icon: stirling-pdf
+        href: https://pdf.tail1dfda.ts.net/
+        description: PDF file editing tools
+    - PaperlessNgx:
+        icon: paperless-ngx
+        href: https://paperless.tail1dfda.ts.net/
+        description: Document storage and indexer
+    - FileBrowser:
+        icon: filebrowser
+        href: https://files.tail1dfda.ts.net/
+        description: TrueNas file browser
+    - Pingvin Share:
+        icon: pingvin-share
+        href: https://croc.joaocosta.dev
+        description: File sharing upload/download (croc)
+    - Joplin:
+        icon: Joplin
+        href: https://joplin.tail1dfda.ts.net/
+        description: Joplin notebook file server
+
+- Apps:
+    - Open WebUI:
+        icon: open-webui
+        href: https://ai.tail1dfda.ts.net/
+        description: AI interface
+    - Vaultwarden:
+        icon: bitwarden
+        href: https://vaultwarden.tail1dfda.ts.net/
+        description: Bitwarden password manager
+    - Zulip:
+        icon: zulip
+        href: https://zulip.joaocosta.dev/
+        description: Chat server
+    - Traccar:
+        icon: traccar
+        href: https://traccar.joaocosta.dev/
+        description: Vehicle/person tracking software
+    - Crafty Controller:
+        icon: crafty-controller
+        href: https://crafty.tail1dfda.ts.net/
+        description: Minecraft server management
+    - Dynmap:
+        icon: mdi-map
+        href: https://dynmap.tail1dfda.ts.net/
+        description: Minecraft server map
+
+- Infrastructure:
+    - Pocket Id:
+        icon: pocket-id
+        href: https://id.joaocosta.dev/
+        description: Open-id Connect (oidc sso)
+    - Truenas:
+        icon: truenas
+        href: https://truenas.tail1dfda.ts.net/
+        description: NAS software
+    - Home Assistant:
+        icon: home-assistant
+        href: https://ha.tail1dfda.ts.net/
+        description: Home automation/IOT manager
+    - Dozzle:
+        icon: dozzle
+        href: https://dozzle.tail1dfda.ts.net/
+        description: Real-time log viewer for docker containers
+    - Adguard Home:
+        icon: adguard-home
+        href: http://openwrt.tail1dfda.ts.net:8080
+        description: Ad blocking DNS software
+    - Searxng:
+        icon: searxng
+        href: https://searxng.tail1dfda.ts.net/
+        description: Meta search engine

@@ -70,17 +70,16 @@ services:
       - site_bw_data:/data
     restart: unless-stopped
   # ---
-  heimdall:
-    image: lscr.io/linuxserver/heimdall:latest
-    container_name: heimdall
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
     expose:
-      - "80"
+      - "3000"
     environment:
       TZ: ${TZ}
-      PUID: 1000
-      PGID: 1000
+      LOG_TARGETS: stdout
     volumes:
-      - site_heimdall_data:/config
+      - ./homepage:/app/config
     restart: unless-stopped
   # ---
   crafty:
@@ -229,7 +228,6 @@ services:
 
 volumes:
   site_bw_data:
-  site_heimdall_data:
   site_pingvin_data:
   site_pingvin_imgs:
   site_pdf_trainingdata:

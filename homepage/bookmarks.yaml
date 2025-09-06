@@ -1,0 +1,42 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Developer:
+    - Github do Irao:
+        - abbr: GH
+          href: https://github.com/JoaoCostaIFG
+    - Tailscale:
+        - abbr: TS
+          href: https://login.tailscale.com/admin/
+    - Cloudflare:
+        - abbr: CF
+          href: https://dash.cloudflare.com/login
+    - Namecheap:
+        - abbr: NC
+          href: https://www.namecheap.com/
+
+- Social:
+    - Hackernews:
+        - abbr: HN
+          href: https://news.ycombinator.com/
+    - Lobsters:
+        - abbr: LB
+          href: https://lobste.rs/
+    - Blog:
+        - abbr: JC
+          href: https://joaocosta.dev
+    - Wiki:
+        - abbr: W
+          href: https://wiki.joaocosta.dev
+
+- Tools:
+    - Kagi Assistant:
+        - abbr: KA
+          href: https://kagi.com/assistant
+    - Kagi Translate:
+        - abbr: TR
+          href: https://translate.kagi.com/
+    - Kagi Summarizer:
+        - abbr: SUM
+          href: https://kagi.com/summarizer
