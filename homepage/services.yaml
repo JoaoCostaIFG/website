@@ -1,6 +1,10 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/services/
+# Icons:
+# https://dashboardicons.com/
+# https://pictogrammers.com/
+# https://simpleicons.org/
 
 - Server:
     - Proxmox:
@@ -42,7 +46,7 @@
         href: https://croc.joaocosta.dev
         description: File sharing upload/download (croc)
     - Joplin:
-        icon: Joplin
+        icon: joplin
         href: https://joplin.tail1dfda.ts.net/
         description: Joplin notebook file server
 
