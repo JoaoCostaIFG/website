@@ -91,7 +91,7 @@
         description: Real-time log viewer for docker containers
     - Adguard Home:
         icon: adguard-home
-        href: http://openwrt.tail1dfda.ts.net:8080
+        href: https://dns.tail1dfda.ts.net
         description: Ad blocking DNS software
     - Searxng:
         icon: searxng

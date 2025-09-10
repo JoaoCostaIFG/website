@@ -15,6 +15,12 @@
     - Namecheap:
         - abbr: NC
           href: https://www.namecheap.com/
+    - Arch packages:
+        - abbr: AP
+          href: https://archlinux.org/packages/
+    - AUR:
+        - abbr: AUR
+          href: https://aur.archlinux.org/
 
 - Social:
     - Hackernews:

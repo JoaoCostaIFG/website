@@ -25,7 +25,7 @@ id.joaocosta.dev {
 }
 
 zulip.joaocosta.dev {
-	reverse_proxy http://10.0.0.24
+	reverse_proxy http://zulip.lan
 }
 
 croc.joaocosta.dev {
@@ -50,7 +50,7 @@ ai.tail1dfda.ts.net {
 
 dns.tail1dfda.ts.net {
 	bind tailscale/dns
-	reverse_proxy 10.0.0.1:8080
+	reverse_proxy openwrt.lan:8080
 }
 
 dozzle.tail1dfda.ts.net {
@@ -62,7 +62,7 @@ dozzle.tail1dfda.ts.net {
 files.tail1dfda.ts.net {
 	bind tailscale/files
 	tailscale_auth
-	reverse_proxy 10.0.0.21:30044
+	reverse_proxy truenas.lan:30044
 }
 
 immich.tail1dfda.ts.net {
