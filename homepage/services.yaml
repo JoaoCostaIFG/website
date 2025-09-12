@@ -101,3 +101,7 @@
         icon: searxng
         href: https://searxng.tail1dfda.ts.net/
         description: Meta search engine
+    - ifgsvkvm:
+        icon: sipeed
+        href: https://ifgsvkvm.tail1dfda.ts.net/
+        description: NanoKVM kvm connected to ifgsv (also 10.0.0.221)
