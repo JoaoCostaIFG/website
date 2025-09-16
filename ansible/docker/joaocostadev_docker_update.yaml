@@ -10,8 +10,8 @@
     - name: Restart services
       command:
         chdir: /root/website/site
-        cmd: ./prod.sh up --force-recreate --build -d
+        cmd: ./prod.sh up --force-recreate --remove-orphans --build -d
     - name: Clean old/unused images
       command:
         chdir: /root/website/site
-        cmd: docker image prune -f
+        cmd: docker image prune -fa
