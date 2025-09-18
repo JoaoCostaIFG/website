@@ -21,6 +21,9 @@
     - AUR:
         - abbr: AUR
           href: https://aur.archlinux.org/
+    - Arch Archive:
+        - abbr: AA
+          href: https://archive.archlinux.org/
 
 - Social:
     - Hackernews:
