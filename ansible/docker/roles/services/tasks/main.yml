@@ -13,6 +13,55 @@
     owner: root
     group: root
     mode: '0600'
+- name: Copy caddy.env file
+  ansible.builtin.copy:
+    src: caddy.env
+    dest: /usr/local/etc/caddy.env
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy cloudflared.env file
+  ansible.builtin.copy:
+    src: cloudflared.env
+    dest: /usr/local/etc/cloudflared.env
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy openwebui.env file
+  ansible.builtin.copy:
+    src: openwebui.env
+    dest: /usr/local/etc/openwebui.env
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy postgres.env file
+  ansible.builtin.copy:
+    src: postgres.env
+    dest: /usr/local/etc/postgres.env
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy rss2email.env file
+  ansible.builtin.copy:
+    src: rss2email.env
+    dest: /usr/local/etc/rss2email.env
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy traccar.xml file
+  ansible.builtin.copy:
+    src: traccar.xml
+    dest: /usr/local/etc/traccar.xml
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy immich.env file
+  ansible.builtin.copy:
+    src: immich.env
+    dest: /usr/local/etc/immich.env
+    owner: root
+    group: root
+    mode: '0644'
 - name: pull containers
   ansible.builtin.command:
     chdir: /root/website
