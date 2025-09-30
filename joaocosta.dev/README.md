@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# joaocosta.dev Blog
+
+This is the source code for my personal blog,
+[joaocosta.dev](https://joaocosta.dev). It's a statically generated site built
+with Next.js and styled with Tailwind CSS.
+
+## Content Management
+
+Blog posts are written and managed in Joplin. A GitHub Action runs periodically
+to pull the latest content from Joplin and commit it to this repository.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - Framework.
+- [TypeScript](https://www.typescriptlang.org/) - Lang.
+- [Tailwind CSS](https://tailwindcss.com/) - Styling framework.
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) - For parsing
+  front-matter from markdown files.
+- [react-markdown](https://github.com/remarkjs/react-markdown) - For rendering
+  Markdown files.
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+- [pnpm](https://pnpm.io/installation)
+
+### Installation
+
+1. Clone the repo:
+
+   ```sh
+   git clone https://github.com/JoaoCostaIFG/website.git
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   pnpm install
+   ```
+
+### Running the Development Server
+
+To view the site in development mode, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the
+result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building the Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To build the site for production, run:
 
-## Learn More
+```bash
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will create a static, production-ready build in the `.next` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Docker
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployments are made using docker. There's a action building the docker image
+for this site.
