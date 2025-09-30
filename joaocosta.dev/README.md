@@ -6,8 +6,12 @@ with Next.js and styled with Tailwind CSS.
 
 ## Content Management
 
-Blog posts are written and managed in Joplin. A GitHub Action runs periodically
-to pull the latest content from Joplin and commit it to this repository.
+[Blog posts](./posts/) are written and managed in Joplin. A GitHub Action runs
+periodically to pull the latest content from Joplin and commit it to this
+repository.
+
+The images in the posts are places in the
+[public/\_resources](./public/_resources) directory.
 
 ## Tech Stack
 
