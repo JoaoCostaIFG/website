@@ -42,6 +42,11 @@ wiki.joaocosta.dev {
 
 # --- private/tailscale
 
+coxy.tail1dfda.ts.net {
+	bind tailscale/coxy
+	reverse_proxy coxy:3000
+}
+
 ai.tail1dfda.ts.net {
 	bind tailscale/ai
 	tailscale_auth

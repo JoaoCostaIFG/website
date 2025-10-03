@@ -167,6 +167,18 @@ services:
       - rss2email-data:/app/.rss2email
     restart: unless-stopped
   # ---
+  coxy:
+    image: ghcr.io/coxy-proxy/coxy:latest
+    container_name: coxy
+    expose:
+      - "3000"
+    environment:
+      TZ: ${TZ}
+      DATABASE_URL: file:/db/coxy.db
+    volumes:
+      - coxy_data:/db
+    restart: unless-stopped
+  # ---
   open-webui:
     image: ghcr.io/open-webui/open-webui:dev
     container_name: open-webui
@@ -241,6 +253,7 @@ volumes:
   joplin_data:
   rss2email-data:
   open-webui_data:
+  coxy_data:
   caddy_data:
   caddy_config:
   redisdata:
