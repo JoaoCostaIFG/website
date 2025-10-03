@@ -75,6 +75,10 @@
         icon: mdi-map
         href: https://dynmap.tail1dfda.ts.net/
         description: Minecraft server map
+    - Coxy:
+        icon: github
+        href: https://coxy.tail1dfda.ts.net/
+        description: Github copilot proxy
 
 - Infrastructure:
     - Pocket Id:
