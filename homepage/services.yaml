@@ -75,10 +75,10 @@
         icon: mdi-map
         href: https://dynmap.tail1dfda.ts.net/
         description: Minecraft server map
-    - Coxy:
-        icon: github
-        href: https://coxy.tail1dfda.ts.net/
-        description: Github copilot proxy
+    - n8n:
+        icon: n8n
+        href: https://n8n.tail1dfda.ts.net/
+        description: Automations
 
 - Infrastructure:
     - Pocket Id:
@@ -105,6 +105,10 @@
         icon: searxng
         href: https://searxng.tail1dfda.ts.net/
         description: Meta search engine
+    - Coxy:
+        icon: github
+        href: https://coxy.tail1dfda.ts.net/
+        description: Github copilot proxy
     - ifgsvkvm:
         icon: sipeed
         href: https://ifgsvkvm.tail1dfda.ts.net/
