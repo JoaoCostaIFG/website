@@ -49,7 +49,6 @@ coxy.tail1dfda.ts.net {
 
 ai.tail1dfda.ts.net {
 	bind tailscale/ai
-	tailscale_auth
 	reverse_proxy open-webui:8080
 }
 
