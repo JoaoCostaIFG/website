@@ -154,19 +154,6 @@ services:
       - joplin_data:/data
     restart: unless-stopped
   # ---
-  rss2email:
-    image: ghcr.io/skx/rss2email:master
-    container_name: rss2email
-    working_dir: /app
-    entrypoint: rss2email
-    command: daemon -verbose rss@joaocosta.dev
-    environment:
-      TZ: ${TZ}
-    env_file: /usr/local/etc/rss2email.env
-    volumes:
-      - rss2email-data:/app/.rss2email
-    restart: unless-stopped
-  # ---
   coxy:
     image: ghcr.io/coxy-proxy/coxy:latest
     container_name: coxy
@@ -239,6 +226,26 @@ services:
     expose:
       - "8080"
     restart: unless-stopped
+  # ---
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    environment:
+      TZ: ${TZ}
+      GENERIC_TIMEZONE: ${TZ}
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: true
+      N8N_RUNNERS_ENABLED: true
+      N8N_TEMPLATES_ENABLED: true
+      N8N_HOST: n8n.tail1dfda.ts.net
+      N8N_PORT: 5678
+      N8N_PROTOCOL: https
+      NODE_ENV: production
+      WEBHOOK_URL: https://n8n.tail1dfda.ts.net
+    volumes:
+      - n8n-data:/home/node/.n8n
+    expose:
+      - "5678"
+    restart: unless-stopped
 
 volumes:
   site_bw_data:
@@ -251,7 +258,6 @@ volumes:
   crafty-servers:
   crafty-config:
   joplin_data:
-  rss2email-data:
   open-webui_data:
   coxy_data:
   caddy_data:
@@ -259,3 +265,4 @@ volumes:
   redisdata:
   immich-db:
   traccar_data:
+  n8n-data:

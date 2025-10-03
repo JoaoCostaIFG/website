@@ -116,6 +116,12 @@ searxng.tail1dfda.ts.net {
 	reverse_proxy searxng:8080
 }
 
+n8n.tail1dfda.ts.net {
+	bind tailscale/n8n
+	tailscale_auth
+	reverse_proxy n8n:5678
+}
+
 crafty.tail1dfda.ts.net {
 	bind tailscale/crafty
 	tailscale_auth
