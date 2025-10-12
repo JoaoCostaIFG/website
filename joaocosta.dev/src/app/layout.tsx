@@ -16,6 +16,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://joaocosta.dev'),
+  alternates: {
+    canonical: '/',
+    types: {
+      'application/rss+xml': '/rss',
+    },
+  },
   title: "Joao Costa",
   description: "Hey! I am a software engineer and this is my personal website. I try to be active here.",
   openGraph: {
