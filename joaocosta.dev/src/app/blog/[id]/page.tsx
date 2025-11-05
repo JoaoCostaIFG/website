@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { readingTime } from '@/lib/word-utils';
 import BlogMarkdown from "@/lib/blog/BlogMarkdown";
 import { getPostById, getSortedPostsData } from "@/lib/posts";
+import GiscusComments from "@/components/GiscusComments";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
@@ -52,6 +53,7 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
 
         <BlogMarkdown markdown={b.content} />
       </article>
+      <GiscusComments />
     </div>
   )
 }
