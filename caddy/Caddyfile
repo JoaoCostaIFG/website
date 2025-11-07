@@ -69,6 +69,12 @@ files.tail1dfda.ts.net {
 	reverse_proxy truenas.lan:30044
 }
 
+syncthing.tail1dfda.ts.net {
+	bind tailscale/syncthing
+	tailscale_auth
+	reverse_proxy truenas.lan:20910
+}
+
 immich.tail1dfda.ts.net {
 	bind tailscale/immich
 	tailscale_auth

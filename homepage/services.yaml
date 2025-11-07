@@ -41,6 +41,10 @@
         icon: filebrowser
         href: https://files.tail1dfda.ts.net/
         description: TrueNas file browser
+    - Syncthing:
+        icon: syncthing
+        href: https://syncthing.tail1dfda.ts.net/
+        description: TrueNas syncthing server
     - Pingvin Share:
         icon: pingvin-share
         href: https://croc.joaocosta.dev
