@@ -163,7 +163,7 @@ services:
     restart: unless-stopped
   # ---
   open-webui:
-    image: ghcr.io/open-webui/open-webui:dev
+    image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
     expose:
       - "8080"
