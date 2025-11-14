@@ -1,6 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1
+# source: https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
