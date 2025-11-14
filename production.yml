@@ -231,12 +231,18 @@ services:
       GENERIC_TIMEZONE: ${TZ}
       N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: true
       N8N_RUNNERS_ENABLED: true
-      N8N_TEMPLATES_ENABLED: true
       N8N_HOST: n8n.tail1dfda.ts.net
       N8N_PORT: 5678
       N8N_PROTOCOL: https
       NODE_ENV: production
       WEBHOOK_URL: https://n8n.tail1dfda.ts.net
+      # disable telemetry
+      N8N_DIAGNOSTICS_ENABLED: false
+      N8N_VERSION_NOTIFICATIONS_ENABLED: false
+      N8N_TEMPLATES_ENABLED: false
+      EXTERNAL_FRONTEND_HOOKS_URLS:
+      N8N_DIAGNOSTICS_CONFIG_FRONTEND:
+      N8N_DIAGNOSTICS_CONFIG_BACKEND:
     volumes:
       - n8n-data:/home/node/.n8n
     expose:
