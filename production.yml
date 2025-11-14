@@ -115,17 +115,13 @@ services:
       - site_pingvin_imgs:/opt/app/frontend/public/img
     restart: unless-stopped
   # ---
-  stirling-pdf:
-    image: frooodle/s-pdf:latest
+  bentopdf:
+    image: ghcr.io/alam00000/bentopdf-simple:latest
     container_name: pdf
     expose:
       - "8080"
     environment:
       TZ: ${TZ}
-      DOCKER_ENABLE_SECURITY: false
-    volumes:
-      - site_pdf_trainingdata:/usr/share/tesseract-ocr/5/tessdata #Required for extra OCR languages
-      - site_pdf_config:/configs
     restart: unless-stopped
   # ---
   dozzle:
@@ -251,8 +247,6 @@ volumes:
   site_bw_data:
   site_pingvin_data:
   site_pingvin_imgs:
-  site_pdf_trainingdata:
-  site_pdf_config:
   pocketid-data:
   crafty-backups:
   crafty-servers:
