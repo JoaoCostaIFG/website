@@ -41,13 +41,6 @@
     owner: root
     group: root
     mode: '0644'
-- name: Copy rss2email.env file
-  ansible.builtin.copy:
-    src: rss2email.env
-    dest: /usr/local/etc/rss2email.env
-    owner: root
-    group: root
-    mode: '0644'
 - name: Copy traccar.xml file
   ansible.builtin.copy:
     src: traccar.xml

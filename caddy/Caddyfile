@@ -10,8 +10,7 @@
 	#	versions ipv4 ipv6
 	#}
 	tailscale {
-		ephemeral
-      tags tag:service
+		ephemeral true
 	}
 }
 
