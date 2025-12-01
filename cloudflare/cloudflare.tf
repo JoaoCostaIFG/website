@@ -1,31 +1,29 @@
 terraform {
-
-  cloud {
-    organization = "ifg"
-    hostname = "app.terraform.io"
-
-    workspaces {
-      name = "cloudflare"
-      project = "ifgsv"
-    }
-  }
-
   required_providers {
     cloudflare = {
-      source = "cloudflare/cloudflare"
+      source  = "cloudflare/cloudflare"
       version = "~> 4"
+    }
+
+    external = {
+      source  = "hashicorp/external"
+      version = "~> 1.2"
     }
   }
 }
 
-variable "api_token" {}
-
-variable "zone_id" {}
-
-variable "account_id" {}
+data "external" "vault" {
+  program = [
+    "ansible-vault",
+    "decrypt",
+    "--output",
+    "-",
+    "vault.json"
+  ]
+}
 
 provider "cloudflare" {
-  api_token = var.api_token
+  api_token = data.external.vault.result.api_token
 }
 
 resource "cloudflare_record" "dns_wildcard" {
@@ -34,37 +32,37 @@ resource "cloudflare_record" "dns_wildcard" {
   proxied = true
   ttl     = 1
   type    = "CNAME"
-  zone_id = var.zone_id
+  zone_id = data.external.vault.result.zone_id
 }
 
 resource "cloudflare_ruleset" "zone_level_managed_waf" {
-  zone_id     = var.zone_id
+  zone_id     = data.external.vault.result.zone_id
   name        = "Phase entry point ruleset for custom rules in my zone"
   description = ""
   kind        = "zone"
   phase       = "http_request_firewall_custom"
 
   rules {
-    ref         = "allow_rss_bot_access"
-    action      = "skip"
+    ref    = "allow_rss_bot_access"
+    action = "skip"
     action_parameters {
-        phases = [
-            "http_ratelimit",
-            "http_request_firewall_managed",
-            "http_request_sbfm"
-        ]
-        ruleset = "current"
+      phases = [
+        "http_ratelimit",
+        "http_request_firewall_managed",
+        "http_request_sbfm"
+      ]
+      ruleset = "current"
     }
     description = "Allow bot access to /rss"
     expression  = "(http.request.full_uri eq \"https://joaocosta.dev/rss\")"
     logging {
-        enabled = true
+      enabled = true
     }
   }
 }
 
 resource "cloudflare_ruleset" "terraform_rules" {
-  zone_id = var.zone_id
+  zone_id = data.external.vault.result.zone_id
   kind    = "zone"
   name    = "default"
   phase   = "http_request_dynamic_redirect"
@@ -99,166 +97,4 @@ resource "cloudflare_ruleset" "terraform_rules" {
     expression  = "(http.request.full_uri wildcard r\"https://www.*\")"
   }
 }
-
-resource "cloudflare_list" "root_redirects" {
-  name        = "root"
-  description = "Static redirects for tailscale services"
-  kind        = "redirect"
-  account_id = var.account_id
-
-  item {
-    value {
-      redirect {
-        source_url  = "wiki.joaocosta.dev"
-        target_url  = "https://joaocostaifg.github.io/wiki"
-        status_code = 301
-      }
-    }
-    comment = "ai"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "ai.joaocosta.dev"
-        target_url  = "https://ai.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "ai"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "dns.joaocosta.dev"
-        target_url  = "https://dns.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "dns"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "dozzle.joaocosta.dev"
-        target_url  = "https://dozzle.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "dozzle"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "files.joaocosta.dev"
-        target_url  = "https://files.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "files"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "immich.joaocosta.dev"
-        target_url  = "https://immich.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "immich"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "joplin.joaocosta.dev"
-        target_url  = "https://joplin.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "joplin"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "paperless.joaocosta.dev"
-        target_url  = "https://paperless.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "paperless"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "pdf.joaocosta.dev"
-        target_url  = "https://pdf.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "pdf"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "tail.joaocosta.dev"
-        target_url  = "https://tail.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "tail"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "vaultwarden.joaocosta.dev"
-        target_url  = "https://vaultwarden.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "vaultwarden"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "searxng.joaocosta.dev"
-        target_url  = "https://searxng.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "searxng"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "crafty.joaocosta.dev"
-        target_url  = "https://crafty.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "CraftyController"
-  }
-
-  item {
-    value {
-      redirect {
-        source_url  = "dynmap.joaocosta.dev"
-        target_url  = "https://dynmap.tail1dfda.ts.net"
-        status_code = 301
-      }
-    }
-    comment = "Minecraft Dynmap"
-  }
-}
-
 
