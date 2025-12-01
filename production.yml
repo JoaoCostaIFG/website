@@ -25,6 +25,17 @@ services:
     command: tunnel run
     restart: unless-stopped
   # ---
+  tsidp:
+    container_name: tsidp
+    image: ghcr.io/tailscale/tsidp:latest
+    volumes:
+      - tsidp-data:/data
+    environment:
+      - TAILSCALE_USE_WIP_CODE=1 # tsidp is experimental - needed while version <1.0.0
+      - TS_STATE_DIR=/data # store persistent tsnet and tsidp state
+      - TS_HOSTNAME=idp # Hostname on tailnet (becomes idp.your-tailnet.ts.net)
+      - TSIDP_ENABLE_STS=1 # Enable OAuth token exchange
+  # ---
   pocket-id:
     image: ghcr.io/pocket-id/pocket-id:v1
     expose:
@@ -266,3 +277,4 @@ volumes:
   immich-db:
   traccar_data:
   n8n-data:
+  tsidp-data:

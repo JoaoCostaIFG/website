@@ -37,7 +37,7 @@ traccar.joaocosta.dev {
 }
 
 wiki.joaocosta.dev {
-  redir https://joaocostaifg.github.io/wiki/{uri} permanent
+  redir https://joaocostaifg.github.io/wiki{uri} permanent
 }
 
 # --- private/tailscale
