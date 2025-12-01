@@ -48,6 +48,7 @@ services:
       PUID: 1000
       PGID: 1000
       ENCRYPTION_KEY_FILE: /app/data/encryption_key
+      MAXMIND_LICENSE_KEY_FILE: /app/data/maxmind_license_key
       # for IP geo location
       # MAXMIND_LICENSE_KEY:
     restart: unless-stopped
