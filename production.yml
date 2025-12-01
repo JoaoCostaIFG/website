@@ -37,7 +37,7 @@ services:
       - TSIDP_ENABLE_STS=1 # Enable OAuth token exchange
   # ---
   pocket-id:
-    image: ghcr.io/pocket-id/pocket-id:v1-distroless
+    image: ghcr.io/pocket-id/pocket-id:v1
     expose:
       - "1411"
     volumes:
