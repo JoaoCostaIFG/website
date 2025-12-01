@@ -37,7 +37,7 @@ services:
       - TSIDP_ENABLE_STS=1 # Enable OAuth token exchange
   # ---
   pocket-id:
-    image: ghcr.io/pocket-id/pocket-id:v1
+    image: ghcr.io/pocket-id/pocket-id:v1-distroless
     expose:
       - "1411"
     volumes:
@@ -47,6 +47,7 @@ services:
       TRUST_PROXY: true
       PUID: 1000
       PGID: 1000
+      ENCRYPTION_KEY_FILE: /app/data/encryption_key
       # for IP geo location
       # MAXMIND_LICENSE_KEY:
     restart: unless-stopped
